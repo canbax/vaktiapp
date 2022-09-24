@@ -17,7 +17,7 @@
     "vue-class-component": "^7.2.6",
     "vue-i18n": "^8.24.3",
     "vue-property-decorator": "^9.1.2",
-    "vuetify": "^2.4.11"
+    "vuetify": "^2.6.10"
   },
   "devDependencies": {
     "@intlify/vue-i18n-loader": "^2.1.0",
