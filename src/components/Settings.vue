@@ -2,6 +2,7 @@
   <v-container fluid>
     <v-select
       class="unselectable-txt"
+      autocomplete="new-password"
       v-model="currLocation"
       :items="savedLocations"
       v-on:input="onSavedLocationSelected"
@@ -10,6 +11,7 @@
     />
     <v-select
       v-model="currLang"
+      autocomplete="new-password"
       :items="langs"
       item-text="txt"
       v-on:input="onLangSelected"

@@ -6,6 +6,7 @@
       :items="countries"
       :filter="filterByTxt"
       item-text="UlkeAdi"
+      autocomplete="new-password"
       v-on:input="onCountrySelected"
       :placeholder="$t('selectCountry')"
       return-object
@@ -18,6 +19,7 @@
       :items="cities"
       :filter="filterByTxt"
       item-text="SehirAdi"
+      autocomplete="new-password"
       v-on:input="onCitySelected"
       :label="$t('selectCity')"
       :placeholder="$t('selectCity')"
@@ -31,6 +33,7 @@
       :items="districts"
       :filter="filterByTxt"
       item-text="IlceAdi"
+      autocomplete="new-password"
       v-on:input="onDistrictSelected"
       :label="$t('selectDistrict')"
       :placeholder="$t('selectDistrict')"
