@@ -4,7 +4,7 @@ export class ApiClient {
   private _url: string;
 
   constructor() {
-    this._url = 'https://namaz-vakti-api.herokuapp.com/';
+    this._url = 'https://namaz-vakti.vercel.app/api/';
     // this._url = 'http://localhost:3000/';
   }
 
