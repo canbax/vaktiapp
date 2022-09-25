@@ -36,6 +36,12 @@ Hijri calendar calculations are without using any third-party application. The l
   <img src="doc/settings.png" title="Settings"/>
 </p>
 
+# Development
 Built with [Typescript](https://www.typescriptlang.org), [Vue.js](https://vuejs.org), and [Vuetify](https://vuetifyjs.com/en). 
 
 **Do NOT overwrite service-worker.js during deploy!**
+## New Version Deployment
+- Generate a build. `npm run build2` command will generate a build and recreate "dist" folder. 
+- Copy-paste this folder into "gh-pages" branch
+- run `npm run sw` command this "gh-pages" branch.
+- Push your changes. Static website in GitHub will be updated. Since it uses PWA, you need to close browser and then comeback to the website.
