@@ -1,7 +1,5 @@
 # namaz-vakti [(Türkçe)](BENİOKU.md) 
 
-DİYANET VERİLERİ ŞİFRELEDİĞİNDEN BU PROJE ARTIK ÇALIŞMAMAKTADIR.
-
 Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [Google Play Store](https://play.google.com/store/apps/details?id=io.kevn.namaz_vakti), [Windows Apps Store](https://www.microsoft.com/en-us/p/namaz-vakti/9p6rv2n2mrbv), and [the web](https://canbax.github.io/namaz-vakti/).
 
 <p align="center">
