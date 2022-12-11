@@ -1,26 +1,40 @@
-import { City, District } from './MetaType';
+import { Locale, TimesForLocale } from "./MetaType";
 import { StateService } from "./StateService";
 export class ApiClient {
   private _url: string;
 
   constructor() {
-    this._url = 'https://namaz-vakti.vercel.app/api/';
+    this._url = "https://namaz-vakti.vercel.app/api/";
     // this._url = 'http://localhost:3000/';
   }
 
-  getCities4Country(countryID: string, cb: (e: City[]) => void): void {
-    this.httpGet(this._url + 'cities?country=' + countryID, cb);
+  getCities4Country(countryID: string, cb: (e: string[]) => void): void {
+    this.httpGet(this._url + "regions?country=" + countryID, cb);
   }
 
-  getDistricts4City(countryID: string, cityID: string, cb: (e: District[]) => void): void {
-    this.httpGet(this._url + 'regions?city=' + cityID + '&country=' + countryID, cb);
+  getDistricts4City(
+    countryID: string,
+    cityID: string,
+    cb: (e: string[]) => void
+  ): void {
+    this.httpGet(
+      this._url + "cities?region=" + cityID + "&country=" + countryID,
+      cb
+    );
   }
 
-  getTimes4District(districtID: string, cb: (e: string[][]) => void): void {
-    this.httpGet(this._url + 'data?region=' + districtID, cb);
+  getTimes4District(place: Locale, cb: (e: TimesForLocale) => void): void {
+    this.httpGet(
+      this._url +
+        `timesFromPlace?country=${place.country}&region=${place.region}&city=${place.city}`,
+      cb
+    );
   }
 
-  private httpGet(url: string, cb: ((e: City[]) => void) | ((e: District[]) => void) | ((e: string[][]) => void)): void {
+  private httpGet(
+    url: string,
+    cb: ((e: string[]) => void) | ((e: string[][]) => void)
+  ): void {
     const xmlhttp = new XMLHttpRequest();
     StateService.setLoading(true);
     StateService.setError(false);
@@ -34,7 +48,7 @@ export class ApiClient {
       StateService.setLoading(false);
       StateService.setError(true);
     };
-    xmlhttp.open('GET', url, true);
+    xmlhttp.open("GET", url, true);
     xmlhttp.send();
   }
 }

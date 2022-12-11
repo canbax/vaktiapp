@@ -129,21 +129,21 @@ export default class Settings extends Vue {
   private savedLocations: string[] = [];
   private themes = ["Light", "Dark"];
   private langs: UiLanguage[] = [
-    { txt: "Türkçe", code: "tr" },
-    { txt: "English", code: "en" },
-    { txt: "Pусский", code: "ru" },
-    { txt: "Española", code: "es" },
-    { txt: "فارسی", code: "fa" },
-    { txt: "Français", code: "fr" },
-    { txt: "Deutsch", code: "de" },
-    { txt: "Chinese", code: "zh" },
-    { txt: "عربى", code: "ar" },
-    { txt: "Indonesia", code: "id" },
-    { txt: "Italian", code: "it" },
-    { txt: "Kazakh", code: "kk" },
-    { txt: "Korean", code: "ko" },
-    { txt: "Kyrgyz", code: "ky" },
-    { txt: "Malay", code: "ms" },
+    { txt: "Türkçe", code: "TR" },
+    { txt: "English", code: "EN" },
+    { txt: "Pусский", code: "RU" },
+    { txt: "Española", code: "ES" },
+    { txt: "فارسی", code: "FA" },
+    { txt: "Français", code: "FR" },
+    { txt: "Deutsch", code: "DE" },
+    { txt: "Chinese", code: "ZH" },
+    { txt: "عربى", code: "AR" },
+    { txt: "Indonesia", code: "ID" },
+    { txt: "Italian", code: "IT" },
+    { txt: "Kazakh", code: "KK" },
+    { txt: "Korean", code: "KO" },
+    { txt: "Kyrgyz", code: "KY" },
+    { txt: "Malay", code: "MS" },
   ];
   private _api: ApiClient = new ApiClient();
   private currLocation: string | null = "";
@@ -180,9 +180,8 @@ export default class Settings extends Vue {
     this.currYearFormat = SettingService.getCurrYearFormat();
     this.currMonthFormat = SettingService.getCurrMonthFormat();
     this.currWeekdayFormat = SettingService.getCurrWeekdayFormat();
-    this.currTimeFmt = this.remainingTimeFormats[
-      SettingService.getCurrTimeFmt()
-    ];
+    this.currTimeFmt =
+      this.remainingTimeFormats[SettingService.getCurrTimeFmt()];
 
     this.isShowHijriDate = SettingService.getIsShowHijri();
 
@@ -254,9 +253,8 @@ export default class Settings extends Vue {
           `X ${this.$t("hour")} Y ${this.$t("minute")} Z ${this.$t("second")}`,
           `X ${this.$t("hour")} Y ${this.$t("minute")}`,
         ];
-        this.currTimeFmt = this.remainingTimeFormats[
-          SettingService.getCurrTimeFmt()
-        ];
+        this.currTimeFmt =
+          this.remainingTimeFormats[SettingService.getCurrTimeFmt()];
       }, 0);
       SettingService.setCurrLang(e.code);
       this.$i18n.locale = e.code;

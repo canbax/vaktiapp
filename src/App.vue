@@ -236,9 +236,9 @@ export default class App extends Vue {
       this.$i18n.locale = this.currLang;
     } else {
       // set default language if it does not exist
-      this.$i18n.locale = "tr";
-      this.currLang = "tr";
-      SettingService.setCurrLang("tr");
+      this.$i18n.locale = "TR";
+      this.currLang = "TR";
+      SettingService.setCurrLang("TR");
     }
 
     const currTheme = SettingService.getCurrTheme();

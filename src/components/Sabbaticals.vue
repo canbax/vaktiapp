@@ -43,7 +43,7 @@ export default class Sabbaticals extends Vue {
   }
 
   mounted(): void {
-    const el = document.getElementsByTagName("tr")[this.NUM_SABBS - 1];
+    const el = document.getElementsByTagName("TR")[this.NUM_SABBS - 1];
     el.scrollIntoView(true);
   }
 

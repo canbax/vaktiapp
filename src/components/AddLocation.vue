@@ -5,7 +5,7 @@
       v-model="selectedCountry"
       :items="countries"
       :filter="filterByTxt"
-      item-text="UlkeAdi"
+      item-text="name"
       autocomplete="new-password"
       v-on:input="onCountrySelected"
       :placeholder="$t('selectCountry')"
@@ -27,6 +27,7 @@
     />
     <br />
     <v-autocomplete
+      v-if="!isTurkeySelected"
       class="m5"
       v-model="selectedDistrict"
       :disabled="selectedCity == null"
@@ -46,19 +47,19 @@
 import { Component, Vue } from "vue-property-decorator";
 import COUNTRIES from "../assets/countries.json";
 import TR_CITIES from "../assets/cities.json";
-import { Country, City, District } from "../MetaType";
+import { Country, TimesForLocale } from "../MetaType";
 import { ApiClient } from "../ApiClient";
 import { SettingService } from "../SettingService";
 import { turkishDateStr2Date } from "@/helper";
 
 @Component
 export default class AddLocation extends Vue {
-  private selectedCountry: Country | null = null;
-  private selectedCity: City | null = null;
-  private selectedDistrict: District | null = null;
-  private countries = COUNTRIES;
-  private cities: City[] = [];
-  private districts: District[] = [];
+  selectedCountry: Country | null = null;
+  selectedCity: string | null = null;
+  selectedDistrict: string | null = null;
+  countries: Country[] = COUNTRIES;
+  cities: string[] = [];
+  districts: string[] = [];
   private _api: ApiClient = new ApiClient();
   private openPanels: number[] = [];
 
@@ -67,6 +68,11 @@ export default class AddLocation extends Vue {
     this._api = new ApiClient();
     if (!SettingService.getCurrLocation()) {
       this.openPanels = [0];
+    }
+    const currlang = SettingService.getCurrLang() || "TR";
+    let regionNames = new Intl.DisplayNames([currlang], { type: "region" });
+    for (let i = 0; i < this.countries.length; i++) {
+      this.countries[i].name = regionNames.of(this.countries[i].code) || "";
     }
   }
 
@@ -77,14 +83,18 @@ export default class AddLocation extends Vue {
     }
   }
 
+  get isTurkeySelected(): boolean {
+    return this.selectedCountry !== null && this.selectedCountry.code == "TR";
+  }
+
   onCountrySelected(c: Country): void {
     // Turkey is cached
-    if (c.UlkeAdi == "TURKIYE") {
+    if (c.code == "TR") {
       this.cities = TR_CITIES;
       this.selectedCity = null;
       this.selectedDistrict = null;
     } else {
-      this._api.getCities4Country(c.UlkeID, (e) => {
+      this._api.getCities4Country(c.englishName, (e) => {
         this.cities = e;
         this.selectedCity = null;
         this.selectedDistrict = null;
@@ -92,33 +102,45 @@ export default class AddLocation extends Vue {
     }
   }
 
-  onCitySelected(c: City): void {
-    const country = this.selectedCountry ? this.selectedCountry.UlkeID : "";
-    this._api.getDistricts4City(country, c.SehirID, (e) => {
+  onCitySelected(c: string): void {
+    const country = this.selectedCountry
+      ? this.selectedCountry.englishName
+      : "";
+    this._api.getDistricts4City(country, c, (e) => {
       this.districts = e;
+      if (this.isTurkeySelected) {
+        this.onDistrictSelected(this.districts[0]);
+      }
     });
   }
 
-  onDistrictSelected(d: District): void {
-    this._api.getTimes4District(d.IlceID, (e) => {
-      if (
-        this.selectedCountry != null &&
-        this.selectedCity != null &&
-        this.selectedDistrict != null
-      ) {
-        const unix_date = turkishDateStr2Date(e[0][0]);
-        const id =
-          this.selectedCountry.UlkeID +
-          "_" +
-          this.selectedCity.SehirID +
-          "_" +
-          this.selectedDistrict.IlceID +
-          "_" +
-          unix_date;
-        SettingService.addTimesData(id, e, d.IlceAdi);
-        this.$emit("curr-times-updated", e);
+  onDistrictSelected(d: string): void {
+    this._api.getTimes4District(
+      {
+        country: this.selectedCountry?.englishName ?? "",
+        region: this.selectedCity ?? "",
+        city: this.selectedDistrict ?? "",
+      },
+      (e: TimesForLocale) => {
+        if (
+          this.selectedCountry != null &&
+          this.selectedCity != null &&
+          this.selectedDistrict != null
+        ) {
+          const unix_date = turkishDateStr2Date(e.times[]);
+          const id =
+            this.selectedCountry.name +
+            "_" +
+            this.selectedCity +
+            "_" +
+            this.selectedDistrict +
+            "_" +
+            unix_date;
+          SettingService.addTimesData(id, e, d);
+          this.$emit("curr-times-updated", e);
+        }
       }
-    });
+    );
   }
 
   filterByTxt(item: Country, queryText: string, itemText: string): boolean {

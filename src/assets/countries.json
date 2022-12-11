@@ -1,1022 +1,1247 @@
 [
   {
-    "UlkeAdi": "TURKIYE",
-    "UlkeAdiEn": "TURKIYE",
-    "UlkeID": "2"
+    "code": "US",
+    "name": "",
+    "englishName": "United States of America"
   },
   {
-    "UlkeAdi": "ABD",
-    "UlkeAdiEn": "ABD",
-    "UlkeID": "33"
+    "code": "CN",
+    "name": "",
+    "englishName": "China"
   },
   {
-    "UlkeAdi": "AFGANISTAN",
-    "UlkeAdiEn": "AFGANISTAN",
-    "UlkeID": "166"
+    "code": "AU",
+    "name": "",
+    "englishName": "Australia"
   },
   {
-    "UlkeAdi": "ALMANYA",
-    "UlkeAdiEn": "ALMANYA",
-    "UlkeID": "13"
+    "code": "JP",
+    "name": "",
+    "englishName": "Japan"
   },
   {
-    "UlkeAdi": "ANDORRA",
-    "UlkeAdiEn": "ANDORRA",
-    "UlkeID": "17"
+    "code": "TH",
+    "name": "",
+    "englishName": "Thailand"
   },
   {
-    "UlkeAdi": "ANGOLA",
-    "UlkeAdiEn": "ANGOLA",
-    "UlkeID": "140"
+    "code": "IN",
+    "name": "",
+    "englishName": "India"
   },
   {
-    "UlkeAdi": "ANGUILLA",
-    "UlkeAdiEn": "ANGUILLA",
-    "UlkeID": "125"
+    "code": "MY",
+    "name": "",
+    "englishName": "Malaysia"
   },
   {
-    "UlkeAdi": "ANTIGUA VE BARBUDA",
-    "UlkeAdiEn": "ANTIGUA-VE-BARBUDA",
-    "UlkeID": "90"
+    "code": "KR",
+    "name": "",
+    "englishName": "Korea (Republic of)"
   },
   {
-    "UlkeAdi": "ARJANTIN",
-    "UlkeAdiEn": "ARJANTIN",
-    "UlkeID": "199"
+    "code": "SG",
+    "name": "",
+    "englishName": "Singapore"
   },
   {
-    "UlkeAdi": "ARNAVUTLUK",
-    "UlkeAdiEn": "ARNAVUTLUK",
-    "UlkeID": "25"
+    "code": "HK",
+    "name": "",
+    "englishName": "Hong Kong"
   },
   {
-    "UlkeAdi": "ARUBA",
-    "UlkeAdiEn": "ARUBA",
-    "UlkeID": "153"
+    "code": "TW",
+    "name": "",
+    "englishName": "Taiwan (Province of China)"
   },
   {
-    "UlkeAdi": "AVUSTRALYA",
-    "UlkeAdiEn": "AVUSTRALYA",
-    "UlkeID": "59"
+    "code": "KH",
+    "name": "",
+    "englishName": "Cambodia"
   },
   {
-    "UlkeAdi": "AVUSTURYA",
-    "UlkeAdiEn": "AVUSTURYA",
-    "UlkeID": "35"
+    "code": "PH",
+    "name": "",
+    "englishName": "Philippines"
   },
   {
-    "UlkeAdi": "AZERBAYCAN",
-    "UlkeAdiEn": "AZERBAYCAN",
-    "UlkeID": "5"
+    "code": "VN",
+    "name": "",
+    "englishName": "Viet Nam"
   },
   {
-    "UlkeAdi": "BAHAMALAR",
-    "UlkeAdiEn": "BAHAMALAR",
-    "UlkeID": "54"
+    "code": "NO",
+    "name": "",
+    "englishName": "Norway"
   },
   {
-    "UlkeAdi": "BAHREYN",
-    "UlkeAdiEn": "BAHREYN",
-    "UlkeID": "132"
+    "code": "BR",
+    "name": "",
+    "englishName": "Brazil"
   },
   {
-    "UlkeAdi": "BANGLADES",
-    "UlkeAdiEn": "BANGLADES",
-    "UlkeID": "177"
+    "code": "AR",
+    "name": "",
+    "englishName": "Argentina"
   },
   {
-    "UlkeAdi": "BARBADOS",
-    "UlkeAdiEn": "BARBADOS",
-    "UlkeID": "188"
+    "code": "PS",
+    "name": "",
+    "englishName": "Palestine, State of"
   },
   {
-    "UlkeAdi": "BELARUS",
-    "UlkeAdiEn": "BELARUS",
-    "UlkeID": "208"
+    "code": "ES",
+    "name": "",
+    "englishName": "Spain"
   },
   {
-    "UlkeAdi": "BELCIKA",
-    "UlkeAdiEn": "BELCIKA",
-    "UlkeID": "11"
+    "code": "FR",
+    "name": "",
+    "englishName": "France"
   },
   {
-    "UlkeAdi": "BELIZE",
-    "UlkeAdiEn": "BELIZE",
-    "UlkeID": "182"
+    "code": "CZ",
+    "name": "",
+    "englishName": "Czechia"
   },
   {
-    "UlkeAdi": "BENIN",
-    "UlkeAdiEn": "BENIN",
-    "UlkeID": "181"
+    "code": "DE",
+    "name": "",
+    "englishName": "Germany"
   },
   {
-    "UlkeAdi": "BERMUDA",
-    "UlkeAdiEn": "BERMUDA",
-    "UlkeID": "51"
+    "code": "AT",
+    "name": "",
+    "englishName": "Austria"
   },
   {
-    "UlkeAdi": "BIRLESIK ARAP EMIRLIGI",
-    "UlkeAdiEn": "BIRLESIK-ARAP-EMIRLIGI",
-    "UlkeID": "93"
+    "code": "CH",
+    "name": "",
+    "englishName": "Switzerland"
   },
   {
-    "UlkeAdi": "BOLIVYA",
-    "UlkeAdiEn": "BOLIVYA",
-    "UlkeID": "83"
+    "code": "GB",
+    "name": "",
+    "englishName": "United Kingdom of Great Britain and Northern Ireland"
   },
   {
-    "UlkeAdi": "BOSNA HERSEK",
-    "UlkeAdiEn": "BOSNA-HERSEK",
-    "UlkeID": "9"
+    "code": "IT",
+    "name": "",
+    "englishName": "Italy"
   },
   {
-    "UlkeAdi": "BOTSVANA",
-    "UlkeAdiEn": "BOTSVANA",
-    "UlkeID": "167"
+    "code": "NL",
+    "name": "",
+    "englishName": "Netherlands"
   },
   {
-    "UlkeAdi": "BREZILYA",
-    "UlkeAdiEn": "BREZILYA",
-    "UlkeID": "146"
+    "code": "GR",
+    "name": "",
+    "englishName": "Greece"
   },
   {
-    "UlkeAdi": "BRUNEI",
-    "UlkeAdiEn": "BRUNEI",
-    "UlkeID": "97"
+    "code": "RU",
+    "name": "",
+    "englishName": "Russian Federation"
   },
   {
-    "UlkeAdi": "BULGARISTAN",
-    "UlkeAdiEn": "BULGARISTAN",
-    "UlkeID": "44"
+    "code": "IE",
+    "name": "",
+    "englishName": "Ireland"
   },
   {
-    "UlkeAdi": "BURKINA FASO",
-    "UlkeAdiEn": "BURKINA-FASO",
-    "UlkeID": "91"
+    "code": "DK",
+    "name": "",
+    "englishName": "Denmark"
   },
   {
-    "UlkeAdi": "BURMA (MYANMAR)",
-    "UlkeAdiEn": "BURMA-(MYANMAR)",
-    "UlkeID": "154"
+    "code": "PT",
+    "name": "",
+    "englishName": "Portugal"
   },
   {
-    "UlkeAdi": "BURUNDI",
-    "UlkeAdiEn": "BURUNDI",
-    "UlkeID": "65"
+    "code": "SE",
+    "name": "",
+    "englishName": "Sweden"
   },
   {
-    "UlkeAdi": "BUTAN",
-    "UlkeAdiEn": "BUTAN",
-    "UlkeID": "155"
+    "code": "GH",
+    "name": "",
+    "englishName": "Ghana"
   },
   {
-    "UlkeAdi": "CAD",
-    "UlkeAdiEn": "CAD",
-    "UlkeID": "156"
+    "code": "CM",
+    "name": "",
+    "englishName": "Cameroon"
   },
   {
-    "UlkeAdi": "CECENISTAN",
-    "UlkeAdiEn": "CECENISTAN",
-    "UlkeID": "43"
+    "code": "BE",
+    "name": "",
+    "englishName": "Belgium"
   },
   {
-    "UlkeAdi": "CEK CUMHURIYETI",
-    "UlkeAdiEn": "CEK-CUMHURIYETI",
-    "UlkeID": "16"
+    "code": "ZA",
+    "name": "",
+    "englishName": "South Africa"
   },
   {
-    "UlkeAdi": "CEZAYIR",
-    "UlkeAdiEn": "CEZAYIR",
-    "UlkeID": "86"
+    "code": "FI",
+    "name": "",
+    "englishName": "Finland"
   },
   {
-    "UlkeAdi": "CIBUTI",
-    "UlkeAdiEn": "CIBUTI",
-    "UlkeID": "160"
+    "code": "TR",
+    "name": "",
+    "englishName": "Turkey"
   },
   {
-    "UlkeAdi": "CIN",
-    "UlkeAdiEn": "CIN",
-    "UlkeID": "61"
+    "code": "AE",
+    "name": "",
+    "englishName": "United Arab Emirates"
   },
   {
-    "UlkeAdi": "DANIMARKA",
-    "UlkeAdiEn": "DANIMARKA",
-    "UlkeID": "26"
+    "code": "PL",
+    "name": "",
+    "englishName": "Poland"
   },
   {
-    "UlkeAdi": "DEMOKRATIK KONGO CUMHURIYETI",
-    "UlkeAdiEn": "DEMOKRATIK-KONGO-CUMHURIYETI",
-    "UlkeID": "180"
+    "code": "JO",
+    "name": "",
+    "englishName": "Jordan"
   },
   {
-    "UlkeAdi": "DOGU TIMOR",
-    "UlkeAdiEn": "DOGU-TIMOR",
-    "UlkeID": "176"
+    "code": "RO",
+    "name": "",
+    "englishName": "Romania"
   },
   {
-    "UlkeAdi": "DOMINIK",
-    "UlkeAdiEn": "DOMINIK",
-    "UlkeID": "123"
+    "code": "KE",
+    "name": "",
+    "englishName": "Kenya"
   },
   {
-    "UlkeAdi": "DOMINIK CUMHURIYETI",
-    "UlkeAdiEn": "DOMINIK-CUMHURIYETI",
-    "UlkeID": "72"
+    "code": "UG",
+    "name": "",
+    "englishName": "Uganda"
   },
   {
-    "UlkeAdi": "EKVATOR",
-    "UlkeAdiEn": "EKVATOR",
-    "UlkeID": "139"
+    "code": "AM",
+    "name": "",
+    "englishName": "Armenia"
   },
   {
-    "UlkeAdi": "EKVATOR GINESI",
-    "UlkeAdiEn": "EKVATOR-GINESI",
-    "UlkeID": "63"
+    "code": "TZ",
+    "name": "",
+    "englishName": "Tanzania, United Republic of"
   },
   {
-    "UlkeAdi": "EL SALVADOR",
-    "UlkeAdiEn": "EL-SALVADOR",
-    "UlkeID": "165"
+    "code": "BI",
+    "name": "",
+    "englishName": "Burundi"
   },
   {
-    "UlkeAdi": "ENDONEZYA",
-    "UlkeAdiEn": "ENDONEZYA",
-    "UlkeID": "117"
+    "code": "UY",
+    "name": "",
+    "englishName": "Uruguay"
   },
   {
-    "UlkeAdi": "ERITRE",
-    "UlkeAdiEn": "ERITRE",
-    "UlkeID": "175"
+    "code": "CL",
+    "name": "",
+    "englishName": "Chile"
   },
   {
-    "UlkeAdi": "ERMENISTAN",
-    "UlkeAdiEn": "ERMENISTAN",
-    "UlkeID": "104"
+    "code": "LU",
+    "name": "",
+    "englishName": "Luxembourg"
   },
   {
-    "UlkeAdi": "ESTONYA",
-    "UlkeAdiEn": "ESTONYA",
-    "UlkeID": "6"
+    "code": "BG",
+    "name": "",
+    "englishName": "Bulgaria"
   },
   {
-    "UlkeAdi": "ETYOPYA",
-    "UlkeAdiEn": "ETYOPYA",
-    "UlkeID": "95"
+    "code": "UA",
+    "name": "",
+    "englishName": "Ukraine"
   },
   {
-    "UlkeAdi": "FAS",
-    "UlkeAdiEn": "FAS",
-    "UlkeID": "145"
+    "code": "EG",
+    "name": "",
+    "englishName": "Egypt"
   },
   {
-    "UlkeAdi": "FIJI",
-    "UlkeAdiEn": "FIJI",
-    "UlkeID": "197"
+    "code": "CA",
+    "name": "",
+    "englishName": "Canada"
   },
   {
-    "UlkeAdi": "FILDISI SAHILI",
-    "UlkeAdiEn": "FILDISI-SAHILI",
-    "UlkeID": "120"
+    "code": "IL",
+    "name": "",
+    "englishName": "Israel"
   },
   {
-    "UlkeAdi": "FILIPINLER",
-    "UlkeAdiEn": "FILIPINLER",
-    "UlkeID": "126"
+    "code": "QA",
+    "name": "",
+    "englishName": "Qatar"
   },
   {
-    "UlkeAdi": "FILISTIN",
-    "UlkeAdiEn": "FILISTIN",
-    "UlkeID": "204"
+    "code": "MD",
+    "name": "",
+    "englishName": "Moldova (Republic of)"
   },
   {
-    "UlkeAdi": "FINLANDIYA",
-    "UlkeAdiEn": "FINLANDIYA",
-    "UlkeID": "41"
+    "code": "SC",
+    "name": "",
+    "englishName": "Seychelles"
   },
   {
-    "UlkeAdi": "FRANSA",
-    "UlkeAdiEn": "FRANSA",
-    "UlkeID": "21"
+    "code": "IQ",
+    "name": "",
+    "englishName": "Iraq"
   },
   {
-    "UlkeAdi": "GABON",
-    "UlkeAdiEn": "GABON",
-    "UlkeID": "79"
+    "code": "VA",
+    "name": "",
+    "englishName": "Holy See"
   },
   {
-    "UlkeAdi": "GAMBIYA",
-    "UlkeAdiEn": "GAMBIYA",
-    "UlkeID": "109"
+    "code": "LV",
+    "name": "",
+    "englishName": "Latvia"
   },
   {
-    "UlkeAdi": "GANA",
-    "UlkeAdiEn": "GANA",
-    "UlkeID": "143"
+    "code": "IS",
+    "name": "",
+    "englishName": "Iceland"
   },
   {
-    "UlkeAdi": "GINE",
-    "UlkeAdiEn": "GINE",
-    "UlkeID": "111"
+    "code": "SK",
+    "name": "",
+    "englishName": "Slovakia"
   },
   {
-    "UlkeAdi": "GRENADA",
-    "UlkeAdiEn": "GRENADA",
-    "UlkeID": "58"
+    "code": "KZ",
+    "name": "",
+    "englishName": "Kazakhstan"
   },
   {
-    "UlkeAdi": "GRONLAND",
-    "UlkeAdiEn": "GRONLAND",
-    "UlkeID": "48"
+    "code": "GE",
+    "name": "",
+    "englishName": "Georgia"
   },
   {
-    "UlkeAdi": "GUADELOPE",
-    "UlkeAdiEn": "GUADELOPE",
-    "UlkeID": "171"
+    "code": "EE",
+    "name": "",
+    "englishName": "Estonia"
   },
   {
-    "UlkeAdi": "GUAM ADASI",
-    "UlkeAdiEn": "GUAM-ADASI",
-    "UlkeID": "169"
+    "code": "HR",
+    "name": "",
+    "englishName": "Croatia"
   },
   {
-    "UlkeAdi": "GUATEMALA",
-    "UlkeAdiEn": "GUATEMALA",
-    "UlkeID": "99"
+    "code": "MX",
+    "name": "",
+    "englishName": "Mexico"
   },
   {
-    "UlkeAdi": "GUNEY AFRIKA",
-    "UlkeAdiEn": "GUNEY-AFRIKA",
-    "UlkeID": "67"
+    "code": "HU",
+    "name": "",
+    "englishName": "Hungary"
   },
   {
-    "UlkeAdi": "GUNEY KORE",
-    "UlkeAdiEn": "GUNEY-KORE",
-    "UlkeID": "128"
+    "code": "SA",
+    "name": "",
+    "englishName": "Saudi Arabia"
   },
   {
-    "UlkeAdi": "GURCISTAN",
-    "UlkeAdiEn": "GURCISTAN",
-    "UlkeID": "62"
+    "code": "MT",
+    "name": "",
+    "englishName": "Malta"
   },
   {
-    "UlkeAdi": "GUYANA",
-    "UlkeAdiEn": "GUYANA",
-    "UlkeID": "82"
+    "code": "LT",
+    "name": "",
+    "englishName": "Lithuania"
   },
   {
-    "UlkeAdi": "HAITI",
-    "UlkeAdiEn": "HAITI",
-    "UlkeID": "70"
+    "code": "CY",
+    "name": "",
+    "englishName": "Cyprus"
   },
   {
-    "UlkeAdi": "HINDISTAN",
-    "UlkeAdiEn": "HINDISTAN",
-    "UlkeID": "187"
+    "code": "IR",
+    "name": "",
+    "englishName": "Iran (Islamic Republic of)"
   },
   {
-    "UlkeAdi": "HIRVATISTAN",
-    "UlkeAdiEn": "HIRVATISTAN",
-    "UlkeID": "30"
+    "code": "ID",
+    "name": "",
+    "englishName": "Indonesia"
   },
   {
-    "UlkeAdi": "HOLLANDA",
-    "UlkeAdiEn": "HOLLANDA",
-    "UlkeID": "4"
+    "code": "BH",
+    "name": "",
+    "englishName": "Bahrain"
   },
   {
-    "UlkeAdi": "HOLLANDA ANTILLERI",
-    "UlkeAdiEn": "HOLLANDA-ANTILLERI",
-    "UlkeID": "66"
+    "code": "CO",
+    "name": "",
+    "englishName": "Colombia"
   },
   {
-    "UlkeAdi": "HONDURAS",
-    "UlkeAdiEn": "HONDURAS",
-    "UlkeID": "105"
+    "code": "SY",
+    "name": "",
+    "englishName": "Syrian Arab Republic"
   },
   {
-    "UlkeAdi": "HONG KONG",
-    "UlkeAdiEn": "HONG-KONG",
-    "UlkeID": "113"
+    "code": "LB",
+    "name": "",
+    "englishName": "Lebanon"
   },
   {
-    "UlkeAdi": "INGILTERE",
-    "UlkeAdiEn": "INGILTERE",
-    "UlkeID": "15"
+    "code": "AZ",
+    "name": "",
+    "englishName": "Azerbaijan"
   },
   {
-    "UlkeAdi": "IRAK",
-    "UlkeAdiEn": "IRAK",
-    "UlkeID": "124"
+    "code": "ZW",
+    "name": "",
+    "englishName": "Zimbabwe"
   },
   {
-    "UlkeAdi": "IRAN",
-    "UlkeAdiEn": "IRAN",
-    "UlkeID": "202"
+    "code": "OM",
+    "name": "",
+    "englishName": "Oman"
   },
   {
-    "UlkeAdi": "IRLANDA",
-    "UlkeAdiEn": "IRLANDA",
-    "UlkeID": "32"
+    "code": "RS",
+    "name": "",
+    "englishName": "Serbia"
   },
   {
-    "UlkeAdi": "ISPANYA",
-    "UlkeAdiEn": "ISPANYA",
-    "UlkeID": "23"
+    "code": "SI",
+    "name": "",
+    "englishName": "Slovenia"
   },
   {
-    "UlkeAdi": "ISRAIL",
-    "UlkeAdiEn": "ISRAIL",
-    "UlkeID": "205"
+    "code": "MK",
+    "name": "",
+    "englishName": "North Macedonia"
   },
   {
-    "UlkeAdi": "ISVEC",
-    "UlkeAdiEn": "ISVEC",
-    "UlkeID": "12"
+    "code": "LI",
+    "name": "",
+    "englishName": "Liechtenstein"
   },
   {
-    "UlkeAdi": "ISVICRE",
-    "UlkeAdiEn": "ISVICRE",
-    "UlkeID": "49"
+    "code": "JE",
+    "name": "",
+    "englishName": "Jersey"
   },
   {
-    "UlkeAdi": "ITALYA",
-    "UlkeAdiEn": "ITALYA",
-    "UlkeID": "8"
+    "code": "BA",
+    "name": "",
+    "englishName": "Bosnia and Herzegovina"
   },
   {
-    "UlkeAdi": "IZLANDA",
-    "UlkeAdiEn": "IZLANDA",
-    "UlkeID": "122"
+    "code": "PE",
+    "name": "",
+    "englishName": "Peru"
   },
   {
-    "UlkeAdi": "JAMAIKA",
-    "UlkeAdiEn": "JAMAIKA",
-    "UlkeID": "119"
+    "code": "KG",
+    "name": "",
+    "englishName": "Kyrgyzstan"
   },
   {
-    "UlkeAdi": "JAPONYA",
-    "UlkeAdiEn": "JAPONYA",
-    "UlkeID": "116"
+    "code": "IM",
+    "name": "",
+    "englishName": "Isle of Man"
   },
   {
-    "UlkeAdi": "KAMBOCYA",
-    "UlkeAdiEn": "KAMBOCYA",
-    "UlkeID": "161"
+    "code": "GG",
+    "name": "",
+    "englishName": "Guernsey"
   },
   {
-    "UlkeAdi": "KAMERUN",
-    "UlkeAdiEn": "KAMERUN",
-    "UlkeID": "184"
+    "code": "GI",
+    "name": "",
+    "englishName": "Gibraltar"
   },
   {
-    "UlkeAdi": "KANADA",
-    "UlkeAdiEn": "KANADA",
-    "UlkeID": "52"
+    "code": "LY",
+    "name": "",
+    "englishName": "Libya"
   },
   {
-    "UlkeAdi": "KARADAG",
-    "UlkeAdiEn": "KARADAG",
-    "UlkeID": "34"
+    "code": "YE",
+    "name": "",
+    "englishName": "Yemen"
   },
   {
-    "UlkeAdi": "KATAR",
-    "UlkeAdiEn": "KATAR",
-    "UlkeID": "94"
+    "code": "BY",
+    "name": "",
+    "englishName": "Belarus"
   },
   {
-    "UlkeAdi": "KAZAKISTAN",
-    "UlkeAdiEn": "KAZAKISTAN",
-    "UlkeID": "92"
+    "code": "UZ",
+    "name": "",
+    "englishName": "Uzbekistan"
   },
   {
-    "UlkeAdi": "KENYA",
-    "UlkeAdiEn": "KENYA",
-    "UlkeID": "114"
+    "code": "YT",
+    "name": "",
+    "englishName": "Mayotte"
   },
   {
-    "UlkeAdi": "KIRGIZISTAN",
-    "UlkeAdiEn": "KIRGIZISTAN",
-    "UlkeID": "168"
+    "code": "RE",
+    "name": "",
+    "englishName": "Reunion"
   },
   {
-    "UlkeAdi": "KOLOMBIYA",
-    "UlkeAdiEn": "KOLOMBIYA",
-    "UlkeID": "57"
+    "code": "GP",
+    "name": "",
+    "englishName": "Guadeloupe"
   },
   {
-    "UlkeAdi": "KOMORLAR",
-    "UlkeAdiEn": "KOMORLAR",
-    "UlkeID": "88"
+    "code": "MF",
+    "name": "",
+    "englishName": "Saint Martin (French Part)"
   },
   {
-    "UlkeAdi": "KOSOVA",
-    "UlkeAdiEn": "KOSOVA",
-    "UlkeID": "18"
+    "code": "MQ",
+    "name": "",
+    "englishName": "Martinique"
   },
   {
-    "UlkeAdi": "KOSTARIKA",
-    "UlkeAdiEn": "KOSTARIKA",
-    "UlkeID": "162"
+    "code": "GF",
+    "name": "",
+    "englishName": "French Guiana"
   },
   {
-    "UlkeAdi": "KUBA",
-    "UlkeAdiEn": "KUBA",
-    "UlkeID": "209"
+    "code": "KW",
+    "name": "",
+    "englishName": "Kuwait"
   },
   {
-    "UlkeAdi": "KUDUS",
-    "UlkeAdiEn": "KUDUS",
-    "UlkeID": "206"
+    "code": "NZ",
+    "name": "",
+    "englishName": "New Zealand"
   },
   {
-    "UlkeAdi": "KUVEYT",
-    "UlkeAdiEn": "KUVEYT",
-    "UlkeID": "133"
+    "code": "LK",
+    "name": "",
+    "englishName": "Sri Lanka"
   },
   {
-    "UlkeAdi": "KUZEY KIBRIS",
-    "UlkeAdiEn": "KUZEY-KIBRIS",
-    "UlkeID": "1"
+    "code": "SZ",
+    "name": "",
+    "englishName": "Eswatini"
   },
   {
-    "UlkeAdi": "KUZEY KORE",
-    "UlkeAdiEn": "KUZEY-KORE",
-    "UlkeID": "142"
+    "code": "CD",
+    "name": "",
+    "englishName": "Congo (Democratic Republic of the)"
   },
   {
-    "UlkeAdi": "LAOS",
-    "UlkeAdiEn": "LAOS",
-    "UlkeID": "134"
+    "code": "BD",
+    "name": "",
+    "englishName": "Bangladesh"
   },
   {
-    "UlkeAdi": "LESOTO",
-    "UlkeAdiEn": "LESOTO",
-    "UlkeID": "174"
+    "code": "BT",
+    "name": "",
+    "englishName": "Bhutan"
   },
   {
-    "UlkeAdi": "LETONYA",
-    "UlkeAdiEn": "LETONYA",
-    "UlkeID": "20"
+    "code": "BN",
+    "name": "",
+    "englishName": "Brunei Darussalam"
   },
   {
-    "UlkeAdi": "LIBERYA",
-    "UlkeAdiEn": "LIBERYA",
-    "UlkeID": "73"
+    "code": "PM",
+    "name": "",
+    "englishName": "Saint Pierre and Miquelon"
   },
   {
-    "UlkeAdi": "LIBYA",
-    "UlkeAdiEn": "LIBYA",
-    "UlkeID": "203"
+    "code": "PA",
+    "name": "",
+    "englishName": "Panama"
   },
   {
-    "UlkeAdi": "LIECHTENSTEIN",
-    "UlkeAdiEn": "LIECHTENSTEIN",
-    "UlkeID": "38"
+    "code": "LA",
+    "name": "",
+    "englishName": "Lao People's Democratic Republic"
   },
   {
-    "UlkeAdi": "LITVANYA",
-    "UlkeAdiEn": "LITVANYA",
-    "UlkeID": "47"
+    "code": "GU",
+    "name": "",
+    "englishName": "Guam"
   },
   {
-    "UlkeAdi": "LUBNAN",
-    "UlkeAdiEn": "LUBNAN",
-    "UlkeID": "42"
+    "code": "MP",
+    "name": "",
+    "englishName": "Northern Mariana Islands"
   },
   {
-    "UlkeAdi": "LUKSEMBURG",
-    "UlkeAdiEn": "LUKSEMBURG",
-    "UlkeID": "31"
+    "code": "DO",
+    "name": "",
+    "englishName": "Dominican Republic"
   },
   {
-    "UlkeAdi": "MACARISTAN",
-    "UlkeAdiEn": "MACARISTAN",
-    "UlkeID": "7"
+    "code": "NG",
+    "name": "",
+    "englishName": "Nigeria"
   },
   {
-    "UlkeAdi": "MADAGASKAR",
-    "UlkeAdiEn": "MADAGASKAR",
-    "UlkeID": "98"
+    "code": "EC",
+    "name": "",
+    "englishName": "Ecuador"
   },
   {
-    "UlkeAdi": "MAKAO",
-    "UlkeAdiEn": "MAKAO",
-    "UlkeID": "100"
+    "code": "VE",
+    "name": "",
+    "englishName": "Venezuela (Bolivarian Republic of)"
   },
   {
-    "UlkeAdi": "MAKEDONYA",
-    "UlkeAdiEn": "MAKEDONYA",
-    "UlkeID": "28"
+    "code": "CR",
+    "name": "",
+    "englishName": "Costa Rica"
   },
   {
-    "UlkeAdi": "MALAVI",
-    "UlkeAdiEn": "MALAVI",
-    "UlkeID": "55"
+    "code": "PR",
+    "name": "",
+    "englishName": "Puerto Rico"
   },
   {
-    "UlkeAdi": "MALDIVLER",
-    "UlkeAdiEn": "MALDIVLER",
-    "UlkeID": "103"
+    "code": "BO",
+    "name": "",
+    "englishName": "Bolivia (Plurinational State of)"
   },
   {
-    "UlkeAdi": "MALEZYA",
-    "UlkeAdiEn": "MALEZYA",
-    "UlkeID": "107"
+    "code": "VI",
+    "name": "",
+    "englishName": "Virgin Islands (U.S.)"
   },
   {
-    "UlkeAdi": "MALI",
-    "UlkeAdiEn": "MALI",
-    "UlkeID": "152"
+    "code": "PK",
+    "name": "",
+    "englishName": "Pakistan"
   },
   {
-    "UlkeAdi": "MALTA",
-    "UlkeAdiEn": "MALTA",
-    "UlkeID": "24"
+    "code": "MN",
+    "name": "",
+    "englishName": "Mongolia"
   },
   {
-    "UlkeAdi": "MARTINIK",
-    "UlkeAdiEn": "MARTINIK",
-    "UlkeID": "87"
+    "code": "PG",
+    "name": "",
+    "englishName": "Papua New Guinea"
   },
   {
-    "UlkeAdi": "MAURITIUS ADASI",
-    "UlkeAdiEn": "MAURITIUS-ADASI",
-    "UlkeID": "164"
+    "code": "TL",
+    "name": "",
+    "englishName": "Timor-Leste"
   },
   {
-    "UlkeAdi": "MAYOTTE",
-    "UlkeAdiEn": "MAYOTTE",
-    "UlkeID": "157"
+    "code": "SB",
+    "name": "",
+    "englishName": "Solomon Islands"
   },
   {
-    "UlkeAdi": "MEKSIKA",
-    "UlkeAdiEn": "MEKSIKA",
-    "UlkeID": "53"
+    "code": "VU",
+    "name": "",
+    "englishName": "Vanuatu"
   },
   {
-    "UlkeAdi": "MIKRONEZYA",
-    "UlkeAdiEn": "MIKRONEZYA",
-    "UlkeID": "85"
+    "code": "FJ",
+    "name": "",
+    "englishName": "Fiji"
   },
   {
-    "UlkeAdi": "MISIR",
-    "UlkeAdiEn": "MISIR",
-    "UlkeID": "189"
+    "code": "CK",
+    "name": "",
+    "englishName": "Cook Islands"
   },
   {
-    "UlkeAdi": "MOGOLISTAN",
-    "UlkeAdiEn": "MOGOLISTAN",
-    "UlkeID": "60"
+    "code": "TO",
+    "name": "",
+    "englishName": "Tonga"
   },
   {
-    "UlkeAdi": "MOLDAVYA",
-    "UlkeAdiEn": "MOLDAVYA",
-    "UlkeID": "46"
+    "code": "NP",
+    "name": "",
+    "englishName": "Nepal"
   },
   {
-    "UlkeAdi": "MONAKO",
-    "UlkeAdiEn": "MONAKO",
-    "UlkeID": "3"
+    "code": "MO",
+    "name": "",
+    "englishName": "Macao"
   },
   {
-    "UlkeAdi": "MONTSERRAT (U.K.)",
-    "UlkeAdiEn": "MONTSERRAT-(U.K.)",
-    "UlkeID": "147"
+    "code": "NI",
+    "name": "",
+    "englishName": "Nicaragua"
   },
   {
-    "UlkeAdi": "MORITANYA",
-    "UlkeAdiEn": "MORITANYA",
-    "UlkeID": "106"
+    "code": "JM",
+    "name": "",
+    "englishName": "Jamaica"
   },
   {
-    "UlkeAdi": "MOZAMBIK",
-    "UlkeAdiEn": "MOZAMBIK",
-    "UlkeID": "151"
+    "code": "AL",
+    "name": "",
+    "englishName": "Albania"
   },
   {
-    "UlkeAdi": "NAMIBYA",
-    "UlkeAdiEn": "NAMIBYA",
-    "UlkeID": "196"
+    "code": "TT",
+    "name": "",
+    "englishName": "Trinidad and Tobago"
   },
   {
-    "UlkeAdi": "NEPAL",
-    "UlkeAdiEn": "NEPAL",
-    "UlkeID": "76"
+    "code": "GT",
+    "name": "",
+    "englishName": "Guatemala"
   },
   {
-    "UlkeAdi": "NIJER",
-    "UlkeAdiEn": "NIJER",
-    "UlkeID": "84"
+    "code": "AF",
+    "name": "",
+    "englishName": "Afghanistan"
   },
   {
-    "UlkeAdi": "NIJERYA",
-    "UlkeAdiEn": "NIJERYA",
-    "UlkeID": "127"
+    "code": "MA",
+    "name": "",
+    "englishName": "Morocco"
   },
   {
-    "UlkeAdi": "NIKARAGUA",
-    "UlkeAdiEn": "NIKARAGUA",
-    "UlkeID": "141"
+    "code": "GD",
+    "name": "",
+    "englishName": "Grenada"
   },
   {
-    "UlkeAdi": "NIUE",
-    "UlkeAdiEn": "NIUE",
-    "UlkeID": "178"
+    "code": "VG",
+    "name": "",
+    "englishName": "Virgin Islands (British)"
   },
   {
-    "UlkeAdi": "NORVEC",
-    "UlkeAdiEn": "NORVEC",
-    "UlkeID": "36"
+    "code": "KN",
+    "name": "",
+    "englishName": "Saint Kitts and Nevis"
   },
   {
-    "UlkeAdi": "ORTA AFRIKA CUMHURIYETI",
-    "UlkeAdiEn": "ORTA-AFRIKA-CUMHURIYETI",
-    "UlkeID": "80"
+    "code": "AG",
+    "name": "",
+    "englishName": "Antigua and Barbuda"
   },
   {
-    "UlkeAdi": "OZBEKISTAN",
-    "UlkeAdiEn": "OZBEKISTAN",
-    "UlkeID": "131"
+    "code": "BL",
+    "name": "",
+    "englishName": "Saint Barthelemy"
   },
   {
-    "UlkeAdi": "PAKISTAN",
-    "UlkeAdiEn": "PAKISTAN",
-    "UlkeID": "77"
+    "code": "VC",
+    "name": "",
+    "englishName": "Saint Vincent and The Grenadines"
   },
   {
-    "UlkeAdi": "PALAU",
-    "UlkeAdiEn": "PALAU",
-    "UlkeID": "149"
+    "code": "BS",
+    "name": "",
+    "englishName": "Bahamas"
   },
   {
-    "UlkeAdi": "PANAMA",
-    "UlkeAdiEn": "PANAMA",
-    "UlkeID": "89"
+    "code": "DM",
+    "name": "",
+    "englishName": "Dominica"
   },
   {
-    "UlkeAdi": "PAPUA YENI GINE",
-    "UlkeAdiEn": "PAPUA-YENI-GINE",
-    "UlkeID": "185"
+    "code": "KY",
+    "name": "",
+    "englishName": "Cayman Islands"
   },
   {
-    "UlkeAdi": "PARAGUAY",
-    "UlkeAdiEn": "PARAGUAY",
-    "UlkeID": "194"
+    "code": "LC",
+    "name": "",
+    "englishName": "Saint Lucia"
   },
   {
-    "UlkeAdi": "PERU",
-    "UlkeAdiEn": "PERU",
-    "UlkeID": "69"
+    "code": "MM",
+    "name": "",
+    "englishName": "Myanmar"
   },
   {
-    "UlkeAdi": "PITCAIRN ADASI",
-    "UlkeAdiEn": "PITCAIRN-ADASI",
-    "UlkeID": "183"
+    "code": "BB",
+    "name": "",
+    "englishName": "Barbados"
   },
   {
-    "UlkeAdi": "POLONYA",
-    "UlkeAdiEn": "POLONYA",
-    "UlkeID": "39"
+    "code": "PY",
+    "name": "",
+    "englishName": "Paraguay"
   },
   {
-    "UlkeAdi": "PORTEKIZ",
-    "UlkeAdiEn": "PORTEKIZ",
-    "UlkeID": "45"
+    "code": "UM",
+    "name": "",
+    "englishName": "United States Minor Outlying Islands"
   },
   {
-    "UlkeAdi": "PORTO RIKO",
-    "UlkeAdiEn": "PORTO-RIKO",
-    "UlkeID": "68"
+    "code": "TM",
+    "name": "",
+    "englishName": "Turkmenistan"
   },
   {
-    "UlkeAdi": "REUNION",
-    "UlkeAdiEn": "REUNION",
-    "UlkeID": "112"
+    "code": "TK",
+    "name": "",
+    "englishName": "Tokelau"
   },
   {
-    "UlkeAdi": "ROMANYA",
-    "UlkeAdiEn": "ROMANYA",
-    "UlkeID": "37"
+    "code": "MV",
+    "name": "",
+    "englishName": "Maldives"
   },
   {
-    "UlkeAdi": "RUANDA",
-    "UlkeAdiEn": "RUANDA",
-    "UlkeID": "81"
+    "code": "NC",
+    "name": "",
+    "englishName": "New Caledonia"
   },
   {
-    "UlkeAdi": "RUSYA",
-    "UlkeAdiEn": "RUSYA",
-    "UlkeID": "207"
+    "code": "WF",
+    "name": "",
+    "englishName": "Wallis and Futuna"
   },
   {
-    "UlkeAdi": "SAUDI ARABISTAN",
-    "UlkeAdiEn": "SAUDI-ARABISTAN",
-    "UlkeID": "64"
+    "code": "SM",
+    "name": "",
+    "englishName": "San Marino"
   },
   {
-    "UlkeAdi": "SAMOA",
-    "UlkeAdiEn": "SAMOA",
-    "UlkeID": "198"
+    "code": "ME",
+    "name": "",
+    "englishName": "Montenegro"
   },
   {
-    "UlkeAdi": "SENEGAL",
-    "UlkeAdiEn": "SENEGAL",
-    "UlkeID": "102"
+    "code": "SV",
+    "name": "",
+    "englishName": "El Salvador"
   },
   {
-    "UlkeAdi": "SEYSEL ADALARI",
-    "UlkeAdiEn": "SEYSEL-ADALARI",
-    "UlkeID": "138"
+    "code": "AD",
+    "name": "",
+    "englishName": "Andorra"
   },
   {
-    "UlkeAdi": "SILI",
-    "UlkeAdiEn": "SILI",
-    "UlkeID": "200"
+    "code": "MC",
+    "name": "",
+    "englishName": "Monaco"
   },
   {
-    "UlkeAdi": "SINGAPUR",
-    "UlkeAdiEn": "SINGAPUR",
-    "UlkeID": "179"
+    "code": "GL",
+    "name": "",
+    "englishName": "Greenland"
   },
   {
-    "UlkeAdi": "SIRBISTAN",
-    "UlkeAdiEn": "SIRBISTAN",
-    "UlkeID": "27"
+    "code": "BZ",
+    "name": "",
+    "englishName": "Belize"
   },
   {
-    "UlkeAdi": "SLOVAKYA",
-    "UlkeAdiEn": "SLOVAKYA",
-    "UlkeID": "14"
+    "code": "TJ",
+    "name": "",
+    "englishName": "Tajikistan"
   },
   {
-    "UlkeAdi": "SLOVENYA",
-    "UlkeAdiEn": "SLOVENYA",
-    "UlkeID": "19"
+    "code": "FO",
+    "name": "",
+    "englishName": "Faroe Islands"
   },
   {
-    "UlkeAdi": "SOMALI",
-    "UlkeAdiEn": "SOMALI",
-    "UlkeID": "150"
+    "code": "BW",
+    "name": "",
+    "englishName": "Botswana"
   },
   {
-    "UlkeAdi": "SRI LANKA",
-    "UlkeAdiEn": "SRI-LANKA",
-    "UlkeID": "74"
+    "code": "LR",
+    "name": "",
+    "englishName": "Liberia"
   },
   {
-    "UlkeAdi": "SUDAN",
-    "UlkeAdiEn": "SUDAN",
-    "UlkeID": "129"
+    "code": "MU",
+    "name": "",
+    "englishName": "Mauritius"
   },
   {
-    "UlkeAdi": "SURINAM",
-    "UlkeAdiEn": "SURINAM",
-    "UlkeID": "172"
+    "code": "ZM",
+    "name": "",
+    "englishName": "Zambia"
   },
   {
-    "UlkeAdi": "SURIYE",
-    "UlkeAdiEn": "SURIYE",
-    "UlkeID": "191"
+    "code": "MZ",
+    "name": "",
+    "englishName": "Mozambique"
   },
   {
-    "UlkeAdi": "SVALBARD",
-    "UlkeAdiEn": "SVALBARD",
-    "UlkeID": "163"
+    "code": "TN",
+    "name": "",
+    "englishName": "Tunisia"
   },
   {
-    "UlkeAdi": "SVAZILAND",
-    "UlkeAdiEn": "SVAZILAND",
-    "UlkeID": "170"
+    "code": "MG",
+    "name": "",
+    "englishName": "Madagascar"
   },
   {
-    "UlkeAdi": "TACIKISTAN",
-    "UlkeAdiEn": "TACIKISTAN",
-    "UlkeID": "101"
+    "code": "AO",
+    "name": "",
+    "englishName": "Angola"
   },
   {
-    "UlkeAdi": "TANZANYA",
-    "UlkeAdiEn": "TANZANYA",
-    "UlkeID": "110"
+    "code": "NA",
+    "name": "",
+    "englishName": "Namibia"
   },
   {
-    "UlkeAdi": "TAYLAND",
-    "UlkeAdiEn": "TAYLAND",
-    "UlkeID": "137"
+    "code": "CI",
+    "name": "",
+    "englishName": "Cote D'ivoire"
   },
   {
-    "UlkeAdi": "TAYVAN",
-    "UlkeAdiEn": "TAYVAN",
-    "UlkeID": "108"
+    "code": "SD",
+    "name": "",
+    "englishName": "Sudan"
   },
   {
-    "UlkeAdi": "TOGO",
-    "UlkeAdiEn": "TOGO",
-    "UlkeID": "71"
+    "code": "MW",
+    "name": "",
+    "englishName": "Malawi"
   },
   {
-    "UlkeAdi": "TONGA",
-    "UlkeAdiEn": "TONGA",
-    "UlkeID": "130"
+    "code": "ML",
+    "name": "",
+    "englishName": "Mali"
   },
   {
-    "UlkeAdi": "TRINIDAT VE TOBAGO",
-    "UlkeAdiEn": "TRINIDAT-VE-TOBAGO",
-    "UlkeID": "96"
+    "code": "BJ",
+    "name": "",
+    "englishName": "Benin"
   },
   {
-    "UlkeAdi": "TUNUS",
-    "UlkeAdiEn": "TUNUS",
-    "UlkeID": "118"
+    "code": "CV",
+    "name": "",
+    "englishName": "Cabo Verde"
   },
   {
-    "UlkeAdi": "TURKMENISTAN",
-    "UlkeAdiEn": "TURKMENISTAN",
-    "UlkeID": "159"
+    "code": "RW",
+    "name": "",
+    "englishName": "Rwanda"
   },
   {
-    "UlkeAdi": "UGANDA",
-    "UlkeAdiEn": "UGANDA",
-    "UlkeID": "75"
+    "code": "CG",
+    "name": "",
+    "englishName": "Congo"
   },
   {
-    "UlkeAdi": "UKRAYNA",
-    "UlkeAdiEn": "UKRAYNA",
-    "UlkeID": "40"
+    "code": "GM",
+    "name": "",
+    "englishName": "Gambia"
   },
   {
-    "UlkeAdi": "UKRAYNA-KIRIM",
-    "UlkeAdiEn": "UKRAYNA-KIRIM",
-    "UlkeID": "29"
+    "code": "LS",
+    "name": "",
+    "englishName": "Lesotho"
   },
   {
-    "UlkeAdi": "UMMAN",
-    "UlkeAdiEn": "UMMAN",
-    "UlkeID": "173"
+    "code": "GN",
+    "name": "",
+    "englishName": "Guinea"
   },
   {
-    "UlkeAdi": "URDUN",
-    "UlkeAdiEn": "URDUN",
-    "UlkeID": "192"
+    "code": "BF",
+    "name": "",
+    "englishName": "Burkina Faso"
   },
   {
-    "UlkeAdi": "URUGUAY",
-    "UlkeAdiEn": "URUGUAY",
-    "UlkeID": "201"
+    "code": "SO",
+    "name": "",
+    "englishName": "Somalia"
   },
   {
-    "UlkeAdi": "VANUATU",
-    "UlkeAdiEn": "VANUATU",
-    "UlkeID": "56"
+    "code": "SL",
+    "name": "",
+    "englishName": "Sierra Leone"
   },
   {
-    "UlkeAdi": "VATIKAN",
-    "UlkeAdiEn": "VATIKAN",
-    "UlkeID": "10"
+    "code": "NE",
+    "name": "",
+    "englishName": "Niger"
   },
   {
-    "UlkeAdi": "VENEZUELA",
-    "UlkeAdiEn": "VENEZUELA",
-    "UlkeID": "186"
+    "code": "CF",
+    "name": "",
+    "englishName": "Central African Republic"
   },
   {
-    "UlkeAdi": "VIETNAM",
-    "UlkeAdiEn": "VIETNAM",
-    "UlkeID": "135"
+    "code": "TG",
+    "name": "",
+    "englishName": "Togo"
   },
   {
-    "UlkeAdi": "YEMEN",
-    "UlkeAdiEn": "YEMEN",
-    "UlkeID": "148"
+    "code": "GA",
+    "name": "",
+    "englishName": "Gabon"
   },
   {
-    "UlkeAdi": "YENI KALEDONYA",
-    "UlkeAdiEn": "YENI-KALEDONYA",
-    "UlkeID": "115"
+    "code": "SS",
+    "name": "",
+    "englishName": "South Sudan"
   },
   {
-    "UlkeAdi": "YENI ZELLANDA",
-    "UlkeAdiEn": "YENI-ZELLANDA",
-    "UlkeID": "193"
+    "code": "GQ",
+    "name": "",
+    "englishName": "Equatorial Guinea"
   },
   {
-    "UlkeAdi": "YESIL BURUN",
-    "UlkeAdiEn": "YESIL-BURUN",
-    "UlkeID": "144"
+    "code": "SN",
+    "name": "",
+    "englishName": "Senegal"
   },
   {
-    "UlkeAdi": "YUNANISTAN",
-    "UlkeAdiEn": "YUNANISTAN",
-    "UlkeID": "22"
+    "code": "DZ",
+    "name": "",
+    "englishName": "Algeria"
   },
   {
-    "UlkeAdi": "ZAMBIYA",
-    "UlkeAdiEn": "ZAMBIYA",
-    "UlkeID": "158"
+    "code": "AS",
+    "name": "",
+    "englishName": "American Samoa"
   },
   {
-    "UlkeAdi": "ZIMBABVE",
-    "UlkeAdiEn": "ZIMBABVE",
-    "UlkeID": "136"
+    "code": "MR",
+    "name": "",
+    "englishName": "Mauritania"
+  },
+  {
+    "code": "DJ",
+    "name": "",
+    "englishName": "Djibouti"
+  },
+  {
+    "code": "KM",
+    "name": "",
+    "englishName": "Comoros"
+  },
+  {
+    "code": "IO",
+    "name": "",
+    "englishName": "British Indian Ocean Territory"
+  },
+  {
+    "code": "TD",
+    "name": "",
+    "englishName": "Chad"
+  },
+  {
+    "code": "NR",
+    "name": "",
+    "englishName": "Nauru"
+  },
+  {
+    "code": "WS",
+    "name": "",
+    "englishName": "Samoa"
+  },
+  {
+    "code": "FM",
+    "name": "",
+    "englishName": "Micronesia (Federated States of)"
+  },
+  {
+    "code": "PF",
+    "name": "",
+    "englishName": "French Polynesia"
+  },
+  {
+    "code": "HN",
+    "name": "",
+    "englishName": "Honduras"
+  },
+  {
+    "code": "BM",
+    "name": "",
+    "englishName": "Bermuda"
+  },
+  {
+    "code": "SR",
+    "name": "",
+    "englishName": "Suriname"
+  },
+  {
+    "code": "CW",
+    "name": "",
+    "englishName": "Curacao"
+  },
+  {
+    "code": "NU",
+    "name": "",
+    "englishName": "Niue"
+  },
+  {
+    "code": "TV",
+    "name": "",
+    "englishName": "Tuvalu"
+  },
+  {
+    "code": "PW",
+    "name": "",
+    "englishName": "Palau"
+  },
+  {
+    "code": "MH",
+    "name": "",
+    "englishName": "Marshall Islands"
+  },
+  {
+    "code": "KI",
+    "name": "",
+    "englishName": "Kiribati"
+  },
+  {
+    "code": "KP",
+    "name": "",
+    "englishName": "Korea (Democratic People's Republic of)"
+  },
+  {
+    "code": "AW",
+    "name": "",
+    "englishName": "Aruba"
+  },
+  {
+    "code": "CU",
+    "name": "",
+    "englishName": "Cuba"
+  },
+  {
+    "code": "HT",
+    "name": "",
+    "englishName": "Haiti"
+  },
+  {
+    "code": "GY",
+    "name": "",
+    "englishName": "Guyana"
+  },
+  {
+    "code": "ST",
+    "name": "",
+    "englishName": "Sao Tome and Principe"
+  },
+  {
+    "code": "ET",
+    "name": "",
+    "englishName": "Ethiopia"
+  },
+  {
+    "code": "ER",
+    "name": "",
+    "englishName": "Eritrea"
+  },
+  {
+    "code": "GW",
+    "name": "",
+    "englishName": "Guinea-Bissau"
+  },
+  {
+    "code": "FK",
+    "name": "",
+    "englishName": "Falkland Islands (Malvinas)"
+  },
+  {
+    "code": "AI",
+    "name": "",
+    "englishName": "Anguilla"
+  },
+  {
+    "code": "TC",
+    "name": "",
+    "englishName": "Turks and Caicos Islands"
+  },
+  {
+    "code": "SX",
+    "name": "",
+    "englishName": "Sint Maarten (Dutch Part)"
+  },
+  {
+    "code": "AX",
+    "name": "",
+    "englishName": "Aland Islands"
+  },
+  {
+    "code": "BV",
+    "name": "",
+    "englishName": "Bouvet Island"
+  },
+  {
+    "code": "SJ",
+    "name": "",
+    "englishName": "Svalbard and Jan Mayen"
+  },
+  {
+    "code": "NF",
+    "name": "",
+    "englishName": "Norfolk Island"
+  },
+  {
+    "code": "MS",
+    "name": "",
+    "englishName": "Montserrat"
+  },
+  {
+    "code": "BQ",
+    "name": "",
+    "englishName": "Bonaire, Sint Eustatius and Saba"
+  },
+  {
+    "code": "PN",
+    "name": "",
+    "englishName": "Pitcairn"
+  },
+  {
+    "code": "SH",
+    "name": "",
+    "englishName": "Saint Helena, Ascension and Tristan Da Cunha"
+  },
+  {
+    "code": "AQ",
+    "name": "",
+    "englishName": "Antarctica"
+  },
+  {
+    "code": "CX",
+    "name": "",
+    "englishName": "Christmas Island"
+  },
+  {
+    "code": "TF",
+    "name": "",
+    "englishName": "French Southern Territories"
+  },
+  {
+    "code": "EH",
+    "name": "",
+    "englishName": "Western Sahara"
+  },
+  {
+    "code": "CC",
+    "name": "",
+    "englishName": "Cocos (Keeling) Islands"
+  },
+  {
+    "code": "GS",
+    "name": "",
+    "englishName": "South Georgia and The South Sandwich Islands"
+  },
+  {
+    "code": "HM",
+    "name": "",
+    "englishName": "Heard Island and Mcdonald Islands"
   }
 ]
