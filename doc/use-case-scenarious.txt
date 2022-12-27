@@ -1,0 +1,1 @@
+1-) Eğer hiç konum eklenmemişse, ayarlardan konum şeçme ekranı açık gösterilecek. Konum seçme ekrarnında GPS konumu kullan butonu en ulaşılabilir yerde olacak.
