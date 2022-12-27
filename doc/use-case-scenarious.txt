@@ -1,1 +1,26 @@
-1-) Eğer hiç konum eklenmemişse, ayarlardan konum şeçme ekranı açık gösterilecek. Konum seçme ekrarnında GPS konumu kullan butonu en ulaşılabilir yerde olacak.
+## İlk Açılış
+1) Eğer hiç konum yoksa, "Konum Ekleme Ekranı" gösterilecek. Konum seçme ekrarnında GPS konumu kullan butonu en ulaşılabilir yerde olacak. Konum eklendiği anda "Vakitler" ekranına yönlendirilecek.
+2) Eğer herhangi bir konum varsa "Vakitler ekranı gösterilecek"
+  2.1) Vakit verileri mevcut ise direk veriler gösterilecek.
+  2.2) Vakitleri yok ise verileri almak için istek gönderilecek
+
+## Vakitler
+1-) Sağa sola gitme butonları ile bir sonraki ve gün için olan vakitler gösterilebilecek. Eğer bir önceki ya da bir sonraki gün için vakitler yoksa buton gösterilmeyecek.
+2-) Eğer bugünden başka birgün gösteriliyorsa en altta bugüne gitmek için bir buton olacak. Eğer bugünün verileri zaten gösteriliyorsa bu buton gösterilmeyecek.
+3-) En üstte seçili konumun adı gösterilecek.
+4-) Sağ üstteki "yenile" butonu ile veriler tekrar getirilecek. Veriler zaten varsa bile silinecek/ezilecek.
+
+## Yeni Konum Ekle
+1-) En altta "GPS konumu kullan" butonu olacak. Buna tıklanırsa, Ülke, Bölge ve şehir seçimleri gelen verilerle yapılacak.
+2-) 3 kademede de seçim yapılmışsa en alttaki butonda "GPS konumu kullan" yerine "Konumu ekle" yazacak.
+3-) "Konumu ekle" butonuna tıklandığında "Vakitler" ekranına yönlendirecek ve konum için veriler çekilecek.
+
+## Desktek
+1-) Her türlü geri bildirim için (yeni özellik ya da hatalı davranış) e-mail ve github issue create link leri olacak.
+2-) Proje tamamen ücretsiz, tamamen reklamsız ve tamamen açık kaynak kodlu. Github Sponsors ve Ziraat Burdur TL hesabını koy.
+
+## Dini Günler
+Eskisiyle aynı
+
+## Ayarlar
+Eskisiyle aynı
