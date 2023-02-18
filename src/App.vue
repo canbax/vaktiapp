@@ -1,51 +1,56 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
+import { ref } from "vue";
+
+const menuItems: {
+  icon: string;
+  title: string;
+  idx: number;
+}[] = [
+  { icon: "mdi-clock-time-four-outline", title: "times", idx: 0 },
+  { icon: "mdi-map-marker-plus", title: "addNewLocation", idx: 1 },
+  { icon: "mdi-calendar-month-outline", title: "sabbaticals", idx: 2 },
+  { icon: "mdi-cog-outline", title: "settings", idx: 3 },
+  { icon: "mdi-information-outline", title: "about", idx: 4 },
+];
+
+const isSideBarOpen = ref(true);
+
+function switchNavigationDrawer() {
+  isSideBarOpen.value = !isSideBarOpen.value;
+}
 </script>
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
+  <v-app>
+    <v-navigation-drawer :model-value="isSideBarOpen">
+      <v-list-item
+        v-for="item in menuItems"
+        :key="item.title"
+        link
+        @click="isSideBarOpen = false"
+      >
+        <template #prepend>
+          <v-icon :icon="item.icon"></v-icon>
+        </template>
+        <v-list-item-title>{{ item.title }}</v-list-item-title>
+      </v-list-item>
+    </v-navigation-drawer>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+    <v-app-bar title="Application bar">
+      <template #prepend>
+        <v-app-bar-nav-icon
+          color="primary"
+          @click="switchNavigationDrawer"
+        ></v-app-bar-nav-icon>
+      </template>
 
-  <main>
-  </main>
+      <template #append>
+        <v-btn icon="mdi-sync" color="primary"></v-btn>
+      </template>
+    </v-app-bar>
+
+    <v-main></v-main>
+  </v-app>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+<style scoped></style>
