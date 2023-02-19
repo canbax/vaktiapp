@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import App from "./App.vue";
-
+import { i18n } from "@/plugins/i18n";
 import "./assets/main.css";
 
 // Vuetify
@@ -23,20 +23,8 @@ const app = createApp(App);
 
 // register plugins
 loadFonts();
-app.use(
-  createVuetify({
-    theme: {
-      themes: {
-        light: {
-          colors: {
-            primary: "#1867C0",
-            secondary: "#5CBBF6",
-          },
-        },
-      },
-    },
-  })
-);
+app.use(i18n);
+app.use(createVuetify());
 app.use(createPinia());
 
 app.mount("#app");

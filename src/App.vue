@@ -32,7 +32,7 @@ function switchNavigationDrawer() {
         <template #prepend>
           <v-icon :icon="item.icon"></v-icon>
         </template>
-        <v-list-item-title>{{ item.title }}</v-list-item-title>
+        <v-list-item-title>{{ $t(item.title) }}</v-list-item-title>
       </v-list-item>
     </v-navigation-drawer>
 
