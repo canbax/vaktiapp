@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, inject, type Ref } from "vue";
+const locale = inject<Ref<string>>("currentLocale");
 
 const menuItems: {
   icon: string;
@@ -17,6 +18,13 @@ const isSideBarOpen = ref(true);
 
 function switchNavigationDrawer() {
   isSideBarOpen.value = !isSideBarOpen.value;
+}
+
+function changeLang() {
+  console.log("locale", locale?.value);
+  if (locale) {
+    locale.value = "tr";
+  }
 }
 </script>
 

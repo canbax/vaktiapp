@@ -1,4 +1,4 @@
-import type { App, Plugin } from "vue";
+import { ref, type App, type Plugin } from "vue";
 import { ar } from "@/locales/ar";
 import { az } from "@/locales/az";
 import { de } from "@/locales/de";
@@ -15,8 +15,9 @@ import { ms } from "@/locales/ms";
 import { ru } from "@/locales/ru";
 import { tr } from "@/locales/tr";
 import { zh } from "@/locales/zh";
+import type { SupportedLanguage } from "@/types";
 
-const stringsInLanguages: Record<string, Record<string, string>> = {
+const stringsInLanguages: Record<SupportedLanguage, Record<string, string>> = {
   ar,
   az,
   de,
@@ -37,21 +38,21 @@ const stringsInLanguages: Record<string, Record<string, string>> = {
 
 export const i18n: Plugin = {
   install: (app: App): void => {
-    app.config.globalProperties.$currentLocale = getDefaultLangCode();
+    const currentLocale = ref(getDefaultLangCode());
     app.config.globalProperties.$t = (key: string) => {
-      const lang = app.config.globalProperties.$currentLocale;
-      return stringsInLanguages[lang][key];
+      return stringsInLanguages[currentLocale.value][key];
     };
+    app.provide("currentLocale", currentLocale);
   },
 };
 
 /**
  * returns 2 letter language code ('en', 'de', 'tr', ...) of the browser. By default returns 'en'
  */
-function getDefaultLangCode(): string {
+function getDefaultLangCode(): SupportedLanguage {
   const userLang = navigator.language;
   if (userLang && typeof userLang === "string" && userLang.includes("-")) {
-    const langCode = userLang.split("-")[0];
+    const langCode = userLang.split("-")[0] as SupportedLanguage;
     if (stringsInLanguages[langCode]) {
       return langCode;
     } else {
