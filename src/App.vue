@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, inject, type Ref } from "vue";
+import DailyPrayTimes from "./components/DailyPrayTimes.vue";
 const locale = inject<Ref<string>>("currentLocale");
 
 const menuItems: {
@@ -25,6 +26,18 @@ function changeLang() {
   if (locale) {
     locale.value = "tr";
   }
+}
+
+let currTimes = [
+  { name: "imsak", value: "05:42" },
+  { name: "sabah", value: "07:07" },
+  { name: "öğle", value: "12:37" },
+  { name: "ikindi", value: "15:29" },
+  { name: "akşam", value: "17:58" },
+  { name: "yatsı", value: "19:16" },
+];
+function showTodayTimesData() {
+  console.log("show today");
 }
 </script>
 
@@ -57,7 +70,13 @@ function changeLang() {
       </template>
     </v-app-bar>
 
-    <v-main></v-main>
+    <v-main>
+      <daily-pray-times
+        :is-showing-today="true"
+        :curr-times="currTimes"
+        @showToday=""
+      ></daily-pray-times>
+    </v-main>
   </v-app>
 </template>
 
