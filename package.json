@@ -2,6 +2,10 @@
   "name": "namaz-vakti-2",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "18.15.0",
+    "npm": "9.15.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -14,10 +18,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@mdi/font": "^7.1.96",
-    "pinia": "^2.0.28",
-    "vue": "^3.2.45",
-    "vuetify": "^3.1.5",
+    "@mdi/font": "^7.2.96",
+    "pinia": "^2.0.36",
+    "vue": "^3.3.2",
+    "vuetify": "^3.2.4",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
