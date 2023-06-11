@@ -28,14 +28,8 @@ function changeLang() {
   }
 }
 
-let currTimes = [
-  { name: "imsak", value: "05:42" },
-  { name: "sabah", value: "07:07" },
-  { name: "öğle", value: "12:37" },
-  { name: "ikindi", value: "15:29" },
-  { name: "akşam", value: "17:58" },
-  { name: "yatsı", value: "19:16" },
-];
+let currTimes = ["05:42", "07:07", "12:37", "15:29", "17:58", "19:16"];
+
 function showTodayTimesData() {
   console.log("show today");
 }
