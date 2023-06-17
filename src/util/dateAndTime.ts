@@ -1,8 +1,4 @@
-type RemainingTimeFormat =
-  | "XX:YY:ZZ"
-  | "XX:YY"
-  | `X hour Y minute Z second`
-  | `X hour Y minute`;
+import { RemainingTimeFormat } from "@/types";
 
 // seconds to human readable string
 export function secondsToHumanReadable(
@@ -17,22 +13,35 @@ export function secondsToHumanReadable(
   const sec = i - 3600 * hour - 60 * min;
   const hasHour = hour > 0;
   const hasMin = min > 0;
-  const hourShortStr = hasHour ? `${intToStr(hour)}:` : "";
+  const hasSec = sec > 0;
   const hourLongStr = hasHour ? `${hour} ${hourStr} ` : "";
-  const minShortStr = hasMin ? `${intToStr(min)}:` : "";
   const minLongStr = hasMin ? `${min} ${minStr} ` : "";
+  const secLongStr = hasSec ? `${sec} ${secStr} ` : "";
+  let s = "";
   switch (timeFormat) {
     case "XX:YY:ZZ":
-      return `${hourShortStr}${minShortStr}${intToStr(sec)}`;
+      s = `${intToStr(hour)}:${intToStr(min)}:${intToStr(sec)}`;
+      break;
     case "XX:YY":
-      return `${hourShortStr}${intToStr(min)}`;
+      s = `${intToStr(hour)}:${intToStr(min)}`;
+      break;
     case "X hour Y minute Z second":
-      return `${hourLongStr}${minLongStr}${sec} ${secStr}`;
+      s = `${hourLongStr}${minLongStr}${secLongStr}`;
+      break;
     case "X hour Y minute":
-      return `${hourLongStr}${min} ${minStr}`;
+      s = `${hourLongStr}${minLongStr}`;
+      break;
     default:
-      return "";
+      s = "";
+      break;
   }
+  const noHourOrMinute = !hasHour && !hasMin;
+  if (
+    (noHourOrMinute && timeFormat === "X hour Y minute") ||
+    (noHourOrMinute && !hasSec && timeFormat === "X hour Y minute Z second")
+  )
+    return `${sec} ${secStr}`;
+  return s.trim();
 }
 
 /** converts an integer in range [0,1,...99] to a length 2 string by adding prefix 0 if number is less than 10  */
