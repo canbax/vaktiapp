@@ -37,7 +37,7 @@ function showTodayTimesData() {
 
 <template>
   <v-app>
-    <v-navigation-drawer :model-value="isSideBarOpen">
+    <v-navigation-drawer v-model="isSideBarOpen">
       <v-list-item
         v-for="item in menuItems"
         :key="item.title"
