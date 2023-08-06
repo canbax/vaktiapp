@@ -1,8 +1,13 @@
 import { describe, it, expect } from "vitest";
-import { intToStr, secondsToHumanReadable } from "./dateAndTime";
+import {
+  getTotalSeconds,
+  hourStringToTotalSeconds,
+  intToStr,
+  secondsToHumanReadable,
+} from "./dateAndTime";
 import { RemainingTimeFormat } from "@/types";
 
-describe("DateAndTime utils", () => {
+describe("Date and time utils", () => {
   it("Can convert an integer to 2 digit string", () => {
     expect(intToStr(4)).toEqual("04");
     expect(intToStr(10)).toEqual("10");
@@ -13,7 +18,7 @@ describe("DateAndTime utils", () => {
 
   describe("can convert seconds to human readable format", () => {
     describe("cases with 1 hour", () => {
-      it.each([
+      const formatsWithOnlyHour = [
         {
           timeFormat: "XX:YY:ZZ" as RemainingTimeFormat,
           expectedResult: "01:00:00",
@@ -30,18 +35,22 @@ describe("DateAndTime utils", () => {
           timeFormat: "X hour Y minute" as RemainingTimeFormat,
           expectedResult: "1 hour",
         },
-      ])("convert 1 hour in format %s", ({ timeFormat, expectedResult }) => {
-        const oneHour = secondsToHumanReadable(
-          3600,
-          "hour",
-          "minute",
-          "second",
-          timeFormat
-        );
-        expect(oneHour).toEqual(expectedResult);
-      });
+      ];
+      it.each(formatsWithOnlyHour)(
+        "convert 1 hour in format %s",
+        ({ timeFormat, expectedResult }) => {
+          const oneHour = secondsToHumanReadable(
+            3600,
+            "hour",
+            "minute",
+            "second",
+            timeFormat
+          );
+          expect(oneHour).toEqual(expectedResult);
+        }
+      );
 
-      it.each([
+      const formatsWithOnlyHourAndMinute = [
         {
           timeFormat: "XX:YY:ZZ" as RemainingTimeFormat,
           expectedResult: "01:01:00",
@@ -58,7 +67,8 @@ describe("DateAndTime utils", () => {
           timeFormat: "X hour Y minute" as RemainingTimeFormat,
           expectedResult: "1 hour 1 minute",
         },
-      ])(
+      ];
+      it.each(formatsWithOnlyHourAndMinute)(
         "convert 1 hour 1 minute in format %s",
         ({ timeFormat, expectedResult }) => {
           const oneHour = secondsToHumanReadable(
@@ -72,7 +82,7 @@ describe("DateAndTime utils", () => {
         }
       );
 
-      it.each([
+      const formatsWithHourMinuteAndSeconds = [
         {
           timeFormat: "XX:YY:ZZ" as RemainingTimeFormat,
           expectedResult: "01:01:01",
@@ -89,7 +99,8 @@ describe("DateAndTime utils", () => {
           timeFormat: "X hour Y minute" as RemainingTimeFormat,
           expectedResult: "1 hour 1 minute",
         },
-      ])(
+      ];
+      it.each(formatsWithHourMinuteAndSeconds)(
         "convert 1 hour 1 minute 1 second in format %s",
         ({ timeFormat, expectedResult }) => {
           const oneHour = secondsToHumanReadable(
@@ -103,7 +114,7 @@ describe("DateAndTime utils", () => {
         }
       );
 
-      it.each([
+      const formatsWithHourAndSecond = [
         {
           timeFormat: "XX:YY:ZZ" as RemainingTimeFormat,
           expectedResult: "01:00:01",
@@ -120,7 +131,8 @@ describe("DateAndTime utils", () => {
           timeFormat: "X hour Y minute" as RemainingTimeFormat,
           expectedResult: "1 hour",
         },
-      ])(
+      ];
+      it.each(formatsWithHourAndSecond)(
         "convert 1 hour 1 second in format %s",
         ({ timeFormat, expectedResult }) => {
           const oneHour = secondsToHumanReadable(
@@ -136,7 +148,7 @@ describe("DateAndTime utils", () => {
     });
 
     describe("cases with 0 hour", () => {
-      it.each([
+      const formatsWithOnlyMinuteAndSecond = [
         {
           timeFormat: "XX:YY:ZZ" as RemainingTimeFormat,
           expectedResult: "00:01:01",
@@ -153,7 +165,8 @@ describe("DateAndTime utils", () => {
           timeFormat: "X hour Y minute" as RemainingTimeFormat,
           expectedResult: "1 minute",
         },
-      ])(
+      ];
+      it.each(formatsWithOnlyMinuteAndSecond)(
         "convert 1 minute 1 second in format %s",
         ({ timeFormat, expectedResult }) => {
           const oneHour = secondsToHumanReadable(
@@ -167,7 +180,7 @@ describe("DateAndTime utils", () => {
         }
       );
 
-      it.each([
+      const formatsWithOnlyMinute = [
         {
           timeFormat: "XX:YY:ZZ" as RemainingTimeFormat,
           expectedResult: "00:01:00",
@@ -184,7 +197,8 @@ describe("DateAndTime utils", () => {
           timeFormat: "X hour Y minute" as RemainingTimeFormat,
           expectedResult: "1 minute",
         },
-      ])(
+      ];
+      it.each(formatsWithOnlyMinute)(
         "convert 1 minute 0 second in format %s",
         ({ timeFormat, expectedResult }) => {
           const oneHour = secondsToHumanReadable(
@@ -198,7 +212,7 @@ describe("DateAndTime utils", () => {
         }
       );
 
-      it.each([
+      const formatsWithOnlySecond = [
         {
           timeFormat: "XX:YY:ZZ" as RemainingTimeFormat,
           expectedResult: "00:00:01",
@@ -215,7 +229,8 @@ describe("DateAndTime utils", () => {
           timeFormat: "X hour Y minute" as RemainingTimeFormat,
           expectedResult: "1 second",
         },
-      ])(
+      ];
+      it.each(formatsWithOnlySecond)(
         "convert 0 minute 1 second in format %s",
         ({ timeFormat, expectedResult }) => {
           const oneHour = secondsToHumanReadable(
@@ -229,7 +244,7 @@ describe("DateAndTime utils", () => {
         }
       );
 
-      it.each([
+      const formatsWithAllZero = [
         {
           timeFormat: "XX:YY:ZZ" as RemainingTimeFormat,
           expectedResult: "00:00:00",
@@ -246,7 +261,8 @@ describe("DateAndTime utils", () => {
           timeFormat: "X hour Y minute" as RemainingTimeFormat,
           expectedResult: "0 second",
         },
-      ])(
+      ];
+      it.each(formatsWithAllZero)(
         "convert 0 minute 0 second in format %s",
         ({ timeFormat, expectedResult }) => {
           const oneHour = secondsToHumanReadable(
@@ -260,5 +276,20 @@ describe("DateAndTime utils", () => {
         }
       );
     });
+  });
+
+  it("Can convert hour strings to total seconds", () => {
+    expect(hourStringToTotalSeconds("00:00")).toEqual(0);
+    expect(hourStringToTotalSeconds("00:01")).toEqual(60);
+    expect(hourStringToTotalSeconds("23:59")).toEqual(86340);
+    expect(hourStringToTotalSeconds("01:00")).toEqual(3600);
+  });
+
+  it("Can get total seconds of the time in a date", () => {
+    expect(getTotalSeconds(new Date(2000, 12, 2, 0, 0, 0))).toEqual(0);
+    expect(getTotalSeconds(new Date(2000, 12, 2, 0, 0, 1))).toEqual(1);
+    expect(getTotalSeconds(new Date(2000, 12, 2, 0, 1, 1))).toEqual(61);
+    expect(getTotalSeconds(new Date(2000, 12, 2, 1, 1, 1))).toEqual(3661);
+    expect(getTotalSeconds(new Date(2000, 12, 2, 13, 10, 0))).toEqual(47400);
   });
 });

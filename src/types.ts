@@ -22,8 +22,11 @@ export type RemainingTimeFormat =
   | `X hour Y minute Z second`
   | `X hour Y minute`;
 
-declare module "vue" {
-  interface ComponentCustomProperties {
-    $t: (key: string) => string; // see plugins/i18n
-  }
-}
+type _1To9 = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+type _0To9 = 0 | _1To9;
+type _0To5 = 0 | 1 | 2 | 3 | 4 | 5;
+type _0To3 = 0 | 1 | 2 | 3;
+
+export type HourString =
+  | `${0 | 1}${_0To9}:${_0To5}${_0To9}`
+  | `${2}${_0To3}:${_0To5}${_0To9}`;

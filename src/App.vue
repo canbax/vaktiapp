@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, inject, type Ref } from "vue";
 import DailyPrayTimes from "./components/DailyPrayTimes.vue";
+import { HourString, RemainingTimeFormat } from "./types";
 const locale = inject<Ref<string>>("currentLocale");
 
 const menuItems: {
@@ -28,7 +29,16 @@ function changeLang() {
   }
 }
 
-let currTimes = ["05:42", "07:07", "12:37", "15:29", "17:58", "19:16"];
+let currTimes: HourString[] = [
+  "05:42",
+  "07:07",
+  "12:37",
+  "15:29",
+  "17:58",
+  "19:16",
+];
+
+let remainTimeFmt: RemainingTimeFormat = "X hour Y minute Z second";
 
 function showTodayTimesData() {
   console.log("show today");
@@ -68,6 +78,7 @@ function showTodayTimesData() {
       <daily-pray-times
         :is-showing-today="true"
         :curr-times="currTimes"
+        :remaining-time-format="remainTimeFmt"
         @showToday=""
       ></daily-pray-times>
     </v-main>

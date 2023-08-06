@@ -1,18 +1,46 @@
 <script setup lang="ts">
-defineProps<{
-  currTimes: string[];
+import { HourString, RemainingTimeFormat } from "@/types";
+import { secondsToHumanReadable } from "@/util/dateAndTime";
+import { findRemainingSecondsToCurrPray } from "@/helper/prayTimeHelper";
+import { getCurrentInstance, ref } from "vue";
+const instance = getCurrentInstance();
+const $t = instance.appContext.config.globalProperties.$t;
+
+const props = defineProps<{
+  currTimes: HourString[];
   isShowingToday: boolean;
+  remainingTimeFormat: RemainingTimeFormat;
 }>();
 
 const emit = defineEmits<{
   (e: "showToday"): void;
 }>();
 
-let currPrayIdx = 2;
-let remainingTime = "";
+let currPrayIdx = ref(2);
+let remainingTime = ref("");
 const timeItems = Array(6)
   .fill(``)
   .map((_, i) => `timeItem${i}`);
+
+function updateRemainingTime() {
+  const { remainedSeconds, currPray } = findRemainingSecondsToCurrPray(
+    new Date(),
+    props.currTimes
+  );
+
+  remainingTime.value = secondsToHumanReadable(
+    remainedSeconds,
+    $t("hour") + "",
+    $t("minute") + "",
+    $t("second") + "",
+    props.remainingTimeFormat
+  );
+  currPrayIdx.value = currPray;
+}
+
+setInterval(() => {
+  updateRemainingTime();
+}, 1000);
 </script>
 
 <template>

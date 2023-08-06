@@ -1,4 +1,4 @@
-import { RemainingTimeFormat } from "@/types";
+import { HourString, RemainingTimeFormat } from "@/types";
 
 // seconds to human readable string
 export function secondsToHumanReadable(
@@ -51,4 +51,15 @@ export function intToStr(n: number) {
     throw new Error(`${n} is less than 0 or greater than 99`);
   if (n < 10) return "0" + n;
   return "" + n;
+}
+
+/** from a string with format 22:21, return total number of seconds */
+export function hourStringToTotalSeconds(s: HourString): number {
+  const hourNumber = Number(s.slice(0, 2));
+  const minuteNumber = Number(s.slice(3, 5));
+  return 3600 * hourNumber + 60 * minuteNumber;
+}
+
+export function getTotalSeconds(date: Date): number {
+  return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
 }
