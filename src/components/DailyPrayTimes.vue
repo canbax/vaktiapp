@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { HourString, RemainingTimeFormat } from "@/types";
-import { secondsToHumanReadable } from "@/util/dateAndTime";
-import { findRemainingSecondsToCurrPray } from "@/helper/prayTimeHelper";
+import { useRemainingTimeToPray } from "@/composables/remainingTimeToPray";
 import { getCurrentInstance, ref } from "vue";
 const instance = getCurrentInstance();
 const $t = instance.appContext.config.globalProperties.$t;
@@ -16,31 +15,14 @@ const emit = defineEmits<{
   (e: "showToday"): void;
 }>();
 
-let currPrayIdx = ref(2);
-let remainingTime = ref("");
 const timeItems = Array(6)
   .fill(``)
   .map((_, i) => `timeItem${i}`);
 
-function updateRemainingTime() {
-  const { remainedSeconds, currPray } = findRemainingSecondsToCurrPray(
-    new Date(),
-    props.currTimes
-  );
-
-  remainingTime.value = secondsToHumanReadable(
-    remainedSeconds,
-    $t("hour") + "",
-    $t("minute") + "",
-    $t("second") + "",
-    props.remainingTimeFormat
-  );
-  currPrayIdx.value = currPray;
-}
-
-setInterval(() => {
-  updateRemainingTime();
-}, 1000);
+const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
+  props.currTimes,
+  props.remainingTimeFormat
+);
 </script>
 
 <template>

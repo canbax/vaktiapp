@@ -63,3 +63,5 @@ export function hourStringToTotalSeconds(s: HourString): number {
 export function getTotalSeconds(date: Date): number {
   return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
 }
+
+export const ONE_DAY_IN_SECONDS = 86400;

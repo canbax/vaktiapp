@@ -1,5 +1,9 @@
 import { HourString } from "@/types";
-import { getTotalSeconds, hourStringToTotalSeconds } from "@/util/dateAndTime";
+import {
+  ONE_DAY_IN_SECONDS,
+  getTotalSeconds,
+  hourStringToTotalSeconds,
+} from "@/util/dateAndTime";
 
 /** assumes `prayTimes` are in ascending order */
 export function findCurrPrayIndex(now: Date, prayTimes: HourString[]): number {
@@ -19,6 +23,13 @@ export function findRemainingSecondsToCurrPray(
   const currPray = findCurrPrayIndex(now, prayTimes);
   const currPrayInSeconds = hourStringToTotalSeconds(prayTimes[currPray]);
   const nowInSeconds = getTotalSeconds(now);
-  const remainedSeconds = currPrayInSeconds - nowInSeconds;
+  let remainedSeconds = currPrayInSeconds - nowInSeconds;
+  // measure time difference for the next day
+  if (remainedSeconds < 0 && currPray === 0) {
+    remainedSeconds = ONE_DAY_IN_SECONDS - nowInSeconds + currPrayInSeconds;
+  } else {
+    throw new Error("remained seconds are negative for a non-first pray time");
+  }
+
   return { remainedSeconds, currPray };
 }
