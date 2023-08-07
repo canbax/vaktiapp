@@ -6,7 +6,7 @@ import {
 } from "@/util/dateAndTime";
 
 /** assumes `prayTimes` are in ascending order */
-export function findCurrPrayIndex(now: Date, prayTimes: HourString[]): number {
+function findCurrPrayIndex(now: Date, prayTimes: HourString[]): number {
   const currTime = getTotalSeconds(now);
 
   for (let i = 0; i < prayTimes.length; i++) {
@@ -27,8 +27,9 @@ export function findRemainingSecondsToCurrPray(
   // measure time difference for the next day
   if (remainedSeconds < 0 && currPray === 0) {
     remainedSeconds = ONE_DAY_IN_SECONDS - nowInSeconds + currPrayInSeconds;
-  } else {
-    throw new Error("remained seconds are negative for a non-first pray time");
+  } else if (remainedSeconds < 0 && currPray > 0) {
+    const errMsg = `negative remained seconds for non-first pray time with time ${now} and pray times ${prayTimes} and currPray ${currPray}`;
+    throw new Error(errMsg);
   }
 
   return { remainedSeconds, currPray };
