@@ -20,8 +20,8 @@ const timeItems = Array(6)
   .map((_, i) => `timeItem${i}`);
 
 const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
-  props.currTimes,
-  props.remainingTimeFormat
+  ref(props.currTimes),
+  ref(props.remainingTimeFormat)
 );
 </script>
 
