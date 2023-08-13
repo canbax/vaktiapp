@@ -1,5 +1,5 @@
 import { findRemainingSecondsToCurrPray } from "@/helper/prayTimeHelper";
-import { HourString, RemainingTimeFormat } from "@/types";
+import { HourString, RemainingTimeFormat, RemainingToPray } from "@/types";
 import { secondsToHumanReadable } from "@/util/dateAndTime";
 import { ref, getCurrentInstance, Ref, toValue, watchEffect } from "vue";
 import { usePeriodicExecution } from "./periodicExecution";
@@ -7,7 +7,7 @@ import { usePeriodicExecution } from "./periodicExecution";
 export function useRemainingTimeToPray(
   currTimes: Ref<HourString[]>,
   remainingTimeFormat: Ref<RemainingTimeFormat>
-) {
+): RemainingToPray {
   const currPrayIdx = ref(2);
   const remainingTime = ref("");
 
@@ -32,7 +32,7 @@ export function useRemainingTimeToPray(
     });
   }
 
-  usePeriodicExecution(update, 100);
+  usePeriodicExecution(update, 1000);
 
   return { currPrayIdx, remainingTime };
 }

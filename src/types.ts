@@ -1,3 +1,5 @@
+import { Ref } from "vue";
+
 export type SupportedLanguage =
   | "ar"
   | "az"
@@ -30,3 +32,8 @@ type _0To3 = 0 | 1 | 2 | 3;
 export type HourString =
   | `${0 | 1}${_0To9}:${_0To5}${_0To9}`
   | `${2}${_0To3}:${_0To5}${_0To9}`;
+
+export interface RemainingToPray {
+  currPrayIdx: Ref<number>;
+  remainingTime: Ref<string>;
+}
