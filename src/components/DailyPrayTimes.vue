@@ -50,7 +50,7 @@ const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
     <span class="normal-font">
       {{ $t(timeItems[currPrayIdx]) }} {{ $t("remainingTime") }}
     </span>
-    <h2>{{ remainingTime }}</h2>
+    <h2 test-id="remaining-time">{{ remainingTime }}</h2>
   </div>
   <div v-else>
     <v-btn x-large @click="emit('showToday')" icon color="primary">

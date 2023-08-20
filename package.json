@@ -11,6 +11,7 @@
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "test": "npm run test:unit",
+    "test:unit:watch": "vitest --environment jsdom --root src/ --watch",
     "test:unit": "vitest --environment jsdom --root src/",
     "test:e2e": "playwright test",
     "build-only": "vite build",

@@ -32,6 +32,7 @@ export function useRemainingTimeToPray(
     });
   }
 
+  update();
   usePeriodicExecution(update, 1000);
 
   return { currPrayIdx, remainingTime };
