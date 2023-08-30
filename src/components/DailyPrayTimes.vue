@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { HourString, RemainingTimeFormat } from "@/types";
 import { useRemainingTimeToPray } from "@/composables/remainingTimeToPray";
-import { getCurrentInstance, ref } from "vue";
+import { getCurrentInstance, toRef } from "vue";
 const instance = getCurrentInstance();
 const $t = instance.appContext.config.globalProperties.$t;
 
@@ -20,8 +20,8 @@ const timeItems = Array(6)
   .map((_, i) => `timeItem${i}`);
 
 const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
-  ref(props.currTimes),
-  ref(props.remainingTimeFormat)
+  toRef(() => props.currTimes),
+  toRef(() => props.remainingTimeFormat)
 );
 </script>
 

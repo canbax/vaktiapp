@@ -1,5 +1,10 @@
 {
-  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*"],
+  "include": [
+    "vite.config.*",
+    "vitest.config.*",
+    "cypress.config.*",
+    "playwright.config.*"
+  ],
   "compilerOptions": {
     "composite": true,
     "types": ["node"]
