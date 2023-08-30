@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, inject, type Ref } from "vue";
+import { ref } from "vue";
 import DailyPrayTimes from "./components/DailyPrayTimes.vue";
 import { HourString, RemainingTimeFormat } from "./types";
-const locale = inject<Ref<string>>("currentLocale");
+// const locale = inject<Ref<string>>("currentLocale");
 
 const menuItems: {
   icon: string;
@@ -22,12 +22,12 @@ function switchNavigationDrawer() {
   isSideBarOpen.value = !isSideBarOpen.value;
 }
 
-function changeLang() {
-  console.log("locale", locale?.value);
-  if (locale) {
-    locale.value = "tr";
-  }
-}
+// function changeLang() {
+//   console.log("locale", locale?.value);
+//   if (locale) {
+//     locale.value = "tr";
+//   }
+// }
 
 let currTimes: HourString[] = [
   "05:42",
@@ -40,9 +40,9 @@ let currTimes: HourString[] = [
 
 let remainTimeFmt: RemainingTimeFormat = "X hour Y minute Z second";
 
-function showTodayTimesData() {
-  console.log("show today");
-}
+// function showTodayTimesData() {
+//   console.log("show today");
+// }
 </script>
 
 <template>
@@ -79,7 +79,6 @@ function showTodayTimesData() {
         :is-showing-today="true"
         :curr-times="currTimes"
         :remaining-time-format="remainTimeFmt"
-        @showToday=""
       ></daily-pray-times>
     </v-main>
   </v-app>
