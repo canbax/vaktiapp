@@ -1,6 +1,6 @@
 # namaz-vakti-2
 
-This template should help get you started developing with Vue 3 in Vite.
+![Build](https://github.com/canbax/namaz-vakti/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-99.39%25-brightgreen.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/namaz-vakti-api/blob/main/LICENSE)
 
 ## Recommended IDE Setup
 

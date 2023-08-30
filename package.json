@@ -8,16 +8,22 @@
   },
   "scripts": {
     "dev": "vite",
+    "format": "prettier --write .",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "test": "npm run test:unit",
     "test:unit:watch": "vitest --environment jsdom --root src/ --watch",
     "test:unit": "vitest --environment jsdom --root src/",
     "test:e2e": "playwright test",
+    "test-cov": "vitest run --coverage",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "prepare": "husky install"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore --max-warnings=0",
+    "lint-fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore --max-warnings=0",
+    "prepare": "husky install",
+    "update-readme-test-cov": "npm run test-cov && npm run make-badges",
+    "make-badges": "istanbul-badges-readme",
+    "make-badges:ci": "npm run make-badges -- --ci"
   },
   "dependencies": {
     "@mdi/font": "^7.2.96",
@@ -33,6 +39,7 @@
     "@types/node": "^20.4.8",
     "@types/webfontloader": "^1.6.35",
     "@vitejs/plugin-vue": "^4.2.3",
+    "@vitest/coverage-v8": "^0.34.3",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/test-utils": "^2.4.1",
@@ -40,6 +47,7 @@
     "eslint": "^8.46.0",
     "eslint-plugin-vue": "^9.16.1",
     "husky": "^8.0.3",
+    "istanbul-badges-readme": "^1.8.5",
     "jsdom": "^22.1.0",
     "lint-staged": "^13.2.3",
     "npm-run-all": "^4.1.5",
@@ -51,7 +59,7 @@
     "vue-tsc": "^1.8.8"
   },
   "lint-staged": {
-    "*.{ts,js}": [
+    "*.{ts,js,vue}": [
       "prettier --write",
       "eslint --max-warnings=0"
     ]
