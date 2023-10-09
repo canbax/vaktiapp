@@ -4,8 +4,10 @@ import {
   hourStringToTotalSeconds,
   intToStr,
   secondsToHumanReadable,
+  dateToString,
 } from "./dateAndTime";
-import { RemainingTimeFormat } from "@/types";
+import { DateStringFormat, RemainingTimeFormat } from "@/types";
+import { translate } from "./i18n";
 
 describe("Date and time utils", () => {
   it("Can convert an integer to 2 digit string", () => {
@@ -291,5 +293,130 @@ describe("Date and time utils", () => {
     expect(getTotalSeconds(new Date(2000, 12, 2, 0, 1, 1))).toEqual(61);
     expect(getTotalSeconds(new Date(2000, 12, 2, 1, 1, 1))).toEqual(3661);
     expect(getTotalSeconds(new Date(2000, 12, 2, 13, 10, 0))).toEqual(47400);
+  });
+
+  describe("can convert date to human readable format", () => {
+    const yearFormats: {
+      dateFormat: DateStringFormat;
+      expectedResult: string;
+    }[] = [
+      {
+        dateFormat: {
+          year: "-",
+          month: "MM",
+          weekDay: "-",
+        },
+        expectedResult: "25 09",
+      },
+      {
+        dateFormat: {
+          year: "YY",
+          month: "MM",
+          weekDay: "-",
+        },
+        expectedResult: "25 09 23",
+      },
+      {
+        dateFormat: {
+          year: "YYYY",
+          month: "MM",
+          weekDay: "-",
+        },
+        expectedResult: "25 09 2023",
+      },
+    ];
+    it.each(yearFormats)(
+      "convert date to string with year format $dateFormat.year",
+      ({ dateFormat, expectedResult }) => {
+        const oneHour = dateToString(
+          new Date(2023, 9, 25),
+          dateFormat,
+          translate
+        );
+        expect(oneHour).toEqual(expectedResult);
+      }
+    );
+
+    const monthFormats: {
+      dateFormat: DateStringFormat;
+      expectedResult: string;
+    }[] = [
+      {
+        dateFormat: {
+          year: "-",
+          month: "MM",
+          weekDay: "-",
+        },
+        expectedResult: "25 09",
+      },
+      {
+        dateFormat: {
+          year: "-",
+          month: "MMM",
+          weekDay: "-",
+        },
+        expectedResult: "25 Oct",
+      },
+      {
+        dateFormat: {
+          year: "-",
+          month: "MMMM",
+          weekDay: "-",
+        },
+        expectedResult: "25 October",
+      },
+    ];
+    it.each(monthFormats)(
+      "convert date to string with month format $dateFormat.month",
+      ({ dateFormat, expectedResult }) => {
+        const oneHour = dateToString(
+          new Date(2023, 9, 25),
+          dateFormat,
+          translate
+        );
+        expect(oneHour).toEqual(expectedResult);
+      }
+    );
+
+    const dayFormats: {
+      dateFormat: DateStringFormat;
+      expectedResult: string;
+    }[] = [
+      {
+        dateFormat: {
+          year: "-",
+          month: "MM",
+          weekDay: "-",
+        },
+        expectedResult: "25 09",
+      },
+      {
+        dateFormat: {
+          year: "-",
+          month: "MM",
+          weekDay: "DDD",
+        },
+        expectedResult: "25 09 Wed",
+      },
+      {
+        dateFormat: {
+          year: "-",
+          month: "MM",
+          weekDay: "DDDD",
+        },
+        expectedResult: "25 09 Wednesday",
+      },
+    ];
+    it.each(dayFormats)(
+      "convert date to string with week day format $dateFormat.weekDay",
+      ({ dateFormat, expectedResult }) => {
+        const oneHour = dateToString(
+          new Date(2023, 9, 25),
+          dateFormat,
+          translate
+        );
+        expect(oneHour).toEqual(expectedResult);
+      }
+    );
   });
 });

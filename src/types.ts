@@ -1,4 +1,5 @@
 import { Ref } from "vue";
+import { HijriDate } from "./util/HijriDate";
 
 export type SupportedLanguage =
   | "ar"
@@ -36,4 +37,22 @@ export type HourString =
 export interface RemainingToPray {
   currPrayIdx: Ref<number>;
   remainingTime: Ref<string>;
+}
+
+export interface DateStringFormat {
+  year: "YYYY" | "YY" | "-";
+  month: "MMMM" | "MMM" | "MM";
+  weekDay: "DDDD" | "DDD" | "-";
+}
+
+export interface Sabbatical {
+  month: number;
+  day: number;
+  name: string;
+}
+
+export interface SabbaticalCalendar {
+  hijri: HijriDate;
+  gregorian: Date;
+  sabbatical: Sabbatical;
 }

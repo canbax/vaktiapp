@@ -1,4 +1,4 @@
-import { HourString, RemainingTimeFormat } from "@/types";
+import { DateStringFormat, HourString, RemainingTimeFormat } from "@/types";
 
 // seconds to human readable string
 export function secondsToHumanReadable(
@@ -65,3 +65,32 @@ export function getTotalSeconds(date: Date): number {
 }
 
 export const ONE_DAY_IN_SECONDS = 86400;
+
+export function dateToString(
+  date: Date,
+  format: DateStringFormat,
+  $t: (key: string) => string
+) {
+  let monthStr = $t("month" + date.getMonth()).toString();
+  let weekdayStr = $t("weekday" + date.getDay()).toString();
+  const weekdayShortStr = $t("weekdayShort" + date.getDay()).toString();
+  if (format.month === "MMM") {
+    monthStr = monthStr.substring(0, 3);
+  } else if (format.month === "MM") {
+    monthStr = intToStr(date.getMonth());
+  }
+  let year = date.getFullYear() + "";
+  if (format.year === "YY") {
+    year = year.substring(2, 4);
+  } else if (format.year === "-") {
+    year = "";
+  }
+  if (format.weekDay === "DDD") {
+    weekdayStr = weekdayShortStr;
+  } else if (format.weekDay === "-") {
+    weekdayStr = "";
+  }
+  return [date.getDate() + "", monthStr, year, weekdayStr]
+    .filter((x) => x)
+    .join(" ");
+}
