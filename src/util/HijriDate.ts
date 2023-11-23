@@ -473,7 +473,14 @@ export class HijriDate {
     return this.day;
   }
 
-  // add days to an hijri Year,Month,Day in linear time
+  /**
+   * add days to an hijri Year,Month,Day in linear time
+   * @param {number} year
+   * @param {number} month
+   * @param {number} day
+   * @param {number} diff
+   * @returns {HijriDate}
+   */
   addDays(year: number, month: number, day: number, diff: number): HijriDate {
     const isPos = diff > 0;
 
