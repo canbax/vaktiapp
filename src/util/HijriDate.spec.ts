@@ -46,6 +46,11 @@ describe("Hijri Date", () => {
     ).toBe(true);
   });
 
+  it("can convert a date with time", () => {
+    const d1 = new HijriDate().toHijri(new Date(2023, 11, 14, 15, 14, 13, 12));
+    expect(d1.compare(new HijriDate(1445, 5, 1))).toBe(0);
+  });
+
   const gregorianToHijri = [
     {
       gregorian: [2020, 11, 6],
@@ -210,6 +215,10 @@ describe("Hijri Date", () => {
     {
       gregorian: [2027, 0, 4],
       hijri: [1448, 6, 26],
+    },
+    {
+      gregorian: [2023, 11, 12],
+      hijri: [1445, 4, 29],
     },
   ];
 

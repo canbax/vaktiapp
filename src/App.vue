@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import DailyPrayTimes from "./components/DailyPrayTimes.vue";
-import { HourString, RemainingTimeFormat } from "./types";
+import TimesPage from "./components/TimesPage.vue";
 // const locale = inject<Ref<string>>("currentLocale");
 
 const menuItems: {
@@ -29,17 +28,6 @@ function switchNavigationDrawer() {
 //   }
 // }
 
-let currTimes: HourString[] = [
-  "05:42",
-  "07:07",
-  "12:37",
-  "15:29",
-  "17:58",
-  "19:16",
-];
-
-let remainTimeFmt: RemainingTimeFormat = "X hour Y minute Z second";
-
 // function showTodayTimesData() {
 //   console.log("show today");
 // }
@@ -61,7 +49,7 @@ let remainTimeFmt: RemainingTimeFormat = "X hour Y minute Z second";
       </v-list-item>
     </v-navigation-drawer>
 
-    <v-app-bar title="Application bar">
+    <v-app-bar>
       <template #prepend>
         <v-app-bar-nav-icon
           color="primary"
@@ -69,19 +57,45 @@ let remainTimeFmt: RemainingTimeFormat = "X hour Y minute Z second";
         ></v-app-bar-nav-icon>
       </template>
 
+      <!-- <v-container>
+        <v-row>
+          <v-col>
+            
+          </v-col>
+          <v-col> </v-col>
+        </v-row>
+      </v-container> -->
+
+      <v-app-bar-title>
+        <v-autocomplete
+          class="font125rem"
+          :items="[
+            'California',
+            'Colorado',
+            'Florida',
+            'Georgia',
+            'Texas',
+            'Wyoming',
+          ]"
+          variant="underlined"
+          flat
+          hide-details
+        ></v-autocomplete>
+      </v-app-bar-title>
+
       <template #append>
         <v-btn icon="mdi-sync" color="primary"></v-btn>
       </template>
     </v-app-bar>
 
     <v-main>
-      <daily-pray-times
-        :is-showing-today="true"
-        :curr-times="currTimes"
-        :remaining-time-format="remainTimeFmt"
-      ></daily-pray-times>
+      <TimesPage></TimesPage>
     </v-main>
   </v-app>
 </template>
 
-<style scoped></style>
+<style scoped>
+.font125rem {
+  font-size: 1.25rem;
+}
+</style>

@@ -1,4 +1,5 @@
 import { Sabbatical, SabbaticalCalendar } from "@/types";
+import { intToStr } from "./dateAndTime";
 
 export class HijriDate {
   private readonly year: number;
@@ -157,7 +158,7 @@ export class HijriDate {
     1442: [29, 30, 29, 30, 29, 30, 29, 30, 30, 29, 30, 29],
     1443: [30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 30],
     1444: [29, 30, 29, 30, 30, 29, 29, 30, 29, 30, 29, 30],
-    1445: [29, 30, 30, 30, 29, 30, 29, 29, 30, 29, 29, 30],
+    1445: [29, 30, 30, 29, 30, 29, 30, 29, 30, 29, 29, 30],
     1446: [29, 30, 30, 30, 29, 30, 30, 29, 29, 30, 29, 29],
     1447: [30, 29, 30, 30, 30, 29, 30, 29, 30, 29, 30, 29],
     1448: [29, 30, 29, 30, 30, 29, 30, 30, 29, 30, 29, 30],
@@ -347,8 +348,10 @@ export class HijriDate {
    * @returns HijriDate
    */
   toHijri(date: Date): HijriDate {
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
     const dayDiff =
-      (date.getTime() - this.BASE_GREGORIAN.getTime()) / this.MS_IN_DAY;
+      (d.getTime() - this.BASE_GREGORIAN.getTime()) / this.MS_IN_DAY;
     return this.addDays(
       this.BASE_HIJRI.year,
       this.BASE_HIJRI.month,
@@ -358,7 +361,7 @@ export class HijriDate {
   }
 
   toStr(): string {
-    return this.year + " " + this.month + " " + this.day;
+    return `${this.year} ${intToStr(this.month + 1)} ${intToStr(this.day)}`;
   }
 
   /** return the nearest Sabbatical after the provided date
@@ -486,6 +489,14 @@ export class HijriDate {
 
     while (diff != 0) {
       if (isPos) {
+        if (!this.YEARS[year]) {
+          console.warn("year causes undefined: ", year);
+          return;
+        }
+        if (!this.YEARS[year][month]) {
+          console.warn("year, month causes undefined: ", year, month);
+          return;
+        }
         if (day < this.YEARS[year][month]) {
           // can increase the day
           day++;

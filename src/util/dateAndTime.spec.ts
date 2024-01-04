@@ -306,7 +306,7 @@ describe("Date and time utils", () => {
           month: "MM",
           weekDay: "-",
         },
-        expectedResult: "25 09",
+        expectedResult: "25 10",
       },
       {
         dateFormat: {
@@ -314,7 +314,7 @@ describe("Date and time utils", () => {
           month: "MM",
           weekDay: "-",
         },
-        expectedResult: "25 09 23",
+        expectedResult: "25 10 23",
       },
       {
         dateFormat: {
@@ -322,7 +322,7 @@ describe("Date and time utils", () => {
           month: "MM",
           weekDay: "-",
         },
-        expectedResult: "25 09 2023",
+        expectedResult: "25 10 2023",
       },
     ];
     it.each(yearFormats)(
@@ -347,7 +347,7 @@ describe("Date and time utils", () => {
           month: "MM",
           weekDay: "-",
         },
-        expectedResult: "25 09",
+        expectedResult: "25 10",
       },
       {
         dateFormat: {
@@ -388,7 +388,7 @@ describe("Date and time utils", () => {
           month: "MM",
           weekDay: "-",
         },
-        expectedResult: "25 09",
+        expectedResult: "25 10",
       },
       {
         dateFormat: {
@@ -396,7 +396,7 @@ describe("Date and time utils", () => {
           month: "MM",
           weekDay: "DDD",
         },
-        expectedResult: "25 09 Wed",
+        expectedResult: "25 10 Wed",
       },
       {
         dateFormat: {
@@ -404,7 +404,7 @@ describe("Date and time utils", () => {
           month: "MM",
           weekDay: "DDDD",
         },
-        expectedResult: "25 09 Wednesday",
+        expectedResult: "25 10 Wednesday",
       },
     ];
     it.each(dayFormats)(
@@ -418,5 +418,15 @@ describe("Date and time utils", () => {
         expect(oneHour).toEqual(expectedResult);
       }
     );
+
+    it("should convert single digit days to by adding prefix '0'", () => {
+      const dateFormat: DateStringFormat = {
+        year: "YYYY",
+        month: "MM",
+        weekDay: "-",
+      };
+      const oneHour = dateToString(new Date(2023, 9, 2), dateFormat, translate);
+      expect(oneHour).toEqual("02 10 2023");
+    });
   });
 });

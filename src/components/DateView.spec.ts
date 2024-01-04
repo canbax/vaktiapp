@@ -18,6 +18,6 @@ describe("DateView", () => {
       },
     });
     const renderedText = wrapper.text();
-    expect(renderedText).toContain("20 10 2023");
+    expect(renderedText).toContain("20 11 2023");
   });
 });

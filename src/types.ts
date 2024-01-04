@@ -56,3 +56,33 @@ export interface SabbaticalCalendar {
   gregorian: Date;
   sabbatical: Sabbatical;
 }
+
+export type Place = {
+  countryCode: string;
+  country: string;
+  region: string;
+  city: string;
+  latitude: number;
+  longitude: number;
+};
+
+export type Country = {
+  code: string;
+  name: string;
+};
+
+export type Cities = Record<string, [number, number]>;
+export type Regions = Record<string, Cities>;
+
+type MM = `0${_1To9}` | `1${0 | 1 | 2}`;
+type DD = `${0}${_1To9}` | `${1 | 2}${_0To9}` | `3${0 | 1}`;
+
+// YYYY-MM-DD formatted string
+export type DateString = `${number}-${MM}-${DD}`;
+
+export type TimesData = Record<DateString, HourString[]>;
+
+export interface TimesForPlace {
+  place: Place;
+  times: TimesData;
+}

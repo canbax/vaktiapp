@@ -77,7 +77,7 @@ export function dateToString(
   if (format.month === "MMM") {
     monthStr = monthStr.substring(0, 3);
   } else if (format.month === "MM") {
-    monthStr = intToStr(date.getMonth());
+    monthStr = intToStr(date.getMonth() + 1);
   }
   let year = date.getFullYear() + "";
   if (format.year === "YY") {
@@ -90,7 +90,7 @@ export function dateToString(
   } else if (format.weekDay === "-") {
     weekdayStr = "";
   }
-  return [date.getDate() + "", monthStr, year, weekdayStr]
+  return [intToStr(date.getDate()), monthStr, year, weekdayStr]
     .filter((x) => x)
     .join(" ");
 }
