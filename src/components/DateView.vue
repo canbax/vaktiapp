@@ -17,14 +17,14 @@ const dateString = computed(() => {
 });
 
 const hijriDateString = computed(() => {
-  return new HijriDate().toHijri(props.date).toStr();
+  return new HijriDate().toHijri(props.date).toStr($t);
 });
 </script>
 
 <template>
-  <div>{{ dateString }}</div>
-  <div v-if="isShowHijriDate">
-    <small>{{ hijriDateString }}</small>
+  <div class="text-h4 text-center">{{ dateString }}</div>
+  <div v-if="isShowHijriDate" class="text-center text-subtitle-1">
+    {{ hijriDateString }}
   </div>
 </template>
 

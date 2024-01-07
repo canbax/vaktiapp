@@ -13,6 +13,8 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (e: "showToday"): void;
+  (e: "nextDay"): void;
+  (e: "prevDay"): void;
 }>();
 
 const timeItems = Array(6)
@@ -26,36 +28,53 @@ const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
 </script>
 
 <template>
-  <table class="m5">
-    <tbody>
-      <tr v-for="(item, i) in currTimes" :key="i" class="m5">
-        <td style="text-align: right; padding-right: 10px">
-          <h2 v-bind:class="{ 'normal-font': i !== currPrayIdx }">
-            {{ $t(timeItems[i]) }}
-          </h2>
-        </td>
-        <td style="text-align: left">
-          <h2 v-bind:class="{ 'normal-font': i !== currPrayIdx }">
-            {{ item }}
-            <v-icon v-if="i == currPrayIdx" style="vertical-align: initial">
-              mdi-clock
-            </v-icon>
-          </h2>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <v-divider></v-divider>
-  <div v-if="isShowingToday">
-    <span class="normal-font">
-      {{ $t(timeItems[currPrayIdx]) }} {{ $t("remainingTime") }}
-    </span>
-    <h2 test-id="remaining-time">{{ remainingTime }}</h2>
-  </div>
-  <div v-else>
-    <v-btn x-large @click="emit('showToday')" icon color="primary">
-      <v-icon x-large>mdi-calendar-today</v-icon>
-    </v-btn>
+  <div class="text-center">
+    <div class="d-flex justify-center">
+      <v-btn
+        @click="emit('prevDay')"
+        variant="text"
+        icon="mdi-calendar-arrow-left"
+        class="my-auto mx-2"
+      ></v-btn>
+
+      <div class="d-flex flex-column">
+        <div
+          class="d-flex justify-center"
+          v-for="(item, i) in currTimes"
+          :key="i"
+        >
+          <span class="text-right pe-2">
+            <h2 :class="{ 'font-weight-bold': i === currPrayIdx }">
+              {{ $t(timeItems[i]) }}
+            </h2>
+          </span>
+          <span class="text-left ps-2">
+            <h2 :class="{ 'font-weight-bold': i === currPrayIdx }">
+              {{ item }}
+              <v-icon v-if="i == currPrayIdx"> mdi-clock </v-icon>
+            </h2>
+          </span>
+        </div>
+      </div>
+
+      <v-btn
+        @click="emit('nextDay')"
+        variant="text"
+        icon="mdi-calendar-arrow-right"
+        class="my-auto mx-2"
+      ></v-btn>
+    </div>
+
+    <v-divider></v-divider>
+    <div v-if="isShowingToday">
+      <span> {{ $t(timeItems[currPrayIdx]) }} {{ $t("remainingTime") }} </span>
+      <h2 test-id="remaining-time">{{ remainingTime }}</h2>
+    </div>
+    <div v-else>
+      <v-btn x-large @click="emit('showToday')" icon color="primary">
+        <v-icon x-large>mdi-calendar-today</v-icon>
+      </v-btn>
+    </div>
   </div>
 </template>
 

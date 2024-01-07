@@ -27,6 +27,7 @@ let dateStringFormat: DateStringFormat = {
     :date-string-format="dateStringFormat"
     :is-show-hijri-date="true"
   ></DateView>
+  <v-divider></v-divider>
   <DailyPrayTimes
     :is-showing-today="true"
     :curr-times="currTimes"

@@ -57,31 +57,7 @@ function switchNavigationDrawer() {
         ></v-app-bar-nav-icon>
       </template>
 
-      <!-- <v-container>
-        <v-row>
-          <v-col>
-            
-          </v-col>
-          <v-col> </v-col>
-        </v-row>
-      </v-container> -->
-
-      <v-app-bar-title>
-        <v-autocomplete
-          class="font125rem"
-          :items="[
-            'California',
-            'Colorado',
-            'Florida',
-            'Georgia',
-            'Texas',
-            'Wyoming',
-          ]"
-          variant="underlined"
-          flat
-          hide-details
-        ></v-autocomplete>
-      </v-app-bar-title>
+      <v-app-bar-title> Ankara </v-app-bar-title>
 
       <template #append>
         <v-btn icon="mdi-sync" color="primary"></v-btn>
@@ -94,8 +70,4 @@ function switchNavigationDrawer() {
   </v-app>
 </template>
 
-<style scoped>
-.font125rem {
-  font-size: 1.25rem;
-}
-</style>
+<style scoped></style>

@@ -360,8 +360,10 @@ export class HijriDate {
     );
   }
 
-  toStr(): string {
-    return `${this.year} ${intToStr(this.month + 1)} ${intToStr(this.day)}`;
+  toStr($t: (key: string) => string): string {
+    return `${this.year} ${$t("hijriMonth" + this.month)} ${intToStr(
+      this.day
+    )}`;
   }
 
   /** return the nearest Sabbatical after the provided date
