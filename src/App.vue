@@ -1,19 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import TimesPage from "./components/TimesPage.vue";
+import { useRoute } from "@/composables/route";
 // const locale = inject<Ref<string>>("currentLocale");
 
-const menuItems: {
-  icon: string;
-  title: string;
-  idx: number;
-}[] = [
-  { icon: "mdi-clock-time-four-outline", title: "times", idx: 0 },
-  { icon: "mdi-map-marker-plus", title: "addNewLocation", idx: 1 },
-  { icon: "mdi-calendar-month-outline", title: "sabbaticals", idx: 2 },
-  { icon: "mdi-cog-outline", title: "settings", idx: 3 },
-  { icon: "mdi-information-outline", title: "about", idx: 4 },
-];
+const { currentView, menuItems } = useRoute();
 
 const isSideBarOpen = ref(true);
 
@@ -39,6 +29,7 @@ function switchNavigationDrawer() {
       <v-list-item
         v-for="item in menuItems"
         :key="item.title"
+        :href="item.title"
         link
         @click="isSideBarOpen = false"
       >
@@ -65,7 +56,7 @@ function switchNavigationDrawer() {
     </v-app-bar>
 
     <v-main>
-      <TimesPage></TimesPage>
+      <component :is="currentView" />
     </v-main>
   </v-app>
 </template>

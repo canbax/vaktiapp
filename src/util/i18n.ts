@@ -45,10 +45,10 @@ export function getDefaultLangCode(): SupportedLanguage {
     if (stringsInLanguages[langCode]) {
       return langCode;
     } else {
-      console.log(`${langCode} is not a supported language`);
+      console.warn(`${langCode} is not a supported language`);
     }
   } else {
-    console.log(`${userLang} is not a valid language indicator`);
+    console.warn(`${userLang} is not a valid language indicator`);
   }
   return "en";
 }

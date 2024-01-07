@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import DailyPrayTimes from "./DailyPrayTimes.vue";
-import DateView from "./DateView.vue";
+import DailyPrayTimes from "@/components/DailyPrayTimes.vue";
+import DateView from "@/components/DateView.vue";
 import { DateStringFormat, HourString, RemainingTimeFormat } from "@/types";
 
 let currTimes: HourString[] = [

@@ -1,4 +1,4 @@
-import { Cities, Country, Place, Regions, TimesForPlace } from "./types";
+import { Cities, Country, Place, Regions, TimesForPlace } from "@/types";
 
 export class ApiClient {
   private _baseUrl: string;

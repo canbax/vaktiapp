@@ -1,5 +1,5 @@
 import { Ref } from "vue";
-import { HijriDate } from "./util/HijriDate";
+import { HijriDate } from "@/util/HijriDate";
 
 export type SupportedLanguage =
   | "ar"
