@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRoute } from "@/composables/route";
+import { PathMenuItem } from "@/types";
 // const locale = inject<Ref<string>>("currentLocale");
 
-const { currentView, menuItems } = useRoute();
+const { currentView, pathMenuItems, setViewFromPathMenuItem } = useRoute();
 
 const isSideBarOpen = ref(true);
 
@@ -21,17 +22,21 @@ function switchNavigationDrawer() {
 // function showTodayTimesData() {
 //   console.log("show today");
 // }
+function clickToHref(_, item: PathMenuItem) {
+  isSideBarOpen.value = false;
+  history.pushState({}, "", "/" + item.title);
+  setViewFromPathMenuItem(item);
+}
 </script>
 
 <template>
   <v-app>
     <v-navigation-drawer v-model="isSideBarOpen">
       <v-list-item
-        v-for="item in menuItems"
+        v-for="item in pathMenuItems"
         :key="item.title"
-        :href="item.title"
         link
-        @click="isSideBarOpen = false"
+        @click="clickToHref($event, item)"
       >
         <template #prepend>
           <v-icon :icon="item.icon"></v-icon>

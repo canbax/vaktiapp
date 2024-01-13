@@ -39,6 +39,12 @@ export interface RemainingToPray {
   remainingTime: Ref<string>;
 }
 
+export interface RouteManager {
+  readonly currentView: any;
+  pathMenuItems: readonly PathMenuItem[];
+  setViewFromPathMenuItem: (item: PathMenuItem) => void;
+}
+
 export interface DateStringFormat {
   year: "YYYY" | "YY" | "-";
   month: "MMMM" | "MMM" | "MM";
@@ -85,4 +91,9 @@ export type TimesData = Record<DateString, HourString[]>;
 export interface TimesForPlace {
   place: Place;
   times: TimesData;
+}
+
+export interface PathMenuItem {
+  readonly icon: string;
+  readonly title: string;
 }

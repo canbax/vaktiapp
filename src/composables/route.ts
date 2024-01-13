@@ -1,4 +1,4 @@
-import { computed } from "vue";
+import { shallowRef, watch } from "vue";
 import { useBrowserLocation } from "@vueuse/core";
 import TimesPage from "@/pages/TimesPage.vue";
 import AddNewLocationPageVue from "@/pages/AddNewLocationPage.vue";
@@ -6,10 +6,12 @@ import ReligiousDaysPageVue from "@/pages/ReligiousDaysPage.vue";
 import SettingsPageVue from "@/pages/SettingsPage.vue";
 import AboutPageVue from "@/pages/AboutPage.vue";
 import NotFoundPageVue from "@/pages/NotFoundPage.vue";
+import { PathMenuItem, RouteManager } from "@/types";
 
-export function useRoute() {
+export function useRoute(): RouteManager {
   const location = useBrowserLocation();
   const routePathToVueComponent = {
+    "/": TimesPage,
     "": TimesPage,
     times: TimesPage,
     addNewLocation: AddNewLocationPageVue,
@@ -17,21 +19,7 @@ export function useRoute() {
     settings: SettingsPageVue,
     about: AboutPageVue,
   };
-
-  const currentView = computed(() => {
-    const currentPath = location.value.href ?? "";
-    const arr = currentPath.split("/");
-    const routePath = arr[arr.length - 1];
-
-    const pageToGo = routePathToVueComponent[routePath];
-    if (!pageToGo) return NotFoundPageVue;
-    return pageToGo;
-  });
-
-  const menuItems: {
-    icon: string;
-    title: string;
-  }[] = [
+  const pathMenuItems: readonly PathMenuItem[] = [
     {
       icon: "mdi-clock-time-four-outline",
       title: "times",
@@ -52,7 +40,27 @@ export function useRoute() {
       icon: "mdi-information-outline",
       title: "about",
     },
-  ];
+  ] as const;
 
-  return { currentView, menuItems };
+  const currentView = shallowRef(null);
+
+  watch(
+    location,
+    () => {
+      setViewFromRoutePath(location.value.pathname ?? "");
+    },
+    { immediate: true, deep: true }
+  );
+
+  function setViewFromRoutePath(path: string) {
+    const pageToGo = routePathToVueComponent[path];
+    if (!pageToGo) currentView.value = NotFoundPageVue;
+    else currentView.value = pageToGo;
+  }
+
+  function setViewFromPathMenuItem(item: PathMenuItem) {
+    setViewFromRoutePath(item.title); // title is also route path
+  }
+
+  return { currentView, pathMenuItems, setViewFromPathMenuItem };
 }

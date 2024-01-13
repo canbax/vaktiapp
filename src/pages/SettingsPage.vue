@@ -1,7 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h1>Settings</h1>
+  <div class="text-center">
+    <h1>Settings</h1>
+  </div>
 </template>
 
 <style scoped></style>
