@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { HourString, RemainingTimeFormat } from "@/types";
 import { useRemainingTimeToPray } from "@/composables/remainingTimeToPray";
-import { getCurrentInstance, toRef } from "vue";
-const instance = getCurrentInstance();
-const $t = instance.appContext.config.globalProperties.$t;
+import { toRef } from "vue";
 
 const props = defineProps<{
   currTimes: HourString[];

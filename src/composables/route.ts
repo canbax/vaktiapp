@@ -43,24 +43,35 @@ export function useRoute(): RouteManager {
   ] as const;
 
   const currentView = shallowRef(null);
+  const currentPathMenuItem = shallowRef<string | null>(null);
 
   watch(
     location,
     () => {
-      setViewFromRoutePath(location.value.pathname ?? "");
+      setViewFromRoutePath(location.value.pathname?.replace("/", "") ?? "");
     },
     { immediate: true, deep: true }
   );
 
   function setViewFromRoutePath(path: string) {
     const pageToGo = routePathToVueComponent[path];
-    if (!pageToGo) currentView.value = NotFoundPageVue;
-    else currentView.value = pageToGo;
+    if (!pageToGo) {
+      currentView.value = NotFoundPageVue;
+      currentPathMenuItem.value = null;
+    } else {
+      currentView.value = pageToGo;
+      currentPathMenuItem.value = path;
+    }
   }
 
   function setViewFromPathMenuItem(item: PathMenuItem) {
     setViewFromRoutePath(item.title); // title is also route path
   }
 
-  return { currentView, pathMenuItems, setViewFromPathMenuItem };
+  return {
+    currentView,
+    currentPathMenuItem,
+    pathMenuItems,
+    setViewFromPathMenuItem,
+  };
 }

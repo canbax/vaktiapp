@@ -1,4 +1,4 @@
-import { Ref } from "vue";
+import { Ref, ShallowRef } from "vue";
 import { HijriDate } from "@/util/HijriDate";
 
 export type SupportedLanguage =
@@ -18,6 +18,11 @@ export type SupportedLanguage =
   | "ru"
   | "tr"
   | "zh";
+
+export interface UserInterfaceLanguage {
+  languageCode: SupportedLanguage;
+  text: string;
+}
 
 export type RemainingTimeFormat =
   | "XX:YY:ZZ"
@@ -41,6 +46,7 @@ export interface RemainingToPray {
 
 export interface RouteManager {
   readonly currentView: any;
+  readonly currentPathMenuItem: ShallowRef<string>;
   pathMenuItems: readonly PathMenuItem[];
   setViewFromPathMenuItem: (item: PathMenuItem) => void;
 }

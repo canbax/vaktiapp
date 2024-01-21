@@ -4,7 +4,12 @@ import { useRoute } from "@/composables/route";
 import { PathMenuItem } from "@/types";
 // const locale = inject<Ref<string>>("currentLocale");
 
-const { currentView, pathMenuItems, setViewFromPathMenuItem } = useRoute();
+const {
+  currentView,
+  currentPathMenuItem,
+  pathMenuItems,
+  setViewFromPathMenuItem,
+} = useRoute();
 
 const isSideBarOpen = ref(true);
 
@@ -53,7 +58,7 @@ function clickToHref(_, item: PathMenuItem) {
         ></v-app-bar-nav-icon>
       </template>
 
-      <v-app-bar-title> Ankara </v-app-bar-title>
+      <v-app-bar-title> {{ $t(currentPathMenuItem) }} </v-app-bar-title>
 
       <template #append>
         <v-btn icon="mdi-sync" color="primary"></v-btn>
