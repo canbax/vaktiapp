@@ -7,6 +7,8 @@ import SettingsPageVue from "@/pages/SettingsPage.vue";
 import AboutPageVue from "@/pages/AboutPage.vue";
 import NotFoundPageVue from "@/pages/NotFoundPage.vue";
 import { PathMenuItem, RouteManager } from "@/types";
+const currentView = shallowRef(null);
+const currentPathMenuItem = shallowRef<string | null>(null);
 
 export function useRoute(): RouteManager {
   const location = useBrowserLocation();
@@ -41,9 +43,6 @@ export function useRoute(): RouteManager {
       title: "about",
     },
   ] as const;
-
-  const currentView = shallowRef(null);
-  const currentPathMenuItem = shallowRef<string | null>(null);
 
   watch(
     location,

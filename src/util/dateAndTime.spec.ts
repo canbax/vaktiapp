@@ -5,6 +5,7 @@ import {
   intToStr,
   secondsToHumanReadable,
   dateToString,
+  dateToStandardString,
 } from "./dateAndTime";
 import { DateStringFormat, RemainingTimeFormat } from "@/types";
 import { translate } from "./i18n";
@@ -427,6 +428,16 @@ describe("Date and time utils", () => {
       };
       const oneHour = dateToString(new Date(2023, 9, 2), dateFormat, translate);
       expect(oneHour).toEqual("02 10 2023");
+    });
+  });
+
+  describe("dateToStandardString", () => {
+    it("should convert Date object into 'DateString' when day and month are 2 digits", () => {
+      expect(dateToStandardString(new Date(2022, 10, 10))).toBe("2022-11-10");
+    });
+
+    it("should convert Date object into 'DateString' when day and month are 1 digit", () => {
+      expect(dateToStandardString(new Date(2022, 2, 4))).toBe("2022-03-04");
     });
   });
 });

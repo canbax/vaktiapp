@@ -1,4 +1,9 @@
-import { DateStringFormat, HourString, RemainingTimeFormat } from "@/types";
+import {
+  DateString,
+  DateStringFormat,
+  HourString,
+  RemainingTimeFormat,
+} from "@/types";
 
 // seconds to human readable string
 export function secondsToHumanReadable(
@@ -93,4 +98,27 @@ export function dateToString(
   return [intToStr(date.getDate()), monthStr, year, weekdayStr]
     .filter((x) => x)
     .join(" ");
+}
+
+export function prefix0(n: number) {
+  if (n > 99 || n < -99) throw new Error("Can only process 2 digits integers!");
+  return (n + "").padStart(2, "0");
+}
+
+export function extractTimeFromDate(
+  d: Date,
+  timezoneOffset: number
+): HourString {
+  d.setMinutes(d.getMinutes() + timezoneOffset);
+  const hour = d.getUTCHours();
+  const minute = d.getUTCMinutes();
+  return (prefix0(hour) + ":" + prefix0(minute)) as HourString;
+}
+
+export function dateToStandardString(date: Date): DateString {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  return `${year}-${prefix0(month)}-${prefix0(day)}` as DateString;
 }
