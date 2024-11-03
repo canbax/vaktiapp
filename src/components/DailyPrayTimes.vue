@@ -30,10 +30,10 @@ const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
     <div class="d-flex justify-center">
       <v-btn
         @click="emit('prevDay')"
-        variant="text"
+        v-tooltip="$t('prevDay')"
         icon="mdi-calendar-arrow-left"
         class="my-auto mx-2"
-      ></v-btn>
+      />
 
       <div class="d-flex flex-column">
         <div
@@ -42,25 +42,29 @@ const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
           :key="i"
         >
           <span class="text-right pe-2">
-            <h2 :class="{ 'font-weight-bold': i === currPrayIdx }">
+            <span
+              :class="[{ 'font-weight-bold': i === currPrayIdx }, 'text-h5']"
+            >
               {{ $t(timeItems[i]) }}
-            </h2>
+            </span>
           </span>
           <span class="text-left ps-2">
-            <h2 :class="{ 'font-weight-bold': i === currPrayIdx }">
+            <span
+              :class="[{ 'font-weight-bold': i === currPrayIdx }, 'text-h5']"
+            >
               {{ item }}
               <v-icon v-if="i == currPrayIdx"> mdi-clock </v-icon>
-            </h2>
+            </span>
           </span>
         </div>
       </div>
 
       <v-btn
         @click="emit('nextDay')"
-        variant="text"
+        v-tooltip="$t('nextDay')"
         icon="mdi-calendar-arrow-right"
         class="my-auto mx-2"
-      ></v-btn>
+      />
     </div>
 
     <v-divider></v-divider>
@@ -69,9 +73,13 @@ const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
       <h2 test-id="remaining-time">{{ remainingTime }}</h2>
     </div>
     <div v-else>
-      <v-btn x-large @click="emit('showToday')" icon color="primary">
-        <v-icon x-large>mdi-calendar-today</v-icon>
-      </v-btn>
+      <v-btn
+        @click="emit('showToday')"
+        v-tooltip="$t('today')"
+        icon="mdi-calendar-today"
+        color="primary"
+        class="my-2"
+      />
     </div>
   </div>
 </template>

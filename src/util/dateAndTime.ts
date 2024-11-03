@@ -122,3 +122,14 @@ export function dateToStandardString(date: Date): DateString {
 
   return `${year}-${prefix0(month)}-${prefix0(day)}` as DateString;
 }
+
+/** zero hour, minute, second and ms
+ * @param  {Date} d
+ */
+export function clearHours(d: Date): Date {
+  d.setHours(0);
+  d.setMinutes(0);
+  d.setSeconds(0);
+  d.setMilliseconds(0);
+  return d;
+}

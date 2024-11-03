@@ -1,7 +1,6 @@
 import { shallowRef, watch } from "vue";
 import { useBrowserLocation } from "@vueuse/core";
 import TimesPage from "@/pages/TimesPage.vue";
-import AddNewLocationPageVue from "@/pages/AddNewLocationPage.vue";
 import ReligiousDaysPageVue from "@/pages/ReligiousDaysPage.vue";
 import SettingsPageVue from "@/pages/SettingsPage.vue";
 import AboutPageVue from "@/pages/AboutPage.vue";
@@ -16,7 +15,6 @@ export function useRoute(): RouteManager {
     "/": TimesPage,
     "": TimesPage,
     times: TimesPage,
-    addNewLocation: AddNewLocationPageVue,
     sabbaticals: ReligiousDaysPageVue,
     settings: SettingsPageVue,
     about: AboutPageVue,
@@ -25,10 +23,6 @@ export function useRoute(): RouteManager {
     {
       icon: "mdi-clock-time-four-outline",
       title: "times",
-    },
-    {
-      icon: "mdi-map-marker-plus",
-      title: "addNewLocation",
     },
     {
       icon: "mdi-calendar-month-outline",
@@ -59,7 +53,11 @@ export function useRoute(): RouteManager {
       currentPathMenuItem.value = null;
     } else {
       currentView.value = pageToGo;
-      currentPathMenuItem.value = path;
+      if (pageToGo === TimesPage) {
+        currentPathMenuItem.value = "times";
+      } else {
+        currentPathMenuItem.value = path;
+      }
     }
   }
 

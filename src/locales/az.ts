@@ -41,6 +41,8 @@ export const az = {
   month10: "noyabr",
   month11: "dekabr",
   daysLater: "günlər sonra",
+  nextDay: "Next day",
+  prevDay: "Previous day",
   sabah: "sabah",
   year_beginning: "Yeni hicri ili",
   day_of_ashura: "Aşure Günü",

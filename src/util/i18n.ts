@@ -15,6 +15,8 @@ import { ru } from "@/locales/ru";
 import { tr } from "@/locales/tr";
 import { zh } from "@/locales/zh";
 import type { SupportedLanguage } from "@/types";
+import { useSettings } from "@/composables/settings";
+const { currentLanguage } = useSettings();
 
 const stringsInLanguages: Record<SupportedLanguage, Record<string, string>> = {
   ar,
@@ -54,5 +56,7 @@ export function getDefaultLangCode(): SupportedLanguage {
 }
 
 export function translate(key: string) {
-  return stringsInLanguages[getDefaultLangCode()][key];
+  return stringsInLanguages[
+    currentLanguage.value?.languageCode ?? getDefaultLangCode()
+  ][key];
 }

@@ -41,6 +41,8 @@ export const ms = {
   month10: "November",
   month11: "Disember",
   daysLater: "hari kemudian",
+  nextDay: "Next day",
+  prevDay: "Previous day",
   esok: "esok",
   year_beginning: "Tahun Hijriah Baru",
   day_of_ashura: "Hari Ashure",

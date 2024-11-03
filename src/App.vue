@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useRoute } from "@/composables/route";
 import { PathMenuItem } from "@/types";
+import LocationSelector from "@/components/LocationSelector.vue";
+import { useUIState } from "@/composables/userInterfaceState";
+import { computed } from "vue";
 // const locale = inject<Ref<string>>("currentLocale");
 
 const {
@@ -11,11 +13,15 @@ const {
   setViewFromPathMenuItem,
 } = useRoute();
 
-const isSideBarOpen = ref(true);
+const { isSideBarOpen } = useUIState();
 
 function switchNavigationDrawer() {
   isSideBarOpen.value = !isSideBarOpen.value;
 }
+
+const isTimesShown = computed<boolean>(
+  () => currentPathMenuItem.value === "times"
+);
 
 // function changeLang() {
 //   console.log("locale", locale?.value);
@@ -58,9 +64,17 @@ function clickToHref(_, item: PathMenuItem) {
         ></v-app-bar-nav-icon>
       </template>
 
-      <v-app-bar-title> {{ $t(currentPathMenuItem) }} </v-app-bar-title>
+      <template #title>
+        <v-app-bar-title>
+          {{ $t(currentPathMenuItem) }}
+        </v-app-bar-title>
+      </template>
 
-      <template #append>
+      <template #default v-if="isTimesShown">
+        <LocationSelector />
+      </template>
+
+      <template #append v-if="isTimesShown">
         <v-btn icon="mdi-sync" color="primary"></v-btn>
       </template>
     </v-app-bar>

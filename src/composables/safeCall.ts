@@ -8,7 +8,7 @@ export function useSafeCall<F extends Function>(fn: F) {
     try {
       error.value = undefined;
       loading.value = true;
-      await fn(args);
+      await fn(...args);
     } catch (e) {
       error.value = "" + e;
     } finally {
