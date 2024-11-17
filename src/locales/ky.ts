@@ -12,6 +12,8 @@ export const ky = {
   selectCity: "Штат / шаар тандоо",
   selectDistrict: "Районду тандоо",
   selectLanguage: "Тил тандоо",
+  light: "Light",
+  dark: "Dark",
   selectTheme: "Теманы тандоо",
   changeLocation: "Жайгашкан жерди өзгөртүү",
   noTimeData: "Убакыт жөнүндө маалымат жок. Жайгашкан жерди кошуп көрүңүз.",

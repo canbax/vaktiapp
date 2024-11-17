@@ -2,12 +2,20 @@
 import { getTimes } from "@/TimeCalculator";
 import DailyPrayTimes from "@/components/DailyPrayTimes.vue";
 import DateView from "@/components/DateView.vue";
-import { DateStringFormat, HourString, RemainingTimeFormat } from "@/types";
+import { DateStringFormat, HourString } from "@/types";
 import { useSettings } from "@/composables/settings";
 import { computed, ref } from "vue";
 import { dateToStandardString } from "@/util/dateAndTime";
+import { useUIState } from "@/composables/userInterfaceState";
 
-const { currentPlace } = useSettings();
+const {
+  currentPlace,
+  currentTimeFormat,
+  currYearFormat,
+  currMonthFormat,
+  currWeekdayFormat,
+} = useSettings();
+const { isShowHijriDate } = useUIState();
 
 const currDate = ref<Date>(new Date());
 
@@ -22,13 +30,13 @@ const currTimes = computed<HourString[]>(() => {
   return times[dateStr];
 });
 
-let remainTimeFmt: RemainingTimeFormat = "X hour Y minute Z second";
-
-let dateStringFormat: DateStringFormat = {
-  month: "MM",
-  weekDay: "-",
-  year: "YYYY",
-};
+const dateStringFormat = computed<DateStringFormat>(() => {
+  return {
+    month: currMonthFormat.value,
+    weekDay: currWeekdayFormat.value,
+    year: currYearFormat.value,
+  };
+});
 
 function goToToday() {
   currDate.value = new Date();
@@ -56,17 +64,15 @@ const isShowingToday = computed<boolean>(
   <DateView
     :date="currDate"
     :date-string-format="dateStringFormat"
-    :is-show-hijri-date="true"
+    :is-show-hijri-date="isShowHijriDate"
   ></DateView>
   <v-divider></v-divider>
   <DailyPrayTimes
     :is-showing-today="isShowingToday"
     :curr-times="currTimes"
-    :remaining-time-format="remainTimeFmt"
+    :remaining-time-format="currentTimeFormat"
     @prev-day="goToYesterday"
     @show-today="goToToday"
     @next-day="goToTomorrow"
   ></DailyPrayTimes>
 </template>
-
-<style scoped></style>

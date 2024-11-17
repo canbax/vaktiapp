@@ -12,6 +12,8 @@ export const ar: Record<string, string> = {
   selectCity: "hudad wilayat / mudiana",
   selectDistrict: "hdad mntaqa",
   selectLanguage: "hudad lgha",
+  light: "Light",
+  dark: "Dark",
   selectTheme: 'hudad sama"an',
   changeLocation: "tghyir almuqea",
   noTimeData: "la tujad bayanat alwaqt. hawal 'iidafat mawqie.",

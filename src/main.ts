@@ -8,6 +8,9 @@ import "./assets/main.css";
 import "@mdi/font/css/materialdesignicons.css";
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
+import { useSettings } from "./composables/settings";
+
+const { currentUITheme } = useSettings();
 
 async function loadFonts() {
   const webFontLoader = await import("webfontloader");
@@ -24,7 +27,13 @@ const app = createApp(App);
 // register plugins
 loadFonts();
 app.use(i18n);
-app.use(createVuetify());
+app.use(
+  createVuetify({
+    theme: {
+      defaultTheme: currentUITheme.value,
+    },
+  })
+);
 app.use(createPinia());
 
 app.mount("#app");

@@ -12,6 +12,8 @@ export const tr = {
   selectCity: "Şehir/eyalet seçin",
   selectDistrict: "İlçe/bölge seçin",
   selectLanguage: "Dil seçin",
+  light: "Açık",
+  dark: "Koyu",
   selectTheme: "Tema seçin",
   changeLocation: "Konum değiştirin",
   noTimeData: "Zaman verisi bulunamadı. Konum eklemeyi deneyin.",

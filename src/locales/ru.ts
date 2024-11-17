@@ -12,6 +12,8 @@ export const ru = {
   selectCity: "Выберите штат / город",
   selectDistrict: "Выберите район",
   selectLanguage: "Выберите язык",
+  light: "Light",
+  dark: "Dark",
   selectTheme: "Выберите тему",
   changeLocation: "Изменить местоположение",
   noTimeData: "Нет данных о времени. Попробуйте добавить местоположение.",

@@ -12,6 +12,8 @@ export const ko = {
   selectCity: "시 /도 선택",
   selectDistrict: "지구 선택",
   selectLanguage: "언어 선택",
+  light: "Light",
+  dark: "Dark",
   selectTheme: "테마 선택",
   changeLocation: "위치 변경",
   noTimeData: "시간 데이터가 없습니다. 위치를 추가해보세요.",

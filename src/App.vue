@@ -13,7 +13,7 @@ const {
   setViewFromPathMenuItem,
 } = useRoute();
 
-const { isSideBarOpen } = useUIState();
+const { isSideBarOpen, currentZoom } = useUIState();
 
 function switchNavigationDrawer() {
   isSideBarOpen.value = !isSideBarOpen.value;
@@ -23,16 +23,6 @@ const isTimesShown = computed<boolean>(
   () => currentPathMenuItem.value === "times"
 );
 
-// function changeLang() {
-//   console.log("locale", locale?.value);
-//   if (locale) {
-//     locale.value = "tr";
-//   }
-// }
-
-// function showTodayTimesData() {
-//   console.log("show today");
-// }
 function clickToHref(_, item: PathMenuItem) {
   isSideBarOpen.value = false;
   history.pushState({}, "", "/" + item.title);
@@ -41,7 +31,7 @@ function clickToHref(_, item: PathMenuItem) {
 </script>
 
 <template>
-  <v-app>
+  <v-app class="dynamic-zoom">
     <v-navigation-drawer v-model="isSideBarOpen">
       <v-list-item
         v-for="item in pathMenuItems"
@@ -50,7 +40,7 @@ function clickToHref(_, item: PathMenuItem) {
         @click="clickToHref($event, item)"
       >
         <template #prepend>
-          <v-icon :icon="item.icon"></v-icon>
+          <v-icon :icon="item.icon" />
         </template>
         <v-list-item-title>{{ $t(item.title) }}</v-list-item-title>
       </v-list-item>
@@ -58,10 +48,7 @@ function clickToHref(_, item: PathMenuItem) {
 
     <v-app-bar>
       <template #prepend>
-        <v-app-bar-nav-icon
-          color="primary"
-          @click="switchNavigationDrawer"
-        ></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon color="primary" @click="switchNavigationDrawer" />
       </template>
 
       <template #title>
@@ -75,7 +62,7 @@ function clickToHref(_, item: PathMenuItem) {
       </template>
 
       <template #append v-if="isTimesShown">
-        <v-btn icon="mdi-sync" color="primary"></v-btn>
+        <v-btn icon="mdi-sync" color="primary" />
       </template>
     </v-app-bar>
 
@@ -85,4 +72,8 @@ function clickToHref(_, item: PathMenuItem) {
   </v-app>
 </template>
 
-<style scoped></style>
+<style scoped>
+.dynamic-zoom {
+  zoom: v-bind(currentZoom);
+}
+</style>

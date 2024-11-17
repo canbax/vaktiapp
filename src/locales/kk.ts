@@ -12,6 +12,8 @@ export const kk = {
   selectCity: "штатты / қаланы таңдаңыз",
   selectDistrict: "аудан таңдаңыз",
   selectLanguage: "тіл таңдау",
+  light: "Light",
+  dark: "Dark",
   selectTheme: "тақырып таңдау",
   changeLocation: "орынды өзгерту",
   noTimeData: "Уақыт туралы мәліметтер жоқ. Орын қосып көріңіз.",

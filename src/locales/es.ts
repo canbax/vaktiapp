@@ -12,6 +12,8 @@ export const es = {
   selectCity: "Seleccione un estado / ciudad",
   selectDistrict: "Seleccione un distrito",
   selectLanguage: "Seleccionar un idioma",
+  light: "Light",
+  dark: "Dark",
   selectTheme: "Seleccionar un tema",
   changeLocation: "Cambiar ubicación",
   noTimeData: "No hay datos de tiempo. Intente agregar una ubicación.",

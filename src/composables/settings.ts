@@ -1,5 +1,10 @@
 import { useStorage } from "@vueuse/core";
-import { GenericPlace, UserInterfaceLanguage } from "@/types";
+import {
+  DateStringFormat,
+  GenericPlace,
+  RemainingTimeFormat,
+  UserInterfaceLanguage,
+} from "@/types";
 
 export function useSettings() {
   const currentPlace = useStorage<GenericPlace | null>(
@@ -12,6 +17,36 @@ export function useSettings() {
         write: (v: any) => JSON.stringify(v),
       },
     }
+  );
+
+  const currentUITheme = useStorage<string | null>(
+    "currentUITheme",
+    null,
+    localStorage
+  );
+
+  const currentTimeFormat = useStorage<RemainingTimeFormat>(
+    "currentTimeFormat",
+    "XX:YY:ZZ",
+    localStorage
+  );
+
+  const currYearFormat = useStorage<DateStringFormat["year"]>(
+    "currYearFormat",
+    "YYYY",
+    localStorage
+  );
+
+  const currMonthFormat = useStorage<DateStringFormat["month"]>(
+    "currMonthFormat",
+    "MMMM",
+    localStorage
+  );
+
+  const currWeekdayFormat = useStorage<DateStringFormat["weekDay"]>(
+    "currWeekdayFormat",
+    "DDDD",
+    localStorage
   );
 
   const currentLanguage = useStorage<UserInterfaceLanguage | null>(
@@ -44,5 +79,14 @@ export function useSettings() {
     }
   );
 
-  return { currentPlace, currentLanguage, selectedPlaces };
+  return {
+    currentPlace,
+    currentLanguage,
+    selectedPlaces,
+    currentUITheme,
+    currentTimeFormat,
+    currYearFormat,
+    currMonthFormat,
+    currWeekdayFormat,
+  };
 }

@@ -12,6 +12,8 @@ export const fa = {
   selectCity: "یک ایالت / شهر را انتخاب کنید",
   selectDistrict: "یک منطقه را انتخاب کنید",
   selectLanguage: "انتخاب یک زبان",
+  light: "Light",
+  dark: "Dark",
   selectTheme: "انتخاب یک موضوع",
   changeLocation: "تغییر مکان",
   noTimeData: "داده زمانی وجود ندارد. سعی کنید مکانی را اضافه کنید.",

@@ -12,6 +12,8 @@ export const az = {
   selectCity: "Ştat / şəhər seçin",
   selectDistrict: "Bir rayon seçin",
   selectLanguage: "Dil seçin",
+  light: "Light",
+  dark: "Dark",
   selectTheme: "Mövzu seçin",
   changeLocation: "Məkanı dəyişdirin",
   noTimeData: "Vaxt məlumatı yoxdur. Bir yer əlavə etməyə çalışın.",

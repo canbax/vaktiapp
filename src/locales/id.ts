@@ -12,6 +12,8 @@ export const id = {
   selectCity: "Pilih negara bagian / kota",
   selectDistrict: "Pilih distrik",
   selectLanguage: "Pilih bahasa",
+  light: "Light",
+  dark: "Dark",
   selectTheme: "Pilih tema",
   changeLocation: "Ubah lokasi",
   noTimeData: "Tidak ada data waktu. Coba tambahkan lokasi.",

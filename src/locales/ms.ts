@@ -12,6 +12,8 @@ export const ms = {
   selectCity: "Pilih negeri / bandar",
   selectDistrict: "Pilih daerah",
   selectLanguage: "Pilih bahasa",
+  light: "Light",
+  dark: "Dark",
   selectTheme: "Pilih tema",
   changeLocation: "Tukar lokasi",
   noTimeData: "Tidak ada data waktu. Cuba tambahkan lokasi.",

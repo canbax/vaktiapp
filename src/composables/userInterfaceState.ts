@@ -2,6 +2,8 @@ import { useStorage } from "@vueuse/core";
 
 export function useUIState() {
   const isSideBarOpen = useStorage("isSidebarOpen", true);
+  const isShowHijriDate = useStorage("isShowHijriDate", true);
+  const currentZoom = useStorage("currentZoom", 1);
 
-  return { isSideBarOpen };
+  return { isSideBarOpen, currentZoom, isShowHijriDate };
 }

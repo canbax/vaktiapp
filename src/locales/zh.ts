@@ -12,6 +12,8 @@ export const zh = {
   selectCity: "选择州/城市",
   selectDistrict: "选择地区",
   selectLanguage: "选择一种语言",
+  light: "Light",
+  dark: "Dark",
   selectTheme: "选择主题",
   changeLocation: "更改位置",
   noTimeData: "没有时间数据。请尝试添加位置。",
