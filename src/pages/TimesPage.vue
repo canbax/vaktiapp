@@ -20,6 +20,8 @@ const { isShowHijriDate } = useUIState();
 const currDate = ref<Date>(new Date());
 
 const currTimes = computed<HourString[]>(() => {
+  if (!currentPlace.value?.latitude || !currentPlace.value?.longitude)
+    return [];
   const times = getTimes(
     currentPlace.value.latitude,
     currentPlace.value.longitude,

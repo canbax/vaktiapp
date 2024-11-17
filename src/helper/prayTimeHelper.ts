@@ -20,6 +20,7 @@ export function findRemainingSecondsToCurrPray(
   now: Date,
   prayTimes: HourString[]
 ): { remainedSeconds: number; currPray: number } {
+  if (prayTimes.length < 1) return { remainedSeconds: 0, currPray: 0 };
   const currPray = findCurrPrayIndex(now, prayTimes);
   const currPrayInSeconds = hourStringToTotalSeconds(prayTimes[currPray]);
   const nowInSeconds = getTotalSeconds(now);

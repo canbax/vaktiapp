@@ -76,9 +76,9 @@ function glowSampleDate() {
 <template>
   <v-checkbox v-model="isShowHijriDate" :label="$t('isShowHijriDate')" />
 
-  <v-sheet rounded elevation="2" class="m5 p5">
-    <span>{{ $t("dateFormat") }}</span>
-    <div class="m5">
+  <v-form>
+    <div class="ma-1">
+      <div class="pa-1">{{ $t("dateFormat") }}</div>
       <v-row align="center">
         <v-col class="d-flex" cols="4">
           <v-select
@@ -112,10 +112,10 @@ function glowSampleDate() {
         {{ sampleDate }}
       </h3>
     </div>
-  </v-sheet>
+  </v-form>
   <!-- remaining time format -->
-  <v-sheet rounded elevation="2" class="m5 p5">
-    <span>{{ $t("remainingTimeFormat") }}</span>
+  <v-form>
+    <div class="pa-1">{{ $t("remainingTimeFormat") }}</div>
     <v-select
       v-model="currentTimeFormat"
       :items="TIME_FORMATS"
@@ -126,7 +126,7 @@ function glowSampleDate() {
     <h3 class="text-center" :class="{ glow: isGlowSampleRemainingTime }">
       {{ sampleRemainingTime }}
     </h3>
-  </v-sheet>
+  </v-form>
 </template>
 
 <style scoped>

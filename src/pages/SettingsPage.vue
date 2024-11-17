@@ -96,7 +96,7 @@ function zoomOut() {
     />
 
     <div>
-      <div class="text-caption">{{ $t("changeZoom") }}</div>
+      <div class="text-caption ma-1">{{ $t("changeZoom") }}</div>
       <v-slider
         v-model="instantZoom"
         :hint="zoomPercentage"

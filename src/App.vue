@@ -4,7 +4,6 @@ import { PathMenuItem } from "@/types";
 import LocationSelector from "@/components/LocationSelector.vue";
 import { useUIState } from "@/composables/userInterfaceState";
 import { computed } from "vue";
-// const locale = inject<Ref<string>>("currentLocale");
 
 const {
   currentView,
@@ -62,7 +61,7 @@ function clickToHref(_, item: PathMenuItem) {
       </template>
 
       <template #append v-if="isTimesShown">
-        <v-btn icon="mdi-sync" color="primary" />
+        <v-btn icon="mdi-share" color="primary" />
       </template>
     </v-app-bar>
 

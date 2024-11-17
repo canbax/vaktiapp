@@ -19,9 +19,9 @@ export function useSettings() {
     }
   );
 
-  const currentUITheme = useStorage<string | null>(
+  const currentUITheme = useStorage<"light" | "dark">(
     "currentUITheme",
-    null,
+    "light",
     localStorage
   );
 

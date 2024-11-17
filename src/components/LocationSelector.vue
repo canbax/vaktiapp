@@ -15,6 +15,7 @@ const api = new ApiClient();
 const placeSuggestions = ref<Map<number, GenericPlace>>(selectedPlaces.value);
 
 const autoCompleteRef = ref(null);
+const search = ref("");
 
 const currPlaceName = computed<string>(() => {
   if (!currentPlace?.value) return "";
@@ -45,6 +46,7 @@ function preparePlaceSuggestions(places: GenericPlace[]) {
   }
   selectedPlaces.value.forEach((x) => arr.set(x.id, x));
   placeSuggestions.value = arr;
+  console.log("place sugg: ", arr);
 }
 
 async function nearByPlaces() {
@@ -60,6 +62,8 @@ async function nearByPlaces() {
 }
 
 const searchDebounced = useDebounceFn(async (v: string) => {
+  console.log("search: ", v);
+  search.value = v;
   if (v?.length < 2) return;
   if (!isActive.value) return;
   const results = await api.searchPlaces(
@@ -130,6 +134,7 @@ const items = computed<GenericPlace[]>(() =>
             :items="items"
             item-title="name"
             item-value="id"
+            no-filter
             :error-messages="error"
             @update:modelValue="onPlaceSelected"
             @update:search="safeSearch"

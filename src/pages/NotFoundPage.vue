@@ -1,9 +1,12 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="text-center">
-    <h1>Bulamadık yaa!</h1>
-  </div>
+  <v-empty-state
+    headline="Whoops, 404"
+    title="Page not found"
+    text="The page you were looking for does not exist"
+    image="/src/assets/logo.png"
+  ></v-empty-state>
 </template>
 
 <style scoped></style>
