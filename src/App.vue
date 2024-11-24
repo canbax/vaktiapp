@@ -2,6 +2,7 @@
 import { useRoute } from "@/composables/route";
 import { PathMenuItem } from "@/types";
 import LocationSelector from "@/components/LocationSelector.vue";
+import ShareTimes from "@/components/ShareTimes.vue";
 import { useUIState } from "@/composables/userInterfaceState";
 import { computed } from "vue";
 
@@ -61,7 +62,7 @@ function clickToHref(_, item: PathMenuItem) {
       </template>
 
       <template #append v-if="isTimesShown">
-        <v-btn icon="mdi-share" color="primary" />
+        <ShareTimes />
       </template>
     </v-app-bar>
 

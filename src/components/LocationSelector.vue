@@ -2,7 +2,7 @@
 import { ApiClient } from "@/ApiClient";
 import { useDebounceFn } from "@vueuse/core";
 import { GenericPlace, PlaceMatchWithCountry } from "@/types";
-import { computed, ref } from "vue";
+import { computed, getCurrentInstance, ref } from "vue";
 import { useSafeCall } from "@/composables/safeCall";
 import { useCoordinates } from "@/composables/coordinates";
 import { isDefined } from "@vueuse/core";
@@ -10,6 +10,9 @@ import { useSettings } from "@/composables/settings";
 
 const { error: isGPSError, getGPS, lastGPS } = useCoordinates();
 const { currentPlace, currentLanguage, selectedPlaces } = useSettings();
+
+const instance = getCurrentInstance();
+const $t = instance.appContext.config.globalProperties.$t;
 
 const api = new ApiClient();
 const placeSuggestions = ref<Map<number, GenericPlace>>(selectedPlaces.value);
@@ -24,13 +27,10 @@ const currPlaceName = computed<string>(() => {
     : currentPlace.value.name;
 });
 
-const isJustClicked = ref(false);
-const isActive = computed<boolean>(
-  () => !currPlaceName.value || isJustClicked.value
-);
+const isOpen = ref(!currPlaceName.value ? true : false);
 
 function onPlaceSelected(v: GenericPlace) {
-  isJustClicked.value = false;
+  isOpen.value = false;
   currentPlace.value = v;
   autoCompleteRef.value?.blur?.();
 
@@ -52,7 +52,7 @@ function preparePlaceSuggestions(places: GenericPlace[]) {
 async function nearByPlaces() {
   await getGPS();
 
-  if (!isActive.value) return;
+  if (!isOpen.value) return;
   const results = await api.nearByPlaces(
     lastGPS.value.latitude,
     lastGPS.value.longitude,
@@ -62,10 +62,8 @@ async function nearByPlaces() {
 }
 
 const searchDebounced = useDebounceFn(async (v: string) => {
-  console.log("search: ", v);
   search.value = v;
-  if (v?.length < 2) return;
-  if (!isActive.value) return;
+  if (v?.length < 2 || !isOpen.value) return;
   const results = await api.searchPlaces(
     v,
     lastGPS.value.latitude,
@@ -106,11 +104,17 @@ const error = computed<string | null>(() => {
 const items = computed<GenericPlace[]>(() =>
   Array.from(placeSuggestions.value.values())
 );
+
+const hasCurrentPlace = computed<boolean>(() => Boolean(currentPlace.value));
+
+const title = computed<string>(() =>
+  hasCurrentPlace.value ? $t("changeLocation") : $t("addNewLocation")
+);
 </script>
 
 <template>
   <v-dialog
-    :model-value="isActive"
+    :model-value="isOpen"
     fullscreen
     transition="dialog-bottom-transition"
   >
@@ -119,16 +123,24 @@ const items = computed<GenericPlace[]>(() =>
         :text="currPlaceName"
         class="text-capitalize"
         variant="outlined"
-        @click="isJustClicked = true"
+        @click="isOpen = true"
       ></v-btn>
     </template>
 
     <template #default>
       <v-card>
         <div>
+          <v-alert
+            :title="title"
+            :closable="hasCurrentPlace"
+            @click:close="isOpen = false"
+          ></v-alert>
+        </div>
+        <div>
           <v-autocomplete
             class="ma-5"
             ref="autoCompleteRef"
+            :model-value="currentPlace"
             :loading="loading"
             :multiple="false"
             :items="items"

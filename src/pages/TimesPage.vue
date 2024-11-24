@@ -14,10 +14,15 @@ const {
   currYearFormat,
   currMonthFormat,
   currWeekdayFormat,
+  currentDate,
+  calculatorMethod,
+  calculatorMadhab,
 } = useSettings();
 const { isShowHijriDate } = useUIState();
 
-const currDate = ref<Date>(new Date());
+const currDate = ref<Date>(
+  currentDate.value ? new Date(currentDate.value) : new Date()
+);
 
 const currTimes = computed<HourString[]>(() => {
   if (!currentPlace.value?.latitude || !currentPlace.value?.longitude)
@@ -26,7 +31,9 @@ const currTimes = computed<HourString[]>(() => {
     currentPlace.value.latitude,
     currentPlace.value.longitude,
     currDate.value,
-    1
+    1,
+    calculatorMethod.value,
+    calculatorMadhab.value
   );
   const dateStr = dateToStandardString(currDate.value);
   return times[dateStr];
@@ -40,20 +47,27 @@ const dateStringFormat = computed<DateStringFormat>(() => {
   };
 });
 
+function syncCurrentDate() {
+  currentDate.value = dateToStandardString(currDate.value);
+}
+
 function goToToday() {
   currDate.value = new Date();
+  syncCurrentDate();
 }
 
 function goToYesterday() {
   const d = new Date(currDate.value);
   d.setDate(currDate.value.getDate() - 1);
   currDate.value = d;
+  syncCurrentDate();
 }
 
 function goToTomorrow() {
   const d = new Date(currDate.value);
   d.setDate(currDate.value.getDate() + 1);
   currDate.value = d;
+  syncCurrentDate();
 }
 
 const isShowingToday = computed<boolean>(

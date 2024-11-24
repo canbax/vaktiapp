@@ -115,7 +115,6 @@ function glowSampleDate() {
   </v-form>
   <!-- remaining time format -->
   <v-form>
-    <div class="pa-1">{{ $t("remainingTimeFormat") }}</div>
     <v-select
       v-model="currentTimeFormat"
       :items="TIME_FORMATS"

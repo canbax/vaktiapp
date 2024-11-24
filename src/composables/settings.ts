@@ -1,4 +1,5 @@
 import { useStorage } from "@vueuse/core";
+import { CalculationMethod } from "adhan";
 import {
   DateStringFormat,
   GenericPlace,
@@ -21,26 +22,34 @@ export function useSettings() {
 
   const currentUITheme = useStorage<"light" | "dark">(
     "currentUITheme",
-    "light",
-    localStorage
+    "light"
   );
+
+  const currentDate = useStorage<string | null>("currentDate", null);
 
   const currentTimeFormat = useStorage<RemainingTimeFormat>(
     "currentTimeFormat",
-    "XX:YY:ZZ",
-    localStorage
+    "XX:YY:ZZ"
   );
 
   const currYearFormat = useStorage<DateStringFormat["year"]>(
     "currYearFormat",
-    "YYYY",
-    localStorage
+    "YYYY"
   );
 
   const currMonthFormat = useStorage<DateStringFormat["month"]>(
     "currMonthFormat",
-    "MMMM",
-    localStorage
+    "MMMM"
+  );
+
+  const calculatorMethod = useStorage<keyof typeof CalculationMethod>(
+    "calculatorMethod",
+    "Turkey"
+  );
+
+  const calculatorMadhab = useStorage<"shafi" | "hanafi">(
+    "calculatorMadhab",
+    "shafi"
   );
 
   const currWeekdayFormat = useStorage<DateStringFormat["weekDay"]>(
@@ -88,5 +97,8 @@ export function useSettings() {
     currYearFormat,
     currMonthFormat,
     currWeekdayFormat,
+    currentDate,
+    calculatorMethod,
+    calculatorMadhab,
   };
 }
