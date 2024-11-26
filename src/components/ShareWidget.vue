@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import BasicCodeEditor from "./BasicCodeEditor.vue";
 import { useBrowserLocation } from "@vueuse/core";
+import IframeEditor from "./IframeEditor.vue";
 
 interface WidgetConfig {
   city: string;
@@ -64,18 +64,19 @@ const iframeCode = computed(() => {
           ></v-alert>
         </div>
         <div>
-          <iframe
-            :src="iframeSrc"
-            :width="config.width"
-            :height="config.height"
-            style="border: none"
-          ></iframe>
-        </div>
-        <div>
-          <BasicCodeEditor v-model="iframeCode" />
-        </div>
-        <div>
-          <h1>widget parameters</h1>
+          <v-row class="ma-2">
+            <v-col class="border-md">
+              <iframe
+                :src="iframeSrc"
+                :width="config.width"
+                :height="config.height"
+                style="border: none"
+              />
+            </v-col>
+            <v-col>
+              <IframeEditor :sourceCode="iframeCode" />
+            </v-col>
+          </v-row>
         </div>
       </v-card>
     </template>

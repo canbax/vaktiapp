@@ -22,6 +22,7 @@ export const tr = {
   calculatorMethod: "Hesaplama yöntemi",
   calculator: "Hesaplayıcı",
   copyLink: "Bağlantıyı kopyala",
+  parameters: "Parametreler",
   copiedLink: "Bağlantı kopyalandı!",
   share: "Paylaş",
   embedToYourWebsite: "Websitene ekle",

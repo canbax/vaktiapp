@@ -22,6 +22,7 @@ export const fr = {
   calculatorMethod: "Calculator Method",
   calculator: "Calculator",
   copyLink: "Copy link",
+  parameters: "Parameters",
   copiedLink: "Link copied!",
   share: "Share",
   embedToYourWebsite: "Embed to your website",

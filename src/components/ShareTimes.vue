@@ -21,10 +21,14 @@ const shareUrl = computed<string>(() => {
 });
 
 async function startShare() {
-  await share({
-    title: $t("times"),
-    url: shareUrl.value,
-  });
+  try {
+    await share({
+      title: $t("times"),
+      url: shareUrl.value,
+    });
+  } catch (e) {
+    console.log("error on share: ", e);
+  }
 }
 
 async function copyLinkClicked() {

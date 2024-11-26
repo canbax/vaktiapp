@@ -14,7 +14,7 @@ import { ms } from "@/locales/ms";
 import { ru } from "@/locales/ru";
 import { tr } from "@/locales/tr";
 import { zh } from "@/locales/zh";
-import type { SupportedLanguage } from "@/types";
+import type { SupportedLanguage, UserInterfaceLanguage } from "@/types";
 import { useSettings } from "@/composables/settings";
 const { currentLanguage } = useSettings();
 
@@ -60,3 +60,21 @@ export function translate(key: string) {
     currentLanguage.value?.languageCode ?? getDefaultLangCode()
   ][key];
 }
+
+export const ALL_LANGUAGES: UserInterfaceLanguage[] = [
+  { text: "Türkçe", languageCode: "tr" },
+  { text: "English", languageCode: "en" },
+  { text: "Pусский", languageCode: "ru" },
+  { text: "Española", languageCode: "es" },
+  { text: "فارسی", languageCode: "fa" },
+  { text: "Français", languageCode: "fr" },
+  { text: "Deutsch", languageCode: "de" },
+  { text: "Chinese", languageCode: "zh" },
+  { text: "عربى", languageCode: "ar" },
+  { text: "Indonesia", languageCode: "id" },
+  { text: "Italian", languageCode: "it" },
+  { text: "Kazakh", languageCode: "kk" },
+  { text: "Korean", languageCode: "ko" },
+  { text: "Kyrgyz", languageCode: "ky" },
+  { text: "Malay", languageCode: "ms" },
+];
