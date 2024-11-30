@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from "@/composables/route";
 import { PathMenuItem } from "@/types";
-import LocationSelector from "@/components/LocationSelector.vue";
+import LocationSelectDialog from "@/components/LocationSelectDialog.vue";
 import ShareTimes from "@/components/ShareTimes.vue";
 import { useUIState } from "@/composables/userInterfaceState";
 import { computed } from "vue";
@@ -58,7 +58,7 @@ function clickToHref(_, item: PathMenuItem) {
       </template>
 
       <template #default v-if="isTimesShown">
-        <LocationSelector />
+        <LocationSelectDialog />
       </template>
 
       <template #append v-if="isTimesShown">

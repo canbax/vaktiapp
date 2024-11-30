@@ -5,6 +5,7 @@ import { useSettings } from "@/composables/settings";
 
 interface Props {
   currentZoom: number;
+  label?: string;
 }
 
 const emit = defineEmits<{ (e: "zoom", value: number): void }>();
@@ -51,6 +52,7 @@ function zoomOut() {
   <v-slider
     v-model="instantZoom"
     :hint="zoomPercentage"
+    :label="label"
     :persistent-hint="true"
     :max="MAX_ZOOM"
     :min="MIN_ZOOM"

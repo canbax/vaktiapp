@@ -2,17 +2,16 @@
 import { ApiClient } from "@/ApiClient";
 import { useDebounceFn } from "@vueuse/core";
 import { GenericPlace, PlaceMatchWithCountry } from "@/types";
-import { computed, getCurrentInstance, ref } from "vue";
+import { computed, ref } from "vue";
 import { useSafeCall } from "@/composables/safeCall";
 import { useCoordinates } from "@/composables/coordinates";
 import { isDefined } from "@vueuse/core";
 import { useSettings } from "@/composables/settings";
 
 const { error: isGPSError, getGPS, lastGPS } = useCoordinates();
-const { currentPlace, currentLanguage, selectedPlaces } = useSettings();
+const { currentLanguage, selectedPlaces } = useSettings();
 
-const instance = getCurrentInstance();
-const $t = instance.appContext.config.globalProperties.$t;
+const model = defineModel<GenericPlace>();
 
 const api = new ApiClient();
 const placeSuggestions = ref<Map<number, GenericPlace>>(selectedPlaces.value);
@@ -21,20 +20,20 @@ const autoCompleteRef = ref(null);
 const search = ref("");
 
 const currPlaceName = computed<string>(() => {
-  if (!currentPlace?.value) return "";
-  return isPlaceMatch(currentPlace.value)
-    ? currentPlace.value.matchingString
-    : currentPlace.value.name;
+  if (!model?.value) return "";
+  return isPlaceMatch(model.value)
+    ? model.value.matchingString
+    : model.value.name;
 });
 
 const isOpen = ref(!currPlaceName.value ? true : false);
 
 function onPlaceSelected(v: GenericPlace) {
   isOpen.value = false;
-  currentPlace.value = v;
+  model.value = v ?? null;
   autoCompleteRef.value?.blur?.();
 
-  if (selectedPlaces.value.size < 5) {
+  if (v && selectedPlaces.value.size < 5) {
     selectedPlaces.value.set(v.id, v);
   }
 }
@@ -46,7 +45,6 @@ function preparePlaceSuggestions(places: GenericPlace[]) {
   }
   selectedPlaces.value.forEach((x) => arr.set(x.id, x));
   placeSuggestions.value = arr;
-  console.log("place sugg: ", arr);
 }
 
 async function nearByPlaces() {
@@ -104,79 +102,43 @@ const error = computed<string | null>(() => {
 const items = computed<GenericPlace[]>(() =>
   Array.from(placeSuggestions.value.values())
 );
-
-const hasCurrentPlace = computed<boolean>(() => Boolean(currentPlace.value));
-
-const title = computed<string>(() =>
-  hasCurrentPlace.value ? $t("changeLocation") : $t("addNewLocation")
-);
 </script>
 
 <template>
-  <v-dialog
-    :model-value="isOpen"
-    fullscreen
-    transition="dialog-bottom-transition"
+  <v-autocomplete
+    class="ma-5"
+    ref="autoCompleteRef"
+    :model-value="model"
+    :loading="loading"
+    :multiple="false"
+    :items="items"
+    item-title="name"
+    item-value="id"
+    no-filter
+    :error-messages="error"
+    @update:modelValue="onPlaceSelected"
+    @update:search="safeSearch"
+    return-object
   >
-    <template #activator>
+    <template #item="{ item, props }">
+      <v-list-item v-bind="props" :subtitle="item.raw.country">
+        <template #title>
+          <span v-if="isPlaceMatch(item.raw)">
+            {{ item.raw.matchingString }}, {{ item.raw.stateName }}
+          </span>
+          <span v-else> {{ item.raw.name }}, {{ item.raw.stateName }} </span>
+        </template>
+      </v-list-item>
+    </template>
+
+    <template #append-inner>
       <v-btn
-        :text="currPlaceName"
-        class="text-capitalize"
-        variant="outlined"
-        @click="isOpen = true"
+        @click="safeNearBySearch"
+        size="x-small"
+        icon="mdi-crosshairs-gps"
       ></v-btn>
     </template>
-
-    <template #default>
-      <v-card>
-        <div>
-          <v-alert
-            :title="title"
-            :closable="hasCurrentPlace"
-            @click:close="isOpen = false"
-          ></v-alert>
-        </div>
-        <div>
-          <v-autocomplete
-            class="ma-5"
-            ref="autoCompleteRef"
-            :model-value="currentPlace"
-            :loading="loading"
-            :multiple="false"
-            :items="items"
-            item-title="name"
-            item-value="id"
-            no-filter
-            :error-messages="error"
-            @update:modelValue="onPlaceSelected"
-            @update:search="safeSearch"
-            return-object
-          >
-            <template #item="{ item, props }">
-              <v-list-item v-bind="props" :subtitle="item.raw.country">
-                <template #title>
-                  <span v-if="isPlaceMatch(item.raw)">
-                    {{ item.raw.matchingString }}, {{ item.raw.stateName }}
-                  </span>
-                  <span v-else>
-                    {{ item.raw.name }}, {{ item.raw.stateName }}
-                  </span>
-                </template>
-              </v-list-item>
-            </template>
-
-            <template #append-inner>
-              <v-btn
-                @click="safeNearBySearch"
-                size="x-small"
-                icon="mdi-crosshairs-gps"
-              ></v-btn>
-            </template>
-          </v-autocomplete>
-        </div>
-      </v-card>
-    </template>
-  </v-dialog>
+  </v-autocomplete>
 </template>
 
 <style scoped></style>
