@@ -14,7 +14,7 @@ import { ms } from "@/locales/ms";
 import { ru } from "@/locales/ru";
 import { tr } from "@/locales/tr";
 import { zh } from "@/locales/zh";
-import type { SupportedLanguage, UserInterfaceLanguage } from "@/types";
+import type { SupportedLanguage } from "@/types";
 import { useSettings } from "@/composables/settings";
 const { currentLanguage } = useSettings();
 
@@ -37,44 +37,6 @@ const stringsInLanguages: Record<SupportedLanguage, Record<string, string>> = {
   zh,
 };
 
-/**
- * returns 2 letter language code ('en', 'de', 'tr', ...) of the browser. By default returns 'en'
- */
-export function getDefaultLangCode(): SupportedLanguage {
-  const userLang = navigator.language;
-  if (userLang && typeof userLang === "string" && userLang.includes("-")) {
-    const langCode = userLang.split("-")[0] as SupportedLanguage;
-    if (stringsInLanguages[langCode]) {
-      return langCode;
-    } else {
-      console.warn(`${langCode} is not a supported language`);
-    }
-  } else {
-    console.warn(`${userLang} is not a valid language indicator`);
-  }
-  return "en";
-}
-
 export function translate(key: string) {
-  return stringsInLanguages[
-    currentLanguage.value?.languageCode ?? getDefaultLangCode()
-  ][key];
+  return stringsInLanguages[currentLanguage.value?.languageCode ?? "en"][key];
 }
-
-export const ALL_LANGUAGES: UserInterfaceLanguage[] = [
-  { text: "Türkçe", languageCode: "tr" },
-  { text: "English", languageCode: "en" },
-  { text: "Pусский", languageCode: "ru" },
-  { text: "Española", languageCode: "es" },
-  { text: "فارسی", languageCode: "fa" },
-  { text: "Français", languageCode: "fr" },
-  { text: "Deutsch", languageCode: "de" },
-  { text: "Chinese", languageCode: "zh" },
-  { text: "عربى", languageCode: "ar" },
-  { text: "Indonesia", languageCode: "id" },
-  { text: "Italian", languageCode: "it" },
-  { text: "Kazakh", languageCode: "kk" },
-  { text: "Korean", languageCode: "ko" },
-  { text: "Kyrgyz", languageCode: "ky" },
-  { text: "Malay", languageCode: "ms" },
-];

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { AppTheme } from "@/types";
 import { getCurrentInstance } from "vue";
 
 const instance = getCurrentInstance();
@@ -8,9 +9,8 @@ const themes: { title: string; value: string }[] = [
   { title: $t("light"), value: "light" },
   { title: $t("dark"), value: "dark" },
 ];
-type Theme = "light" | "dark";
-const model = defineModel<Theme>();
-const emit = defineEmits<{ (e: "update", theme: Theme): void }>();
+const model = defineModel<AppTheme>();
+const emit = defineEmits<{ (e: "update", theme: AppTheme): void }>();
 </script>
 
 <template>

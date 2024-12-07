@@ -47,6 +47,7 @@ export interface RemainingToPray {
 export interface RouteManager {
   readonly currentView: any;
   readonly currentPathMenuItem: ShallowRef<string>;
+  isWidget: Readonly<Ref<boolean>>;
   pathMenuItems: readonly PathMenuItem[];
   setViewFromPathMenuItem: (item: PathMenuItem) => void;
 }
@@ -372,3 +373,7 @@ export interface PlaceWithCountry extends Place {
 }
 
 export type GenericPlace = PlaceWithCountry | PlaceMatchWithCountry;
+
+export type AppTheme = "light" | "dark";
+
+export type CalculatorMadhab = "shafi" | "hanafi";

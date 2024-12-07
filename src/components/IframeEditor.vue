@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import { useBrowserLocation, useClipboard } from "@vueuse/core";
 import { computed, getCurrentInstance, nextTick, ref } from "vue";
-import ZoomSlider from "@/components/ZoomSlider.vue";
-import LanguageSelector from "@/components/LanguageSelector.vue";
-import LocationSelector from "@/components/LocationSelector.vue";
 import DateFormatSelector from "@/components/DateFormatSelector.vue";
 import TimeFormatSelector from "@/components/TimeFormatSelector.vue";
+import CalculatorMethodSelector from "@/components/CalculatorMethodSelector.vue";
+import CalculatorMadhabSelector from "@/components/CalculatorMadhabSelector.vue";
 import ThemeSelector from "@/components/ThemeSelector.vue";
 import { VTextarea } from "vuetify/components/VTextarea";
 import { useSettings } from "@/composables/settings";
 import { useUIState } from "@/composables/userInterfaceState";
-
+import { encodeParamsForIframe } from "@/composables/urlParams";
 const browserLocation = useBrowserLocation();
 
 const {
@@ -21,18 +20,22 @@ const {
   currYearFormat,
   currMonthFormat,
   currWeekdayFormat,
+  calculatorMethod,
+  calculatorMadhab,
 } = useSettings();
 const { currentZoom, isShowHijriDate } = useUIState();
 
-const languageParam = ref(currentLanguage.value);
-const UIThemeParam = ref(currentUITheme.value);
-const zoomParam = ref(currentZoom.value);
-const isShowHijriDateParam = ref(isShowHijriDate.value);
-const yearFormatParam = ref(currYearFormat.value);
-const monthFormatParam = ref(currMonthFormat.value);
-const weekDayFormatParam = ref(currWeekdayFormat.value);
-const timeFormatParam = ref(currentTimeFormat.value);
+const language = ref(currentLanguage.value);
+const theme = ref(currentUITheme.value);
+const zoom = ref(currentZoom.value);
+const isShowHijri = ref(isShowHijriDate.value);
+const year = ref(currYearFormat.value);
+const month = ref(currMonthFormat.value);
+const weekDay = ref(currWeekdayFormat.value);
+const time = ref(currentTimeFormat.value);
 const currPlaceParam = ref(currentPlace.value);
+const method = ref(calculatorMethod.value);
+const madhab = ref(calculatorMadhab.value);
 
 const instance = getCurrentInstance();
 const $t = instance?.appContext.config.globalProperties.$t;
@@ -42,15 +45,27 @@ const baseUrl = computed<string>(
 );
 
 const iframeSrc = computed<string>(() => {
-  const params = new URLSearchParams({
-    city: currPlaceParam.value.id + "",
-    theme: UIThemeParam.value,
+  const params = encodeParamsForIframe({
+    currPlaceParam,
+    isShowHijri,
+    language,
+    madhab,
+    method,
+    month,
+    theme,
+    time,
+    weekDay,
+    year,
+    zoom,
   });
   return `${baseUrl.value}?${params.toString()}`;
 });
 
+const iframeWid = 400;
+const iframeHei = 400;
+
 const iframeCode = computed(() => {
-  return `<iframe src="${iframeSrc.value}" width="400" height="600" style="border:none;"></iframe>`;
+  return `<iframe src="${iframeSrc.value}" width="${iframeWid}" height="${iframeHei}" style="border:none;"></iframe>`;
 });
 
 const { copy, copied } = useClipboard({ source: iframeCode.value });
@@ -77,16 +92,15 @@ function copyIframeCode() {
 
 <template>
   <v-row class="ma-2">
-    <v-col>
-      <div class="border-md">
-        <iframe
-          :src="iframeSrc"
-          width="400"
-          height="600"
-          style="border: none"
-        />
-      </div>
-    </v-col>
+    <div>
+      <iframe
+        :src="iframeSrc"
+        :width="iframeWid"
+        :height="iframeHei"
+        class="elevation-5"
+        style="border: none"
+      />
+    </div>
     <v-col>
       <v-card>
         <v-card-text>
@@ -124,32 +138,21 @@ function copyIframeCode() {
 
             <v-card-text>
               <div class="d-flex flex-wrap">
-                <LocationSelector v-model="currPlaceParam" class="ma-1 w-100" />
-                <LanguageSelector v-model="languageParam" class="ma-1" />
-                <ThemeSelector v-model="UIThemeParam" class="ma-1" />
-                <ZoomSlider
-                  class="ma-1 w-100"
-                  :label="$t('changeZoom')"
-                  :current-zoom="zoomParam"
-                  @zoom="zoomParam = $event"
-                />
-
+                <ThemeSelector v-model="theme" class="ma-1" />
                 <v-checkbox
-                  v-model="isShowHijriDateParam"
+                  v-model="isShowHijri"
                   class="ma-1"
                   :label="$t('isShowHijriDate')"
                 />
-
                 <DateFormatSelector
                   class="ma-1 w-100"
-                  v-model:year="yearFormatParam"
-                  v-model:month="monthFormatParam"
-                  v-model:weekDay="weekDayFormatParam"
+                  v-model:year="year"
+                  v-model:month="month"
+                  v-model:weekDay="weekDay"
                 />
-                <TimeFormatSelector
-                  class="ma-1 w-100"
-                  v-model="timeFormatParam"
-                />
+                <TimeFormatSelector class="ma-1 w-100" v-model="time" />
+                <CalculatorMethodSelector class="ma-1" v-model="method" />
+                <CalculatorMadhabSelector class="ma-1" v-model="madhab" />
               </div>
             </v-card-text>
           </div>

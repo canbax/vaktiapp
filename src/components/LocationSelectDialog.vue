@@ -16,7 +16,12 @@ const currPlaceName = computed<string>(() => {
     : currentPlace.value.name;
 });
 
-const isOpen = ref(!currPlaceName.value ? true : false);
+const userIntentForDialog = ref<boolean | null>(null);
+
+const isOpen = computed<boolean>(() => {
+  if (userIntentForDialog.value !== null) return userIntentForDialog.value;
+  return Boolean(!currPlaceName.value);
+});
 
 function isPlaceMatch(place: GenericPlace): place is PlaceMatchWithCountry {
   return Boolean(place?.["matchingString"]);
@@ -40,7 +45,7 @@ const title = computed<string>(() =>
         :text="currPlaceName"
         class="text-capitalize"
         variant="outlined"
-        @click="isOpen = true"
+        @click="userIntentForDialog = true"
       ></v-btn>
     </template>
 
@@ -50,7 +55,7 @@ const title = computed<string>(() =>
           <v-alert
             :title="title"
             :closable="hasCurrentPlace"
-            @click:close="isOpen = false"
+            @click:close="userIntentForDialog = false"
           ></v-alert>
         </div>
         <div>

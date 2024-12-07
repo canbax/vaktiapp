@@ -1,55 +1,47 @@
 <script setup lang="ts">
 import TimesView from "@/components/TimesView.vue";
-import { useSettings } from "@/composables/settings";
 import { ref } from "vue";
-import { dateToStandardString } from "@/util/dateAndTime";
-import { useUIState } from "@/composables/userInterfaceState";
+import { useUrlParams } from "@/composables/urlParams";
 
 const {
+  calculatorMadhab,
+  calculatorMethod,
   currentPlace,
   currentTimeFormat,
-  currYearFormat,
   currMonthFormat,
   currWeekdayFormat,
-  currentDate,
-  calculatorMethod,
-  calculatorMadhab,
-  currentUITheme,
-} = useSettings();
-const { isShowHijriDate } = useUIState();
+  currYearFormat,
+  isShowHijriDate,
+  currDate,
+  theme,
+} = useUrlParams();
 
-const currDate = ref<Date>(
-  currentDate.value ? new Date(currentDate.value) : new Date()
+const currentDate = ref<Date>(
+  currDate.value ? new Date(currDate.value) : new Date()
 );
 
-function syncCurrentDate() {
-  currentDate.value = dateToStandardString(currDate.value);
-}
-
 function goToToday() {
-  currDate.value = new Date();
-  syncCurrentDate();
+  currentDate.value = new Date();
 }
 
 function goToYesterday() {
   const d = new Date(currDate.value);
   d.setDate(currDate.value.getDate() - 1);
-  currDate.value = d;
-  syncCurrentDate();
+  currentDate.value = d;
 }
 
 function goToTomorrow() {
   const d = new Date(currDate.value);
   d.setDate(currDate.value.getDate() + 1);
-  currDate.value = d;
-  syncCurrentDate();
+  currentDate.value = d;
 }
 </script>
 
 <template>
   <TimesView
-    :theme="currentUITheme"
+    v-if="currentPlace"
     :currentPlace="currentPlace"
+    :theme="theme"
     :currentTimeFormat="currentTimeFormat"
     :currYearFormat="currYearFormat"
     :currMonthFormat="currMonthFormat"

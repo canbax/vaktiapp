@@ -1,13 +1,60 @@
 import { useStorage } from "@vueuse/core";
 import { CalculationMethod } from "adhan";
 import {
+  AppTheme,
+  CalculatorMadhab,
   DateStringFormat,
   GenericPlace,
   RemainingTimeFormat,
+  SupportedLanguage,
   UserInterfaceLanguage,
 } from "@/types";
 
 export function useSettings() {
+  const ALL_LANGUAGES: UserInterfaceLanguage[] = [
+    { text: "Türkçe", languageCode: "tr" },
+    { text: "English", languageCode: "en" },
+    { text: "Pусский", languageCode: "ru" },
+    { text: "Española", languageCode: "es" },
+    { text: "فارسی", languageCode: "fa" },
+    { text: "Français", languageCode: "fr" },
+    { text: "Deutsch", languageCode: "de" },
+    { text: "Chinese", languageCode: "zh" },
+    { text: "عربى", languageCode: "ar" },
+    { text: "Indonesia", languageCode: "id" },
+    { text: "Italian", languageCode: "it" },
+    { text: "Kazakh", languageCode: "kk" },
+    { text: "Korean", languageCode: "ko" },
+    { text: "Kyrgyz", languageCode: "ky" },
+    { text: "Malay", languageCode: "ms" },
+  ];
+
+  /**
+   * returns 2 letter language code ('en', 'de', 'tr', ...) of the browser. By default returns 'en'
+   */
+  function getDefaultLangCode(): SupportedLanguage {
+    const userLang = navigator.language;
+    if (userLang && typeof userLang === "string" && userLang.includes("-")) {
+      const langCode = userLang.split("-")[0] as SupportedLanguage;
+      if (ALL_LANGUAGES.find((x) => x.languageCode === langCode)) {
+        return langCode;
+      } else {
+        console.warn(`${langCode} is not a supported language`);
+      }
+    } else {
+      console.warn(`${userLang} is not a valid language indicator`);
+    }
+    return "en";
+  }
+
+  function getLanguageFromCode(code: SupportedLanguage | string) {
+    return ALL_LANGUAGES.find((x) => x.languageCode === code);
+  }
+
+  function getDefaultLanguage() {
+    return getLanguageFromCode(getDefaultLangCode());
+  }
+
   const currentPlace = useStorage<GenericPlace | null>(
     "currentPlace",
     null,
@@ -20,10 +67,7 @@ export function useSettings() {
     }
   );
 
-  const currentUITheme = useStorage<"light" | "dark">(
-    "currentUITheme",
-    "light"
-  );
+  const currentUITheme = useStorage<AppTheme>("currentUITheme", "light");
 
   const currentDate = useStorage<string | null>("currentDate", null);
 
@@ -42,25 +86,25 @@ export function useSettings() {
     "MMMM"
   );
 
-  const calculatorMethod = useStorage<keyof typeof CalculationMethod>(
-    "calculatorMethod",
-    "Turkey"
-  );
-
-  const calculatorMadhab = useStorage<"shafi" | "hanafi">(
-    "calculatorMadhab",
-    "shafi"
-  );
-
   const currWeekdayFormat = useStorage<DateStringFormat["weekDay"]>(
     "currWeekdayFormat",
     "DDDD",
     localStorage
   );
 
+  const calculatorMethod = useStorage<keyof typeof CalculationMethod>(
+    "calculatorMethod",
+    "Turkey"
+  );
+
+  const calculatorMadhab = useStorage<CalculatorMadhab>(
+    "calculatorMadhab",
+    "shafi"
+  );
+
   const currentLanguage = useStorage<UserInterfaceLanguage | null>(
     "currentLanguage",
-    null,
+    getDefaultLanguage(),
     localStorage,
     {
       serializer: {
@@ -89,6 +133,7 @@ export function useSettings() {
   );
 
   return {
+    getLanguageFromCode,
     currentPlace,
     currentLanguage,
     selectedPlaces,
@@ -100,5 +145,6 @@ export function useSettings() {
     currentDate,
     calculatorMethod,
     calculatorMadhab,
+    ALL_LANGUAGES,
   };
 }

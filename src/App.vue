@@ -11,6 +11,7 @@ const {
   currentPathMenuItem,
   pathMenuItems,
   setViewFromPathMenuItem,
+  isWidget,
 } = useRoute();
 
 const { isSideBarOpen, currentZoom } = useUIState();
@@ -31,7 +32,7 @@ function clickToHref(_, item: PathMenuItem) {
 </script>
 
 <template>
-  <v-app class="dynamic-zoom">
+  <v-app v-if="!isWidget" class="dynamic-zoom">
     <v-navigation-drawer v-model="isSideBarOpen">
       <v-list-item
         v-for="item in pathMenuItems"
@@ -70,6 +71,7 @@ function clickToHref(_, item: PathMenuItem) {
       <component :is="currentView" />
     </v-main>
   </v-app>
+  <component v-else :is="currentView" />
 </template>
 
 <style scoped>

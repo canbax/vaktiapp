@@ -25,4 +25,10 @@ export class ApiClient {
     const response = await fetch(url, { method: "GET" });
     return response.json() as Promise<PlaceWithCountry[]>;
   }
+
+  async placeById(id: string | number, lang?: string) {
+    const url = `${this._baseUrl}placeById?id=${id}&lang=${lang}`;
+    const response = await fetch(url, { method: "GET" });
+    return response.json() as Promise<PlaceWithCountry>;
+  }
 }
