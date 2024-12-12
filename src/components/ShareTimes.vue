@@ -2,8 +2,10 @@
 import { computed, getCurrentInstance, ref } from "vue";
 import ShareWidget from "@/components/ShareWidget.vue";
 import { useShare, useClipboard, useBrowserLocation } from "@vueuse/core";
+import { useUrlParams } from "@/composables/urlParams";
 
-const source = ref("Hello");
+const { encodeSettingsToUrlParams } = useUrlParams();
+const source = ref("");
 const {
   copy,
   copied,
@@ -17,7 +19,7 @@ const instance = getCurrentInstance();
 const $t = instance?.appContext.config.globalProperties.$t;
 
 const shareUrl = computed<string>(() => {
-  return browserLocation.value.origin;
+  return browserLocation.value.origin + "/share?" + encodeSettingsToUrlParams();
 });
 
 async function startShare() {
@@ -54,7 +56,7 @@ async function copyLinkClicked() {
         <v-list-item
           v-if="isClipboardSupported"
           :title="$t('copyLink')"
-          prepend-icon="mdi-link"
+          :prepend-icon="copied ? 'mdi-check-circle' : 'mdi-link'"
           @click="copyLinkClicked"
         />
 
@@ -68,12 +70,5 @@ async function copyLinkClicked() {
 
       <ShareWidget />
     </v-sheet>
-    <v-snackbar v-model="copied">
-      {{ $t("copiedLink") }}
-
-      <template v-slot:actions>
-        <v-btn icon="mdi-close-box" variant="text" @click="copied = false" />
-      </template>
-    </v-snackbar>
   </v-bottom-sheet>
 </template>

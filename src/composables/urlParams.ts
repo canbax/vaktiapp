@@ -12,11 +12,12 @@ import {
 import { CalculationMethod } from "adhan";
 import { Ref, computed, ref, watch } from "vue";
 import { useSettings } from "./settings";
+import { dateToStandardString } from "@/util/dateAndTime";
+import { useUIState } from "./userInterfaceState";
 
 interface Params {
   currPlaceParam: Ref<GenericPlace>;
   theme: Ref<AppTheme>;
-  language: Ref<UserInterfaceLanguage>;
   zoom: Ref<number>;
   isShowHijri: Ref<boolean>;
   year: Ref<DateStringFormat["year"]>;
@@ -25,6 +26,8 @@ interface Params {
   time: Ref<RemainingTimeFormat>;
   method: Ref<keyof typeof CalculationMethod>;
   madhab: Ref<CalculatorMadhab>;
+  date?: Ref<string>;
+  language?: Ref<UserInterfaceLanguage>;
 }
 
 interface SearchParams {
@@ -42,8 +45,8 @@ interface SearchParams {
   madhab: string;
 }
 
-export function encodeParamsForIframe(params: Params) {
-  return new URLSearchParams({
+export function encodeParamsForIframe(params: Params): string {
+  const urlSearchParams = new URLSearchParams({
     city: params.currPlaceParam.value.id + "",
     theme: params.theme.value,
     isShowHijri: params.isShowHijri.value ? "1" : "0",
@@ -53,12 +56,22 @@ export function encodeParamsForIframe(params: Params) {
     time: params.time.value,
     method: params.method.value,
     madhab: params.madhab.value,
-  }).toString();
+    zoom: params.zoom.value + "",
+  });
+  if (isDefined(params?.date?.value)) {
+    urlSearchParams.append("date", params.date.value);
+  }
+  if (isDefined(params?.language?.value)) {
+    urlSearchParams.append("language", params.language.value.languageCode);
+  }
+
+  return urlSearchParams.toString();
 }
 
 export function useUrlParams() {
   const params = useUrlSearchParams<SearchParams>("history");
-  const { currentLanguage } = useSettings();
+  const settings = useSettings();
+  const UIState = useUIState();
 
   const currentPlaceRef = ref<PlaceWithCountry | null>(null);
 
@@ -69,7 +82,7 @@ export function useUrlParams() {
       if (isDefined(newCity) && !Number.isNaN(Number(newCity))) {
         currentPlaceRef.value = await new ApiClient().placeById(
           Number(newCity),
-          currentLanguage.value.languageCode
+          settings.currentLanguage.value.languageCode
         );
       } else {
         currentPlaceRef.value = null;
@@ -102,6 +115,13 @@ export function useUrlParams() {
       }
     }
     return new Date();
+  });
+
+  const zoom = computed<number>(() => {
+    if (isDefined(params.zoom) && !Number.isNaN(params.zoom)) {
+      return Number(params.zoom);
+    }
+    return 1;
   });
 
   const currentTimeFormat = computed<RemainingTimeFormat>(() => {
@@ -146,6 +166,44 @@ export function useUrlParams() {
     return "shafi";
   });
 
+  async function applyUrlParamsToSettings() {
+    settings.currentLanguage.value = settings.getLanguageFromCode(
+      params.language
+    );
+    UIState.currentZoom.value = zoom.value;
+    UIState.isShowHijriDate.value = isShowHijriDate.value;
+    UIState.isSideBarOpen.value = false;
+    settings.calculatorMadhab.value = calculatorMadhab.value;
+    settings.calculatorMethod.value = calculatorMethod.value;
+    settings.currMonthFormat.value = currMonthFormat.value;
+    settings.currWeekdayFormat.value = currWeekdayFormat.value;
+    settings.currYearFormat.value = currYearFormat.value;
+    settings.currentDate.value = dateToStandardString(currDate.value);
+    settings.currentUITheme.value = theme.value;
+    settings.currentTimeFormat.value = currentTimeFormat.value;
+    settings.currentPlace.value = await new ApiClient().placeById(
+      Number(params.city),
+      settings.currentLanguage.value.languageCode
+    );
+  }
+
+  function encodeSettingsToUrlParams(): string {
+    return encodeParamsForIframe({
+      currPlaceParam: settings.currentPlace,
+      isShowHijri: UIState.isShowHijriDate,
+      language: settings.currentLanguage,
+      madhab: settings.calculatorMadhab,
+      method: settings.calculatorMethod,
+      month: settings.currMonthFormat,
+      theme: settings.currentUITheme,
+      time: settings.currentTimeFormat,
+      weekDay: settings.currWeekdayFormat,
+      year: settings.currYearFormat,
+      zoom: UIState.currentZoom,
+      date: settings.currentDate,
+    });
+  }
+
   return {
     calculatorMadhab,
     calculatorMethod,
@@ -157,5 +215,7 @@ export function useUrlParams() {
     currYearFormat,
     isShowHijriDate,
     theme,
+    applyUrlParamsToSettings,
+    encodeSettingsToUrlParams,
   };
 }

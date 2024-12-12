@@ -7,17 +7,21 @@ import SettingsPageVue from "@/pages/SettingsPage.vue";
 import AboutPageVue from "@/pages/AboutPage.vue";
 import NotFoundPageVue from "@/pages/NotFoundPage.vue";
 import { PathMenuItem, RouteManager } from "@/types";
+import { useUrlParams } from "@/composables/urlParams";
 
 const currentView = shallowRef(null);
 const currentPathMenuItem = shallowRef<string | null>(null);
 
 export function useRoute(): RouteManager {
   const location = useBrowserLocation();
+  const { applyUrlParamsToSettings } = useUrlParams();
+
   const routePathToVueComponent = {
     "/": TimesPage,
     "": TimesPage,
     widget: TimesWidgetPage,
     times: TimesPage,
+    share: TimesPage,
     sabbaticals: ReligiousDaysPageVue,
     settings: SettingsPageVue,
     about: AboutPageVue,
@@ -43,14 +47,20 @@ export function useRoute(): RouteManager {
   const isWidget = ref(false);
 
   watch(
-    location,
-    () => {
-      setViewFromRoutePath(location.value.pathname?.replace("/", "") ?? "");
+    () => location.value.pathname,
+    async () => {
+      const path = location.value.pathname?.replace("/", "") ?? "";
+      await setViewFromRoutePath(path);
     },
     { immediate: true, deep: true }
   );
 
-  function setViewFromRoutePath(path: string) {
+  async function setViewFromRoutePath(path: string) {
+    if (path === "share") {
+      await applyUrlParamsToSettings();
+      location.value.href = "times";
+      return;
+    }
     const pageToGo = routePathToVueComponent[path];
     if (!pageToGo) {
       currentView.value = NotFoundPageVue;
@@ -66,8 +76,8 @@ export function useRoute(): RouteManager {
     isWidget.value = currentPathMenuItem.value === "widget";
   }
 
-  function setViewFromPathMenuItem(item: PathMenuItem) {
-    setViewFromRoutePath(item.title); // title is also route path
+  async function setViewFromPathMenuItem(item: PathMenuItem) {
+    await setViewFromRoutePath(item.title); // title is also route path
   }
 
   return {

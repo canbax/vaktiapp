@@ -102,13 +102,13 @@ export function useSettings() {
     "shafi"
   );
 
-  const currentLanguage = useStorage<UserInterfaceLanguage | null>(
+  const currentLanguage = useStorage<UserInterfaceLanguage>(
     "currentLanguage",
     getDefaultLanguage(),
     localStorage,
     {
       serializer: {
-        read: (v: any) => (v ? JSON.parse(v) : null),
+        read: (v: any) => (v ? JSON.parse(v) : getDefaultLanguage()),
         write: (v: any) => JSON.stringify(v),
       },
     }
