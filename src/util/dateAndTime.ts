@@ -133,3 +133,7 @@ export function clearHours(d: Date): Date {
   d.setMilliseconds(0);
   return d;
 }
+
+export function isToday(d: Date) {
+  return dateToStandardString(new Date()) === dateToStandardString(d);
+}

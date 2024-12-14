@@ -11,7 +11,7 @@ import {
   RemainingTimeFormat,
 } from "@/types";
 import { computed } from "vue";
-import { dateToStandardString } from "@/util/dateAndTime";
+import { dateToStandardString, isToday } from "@/util/dateAndTime";
 import { CalculationMethod } from "adhan";
 
 export interface TimesViewProps {
@@ -58,10 +58,7 @@ const dateStringFormat = computed<DateStringFormat>(() => {
   };
 });
 
-const isShowingToday = computed<boolean>(
-  () =>
-    dateToStandardString(new Date()) === dateToStandardString(props.currDate)
-);
+const isShowingToday = computed<boolean>(() => isToday(props.currDate));
 </script>
 
 <template>

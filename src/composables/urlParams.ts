@@ -12,7 +12,7 @@ import {
 import { CalculationMethod } from "adhan";
 import { Ref, computed, ref, watch } from "vue";
 import { useSettings } from "./settings";
-import { dateToStandardString } from "@/util/dateAndTime";
+import { dateToStandardString, isToday } from "@/util/dateAndTime";
 import { useUIState } from "./userInterfaceState";
 
 interface Params {
@@ -178,7 +178,12 @@ export function useUrlParams() {
     settings.currMonthFormat.value = currMonthFormat.value;
     settings.currWeekdayFormat.value = currWeekdayFormat.value;
     settings.currYearFormat.value = currYearFormat.value;
-    settings.currentDate.value = dateToStandardString(currDate.value);
+    if (isToday(currDate.value)) {
+      settings.currentDate.value = null;
+    } else {
+      settings.currentDate.value = dateToStandardString(currDate.value);
+    }
+
     settings.currentUITheme.value = theme.value;
     settings.currentTimeFormat.value = currentTimeFormat.value;
     settings.currentPlace.value = await new ApiClient().placeById(

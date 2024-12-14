@@ -28,7 +28,7 @@ function syncCurrentDate() {
 
 function goToToday() {
   currDate.value = new Date();
-  syncCurrentDate();
+  currentDate.value = null;
 }
 
 function goToYesterday() {
