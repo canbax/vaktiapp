@@ -32,45 +32,48 @@ function clickToHref(_, item: PathMenuItem) {
 </script>
 
 <template>
-  <v-app v-if="!isWidget" class="dynamic-zoom">
-    <v-navigation-drawer v-model="isSideBarOpen">
-      <v-list-item
-        v-for="item in pathMenuItems"
-        :key="item.title"
-        link
-        @click="clickToHref($event, item)"
-      >
+  <v-card v-if="!isWidget" class="dynamic-zoom">
+    <v-layout>
+      <v-navigation-drawer v-model="isSideBarOpen">
+        <v-list-item
+          v-for="item in pathMenuItems"
+          :key="item.title"
+          link
+          @click="clickToHref($event, item)"
+        >
+          <template #prepend>
+            <v-icon :icon="item.icon" />
+          </template>
+          <v-list-item-title>{{ $t(item.title) }}</v-list-item-title>
+        </v-list-item>
+      </v-navigation-drawer>
+
+      <v-app-bar>
         <template #prepend>
-          <v-icon :icon="item.icon" />
+          <v-app-bar-nav-icon color="primary" @click="switchNavigationDrawer" />
         </template>
-        <v-list-item-title>{{ $t(item.title) }}</v-list-item-title>
-      </v-list-item>
-    </v-navigation-drawer>
 
-    <v-app-bar>
-      <template #prepend>
-        <v-app-bar-nav-icon color="primary" @click="switchNavigationDrawer" />
-      </template>
+        <template #title>
+          <v-app-bar-title>
+            {{ $t(currentPathMenuItem) }}
+          </v-app-bar-title>
+        </template>
 
-      <template #title>
-        <v-app-bar-title>
-          {{ $t(currentPathMenuItem) }}
-        </v-app-bar-title>
-      </template>
+        <template #default v-if="isTimesShown">
+          <LocationSelectDialog />
+        </template>
 
-      <template #default v-if="isTimesShown">
-        <LocationSelectDialog />
-      </template>
+        <template #append v-if="isTimesShown">
+          <ShareTimes />
+        </template>
+      </v-app-bar>
 
-      <template #append v-if="isTimesShown">
-        <ShareTimes />
-      </template>
-    </v-app-bar>
+      <v-main>
+        <component :is="currentView" />
+      </v-main>
+    </v-layout>
+  </v-card>
 
-    <v-main>
-      <component :is="currentView" />
-    </v-main>
-  </v-app>
   <component v-else :is="currentView" />
 </template>
 
