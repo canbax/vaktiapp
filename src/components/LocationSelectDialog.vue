@@ -39,6 +39,7 @@ const title = computed<string>(() =>
     :model-value="isOpen"
     fullscreen
     transition="dialog-bottom-transition"
+    @update:modelValue="userIntentForDialog = $event"
   >
     <template #activator>
       <v-btn

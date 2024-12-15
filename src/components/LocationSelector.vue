@@ -19,17 +19,7 @@ const placeSuggestions = ref<Map<number, GenericPlace>>(selectedPlaces.value);
 const autoCompleteRef = ref(null);
 const search = ref("");
 
-const currPlaceName = computed<string>(() => {
-  if (!model?.value) return "";
-  return isPlaceMatch(model.value)
-    ? model.value.matchingString
-    : model.value.name;
-});
-
-const isOpen = ref(!currPlaceName.value ? true : false);
-
 function onPlaceSelected(v: GenericPlace) {
-  isOpen.value = false;
   model.value = v ?? null;
   autoCompleteRef.value?.blur?.();
 
@@ -50,7 +40,6 @@ function preparePlaceSuggestions(places: GenericPlace[]) {
 async function nearByPlaces() {
   await getGPS();
 
-  if (!isOpen.value) return;
   const results = await api.nearByPlaces(
     lastGPS.value.latitude,
     lastGPS.value.longitude,
@@ -61,7 +50,7 @@ async function nearByPlaces() {
 
 const searchDebounced = useDebounceFn(async (v: string) => {
   search.value = v;
-  if (v?.length < 2 || !isOpen.value) return;
+  if (v?.length < 2) return;
   const results = await api.searchPlaces(
     v,
     lastGPS.value.latitude,
@@ -85,6 +74,12 @@ const {
 
 function isPlaceMatch(place: GenericPlace): place is PlaceMatchWithCountry {
   return Boolean(place?.["matchingString"]);
+}
+
+function country2flag(countryCode: string) {
+  return countryCode.replace(/./g, (letter) =>
+    String.fromCodePoint((letter.charCodeAt(0) % 32) + 0x1f1e5)
+  );
 }
 
 const loading = computed<boolean>(
@@ -121,12 +116,17 @@ const items = computed<GenericPlace[]>(() =>
     return-object
   >
     <template #item="{ item, props }">
-      <v-list-item v-bind="props" :subtitle="item.raw.country">
+      <v-list-item v-bind="props">
         <template #title>
           <span v-if="isPlaceMatch(item.raw)">
             {{ item.raw.matchingString }}, {{ item.raw.stateName }}
           </span>
           <span v-else> {{ item.raw.name }}, {{ item.raw.stateName }} </span>
+        </template>
+        <template #subtitle>
+          <div>
+            {{ item.raw.country + " " + country2flag(item.raw.countryCode) }}
+          </div>
         </template>
       </v-list-item>
     </template>
