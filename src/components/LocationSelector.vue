@@ -2,7 +2,7 @@
 import { ApiClient } from "@/ApiClient";
 import { useDebounceFn } from "@vueuse/core";
 import { GenericPlace, PlaceMatchWithCountry } from "@/types";
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useSafeCall } from "@/composables/safeCall";
 import { useCoordinates } from "@/composables/coordinates";
 import { isDefined } from "@vueuse/core";
@@ -95,12 +95,23 @@ const error = computed<string | null>(() => {
   return null;
 });
 
+const snackbar = ref(false);
+
+watch(error, () => {
+  snackbar.value = Boolean(error.value);
+});
+
 const items = computed<GenericPlace[]>(() =>
   Array.from(placeSuggestions.value.values())
 );
 </script>
 
 <template>
+  <v-snackbar v-model="snackbar" vertical timeout="3000">
+    <div class="text-subtitle-1 pb-2">{{ $t("InternetErr") }}</div>
+    <p>{{ error }}</p>
+  </v-snackbar>
+
   <v-autocomplete
     class="ma-5"
     ref="autoCompleteRef"

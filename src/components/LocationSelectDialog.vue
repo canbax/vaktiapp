@@ -57,7 +57,7 @@ const title = computed<string>(() =>
             :title="title"
             :closable="hasCurrentPlace"
             @click:close="userIntentForDialog = false"
-          ></v-alert>
+          />
         </div>
         <div>
           <LocationSelector v-model="currentPlace" />

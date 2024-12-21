@@ -21,10 +21,12 @@ function setTheme(v: string) {
 </script>
 
 <template>
-  <LanguageSelector v-model="currentLanguage" />
-  <ThemeSelector v-model="currentUITheme" @update="setTheme" />
+  <div class="d-flex flex-wrap">
+    <LanguageSelector v-model="currentLanguage" class="ma-2" />
+    <ThemeSelector v-model="currentUITheme" class="ma-2" @update="setTheme" />
+  </div>
 
-  <div>
+  <div class="ma-2">
     <div class="text-caption ma-1">{{ $t("changeZoom") }}</div>
     <ZoomSlider :current-zoom="currentZoom" @zoom="currentZoom = $event" />
   </div>
