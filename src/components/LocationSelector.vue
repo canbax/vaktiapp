@@ -9,7 +9,7 @@ import { isDefined } from "@vueuse/core";
 import { useSettings } from "@/composables/settings";
 
 const { error: isGPSError, getGPS, lastGPS } = useCoordinates();
-const { currentLanguage, selectedPlaces } = useSettings();
+const { currentLanguage, selectedPlaces, currentCountry } = useSettings();
 
 const model = defineModel<GenericPlace>();
 
@@ -55,7 +55,8 @@ const searchDebounced = useDebounceFn(async (v: string) => {
     v,
     lastGPS.value.latitude,
     lastGPS.value.longitude,
-    currentLanguage?.value?.languageCode
+    currentLanguage?.value?.languageCode,
+    currentCountry.value
   );
   preparePlaceSuggestions(results);
 }, 300);

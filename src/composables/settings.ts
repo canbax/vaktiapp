@@ -71,6 +71,8 @@ export function useSettings() {
 
   const currentDate = useStorage<string | null>("currentDate", null);
 
+  const currentCountry = useStorage<string>("currentCountry", "tr");
+
   const currentTimeFormat = useStorage<RemainingTimeFormat>(
     "currentTimeFormat",
     "XX:YY:ZZ"
@@ -135,6 +137,7 @@ export function useSettings() {
   return {
     getLanguageFromCode,
     currentPlace,
+    currentCountry,
     currentLanguage,
     selectedPlaces,
     currentUITheme,

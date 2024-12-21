@@ -12,10 +12,11 @@ export class ApiClient {
     searchTerm: string,
     lat?: number,
     lng?: number,
-    lang?: string
+    lang?: string,
+    countryCode = ""
   ) {
     const q = searchTerm ?? "";
-    const url = `${this._baseUrl}searchPlaces?q=${q}&lat=${lat}&lng=${lng}&lang=${lang}`;
+    const url = `${this._baseUrl}searchPlaces?q=${q}&lat=${lat}&lng=${lng}&lang=${lang}&countryCode=${countryCode}`;
     const response = await fetch(url, { method: "GET" });
     return response.json() as Promise<PlaceMatchWithCountry[]>;
   }
