@@ -62,7 +62,7 @@ const isShowingToday = computed<boolean>(() => isToday(props.currDate));
 </script>
 
 <template>
-  <v-theme-provider :theme="theme" with-background>
+  <v-theme-provider :theme="theme" with-background class="ma-2">
     <DateView
       :date="currDate"
       :date-string-format="dateStringFormat"

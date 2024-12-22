@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { HourString, RemainingTimeFormat } from "@/types";
 import { useRemainingTimeToPray } from "@/composables/remainingTimeToPray";
-import { toRef } from "vue";
+import { computed, toRef } from "vue";
 
 const props = defineProps<{
   currTimes: HourString[];
@@ -23,6 +23,25 @@ const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
   toRef(() => props.currTimes),
   toRef(() => props.remainingTimeFormat)
 );
+
+const prayableIndex = computed<number>(() => {
+  if (currPrayIdx.value === 0) return 5;
+  return currPrayIdx.value - 1;
+});
+
+function prayableRowCSS(i: number, padding = false) {
+  if (padding) {
+    return [
+      { "font-weight-bold text-orange": i === prayableIndex.value },
+      "text-h5",
+      "ps-2",
+    ];
+  }
+  return [
+    { "font-weight-bold text-orange": i === prayableIndex.value },
+    "text-h5",
+  ];
+}
 </script>
 
 <template>
@@ -36,26 +55,15 @@ const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
       />
 
       <div class="d-flex flex-column">
-        <div
-          class="d-flex justify-center"
-          v-for="(item, i) in currTimes"
-          :key="i"
-        >
-          <span class="text-right pe-2">
-            <span
-              :class="[{ 'font-weight-bold': i === currPrayIdx }, 'text-h5']"
-            >
+        <div v-for="(item, i) in currTimes" :key="i">
+          <div class="d-flex justify-end w-100">
+            <span :class="prayableRowCSS(i)">
               {{ $t(timeItems[i]) }}
             </span>
-          </span>
-          <span class="text-left ps-2">
-            <span
-              :class="[{ 'font-weight-bold': i === currPrayIdx }, 'text-h5']"
-            >
+            <span :class="prayableRowCSS(i, true)">
               {{ item }}
-              <v-icon v-if="i == currPrayIdx"> mdi-clock </v-icon>
             </span>
-          </span>
+          </div>
         </div>
       </div>
 
