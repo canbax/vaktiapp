@@ -24,6 +24,14 @@ const isTimesShown = computed<boolean>(
   () => currentPathMenuItem.value === "times"
 );
 
+const isAboutShown = computed<boolean>(
+  () => currentPathMenuItem.value === "about"
+);
+
+function openGitHubSponsors() {
+  window.open("https://github.com/sponsors/canbax", "_blank");
+}
+
 function clickToHref(_, item: PathMenuItem) {
   isSideBarOpen.value = false;
   history.pushState({}, "", "/" + item.title);
@@ -59,8 +67,17 @@ function clickToHref(_, item: PathMenuItem) {
           </v-app-bar-title>
         </template>
 
-        <template #default v-if="isTimesShown">
-          <LocationSelectDialog />
+        <template #default v-if="isTimesShown || isAboutShown">
+          <LocationSelectDialog v-if="isTimesShown" />
+          <v-btn
+            v-else-if="isAboutShown"
+            variant="outlined"
+            class="text-capitalize ma-2"
+            @click="openGitHubSponsors"
+            prepend-icon="mdi-github"
+          >
+            GitHub
+          </v-btn>
         </template>
 
         <template #append v-if="isTimesShown">
