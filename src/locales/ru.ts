@@ -104,6 +104,7 @@ export const ru = {
   dateFormat: "Формат даты",
   remainingTimeFormat: "Формат оставшегося времени",
   hour: "час",
+  searchPlace: "Type to search location ...",
   minute: "минута",
   second: "второй",
   lastUpdateTime: "Время последнего обновления ПО",

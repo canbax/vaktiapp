@@ -104,6 +104,7 @@ export const tr = {
   dateFormat: "Tarih gösterimi",
   remainingTimeFormat: "Kalan süre gösterimi",
   hour: "saat",
+  searchPlace: "Konum aramak için yazın ...",
   minute: "dakika",
   second: "saniye",
   lastUpdateTime: "Son yazılım güncellenme tarihi",

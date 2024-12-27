@@ -104,6 +104,7 @@ export const fa = {
   dateFormat: "قالب تاریخ",
   remainingTimeFormat: "قالب زمان باقی مانده",
   hour: "ساعت",
+  searchPlace: "Type to search location ...",
   minute: "دقیقه",
   second: "دوم",
   lastUpdateTime: "آخرین زمان بروزرسانی نرم افزار",

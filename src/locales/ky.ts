@@ -104,6 +104,7 @@ export const ky = {
   dateFormat: "Күн форматы",
   remainingTimeFormat: "Калган убакыт форматы",
   hour: "саат",
+  searchPlace: "Type to search location ...",
   minute: "мүнөт",
   second: "экинчи",
   lastUpdateTime: "Программанын акыркы жаңыртуу убактысы",

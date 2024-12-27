@@ -104,6 +104,7 @@ export const ko = {
   dateFormat: "날짜 형식",
   remainingTimeFormat: "남은 시간 형식",
   hour: "시간",
+  searchPlace: "Type to search location ...",
   minute: "분",
   second: "초",
   lastUpdateTime: "마지막 소프트웨어 업데이트 시간",

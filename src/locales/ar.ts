@@ -105,6 +105,7 @@ export const ar: Record<string, string> = {
   dateFormat: "tnsiq altaarikh",
   remainingTimeFormat: "tansiq alwaqt almutbqi",
   hour: "hour",
+  searchPlace: "Type to search location ...",
   minute: "dqiqt",
   second: "second",
   lastUpdateTime: "akhir waqt litahdith albarnamj",

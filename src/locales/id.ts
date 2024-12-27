@@ -104,6 +104,7 @@ export const id = {
   dateFormat: "Format tanggal",
   remainingTimeFormat: "Format waktu tersisa",
   hour: "hour",
+  searchPlace: "Type to search location ...",
   minute: "menit",
   second: "second",
   lastUpdateTime: "Waktu pembaruan perangkat lunak terakhir",

@@ -104,6 +104,7 @@ export const zh = {
   dateFormat: "日期格式",
   remainingTimeFormat: "剩余时间格式",
   hour: "小时",
+  searchPlace: "Type to search location ...",
   minute: "分钟",
   second: "第二",
   lastUpdateTime: "上次软件更新时间",

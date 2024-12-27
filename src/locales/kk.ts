@@ -104,6 +104,7 @@ export const kk = {
   dateFormat: "Күн форматы",
   remainingTimeFormat: "Қалған уақыт форматы",
   hour: "сағат",
+  searchPlace: "Type to search location ...",
   minute: "минут",
   second: "екінші",
   lastUpdateTime: "Бағдарламалық жасақтаманың соңғы жаңару уақыты",

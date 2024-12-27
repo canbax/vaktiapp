@@ -51,44 +51,44 @@ const config: PlaywrightTestConfig = {
         ...devices["Desktop Chrome"],
       },
     },
-    {
-      name: "firefox",
-      use: {
-        ...devices["Desktop Firefox"],
-      },
-    },
-    {
-      name: "webkit",
-      use: {
-        ...devices["Desktop Safari"],
-      },
-    },
-
-    /* Test against mobile viewports. */
     // {
-    //   name: 'Mobile Chrome',
+    //   name: "firefox",
     //   use: {
-    //     ...devices['Pixel 5'],
+    //     ...devices["Desktop Firefox"],
     //   },
     // },
     // {
-    //   name: 'Mobile Safari',
+    //   name: "webkit",
     //   use: {
-    //     ...devices['iPhone 12'],
+    //     ...devices["Desktop Safari"],
     //   },
     // },
 
-    /* Test against branded browsers. */
+    // /* Test against mobile viewports. */
     // {
-    //   name: 'Microsoft Edge',
+    //   name: "Mobile Chrome",
     //   use: {
-    //     channel: 'msedge',
+    //     ...devices["Pixel 5"],
     //   },
     // },
     // {
-    //   name: 'Google Chrome',
+    //   name: "Mobile Safari",
     //   use: {
-    //     channel: 'chrome',
+    //     ...devices["iPhone 12"],
+    //   },
+    // },
+
+    // /* Test against branded browsers. */
+    // {
+    //   name: "Microsoft Edge",
+    //   use: {
+    //     channel: "msedge",
+    //   },
+    // },
+    // {
+    //   name: "Google Chrome",
+    //   use: {
+    //     channel: "chrome",
     //   },
     // },
   ],

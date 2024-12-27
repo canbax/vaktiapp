@@ -103,6 +103,7 @@ export const ms = {
   dateFormat: "Format tarikh",
   remainingTimeFormat: "Format masa yang tersisa",
   hour: "jam",
+  searchPlace: "Type to search location ...",
   minute: "minit",
   second: "kedua",
   lastUpdateTime: "Masa kemas kini perisian terakhir",

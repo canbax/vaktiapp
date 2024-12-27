@@ -103,6 +103,7 @@ export const az = {
   dateFormat: "Tarix formatı",
   qalanTimeFormat: "Qalan vaxt formatı",
   hour: "saat",
+  searchPlace: "Type to search location ...",
   dəqiqə: "dəqiqə",
   second: "ikinci",
   lastUpdateTime: "Son proqram yeniləmə vaxtı",

@@ -104,6 +104,7 @@ export const fr = {
   dateFormat: "Format de la date",
   remainingTimeFormat: "Format du temps restant",
   hour: "heure",
+  searchPlace: "Type to search location ...",
   minute: "minute",
   second: "deuxième",
   lastUpdateTime: "Heure de la dernière mise à jour du logiciel",
