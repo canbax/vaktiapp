@@ -1,7 +1,6 @@
 export const tr = {
   about: "Hakkında",
-  aboutTxt:
-    "Ücretsiz, reklamsız ve açık kaynak kodlu namaz vakti. Vakit bilgilerini Diyanet İşleri Başkanlığı'nın resmi websitesinden internet üzerinden çeker. Versiyon: 1.0.2",
+  aboutTxt: "Ücretsiz, reklamsız ve açık kaynak kodlu namaz vakti.",
   contact: "İletişim",
   sourceCodes: "Kaynak kodlar",
   settings: "Ayarlar",
@@ -100,6 +99,7 @@ export const tr = {
   weekdayShort6: "Cmts",
   yearFormat: "Yıl Gösterimi",
   monthFormat: "Ay Gösterimi",
+  isCopied: " koyalandı.",
   weekdayFormat: "Hafta günü Gösterimi",
   dateFormat: "Tarih gösterimi",
   remainingTimeFormat: "Kalan süre gösterimi",
@@ -108,4 +108,9 @@ export const tr = {
   second: "saniye",
   lastUpdateTime: "Son yazılım güncellenme tarihi",
   InternetErr: "İnternet bağlantı hatası!",
+  donatePageText:
+    "Ücretsiz, reklamsız ancak yüksek kalitede bir hizmet sunmaya çalışıyoruz. Sunucu masrafları, zaman, emek harcıyoruz. Yapacağınız 1 liralık bir bağış bile aşk, şevk ve motivasyon doğurarak bu hizmetlerimizin devamlılığına ve daha iyi olmasına katkı sağlayacaktır.",
+  transferToBankAccount: "Banka hesabına transfer",
+  githubSponsorExplanation:
+    "GitHub üzerinden çalışmalarımız için sponsor olabilirsiniz.",
 };

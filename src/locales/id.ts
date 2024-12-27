@@ -1,7 +1,6 @@
 export const id = {
   about: "About",
-  aboutTxt:
-    "Waktu Sholat gratis, bebas iklan dan bersumber terbuka. Ini menarik informasi waktu dari situs resmi direktorat urusan agama Turki melalui internet. Versi: 1.0.2",
+  aboutTxt: "Waktu Sholat gratis, bebas iklan dan bersumber terbuka.",
   contact: "Contact",
   sourceCodes: "Kode sumber",
   settings: "Settings",
@@ -100,6 +99,7 @@ export const id = {
   weekdayShort6: "Sab",
   yearFormat: "Format Tahun",
   monthFormat: "Format Bulan",
+  isCopied: " is copied.",
   weekdayFormat: "Weekday Format",
   dateFormat: "Format tanggal",
   remainingTimeFormat: "Format waktu tersisa",
@@ -108,4 +108,8 @@ export const id = {
   second: "second",
   lastUpdateTime: "Waktu pembaruan perangkat lunak terakhir",
   InternetErr: "Kesalahan koneksi internet!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

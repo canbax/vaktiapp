@@ -1,7 +1,6 @@
 export const ru = {
   about: "О",
-  aboutTxt:
-    "Бесплатно, без рекламы и с открытым исходным кодом Praying Times. Он извлекает информацию о времени с официального сайта Управления по делам религии Турции через Интернет. Версия: 1.0.2",
+  aboutTxt: "Бесплатно, без рекламы и с открытым исходным кодом Praying Times.",
   contact: "Контакт",
   sourceCodes: "Исходные коды",
   settings: "Настройки",
@@ -100,6 +99,7 @@ export const ru = {
   weekdayShort6: "Сб",
   yearFormat: "Формат года",
   monthFormat: "Формат месяца",
+  isCopied: " is copied.",
   weekdayFormat: "Формат рабочего дня",
   dateFormat: "Формат даты",
   remainingTimeFormat: "Формат оставшегося времени",
@@ -108,4 +108,8 @@ export const ru = {
   second: "второй",
   lastUpdateTime: "Время последнего обновления ПО",
   InternetErr: "Ошибка интернет-соединения!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

@@ -1,7 +1,6 @@
 export const it = {
   about: "Informazioni",
-  aboutTxt:
-    "Praying Times gratuito, senza pubblicità e open source. Recupera informazioni sull'ora dal sito web ufficiale della direzione turca degli affari religiosi su Internet. Versione: 1.0.2",
+  aboutTxt: "Praying Times gratuito, senza pubblicità e open source.",
   contact: "Contatto",
   sourceCodes: "Codici sorgente",
   settings: "Impostazioni",
@@ -100,6 +99,7 @@ export const it = {
   weekdayShort6: "Sab",
   yearFormat: "Formato anno",
   monthFormat: "Formato mese",
+  isCopied: " is copied.",
   weekdayFormat: "Weekday Format",
   dateFormat: "Formato data",
   remainingTimeFormat: "Formato dell'ora rimanente",
@@ -108,4 +108,8 @@ export const it = {
   second: "second",
   lastUpdateTime: "Ora dell'ultimo aggiornamento software",
   InternetErr: "Errore di connessione a Internet!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

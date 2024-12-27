@@ -1,7 +1,6 @@
 export const az = {
   about: "haqqında",
-  aboutTxt:
-    "Pulsuz, reklamsız və açıq mənbəli Praying Times. İnternet üzərindən Türk Diyanət İşləri Müdirliyinin rəsmi saytından vaxt məlumatları alır. Versiya: 1.0.2",
+  aboutTxt: "Pulsuz, reklamsız və açıq mənbəli Praying Times.",
   contact: "əlaqə",
   sourceCodes: "Mənbə kodları",
   settings: "Ayarlar",
@@ -99,6 +98,7 @@ export const az = {
   weekdayShort6: "Şənbə",
   yearFormat: "İl Formatı",
   monthFormat: "Ay Formatı",
+  isCopied: " is copied.",
   weekdayFormat: "Weekday Format",
   dateFormat: "Tarix formatı",
   qalanTimeFormat: "Qalan vaxt formatı",
@@ -107,4 +107,8 @@ export const az = {
   second: "ikinci",
   lastUpdateTime: "Son proqram yeniləmə vaxtı",
   InternetErr: "İnternet bağlantısı xətası!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

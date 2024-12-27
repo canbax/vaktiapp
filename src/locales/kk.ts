@@ -1,7 +1,6 @@
 export const kk = {
   about: "туралы",
-  aboutTxt:
-    "Ақысыз, жарнамасыз және қайнар көзі ашық Praying Times. Интернетте түрік дін істері басқармасының ресми сайтынан уақыт туралы ақпарат алады. Нұсқа: 1.0.2",
+  aboutTxt: "Ақысыз, жарнамасыз және қайнар көзі ашық Praying Times.",
   contact: "байланыс",
   sourceCodes: "Бастапқы кодтар",
   settings: "параметрлер",
@@ -100,6 +99,7 @@ export const kk = {
   weekdayShort6: "сенбі",
   yearFormat: "жыл форматы",
   monthFormat: "Ай форматы",
+  isCopied: " is copied.",
   weekdayFormat: "Weekday Format",
   dateFormat: "Күн форматы",
   remainingTimeFormat: "Қалған уақыт форматы",
@@ -108,4 +108,8 @@ export const kk = {
   second: "екінші",
   lastUpdateTime: "Бағдарламалық жасақтаманың соңғы жаңару уақыты",
   InternetErr: "Интернетке қосылу қателігі!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

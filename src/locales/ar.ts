@@ -1,7 +1,7 @@
 export const ar: Record<string, string> = {
   about: "hul",
   aboutTxt:
-    "'uwaqat alsalat majaniat wakhaliat min al'iielanat wamaftuhat almasdar. tushab maelumat alwaqt min almawqie alrasmii limudiriat alshuwuwn aldiyniat alturkiat eabr al'iintrint. al'iisdar: 1.0.2",
+    "'uwaqat alsalat majaniat wakhaliat min al'iielanat wamaftuhat almasdar.",
   contact: "jihat atsal",
   sourceCodes: "rmuz almasdr",
   settings: "'iiedadat",
@@ -100,6 +100,7 @@ export const ar: Record<string, string> = {
   weekdayShort6: "alsubta",
   yearFormat: "tansiq alsana",
   monthFormat: "tansiq alshahr",
+  isCopied: " is copied.",
   weekdayFormat: "tansiq 'ayam al'usbue",
   dateFormat: "tnsiq altaarikh",
   remainingTimeFormat: "tansiq alwaqt almutbqi",
@@ -108,4 +109,8 @@ export const ar: Record<string, string> = {
   second: "second",
   lastUpdateTime: "akhir waqt litahdith albarnamj",
   InternetErr: "khta fi alaitisal bial'iintarnt!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

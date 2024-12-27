@@ -1,7 +1,6 @@
 export const zh = {
   about: "关于",
-  aboutTxt:
-    "免费,无广告和开源的祈祷时间。它通过互联网从土耳其宗教事务局的官方网站上获取时间信息。版本:1.0.2",
+  aboutTxt: "免费,无广告和开源的祈祷时间",
   contact: "联系人",
   sourceCodes: "源代码",
   settings: "设置",
@@ -100,6 +99,7 @@ export const zh = {
   weekdayShort6: "星期六",
   yearFormat: "年份格式",
   monthFormat: "月份格式",
+  isCopied: " is copied.",
   weekdayFormat: "平日格式",
   dateFormat: "日期格式",
   remainingTimeFormat: "剩余时间格式",
@@ -108,4 +108,8 @@ export const zh = {
   second: "第二",
   lastUpdateTime: "上次软件更新时间",
   InternetErr: " Internet连接错误！",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

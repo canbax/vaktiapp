@@ -1,7 +1,6 @@
 export const ky = {
   about: "жөнүндө",
-  aboutTxt:
-    "Акысыз, жарнамасыз жана ачык булактуу Praying Times. Түркиянын Дин Башкармалыгынын расмий веб-сайтынан убакытты интернет аркылуу алып турат. Версия: 1.0.2",
+  aboutTxt: "Акысыз, жарнамасыз жана ачык булактуу Praying Times.",
   contact: "байланыш",
   sourceCodes: "Булак коддору",
   settings: "Жөндөөлөр",
@@ -100,6 +99,7 @@ export const ky = {
   weekdayShort6: "Ишемби",
   yearFormat: "Жылдын форматы",
   monthFormat: "Ай форматы",
+  isCopied: " is copied.",
   weekdayFormat: "Жумалык күндүн форматы",
   dateFormat: "Күн форматы",
   remainingTimeFormat: "Калган убакыт форматы",
@@ -108,4 +108,8 @@ export const ky = {
   second: "экинчи",
   lastUpdateTime: "Программанын акыркы жаңыртуу убактысы",
   InternetErr: "Интернетке туташуу катасы!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

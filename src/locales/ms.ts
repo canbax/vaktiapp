@@ -1,7 +1,6 @@
 export const ms = {
   about: "Tentang",
-  aboutTxt:
-    "Waktu Solat bebas, tanpa iklan dan sumber terbuka. Ia mengambil maklumat masa dari laman web rasmi direktorat urusan agama Turki melalui internet. Versi: 1.0.2",
+  aboutTxt: "Waktu Solat bebas, tanpa iklan dan sumber terbuka.",
   contact: "Hubungi",
   sourceCodes: "Kod sumber",
   settings: "Tetapan",
@@ -99,6 +98,7 @@ export const ms = {
   weekdayShort6: "Sabtu",
   yearFormat: "Format Tahun",
   monthFormat: "Format Bulan",
+  isCopied: " is copied.",
   weekdayFormat: "Format Hari Minggu",
   dateFormat: "Format tarikh",
   remainingTimeFormat: "Format masa yang tersisa",
@@ -107,4 +107,8 @@ export const ms = {
   second: "kedua",
   lastUpdateTime: "Masa kemas kini perisian terakhir",
   InternetErr: "Ralat sambungan internet!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

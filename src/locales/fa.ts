@@ -1,7 +1,6 @@
 export const fa = {
   about: "درباره",
-  aboutTxt:
-    "دعا تایمز رایگان , بدون تبلیغات و منبع باز. این اطلاعات را از وب سایت رسمی اداره امور مذهبی ترکیه از طریق اینترنت جلب می کند. نسخه: 1.0.2",
+  aboutTxt: "دعا تایمز رایگان , بدون تبلیغات و منبع باز.",
   contact: "تماس",
   sourceCodes: "کدهای منبع",
   settings: "تنظیمات",
@@ -100,6 +99,7 @@ export const fa = {
   weekdayShort6: "شنبه",
   yearFormat: "قالب سال",
   monthFormat: "قالب ماه",
+  isCopied: " is copied.",
   weekdayFormat: "قالب روز هفته",
   dateFormat: "قالب تاریخ",
   remainingTimeFormat: "قالب زمان باقی مانده",
@@ -108,4 +108,8 @@ export const fa = {
   second: "دوم",
   lastUpdateTime: "آخرین زمان بروزرسانی نرم افزار",
   InternetErr: "خطای اتصال به اینترنت!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

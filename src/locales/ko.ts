@@ -1,7 +1,6 @@
 export const ko = {
   about: "정보",
-  aboutTxt:
-    "무료, 광고없는 오픈 소스 Praying Times. 터키 종교 사무국의 공식 웹 사이트에서 인터넷을 통해 시간 정보를 가져옵니다. 버전 : 1.0.2",
+  aboutTxt: "무료, 광고없는 오픈 소스 Praying Times.",
   contact: "연락처",
   sourceCodes: "소스 코드",
   settings: "설정",
@@ -100,6 +99,7 @@ export const ko = {
   weekdayShort6: "토",
   yearFormat: "연도 형식",
   monthFormat: "월 형식",
+  isCopied: " is copied.",
   weekdayFormat: "평일 형식",
   dateFormat: "날짜 형식",
   remainingTimeFormat: "남은 시간 형식",
@@ -108,4 +108,8 @@ export const ko = {
   second: "초",
   lastUpdateTime: "마지막 소프트웨어 업데이트 시간",
   InternetErr: "인터넷 연결 오류!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };

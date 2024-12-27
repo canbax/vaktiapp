@@ -1,7 +1,6 @@
 export const en = {
   about: "About",
-  aboutTxt:
-    "Free, ad-free and open-source Praying Times. It pulls time information from the official website of the turkish directorate of religious affairs over the internet. Version: 1.0.2",
+  aboutTxt: "Free, ad-free and open-source Praying Times.",
   contact: "Contact",
   sourceCodes: "Source codes",
   settings: "Settings",
@@ -100,6 +99,7 @@ export const en = {
   weekdayShort6: "Sat",
   yearFormat: "Year Format",
   monthFormat: "Month Format",
+  isCopied: " is copied.",
   weekdayFormat: "Weekday Format",
   dateFormat: "Date format",
   remainingTimeFormat: "Remaining time format",
@@ -108,4 +108,8 @@ export const en = {
   second: "second",
   lastUpdateTime: "Last software update time",
   InternetErr: "Internet connection error!",
+  donatePageText:
+    "We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.",
+  transferToBankAccount: "Transfer to bank account",
+  githubSponsorExplanation: "You can sponsor our work via GitHub.",
 };
