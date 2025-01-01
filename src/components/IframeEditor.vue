@@ -115,7 +115,12 @@ function copyIframeCode() {
             @click:control="selectIframeCode"
           >
             <template #append-inner>
-              <v-btn icon @click="copyIframeCode" class="ml-2">
+              <v-btn
+                data-testid="copy-iframe-code-btn"
+                icon
+                @click="copyIframeCode"
+                class="ml-2"
+              >
                 <v-icon :color="copied ? 'green' : 'default'">
                   {{ copied ? "mdi-check-circle" : "mdi-content-copy" }}
                 </v-icon>

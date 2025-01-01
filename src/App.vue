@@ -40,7 +40,7 @@ function clickToHref(_, item: PathMenuItem) {
 </script>
 
 <template>
-  <v-card v-if="!isWidget" class="dynamic-zoom">
+  <v-card v-if="!isWidget" data-testid="container-card" class="dynamic-zoom">
     <v-layout>
       <v-navigation-drawer v-model="isSideBarOpen">
         <v-list-item

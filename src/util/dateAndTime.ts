@@ -137,3 +137,30 @@ export function clearHours(d: Date): Date {
 export function isToday(d: Date) {
   return dateToStandardString(new Date()) === dateToStandardString(d);
 }
+
+export function getCalendarDayDifference(date1: Date, date2: Date): number {
+  // Normalize both dates to midnight UTC
+  const startOfDay1 = new Date(
+    Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate())
+  );
+  const startOfDay2 = new Date(
+    Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
+  );
+
+  // Calculate the difference in days
+  const msPerDay = 24 * 60 * 60 * 1000;
+  return Math.abs((startOfDay1.getTime() - startOfDay2.getTime()) / msPerDay);
+}
+
+export function getHumanReadableDayDifference(
+  date: Date,
+  $t: (key: string) => string
+) {
+  const today = new Date();
+  console.log("today: ", today, " date: ", date);
+  const diff = getCalendarDayDifference(today, date);
+  console.log("diff: ", diff);
+  if (diff === 0) return $t("today");
+  else if (diff === 1) return $t("tomorrow");
+  return diff + $t("daysLater");
+}

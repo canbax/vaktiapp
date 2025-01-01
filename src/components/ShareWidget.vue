@@ -13,6 +13,7 @@ const isOpen = ref(false);
   >
     <template #activator>
       <v-list-item
+        data-testid="embed-btn"
         :title="$t('embedToYourWebsite')"
         prepend-icon="mdi-code-tags"
         @click="isOpen = true"

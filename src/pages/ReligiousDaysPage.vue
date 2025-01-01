@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { HijriDate } from "@/util/HijriDate";
-import { clearHours } from "@/util/dateAndTime";
+import { clearHours, getHumanReadableDayDifference } from "@/util/dateAndTime";
 
 import { getCurrentInstance, onMounted, ref } from "vue";
 
 type SabbaticalRow = {
   hij: string;
   gre: string;
+  greDate: Date;
   sabbatical: string;
 };
 
@@ -35,6 +36,7 @@ onMounted(() => {
     return {
       hij: hijri2str(x.hijri),
       gre: gre2str(x.gregorian),
+      greDate: x.gregorian,
       sabbatical: $t(x.sabbatical.name),
     };
   });
@@ -63,10 +65,16 @@ function gre2str(d: Date): string {
           }"
         >
           <td>{{ item.sabbatical }}</td>
-          <td>
-            {{ item.hij }}
-            <br />
-            {{ item.gre }}
+          <td class="d-flex align-center justify-center">
+            <div v-if="idx === NUM_SABBATICALS" class="pa-4">
+              ({{ getHumanReadableDayDifference(item.greDate, $t) }})
+            </div>
+            <div>
+              {{ item.hij }}
+              <br />
+
+              {{ item.gre }}
+            </div>
           </td>
         </tr>
       </tbody>

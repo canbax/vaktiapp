@@ -45,6 +45,7 @@ async function copyLinkClicked() {
         v-bind="props"
         icon="mdi-share"
         color="primary"
+        data-testid="share-btn"
         v-tooltip:bottom="$t('shareTimes')"
       />
     </template>
@@ -55,6 +56,7 @@ async function copyLinkClicked() {
 
         <v-list-item
           v-if="isClipboardSupported"
+          data-testid="copy-link-btn"
           :title="$t('copyLink')"
           :prepend-icon="copied ? 'mdi-check-circle' : 'mdi-link'"
           @click="copyLinkClicked"
@@ -62,6 +64,7 @@ async function copyLinkClicked() {
 
         <v-list-item
           v-if="isShareSupported"
+          data-testid="share-in-app-btn"
           :title="$t('share')"
           prepend-icon="mdi-share"
           @click="startShare"

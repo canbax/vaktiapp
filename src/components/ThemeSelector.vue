@@ -16,6 +16,7 @@ const emit = defineEmits<{ (e: "update", theme: AppTheme): void }>();
 <template>
   <v-select
     v-model="model"
+    data-testid="theme-select"
     :items="themes"
     :label="$t('selectTheme')"
     :placeholder="$t('selectTheme')"

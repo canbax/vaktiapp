@@ -6,6 +6,7 @@ import {
   secondsToHumanReadable,
   dateToString,
   dateToStandardString,
+  getCalendarDayDifference,
 } from "./dateAndTime";
 import { DateStringFormat, RemainingTimeFormat } from "@/types";
 import { translate } from "./i18n";
@@ -438,6 +439,26 @@ describe("Date and time utils", () => {
 
     it("should convert Date object into 'DateString' when day and month are 1 digit", () => {
       expect(dateToStandardString(new Date(2022, 2, 4))).toBe("2022-03-04");
+    });
+  });
+
+  describe("getCalendarDayDifference", () => {
+    it("should calculate day difference of the same dates", () => {
+      const date1 = new Date(2022, 10, 10);
+      const date2 = new Date(2022, 10, 10);
+      expect(getCalendarDayDifference(date1, date2)).toBe(0);
+    });
+
+    it("should calculate day difference dates with a time and not time", () => {
+      const date1 = new Date(2022, 10, 10, 23, 59, 59);
+      const date2 = new Date(2022, 10, 11);
+      expect(getCalendarDayDifference(date1, date2)).toBe(1);
+    });
+
+    it("should calculate day difference dates with a time and not time", () => {
+      const date1 = new Date(2022, 3, 10);
+      const date2 = new Date(2022, 10, 11);
+      expect(getCalendarDayDifference(date1, date2)).toBe(215);
     });
   });
 });

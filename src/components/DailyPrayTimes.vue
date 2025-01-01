@@ -50,12 +50,13 @@ function prayableRowCSS(i: number, padding = false) {
       <v-btn
         @click="emit('prevDay')"
         v-tooltip:start="$t('prevDay')"
+        data-testid="prev-btn"
         icon="mdi-calendar-arrow-left"
         class="my-auto mx-2"
       />
 
       <div class="d-flex flex-column">
-        <div v-for="(item, i) in currTimes" :key="i">
+        <div v-for="(item, i) in currTimes" :key="i" data-testid="time-row">
           <div class="d-flex justify-end w-100">
             <span :class="prayableRowCSS(i)">
               {{ $t(timeItems[i]) }}
@@ -69,6 +70,7 @@ function prayableRowCSS(i: number, padding = false) {
 
       <v-btn
         @click="emit('nextDay')"
+        data-testid="next-btn"
         v-tooltip:end="$t('nextDay')"
         icon="mdi-calendar-arrow-right"
         class="my-auto mx-2"
@@ -78,11 +80,12 @@ function prayableRowCSS(i: number, padding = false) {
     <v-divider></v-divider>
     <div v-if="isShowingToday">
       <span> {{ $t(timeItems[currPrayIdx]) }} {{ $t("remainingTime") }} </span>
-      <h2 test-id="remaining-time">{{ remainingTime }}</h2>
+      <h2 data-testid="remaining-time">{{ remainingTime }}</h2>
     </div>
     <div v-else>
       <v-btn
         @click="emit('showToday')"
+        data-testid="today-btn"
         v-tooltip:bottom="$t('today')"
         icon="mdi-calendar-today"
         color="primary"

@@ -117,6 +117,7 @@ const items = computed<GenericPlace[]>(() =>
     ref="autoCompleteRef"
     :model-value="model"
     :loading="loading"
+    data-testid="search-place"
     :placeholder="$t('searchPlace')"
     hide-no-data
     :multiple="false"

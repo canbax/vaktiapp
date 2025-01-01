@@ -23,9 +23,11 @@ const hijriDateString = computed(() => {
 
 <template>
   <div class="text-h6 text-center">
-    {{ dateString }}
+    <span data-testid="date-str"> {{ dateString }} </span>
 
-    <span v-if="isShowHijriDate"> - {{ hijriDateString }} </span>
+    <span v-if="isShowHijriDate" data-testid="hijri-date-str">
+      - {{ hijriDateString }}
+    </span>
   </div>
 </template>
 

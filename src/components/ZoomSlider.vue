@@ -63,10 +63,20 @@ function zoomOut() {
     @end="debouncedSetZoom"
   >
     <template #prepend>
-      <v-btn @click="zoomOut()" size="small" icon="mdi-magnify-minus" />
+      <v-btn
+        data-testid="zoom-out-btn"
+        @click="zoomOut()"
+        size="small"
+        icon="mdi-magnify-minus"
+      />
     </template>
     <template #append>
-      <v-btn @click="zoomIn()" size="small" icon="mdi-magnify-plus" />
+      <v-btn
+        data-testid="zoom-in-btn"
+        @click="zoomIn()"
+        size="small"
+        icon="mdi-magnify-plus"
+      />
     </template>
   </v-slider>
 </template>

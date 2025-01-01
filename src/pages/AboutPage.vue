@@ -39,12 +39,12 @@ const buildVersion = computed(() => process.env.BUILD_VERSION || "");
         />
       </div>
       <div>
-        <span> TR53 0001 0090 1024 9249 7050 01 </span>
+        <span> TR49 0020 6001 3401 9074 7100 01 </span>
         <v-btn
           class="mx-2"
           size="x-small"
           icon="mdi-content-copy"
-          @click="copyText('TR53 0001 0090 1024 9249 7050 01')"
+          @click="copyText('TR49 0020 6001 3401 9074 7100 01')"
         >
         </v-btn>
       </div>

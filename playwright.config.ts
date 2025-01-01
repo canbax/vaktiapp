@@ -38,9 +38,14 @@ const config: PlaywrightTestConfig = {
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+    video: "on",
 
     /* Only on CI systems run the tests headless */
     headless: !!process.env.CI,
+
+    permissions: ["geolocation", "clipboard-read", "clipboard-write"],
+
+    geolocation: { latitude: 40.0007044, longitude: 32.8519146 },
   },
 
   /* Configure projects for major browsers */
@@ -49,6 +54,7 @@ const config: PlaywrightTestConfig = {
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
+        locale: "en-EN",
       },
     },
     // {
