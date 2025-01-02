@@ -58,7 +58,11 @@ function clickToHref(_, item: PathMenuItem) {
 
       <v-app-bar>
         <template #prepend>
-          <v-app-bar-nav-icon color="primary" @click="switchNavigationDrawer" />
+          <v-app-bar-nav-icon
+            data-testid="main-menu-btn"
+            color="primary"
+            @click="switchNavigationDrawer"
+          />
         </template>
 
         <template #title>
