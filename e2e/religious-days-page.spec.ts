@@ -1,14 +1,11 @@
-import { expect } from "@playwright/test";
-import { selectLocation, test } from "./test-utils";
+import { expect } from '@playwright/test';
+import { selectLocation, test } from './test-utils';
 
-test("should show todays times with remaining times", async ({ page }) => {
+test('should show todays times with remaining times', async ({ page }) => {
   await selectLocation(page);
 
-  await page.getByText("Religious Days").click();
+  await page.getByText('Religious Days').click();
 
-  await page.waitForSelector("tr");
-  await page.waitForSelector("td");
-
-  expect(await page.locator("tr").count()).toBeGreaterThan(10);
-  expect(await page.locator("td").count()).toBeGreaterThan(20);
+  expect(await page.locator('tr').count()).toBeGreaterThan(10);
+  expect(await page.locator('td').count()).toBeGreaterThan(20);
 });
