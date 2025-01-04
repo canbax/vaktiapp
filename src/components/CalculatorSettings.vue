@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { useSettings } from "@/composables/settings";
-import CalculatorMadhabSelector from "@/components/CalculatorMadhabSelector.vue";
-import CalculatorMethodSelector from "@/components/CalculatorMethodSelector.vue";
-import { getCountryList } from "@/util/countryData";
+import { useSettings } from '@/composables/settings';
+import CalculatorMadhabSelector from '@/components/CalculatorMadhabSelector.vue';
+import CalculatorMethodSelector from '@/components/CalculatorMethodSelector.vue';
+import { getCountryList } from '@/util/countryData';
 
-const { calculatorMethod, calculatorMadhab, currentCountry, currentLanguage } =
-  useSettings();
+const { calculatorMethod, calculatorMadhab, currentCountry, currentLanguage } = useSettings();
 
 const countries = getCountryList(currentLanguage.value.languageCode);
 </script>

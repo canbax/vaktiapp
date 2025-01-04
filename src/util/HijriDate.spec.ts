@@ -1,52 +1,50 @@
-import { describe, it, expect } from "vitest";
-import { HijriDate } from "./HijriDate";
+import { describe, it, expect } from 'vitest';
+import { HijriDate } from './HijriDate';
 
-describe("Hijri Date", () => {
-  it("Can convert the same gregorian date to the same hijri date", () => {
+describe('Hijri Date', () => {
+  it('Can convert the same gregorian date to the same hijri date', () => {
     const d1 = new HijriDate(1442, 3, 20);
     const d2 = new HijriDate(1442, 3, 20);
     expect(d1.dayDiff(d2)).toBe(0);
     expect(d1.compare(d2)).toBe(0);
   });
 
-  it("Can convert to tomorrow", () => {
+  it('Can convert to tomorrow', () => {
     const d1 = new HijriDate(1442, 3, 20);
     const d2 = new HijriDate(1442, 3, 21);
     expect(d1.dayDiff(d2)).toBe(1);
   });
 
-  it("Can convert to tomorrow even if the month is different", () => {
+  it('Can convert to tomorrow even if the month is different', () => {
     const d1 = new HijriDate(1442, 3, 30);
     const d2 = new HijriDate(1442, 4, 1);
     expect(d1.dayDiff(d2)).toBe(1);
   });
 
-  it("Can convert to first and last day of the month", () => {
+  it('Can convert to first and last day of the month', () => {
     const d1 = new HijriDate(1442, 3, 1);
     const d2 = new HijriDate(1442, 3, 30);
     expect(d1.dayDiff(d2)).toBe(29);
   });
 
-  it("Should throw error if day is greater than maximum days in a month", () => {
+  it('Should throw error if day is greater than maximum days in a month', () => {
     expect(() => new HijriDate(1442, 3, 31)).toThrowError(
-      "day is either smaller than 1 or greater than maximum days in the month"
+      'day is either smaller than 1 or greater than maximum days in the month',
     );
   });
 
-  it("Should throw error if day is less than minimum days in a month", () => {
+  it('Should throw error if day is less than minimum days in a month', () => {
     expect(() => new HijriDate(1442, 3, 0)).toThrowError(
-      "day is either smaller than 1 or greater than maximum days in the month"
+      'day is either smaller than 1 or greater than maximum days in the month',
     );
   });
 
-  it("Can convert 2020 start of sacred 3 months correctly", () => {
+  it('Can convert 2020 start of sacred 3 months correctly', () => {
     const d1 = new HijriDate().toHijri(new Date(2020, 1, 25));
-    expect(
-      d1.getYear() === 1441 && d1.getMonth() === 6 && d1.getDay() === 1
-    ).toBe(true);
+    expect(d1.getYear() === 1441 && d1.getMonth() === 6 && d1.getDay() === 1).toBe(true);
   });
 
-  it("can convert a date with time", () => {
+  it('can convert a date with time', () => {
     const d1 = new HijriDate().toHijri(new Date(2023, 11, 14, 15, 14, 13, 12));
     expect(d1.compare(new HijriDate(1445, 5, 1))).toBe(0);
   });
@@ -223,12 +221,10 @@ describe("Hijri Date", () => {
   ];
 
   it.each(gregorianToHijri)(
-    "can convert gregorian to hijri correctly. Test case: %#",
+    'can convert gregorian to hijri correctly. Test case: %#',
     ({ gregorian, hijri }) => {
-      const d1 = new HijriDate().toHijri(
-        new Date(gregorian[0], gregorian[1], gregorian[2])
-      );
+      const d1 = new HijriDate().toHijri(new Date(gregorian[0], gregorian[1], gregorian[2]));
       expect(d1.compare(new HijriDate(hijri[0], hijri[1], hijri[2]))).toBe(0);
-    }
+    },
   );
 });

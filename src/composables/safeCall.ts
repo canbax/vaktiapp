@@ -1,5 +1,7 @@
-import { ref } from "vue";
+import { ref } from 'vue';
 
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function useSafeCall<F extends Function>(fn: F) {
   const error = ref<string | undefined>(undefined);
   const loading = ref(false);
@@ -10,7 +12,7 @@ export function useSafeCall<F extends Function>(fn: F) {
       loading.value = true;
       await fn(...args);
     } catch (e) {
-      error.value = "" + e;
+      error.value = '' + e;
     } finally {
       loading.value = false;
     }

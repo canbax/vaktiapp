@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import { useDebounceFn } from "@vueuse/core";
-import { useSettings } from "@/composables/settings";
+import { computed, ref } from 'vue';
+import { useDebounceFn } from '@vueuse/core';
+import { useSettings } from '@/composables/settings';
 
 interface Props {
   currentZoom: number;
   label?: string;
 }
 
-const emit = defineEmits<{ (e: "zoom", value: number): void }>();
+const emit = defineEmits<{ (e: 'zoom', value: number): void }>();
 
 const props = defineProps<Props>();
 
@@ -27,14 +27,14 @@ function limitInstantZoomInRange() {
 
 const debouncedSetZoom = useDebounceFn(() => {
   limitInstantZoomInRange();
-  emit("zoom", instantZoom.value);
+  emit('zoom', instantZoom.value);
 }, 500);
 
 const zoomPercentage = computed<string>(() => {
-  const normalizedZoom = Math.round(props.currentZoom * 100) + "";
-  if (currentLanguage.value && currentLanguage.value?.languageCode == "tr")
-    return "(%" + normalizedZoom + ")";
-  return "(" + normalizedZoom + "%)";
+  const normalizedZoom = Math.round(props.currentZoom * 100) + '';
+  if (currentLanguage.value && currentLanguage.value?.languageCode == 'tr')
+    return '(%' + normalizedZoom + ')';
+  return '(' + normalizedZoom + '%)';
 });
 
 function zoomIn() {
@@ -63,20 +63,10 @@ function zoomOut() {
     @end="debouncedSetZoom"
   >
     <template #prepend>
-      <v-btn
-        data-testid="zoom-out-btn"
-        @click="zoomOut()"
-        size="small"
-        icon="mdi-magnify-minus"
-      />
+      <v-btn data-testid="zoom-out-btn" @click="zoomOut()" size="small" icon="mdi-magnify-minus" />
     </template>
     <template #append>
-      <v-btn
-        data-testid="zoom-in-btn"
-        @click="zoomIn()"
-        size="small"
-        icon="mdi-magnify-plus"
-      />
+      <v-btn data-testid="zoom-in-btn" @click="zoomIn()" size="small" icon="mdi-magnify-plus" />
     </template>
   </v-slider>
 </template>

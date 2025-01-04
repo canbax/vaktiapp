@@ -1,11 +1,12 @@
-import { isDefined } from "@vueuse/core";
+import { isDefined } from '@vueuse/core';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function isValidGPS(latitude: any, longitude: any): boolean {
   const isValidNumbers =
     isDefined(latitude) &&
     isDefined(longitude) &&
-    typeof latitude === "number" &&
-    typeof longitude === "number";
+    typeof latitude === 'number' &&
+    typeof longitude === 'number';
 
   if (!isValidNumbers) return false;
   const isLatitudeValid = latitude >= -90 && latitude <= 90;

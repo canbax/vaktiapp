@@ -1,17 +1,10 @@
-import { describe, it, expect } from "vitest";
-import { findRemainingSecondsToCurrPray } from "./prayTimeHelper";
-import { HourString } from "@/types";
+import { describe, it, expect } from 'vitest';
+import { findRemainingSecondsToCurrPray } from './prayTimeHelper';
+import { HourString } from '@/types';
 
-describe("praying time helper", () => {
-  it("Can find the current related praying time", () => {
-    const prayTimes: HourString[] = [
-      "05:42",
-      "07:07",
-      "12:37",
-      "15:29",
-      "17:58",
-      "19:16",
-    ];
+describe('praying time helper', () => {
+  it('Can find the current related praying time', () => {
+    const prayTimes: HourString[] = ['05:42', '07:07', '12:37', '15:29', '17:58', '19:16'];
     const date1 = new Date(2023, 8, 22, 4);
     expect(findRemainingSecondsToCurrPray(date1, prayTimes)).toEqual({
       currPray: 0,

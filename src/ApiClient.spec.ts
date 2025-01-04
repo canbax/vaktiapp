@@ -1,11 +1,11 @@
-import { describe, it, expect } from "vitest";
-import { ApiClient } from "./ApiClient";
+import { describe, it, expect } from 'vitest';
+import { ApiClient } from './ApiClient';
 
-describe("API Client", () => {
+describe('API Client', () => {
   const api = new ApiClient();
 
-  describe("searchPlaces", () => {
-    it("should create an API client", () => {
+  describe('searchPlaces', () => {
+    it('should create an API client', () => {
       expect(api).toBeDefined();
     });
     // it("should search places by search query, GPS coordinates and language", async () => {

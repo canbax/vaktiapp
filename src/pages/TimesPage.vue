@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TimesView from "@/components/TimesView.vue";
-import { useSettings } from "@/composables/settings";
-import { ref } from "vue";
-import { dateToStandardString } from "@/util/dateAndTime";
-import { useUIState } from "@/composables/userInterfaceState";
+import TimesView from '@/components/TimesView.vue';
+import { useSettings } from '@/composables/settings';
+import { ref } from 'vue';
+import { dateToStandardString } from '@/util/dateAndTime';
+import { useUIState } from '@/composables/userInterfaceState';
 
 const {
   currentPlace,
@@ -18,9 +18,7 @@ const {
 } = useSettings();
 const { isShowHijriDate } = useUIState();
 
-const currDate = ref<Date>(
-  currentDate.value ? new Date(currentDate.value) : new Date()
-);
+const currDate = ref<Date>(currentDate.value ? new Date(currentDate.value) : new Date());
 
 function syncCurrentDate() {
   currentDate.value = dateToStandardString(currDate.value);

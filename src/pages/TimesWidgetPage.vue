@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TimesView from "@/components/TimesView.vue";
-import { ref } from "vue";
-import { useUrlParams } from "@/composables/urlParams";
+import TimesView from '@/components/TimesView.vue';
+import { ref } from 'vue';
+import { useUrlParams } from '@/composables/urlParams';
 
 const {
   calculatorMadhab,
@@ -16,9 +16,7 @@ const {
   theme,
 } = useUrlParams();
 
-const currentDate = ref<Date>(
-  currDate.value ? new Date(currDate.value) : new Date()
-);
+const currentDate = ref<Date>(currDate.value ? new Date(currDate.value) : new Date());
 
 function goToToday() {
   currentDate.value = new Date();

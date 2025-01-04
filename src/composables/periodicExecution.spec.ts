@@ -1,8 +1,8 @@
-import { withSetup } from "@/util/test-utils";
-import { usePeriodicExecution } from "./periodicExecution";
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { withSetup } from '@/util/test-utils';
+import { usePeriodicExecution } from './periodicExecution';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
-describe("usePeriodicExecution", () => {
+describe('usePeriodicExecution', () => {
   beforeEach(() => {
     // tell vitest we use mocked time
     vi.useFakeTimers();
@@ -13,14 +13,14 @@ describe("usePeriodicExecution", () => {
     vi.useRealTimers();
   });
 
-  it("Should return a void function", () => {
+  it('Should return a void function', () => {
     const fn = vi.fn();
     const { result, app } = withSetup(() => usePeriodicExecution(fn, 1000));
     expect(result).toBeUndefined();
     app.unmount();
   });
 
-  it("Should call the parameter function periodically till unmounting", () => {
+  it('Should call the parameter function periodically till unmounting', () => {
     const fn = vi.fn();
     const { app } = withSetup(() => usePeriodicExecution(fn, 1000));
     vi.advanceTimersByTime(1000 * 10 + 100);

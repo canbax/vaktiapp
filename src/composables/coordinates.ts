@@ -1,6 +1,6 @@
-import { computed, ref, watch } from "vue";
-import { useGeolocation } from "@vueuse/core";
-import { isValidGPS } from "@/util/gps";
+import { computed, ref, watch } from 'vue';
+import { useGeolocation } from '@vueuse/core';
+import { isValidGPS } from '@/util/gps';
 
 export function useCoordinates() {
   const lastGPS = ref<{ latitude: null | number; longitude: null | number }>({
@@ -20,7 +20,7 @@ export function useCoordinates() {
 
     return new Promise((resolve, reject) => {
       if (!isSupported.value) {
-        reject("not supported");
+        reject('not supported');
         return;
       }
       if (error.value) {
@@ -39,7 +39,7 @@ export function useCoordinates() {
             resolve(true);
           }
         },
-        { immediate: true }
+        { immediate: true },
       );
     });
   }

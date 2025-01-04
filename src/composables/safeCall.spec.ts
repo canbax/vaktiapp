@@ -1,8 +1,8 @@
-import { withSetup } from "@/util/test-utils";
-import { useSafeCall } from "./safeCall";
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { withSetup } from '@/util/test-utils';
+import { useSafeCall } from './safeCall';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
-describe("useSafeCall", () => {
+describe('useSafeCall', () => {
   beforeEach(() => {
     // tell vitest we use mocked time
     vi.useFakeTimers();
@@ -13,14 +13,12 @@ describe("useSafeCall", () => {
     vi.useRealTimers();
   });
 
-  it("Should not throw error even if function call throws ", async () => {
-    const errMsg = "hey!";
+  it('Should not throw error even if function call throws ', async () => {
+    const errMsg = 'hey!';
     const fn = vi.fn(() => {
       throw new Error(errMsg);
     });
-    const { result, app } = withSetup<ReturnType<typeof useSafeCall>>(() =>
-      useSafeCall(fn)
-    );
+    const { result, app } = withSetup<ReturnType<typeof useSafeCall>>(() => useSafeCall(fn));
 
     expect(async () => await result.execute()).not.toThrow();
     expect(result.error.value).toContain(errMsg);
@@ -28,16 +26,16 @@ describe("useSafeCall", () => {
     app.unmount();
   });
 
-  it("Should set loading value dynamically ", async () => {
+  it('Should set loading value dynamically ', async () => {
     const mockAsyncFunction = vi.fn().mockImplementation(() => {
       return new Promise((res) =>
         setTimeout(() => {
-          res("resolved value");
-        }, 100)
+          res('resolved value');
+        }, 100),
       );
     });
     const { result, app } = withSetup<ReturnType<typeof useSafeCall>>(() =>
-      useSafeCall(mockAsyncFunction)
+      useSafeCall(mockAsyncFunction),
     );
 
     expect(result.loading.value).toBe(false);

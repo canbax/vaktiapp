@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "format": "prettier --write .",
+    "format": "prettier --write src/",
     "build": "npm run type-check && npm run build-only",
     "preview": "vite preview",
     "test": "npm run test:unit",

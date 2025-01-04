@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import IframeEditor from "./IframeEditor.vue";
+import { ref } from 'vue';
+import IframeEditor from './IframeEditor.vue';
 
 const isOpen = ref(false);
 </script>
 
 <template>
-  <v-dialog
-    :model-value="isOpen"
-    fullscreen
-    transition="dialog-bottom-transition"
-  >
+  <v-dialog :model-value="isOpen" fullscreen transition="dialog-bottom-transition">
     <template #activator>
       <v-list-item
         data-testid="embed-btn"
