@@ -1,34 +1,28 @@
 <script setup lang="ts">
-import { useClipboard } from "@vueuse/core";
-import { getCurrentInstance, ref, computed } from "vue";
+import { useClipboard } from '@vueuse/core';
+import { getCurrentInstance, ref, computed } from 'vue';
+import { getTranslateFn } from '@/util/i18n';
 const { copy } = useClipboard({ legacy: true });
 const snackbar = ref(false);
-const copiedText = ref("");
-const instance = getCurrentInstance();
-const dummyTranslateFunction = (key: string) => key;
-const $t =
-  instance?.appContext.config.globalProperties.$t ?? dummyTranslateFunction;
+const copiedText = ref('');
+
+const $t = getTranslateFn(getCurrentInstance());
 
 function copyText(text: string) {
   copy(text);
-  copiedText.value = `"${text}"${$t("isCopied")}`;
+  copiedText.value = `"${text}"${$t('isCopied')}`;
   snackbar.value = true;
 }
 
-const buildVersion = computed(() => process.env.BUILD_VERSION || "");
+const buildVersion = computed(() => process.env.BUILD_VERSION || '');
 </script>
 
 <template>
   <v-container fluid class="text-center">
-    <div class="text-h6 text-center">{{ $t("aboutTxt") }}</div>
-    <v-alert
-      class="ma-4"
-      :text="$t('donatePageText')"
-      border
-      border-color="primary"
-    />
+    <div class="text-h6 text-center">{{ $t('aboutTxt') }}</div>
+    <v-alert class="ma-4" :text="$t('donatePageText')" border border-color="primary" />
     <div class="text-center pa-2">
-      <div class="font-weight-bold">{{ $t("transferToBankAccount") }}</div>
+      <div class="font-weight-bold">{{ $t('transferToBankAccount') }}</div>
       <div>
         <span> Yusuf Sait Canbaz </span>
         <v-btn

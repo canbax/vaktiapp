@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { HourString, RemainingTimeFormat } from "@/types";
-import { useRemainingTimeToPray } from "@/composables/remainingTimeToPray";
-import { computed, toRef } from "vue";
+import type { HourString, RemainingTimeFormat } from '@/types';
+import { useRemainingTimeToPray } from '@/composables/remainingTimeToPray';
+import { computed, toRef } from 'vue';
 
 const props = defineProps<{
   currTimes: HourString[];
@@ -10,9 +10,9 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: "showToday"): void;
-  (e: "nextDay"): void;
-  (e: "prevDay"): void;
+  (e: 'showToday'): void;
+  (e: 'nextDay'): void;
+  (e: 'prevDay'): void;
 }>();
 
 const timeItems = Array(6)
@@ -21,7 +21,7 @@ const timeItems = Array(6)
 
 const { currPrayIdx, remainingTime } = useRemainingTimeToPray(
   toRef(() => props.currTimes),
-  toRef(() => props.remainingTimeFormat)
+  toRef(() => props.remainingTimeFormat),
 );
 
 const prayableIndex = computed<number>(() => {
@@ -31,16 +31,9 @@ const prayableIndex = computed<number>(() => {
 
 function prayableRowCSS(i: number, padding = false) {
   if (padding) {
-    return [
-      { "font-weight-bold text-orange": i === prayableIndex.value },
-      "text-h5",
-      "ps-2",
-    ];
+    return [{ 'font-weight-bold text-orange': i === prayableIndex.value }, 'text-h5', 'ps-2'];
   }
-  return [
-    { "font-weight-bold text-orange": i === prayableIndex.value },
-    "text-h5",
-  ];
+  return [{ 'font-weight-bold text-orange': i === prayableIndex.value }, 'text-h5'];
 }
 </script>
 
@@ -79,7 +72,7 @@ function prayableRowCSS(i: number, padding = false) {
 
     <v-divider></v-divider>
     <div v-if="isShowingToday">
-      <span> {{ $t(timeItems[currPrayIdx]) }} {{ $t("remainingTime") }} </span>
+      <span> {{ $t(timeItems[currPrayIdx]) }} {{ $t('remainingTime') }} </span>
       <h2 data-testid="remaining-time">{{ remainingTime }}</h2>
     </div>
     <div v-else>

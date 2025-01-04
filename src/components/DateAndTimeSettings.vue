@@ -1,19 +1,14 @@
 <script setup lang="ts">
-import { useSettings } from "@/composables/settings";
-import { useUIState } from "@/composables/userInterfaceState";
-import { getCurrentInstance } from "vue";
-import DateFormatSelector from "@/components/DateFormatSelector.vue";
-import TimeFormatSelector from "@/components/TimeFormatSelector.vue";
+import { useSettings } from '@/composables/settings';
+import { useUIState } from '@/composables/userInterfaceState';
+import { getCurrentInstance } from 'vue';
+import DateFormatSelector from '@/components/DateFormatSelector.vue';
+import TimeFormatSelector from '@/components/TimeFormatSelector.vue';
+import { getTranslateFn } from '@/util/i18n';
 
-const instance = getCurrentInstance();
-const $t = instance.appContext.config.globalProperties.$t;
+const $t = getTranslateFn(getCurrentInstance());
 
-const {
-  currentTimeFormat,
-  currYearFormat,
-  currMonthFormat,
-  currWeekdayFormat,
-} = useSettings();
+const { currentTimeFormat, currYearFormat, currMonthFormat, currWeekdayFormat } = useSettings();
 const { isShowHijriDate } = useUIState();
 </script>
 

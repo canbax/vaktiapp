@@ -1,5 +1,5 @@
-import { Sabbatical, SabbaticalCalendar } from "@/types";
-import { intToStr } from "./dateAndTime";
+import type { Sabbatical, SabbaticalCalendar } from '@/types';
+import { intToStr } from './dateAndTime';
 
 export class HijriDate {
   private readonly year: number;
@@ -317,23 +317,23 @@ export class HijriDate {
   };
 
   private readonly SABBATICALS: Sabbatical[] = [
-    { month: 0, day: 1, name: "year_beginning" },
-    { month: 0, day: 10, name: "day_of_ashura" },
-    { month: 2, day: 11, name: "mawlid_al_nabi" },
-    { month: 6, day: 1, name: "start_of_sacred3_months" },
-    { month: 6, day: 26, name: "miraj" },
-    { month: 7, day: 14, name: "baraat_night" },
-    { month: 8, day: 1, name: "start_of_ramadan" },
-    { month: 8, day: 26, name: "qadr_night" },
-    { month: 8, day: 30, name: "eve_of_eid_ramadan" },
-    { month: 9, day: 1, name: "eid_ramadan_1" },
-    { month: 9, day: 2, name: "eid_ramadan_2" },
-    { month: 9, day: 3, name: "eid_ramadan_3" },
-    { month: 11, day: 9, name: "eve_of_eid_qurban" },
-    { month: 11, day: 10, name: "eid_qurban_1" },
-    { month: 11, day: 11, name: "eid_qurban_2" },
-    { month: 11, day: 12, name: "eid_qurban_3" },
-    { month: 11, day: 13, name: "eid_qurban_4" },
+    { month: 0, day: 1, name: 'year_beginning' },
+    { month: 0, day: 10, name: 'day_of_ashura' },
+    { month: 2, day: 11, name: 'mawlid_al_nabi' },
+    { month: 6, day: 1, name: 'start_of_sacred3_months' },
+    { month: 6, day: 26, name: 'miraj' },
+    { month: 7, day: 14, name: 'baraat_night' },
+    { month: 8, day: 1, name: 'start_of_ramadan' },
+    { month: 8, day: 26, name: 'qadr_night' },
+    { month: 8, day: 30, name: 'eve_of_eid_ramadan' },
+    { month: 9, day: 1, name: 'eid_ramadan_1' },
+    { month: 9, day: 2, name: 'eid_ramadan_2' },
+    { month: 9, day: 3, name: 'eid_ramadan_3' },
+    { month: 11, day: 9, name: 'eve_of_eid_qurban' },
+    { month: 11, day: 10, name: 'eid_qurban_1' },
+    { month: 11, day: 11, name: 'eid_qurban_2' },
+    { month: 11, day: 12, name: 'eid_qurban_3' },
+    { month: 11, day: 13, name: 'eid_qurban_4' },
   ];
 
   constructor(year = 1442, month = 3, day = 20) {
@@ -350,20 +350,12 @@ export class HijriDate {
   toHijri(date: Date): HijriDate {
     const d = new Date(date);
     d.setHours(0, 0, 0, 0);
-    const dayDiff =
-      (d.getTime() - this.BASE_GREGORIAN.getTime()) / this.MS_IN_DAY;
-    return this.addDays(
-      this.BASE_HIJRI.year,
-      this.BASE_HIJRI.month,
-      this.BASE_HIJRI.day,
-      dayDiff
-    );
+    const dayDiff = (d.getTime() - this.BASE_GREGORIAN.getTime()) / this.MS_IN_DAY;
+    return this.addDays(this.BASE_HIJRI.year, this.BASE_HIJRI.month, this.BASE_HIJRI.day, dayDiff);
   }
 
   toStr($t: (key: string) => string): string {
-    return `${this.year} ${$t("hijriMonth" + this.month)} ${intToStr(
-      this.day
-    )}`;
+    return `${this.year} ${$t('hijriMonth' + this.month)} ${intToStr(this.day)}`;
   }
 
   /** return the nearest Sabbatical after the provided date
@@ -405,7 +397,7 @@ export class HijriDate {
     }
     // { month: 6, day: 3, name: 'laylat_al_raghaib ' }, // first thursday in Rejeb month !
     if (m === 6 && d < 8 && date2.getDay() === 4) {
-      return { month: 6, day: 3, name: "laylat_al_raghaib" };
+      return { month: 6, day: 3, name: 'laylat_al_raghaib' };
     }
     return this.SABBATICALS.find((x) => x.day === d && x.month === m);
   }
@@ -492,12 +484,10 @@ export class HijriDate {
     while (diff != 0) {
       if (isPos) {
         if (!this.YEARS[year]) {
-          console.warn("year causes undefined: ", year);
-          return;
+          throw new Error('year causes undefined: ' + year);
         }
         if (!this.YEARS[year][month]) {
-          console.warn("year, month causes undefined: ", year, month);
-          return;
+          throw new Error('year, month causes undefined: ' + year + ' month: ' + month);
         }
         if (day < this.YEARS[year][month]) {
           // can increase the day
@@ -560,17 +550,13 @@ export class HijriDate {
           return a + b;
         }, 0);
       }
-      daySum -= this.YEARS[smallDate.year]
-        .slice(0, smallDate.month)
-        .reduce((a, b) => {
-          return a + b;
-        }, 0);
+      daySum -= this.YEARS[smallDate.year].slice(0, smallDate.month).reduce((a, b) => {
+        return a + b;
+      }, 0);
       daySum -= smallDate.day;
-      daySum += this.YEARS[bigDate.year]
-        .slice(0, smallDate.month)
-        .reduce((a, b) => {
-          return a + b;
-        }, 0);
+      daySum += this.YEARS[bigDate.year].slice(0, smallDate.month).reduce((a, b) => {
+        return a + b;
+      }, 0);
       daySum += bigDate.day;
       return daySum;
     }
@@ -582,18 +568,14 @@ export class HijriDate {
     const isSupports = year >= 1440 && year <= 1600;
     if (!isSupports) {
       throw (
-        "Currently hijri years from " +
-        this.MIN_YEAR +
-        " to " +
-        this.MAX_YEAR +
-        " are supported"
+        'Currently hijri years from ' + this.MIN_YEAR + ' to ' + this.MAX_YEAR + ' are supported'
       );
     }
     if (month < 0 || month > 11) {
-      throw "month should be in range [0,11] (both inclusive)";
+      throw 'month should be in range [0,11] (both inclusive)';
     }
     if (day < 1 || day > this.YEARS[year][month]) {
-      throw "day is either smaller than 1 or greater than maximum days in the month";
+      throw 'day is either smaller than 1 or greater than maximum days in the month';
     }
     return true;
   }

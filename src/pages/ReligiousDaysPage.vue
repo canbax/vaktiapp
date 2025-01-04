@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { HijriDate } from "@/util/HijriDate";
-import { clearHours, getHumanReadableDayDifference } from "@/util/dateAndTime";
+import { HijriDate } from '@/util/HijriDate';
+import { clearHours, getHumanReadableDayDifference } from '@/util/dateAndTime';
 
-import { getCurrentInstance, onMounted, ref } from "vue";
+import { getCurrentInstance, onMounted, ref } from 'vue';
+import { getTranslateFn } from '@/util/i18n';
 
 type SabbaticalRow = {
   hij: string;
@@ -15,16 +16,15 @@ const hijri = new HijriDate();
 const sabbaticalRows = ref<SabbaticalRow[]>([]);
 const NUM_SABBATICALS = 10;
 
-const instance = getCurrentInstance();
-const $t = instance.appContext.config.globalProperties.$t;
+const $t = getTranslateFn(getCurrentInstance());
 
 function scrollClosestRowIntoView() {
   setTimeout(() => {
-    const el = document.getElementsByClassName("closest-sabbatical")?.[0];
+    const el = document.getElementsByClassName('closest-sabbatical')?.[0];
     el?.scrollIntoView?.({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
     });
   }, 100);
 }
@@ -45,11 +45,11 @@ onMounted(() => {
 });
 
 function hijri2str(h: HijriDate): string {
-  return h.getDay() + " " + $t("hijriMonth" + h.getMonth()) + " " + h.getYear();
+  return h.getDay() + ' ' + $t('hijriMonth' + h.getMonth()) + ' ' + h.getYear();
 }
 
 function gre2str(d: Date): string {
-  return d.getDate() + " " + $t("month" + d.getMonth()) + " " + d.getFullYear();
+  return d.getDate() + ' ' + $t('month' + d.getMonth()) + ' ' + d.getFullYear();
 }
 </script>
 

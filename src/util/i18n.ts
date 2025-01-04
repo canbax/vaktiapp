@@ -1,21 +1,22 @@
-import { ar } from "@/locales/ar";
-import { az } from "@/locales/az";
-import { de } from "@/locales/de";
-import { en } from "@/locales/en";
-import { es } from "@/locales/es";
-import { fa } from "@/locales/fa";
-import { fr } from "@/locales/fr";
-import { id } from "@/locales/id";
-import { it } from "@/locales/it";
-import { kk } from "@/locales/kk";
-import { ko } from "@/locales/ko";
-import { ky } from "@/locales/ky";
-import { ms } from "@/locales/ms";
-import { ru } from "@/locales/ru";
-import { tr } from "@/locales/tr";
-import { zh } from "@/locales/zh";
-import type { SupportedLanguage } from "@/types";
-import { useSettings } from "@/composables/settings";
+import { ar } from '@/locales/ar';
+import { az } from '@/locales/az';
+import { de } from '@/locales/de';
+import { en } from '@/locales/en';
+import { es } from '@/locales/es';
+import { fa } from '@/locales/fa';
+import { fr } from '@/locales/fr';
+import { id } from '@/locales/id';
+import { it } from '@/locales/it';
+import { kk } from '@/locales/kk';
+import { ko } from '@/locales/ko';
+import { ky } from '@/locales/ky';
+import { ms } from '@/locales/ms';
+import { ru } from '@/locales/ru';
+import { tr } from '@/locales/tr';
+import { zh } from '@/locales/zh';
+import type { SupportedLanguage } from '@/types';
+import { useSettings } from '@/composables/settings';
+import type { ComponentInternalInstance } from 'vue';
 const { currentLanguage } = useSettings();
 
 const stringsInLanguages: Record<SupportedLanguage, Record<string, string>> = {
@@ -38,5 +39,13 @@ const stringsInLanguages: Record<SupportedLanguage, Record<string, string>> = {
 };
 
 export function translate(key: string) {
-  return stringsInLanguages[currentLanguage.value?.languageCode ?? "en"][key];
+  return stringsInLanguages[currentLanguage.value?.languageCode ?? 'en'][key];
+}
+
+export function getTranslateFn(
+  instance: ComponentInternalInstance | null,
+): (key: string) => string {
+  const $t = instance?.appContext.config.globalProperties.$t;
+  if (!$t) return (s: string) => s;
+  return $t;
 }

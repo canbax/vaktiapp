@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { CalculatorMadhab } from "@/types";
-import { getCurrentInstance } from "vue";
+import type { CalculatorMadhab } from '@/types';
+import { getTranslateFn } from '@/util/i18n';
+import { getCurrentInstance } from 'vue';
 
-const instance = getCurrentInstance();
-const $t = instance.appContext.config.globalProperties.$t;
+const $t = getTranslateFn(getCurrentInstance());
 
-const madhabs = ["shafi", "hanafi"];
+const madhabs = ['shafi', 'hanafi'];
 
 const model = defineModel<CalculatorMadhab>();
 </script>

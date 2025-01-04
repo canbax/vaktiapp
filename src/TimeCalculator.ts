@@ -1,7 +1,7 @@
-import { Coordinates, CalculationMethod, PrayerTimes, Madhab } from "adhan";
-import { HourString, TimesData } from "./types";
-import { extractTimeFromDate, dateToStandardString } from "@/util/dateAndTime";
-import { ValueOf } from "adhan/lib/types/TypeUtils";
+import { Coordinates, CalculationMethod, PrayerTimes, Madhab } from 'adhan';
+import type { HourString, TimesData } from './types';
+import { extractTimeFromDate, dateToStandardString } from '@/util/dateAndTime';
+import type { ValueOf } from 'adhan/lib/types/TypeUtils';
 
 /**
  * Mutates date
@@ -19,8 +19,8 @@ export function getTimes(
   lng: number,
   date: Date,
   days: number,
-  calculationMethod: keyof typeof CalculationMethod = "Turkey",
-  madhab: ValueOf<typeof Madhab> = Madhab.Shafi
+  calculationMethod: keyof typeof CalculationMethod = 'Turkey',
+  madhab: ValueOf<typeof Madhab> = Madhab.Shafi,
 ): TimesData {
   const coordinates = new Coordinates(lat, lng);
   const params = CalculationMethod[calculationMethod]();

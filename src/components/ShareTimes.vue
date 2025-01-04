@@ -1,35 +1,31 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, ref } from "vue";
-import ShareWidget from "@/components/ShareWidget.vue";
-import { useShare, useClipboard, useBrowserLocation } from "@vueuse/core";
-import { useUrlParams } from "@/composables/urlParams";
+import { computed, getCurrentInstance, ref } from 'vue';
+import ShareWidget from '@/components/ShareWidget.vue';
+import { useShare, useClipboard, useBrowserLocation } from '@vueuse/core';
+import { useUrlParams } from '@/composables/urlParams';
+import { getTranslateFn } from '@/util/i18n';
 
 const { encodeSettingsToUrlParams } = useUrlParams();
-const source = ref("");
-const {
-  copy,
-  copied,
-  isSupported: isClipboardSupported,
-} = useClipboard({ source, legacy: true });
+const source = ref('');
+const { copy, copied, isSupported: isClipboardSupported } = useClipboard({ source, legacy: true });
 
 const browserLocation = useBrowserLocation();
 const { share, isSupported: isShareSupported } = useShare();
 
-const instance = getCurrentInstance();
-const $t = instance?.appContext.config.globalProperties.$t;
+const $t = getTranslateFn(getCurrentInstance());
 
 const shareUrl = computed<string>(() => {
-  return browserLocation.value.origin + "/share?" + encodeSettingsToUrlParams();
+  return browserLocation.value.origin + '/share?' + encodeSettingsToUrlParams();
 });
 
 async function startShare() {
   try {
     await share({
-      title: $t("times"),
+      title: $t('times'),
       url: shareUrl.value,
     });
   } catch (e) {
-    console.log("error on share: ", e);
+    console.log('error on share: ', e);
   }
 }
 
@@ -52,7 +48,7 @@ async function copyLinkClicked() {
 
     <v-sheet>
       <v-list>
-        <v-list-subheader>{{ $t("shareTimes") }}</v-list-subheader>
+        <v-list-subheader>{{ $t('shareTimes') }}</v-list-subheader>
 
         <v-list-item
           v-if="isClipboardSupported"

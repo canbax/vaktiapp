@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { getCurrentInstance } from "vue";
-import { useSettings } from "@/composables/settings";
-import { UserInterfaceLanguage } from "@/types";
+import { getCurrentInstance } from 'vue';
+import { useSettings } from '@/composables/settings';
+import type { UserInterfaceLanguage } from '@/types';
+import { getTranslateFn } from '@/util/i18n';
 
-const instance = getCurrentInstance();
-const $t = instance?.appContext.config.globalProperties.$t;
+const $t = getTranslateFn(getCurrentInstance());
 
 const { ALL_LANGUAGES } = useSettings();
 

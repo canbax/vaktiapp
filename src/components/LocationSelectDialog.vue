@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { GenericPlace, PlaceMatchWithCountry } from "@/types";
-import { computed, getCurrentInstance, ref } from "vue";
-import LocationSelector from "@/components/LocationSelector.vue";
-import { useSettings } from "@/composables/settings";
+import type { GenericPlace, PlaceMatchWithCountry } from '@/types';
+import { computed, getCurrentInstance, ref } from 'vue';
+import LocationSelector from '@/components/LocationSelector.vue';
+import { useSettings } from '@/composables/settings';
+import { getTranslateFn } from '@/util/i18n';
 
 const { currentPlace } = useSettings();
 
-const instance = getCurrentInstance();
-const $t = instance.appContext.config.globalProperties.$t;
+const $t = getTranslateFn(getCurrentInstance());
 
 const currPlaceName = computed<string>(() => {
-  if (!currentPlace?.value) return "";
+  if (!currentPlace?.value) return '';
   return isPlaceMatch(currentPlace.value)
     ? currentPlace.value.matchingString
     : currentPlace.value.name;
@@ -24,13 +24,13 @@ const isOpen = computed<boolean>(() => {
 });
 
 function isPlaceMatch(place: GenericPlace): place is PlaceMatchWithCountry {
-  return Boolean(place?.["matchingString"]);
+  return 'matchingString' in place;
 }
 
 const hasCurrentPlace = computed<boolean>(() => Boolean(currentPlace.value));
 
 const title = computed<string>(() =>
-  hasCurrentPlace.value ? $t("changeLocation") : $t("addNewLocation")
+  hasCurrentPlace.value ? $t('changeLocation') : $t('addNewLocation'),
 );
 </script>
 

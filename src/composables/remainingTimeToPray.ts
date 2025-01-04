@@ -1,33 +1,34 @@
-import { findRemainingSecondsToCurrPray } from "@/helper/prayTimeHelper";
-import { HourString, RemainingTimeFormat, RemainingToPray } from "@/types";
-import { secondsToHumanReadable } from "@/util/dateAndTime";
-import { ref, getCurrentInstance, Ref, toValue, watchEffect } from "vue";
-import { usePeriodicExecution } from "./periodicExecution";
+import { findRemainingSecondsToCurrPray } from '@/helper/prayTimeHelper';
+import type { HourString, RemainingTimeFormat, RemainingToPray } from '@/types';
+import { secondsToHumanReadable } from '@/util/dateAndTime';
+import { ref, getCurrentInstance, toValue, watchEffect } from 'vue';
+import type { Ref } from 'vue';
+import { usePeriodicExecution } from './periodicExecution';
+import { getTranslateFn } from '@/util/i18n';
 
 export function useRemainingTimeToPray(
   currTimes: Ref<HourString[]>,
-  remainingTimeFormat: Ref<RemainingTimeFormat>
+  remainingTimeFormat: Ref<RemainingTimeFormat>,
 ): RemainingToPray {
   const currPrayIdx = ref(2);
-  const remainingTime = ref("");
+  const remainingTime = ref('');
 
-  const instance = getCurrentInstance();
-  const $t = instance.appContext.config.globalProperties.$t;
+  const $t = getTranslateFn(getCurrentInstance());
 
   function update() {
     watchEffect(() => {
       const { remainedSeconds, currPray } = findRemainingSecondsToCurrPray(
         new Date(),
-        toValue(currTimes)
+        toValue(currTimes),
       );
 
       currPrayIdx.value = currPray;
       remainingTime.value = secondsToHumanReadable(
         remainedSeconds,
-        $t("hour"),
-        $t("minute"),
-        $t("second"),
-        toValue(remainingTimeFormat)
+        $t('hour'),
+        $t('minute'),
+        $t('second'),
+        toValue(remainingTimeFormat),
       );
     });
   }

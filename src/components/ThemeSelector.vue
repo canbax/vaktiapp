@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { AppTheme } from "@/types";
-import { getCurrentInstance } from "vue";
+import type { AppTheme } from '@/types';
+import { getCurrentInstance } from 'vue';
+import { getTranslateFn } from '@/util/i18n';
 
-const instance = getCurrentInstance();
-const $t = instance?.appContext.config.globalProperties.$t;
+const $t = getTranslateFn(getCurrentInstance());
 
 const themes: { title: string; value: string }[] = [
-  { title: $t("light"), value: "light" },
-  { title: $t("dark"), value: "dark" },
+  { title: $t('light'), value: 'light' },
+  { title: $t('dark'), value: 'dark' },
 ];
 const model = defineModel<AppTheme>();
-const emit = defineEmits<{ (e: "update", theme: AppTheme): void }>();
+const emit = defineEmits<{ (e: 'update', theme: AppTheme): void }>();
 </script>
 
 <template>

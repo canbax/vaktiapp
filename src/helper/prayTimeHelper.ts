@@ -1,9 +1,5 @@
-import { HourString } from "@/types";
-import {
-  ONE_DAY_IN_SECONDS,
-  getTotalSeconds,
-  hourStringToTotalSeconds,
-} from "@/util/dateAndTime";
+import type { HourString } from '@/types';
+import { ONE_DAY_IN_SECONDS, getTotalSeconds, hourStringToTotalSeconds } from '@/util/dateAndTime';
 
 /** assumes `prayTimes` are in ascending order */
 function findCurrPrayIndex(now: Date, prayTimes: HourString[]): number {
@@ -18,7 +14,7 @@ function findCurrPrayIndex(now: Date, prayTimes: HourString[]): number {
 
 export function findRemainingSecondsToCurrPray(
   now: Date,
-  prayTimes: HourString[]
+  prayTimes: HourString[],
 ): { remainedSeconds: number; currPray: number } {
   if (prayTimes.length < 1) return { remainedSeconds: 0, currPray: 0 };
   const currPray = findCurrPrayIndex(now, prayTimes);

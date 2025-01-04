@@ -1,29 +1,22 @@
 <script setup lang="ts">
-import DateAndTimeSettings from "@/components/DateAndTimeSettings.vue";
-import { getCurrentInstance } from "vue";
-import GeneralSettings from "@/components/GeneralSettings.vue";
-import CalculatorSettings from "@/components/CalculatorSettings.vue";
-import { useUIState } from "@/composables/userInterfaceState";
+import DateAndTimeSettings from '@/components/DateAndTimeSettings.vue';
+import { getCurrentInstance } from 'vue';
+import GeneralSettings from '@/components/GeneralSettings.vue';
+import CalculatorSettings from '@/components/CalculatorSettings.vue';
+import { useUIState } from '@/composables/userInterfaceState';
+import { getTranslateFn } from '@/util/i18n';
 
 const { settingsTab } = useUIState();
-const instance = getCurrentInstance();
-const $t = instance.appContext.config.globalProperties.$t;
+
+const $t = getTranslateFn(getCurrentInstance());
 </script>
 
 <template>
   <div class="d-flex flex-row ma-1">
     <v-tabs v-model="settingsTab" color="primary" direction="vertical">
       <v-tab :text="$t('system')" prepend-icon="mdi-cog" value="1"></v-tab>
-      <v-tab
-        :text="$t('dateAndTime')"
-        prepend-icon="mdi-calendar-clock"
-        value="2"
-      ></v-tab>
-      <v-tab
-        :text="$t('calculator')"
-        prepend-icon="mdi-calculator-variant"
-        value="3"
-      ></v-tab>
+      <v-tab :text="$t('dateAndTime')" prepend-icon="mdi-calendar-clock" value="2"></v-tab>
+      <v-tab :text="$t('calculator')" prepend-icon="mdi-calculator-variant" value="3"></v-tab>
     </v-tabs>
 
     <v-tabs-window v-model="settingsTab" class="ma-1 flex-grow-1">

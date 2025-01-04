@@ -1,12 +1,13 @@
-// test-utils.js
-import { i18n } from "@/plugins/i18n";
-import { App, createApp } from "vue";
+import { i18n } from '@/plugins/i18n';
+import type { App } from 'vue';
+import { createApp } from 'vue';
 
-export function withSetup<ResultType>(composable): {
-  result: ResultType;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export function withSetup<ResultType>(composable: any): {
+  result: ResultType | undefined;
   app: App;
 } {
-  let result;
+  let result = undefined;
   const app = createApp({
     setup() {
       result = composable();
@@ -15,7 +16,7 @@ export function withSetup<ResultType>(composable): {
     },
   });
   app.use(i18n);
-  app.mount(document.createElement("div"));
+  app.mount(document.createElement('div'));
   // return the result and the app instance
   // for testing provide / unmount
   return { result, app };

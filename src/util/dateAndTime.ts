@@ -1,9 +1,4 @@
-import {
-  DateString,
-  DateStringFormat,
-  HourString,
-  RemainingTimeFormat,
-} from "@/types";
+import type { DateString, DateStringFormat, HourString, RemainingTimeFormat } from '@/types';
 
 // seconds to human readable string
 export function secondsToHumanReadable(
@@ -11,7 +6,7 @@ export function secondsToHumanReadable(
   hourStr: string,
   minStr: string,
   secStr: string,
-  timeFormat: RemainingTimeFormat
+  timeFormat: RemainingTimeFormat,
 ): string {
   const hour = Math.floor(i / 3600);
   const min = Math.floor((i - 3600 * hour) / 60);
@@ -19,31 +14,31 @@ export function secondsToHumanReadable(
   const hasHour = hour > 0;
   const hasMin = min > 0;
   const hasSec = sec > 0;
-  const hourLongStr = hasHour ? `${hour} ${hourStr} ` : "";
-  const minLongStr = hasMin ? `${min} ${minStr} ` : "";
-  const secLongStr = hasSec ? `${sec} ${secStr} ` : "";
-  let s = "";
+  const hourLongStr = hasHour ? `${hour} ${hourStr} ` : '';
+  const minLongStr = hasMin ? `${min} ${minStr} ` : '';
+  const secLongStr = hasSec ? `${sec} ${secStr} ` : '';
+  let s = '';
   switch (timeFormat) {
-    case "XX:YY:ZZ":
+    case 'XX:YY:ZZ':
       s = `${intToStr(hour)}:${intToStr(min)}:${intToStr(sec)}`;
       break;
-    case "XX:YY":
+    case 'XX:YY':
       s = `${intToStr(hour)}:${intToStr(min)}`;
       break;
-    case "X hour Y minute Z second":
+    case 'X hour Y minute Z second':
       s = `${hourLongStr}${minLongStr}${secLongStr}`;
       break;
-    case "X hour Y minute":
+    case 'X hour Y minute':
       s = `${hourLongStr}${minLongStr}`;
       break;
     default:
-      s = "";
+      s = '';
       break;
   }
   const noHourOrMinute = !hasHour && !hasMin;
   if (
-    (noHourOrMinute && timeFormat === "X hour Y minute") ||
-    (noHourOrMinute && !hasSec && timeFormat === "X hour Y minute Z second")
+    (noHourOrMinute && timeFormat === 'X hour Y minute') ||
+    (noHourOrMinute && !hasSec && timeFormat === 'X hour Y minute Z second')
   )
     return `${sec} ${secStr}`;
   return s.trim();
@@ -52,10 +47,9 @@ export function secondsToHumanReadable(
 /** converts an integer in range [0,1,...99] to a length 2 string by adding prefix 0 if number is less than 10  */
 export function intToStr(n: number) {
   if (!Number.isInteger(n)) throw new Error(`${n} is not an integer`);
-  if (n < 0 || n > 99)
-    throw new Error(`${n} is less than 0 or greater than 99`);
-  if (n < 10) return "0" + n;
-  return "" + n;
+  if (n < 0 || n > 99) throw new Error(`${n} is less than 0 or greater than 99`);
+  if (n < 10) return '0' + n;
+  return '' + n;
 }
 
 /** from a string with format 22:21, return total number of seconds */
@@ -71,48 +65,39 @@ export function getTotalSeconds(date: Date): number {
 
 export const ONE_DAY_IN_SECONDS = 86400;
 
-export function dateToString(
-  date: Date,
-  format: DateStringFormat,
-  $t: (key: string) => string
-) {
-  let monthStr = $t("month" + date.getMonth()).toString();
-  let weekdayStr = $t("weekday" + date.getDay()).toString();
-  const weekdayShortStr = $t("weekdayShort" + date.getDay()).toString();
-  if (format.month === "MMM") {
+export function dateToString(date: Date, format: DateStringFormat, $t: (key: string) => string) {
+  let monthStr = $t('month' + date.getMonth()).toString();
+  let weekdayStr = $t('weekday' + date.getDay()).toString();
+  const weekdayShortStr = $t('weekdayShort' + date.getDay()).toString();
+  if (format.month === 'MMM') {
     monthStr = monthStr.substring(0, 3);
-  } else if (format.month === "MM") {
+  } else if (format.month === 'MM') {
     monthStr = intToStr(date.getMonth() + 1);
   }
-  let year = date.getFullYear() + "";
-  if (format.year === "YY") {
+  let year = date.getFullYear() + '';
+  if (format.year === 'YY') {
     year = year.substring(2, 4);
-  } else if (format.year === "-") {
-    year = "";
+  } else if (format.year === '-') {
+    year = '';
   }
-  if (format.weekDay === "DDD") {
+  if (format.weekDay === 'DDD') {
     weekdayStr = weekdayShortStr;
-  } else if (format.weekDay === "-") {
-    weekdayStr = "";
+  } else if (format.weekDay === '-') {
+    weekdayStr = '';
   }
-  return [intToStr(date.getDate()), monthStr, year, weekdayStr]
-    .filter((x) => x)
-    .join(" ");
+  return [intToStr(date.getDate()), monthStr, year, weekdayStr].filter((x) => x).join(' ');
 }
 
 export function prefix0(n: number) {
-  if (n > 99 || n < -99) throw new Error("Can only process 2 digits integers!");
-  return (n + "").padStart(2, "0");
+  if (n > 99 || n < -99) throw new Error('Can only process 2 digits integers!');
+  return (n + '').padStart(2, '0');
 }
 
-export function extractTimeFromDate(
-  d: Date,
-  timezoneOffset: number
-): HourString {
+export function extractTimeFromDate(d: Date, timezoneOffset: number): HourString {
   d.setMinutes(d.getMinutes() + timezoneOffset);
   const hour = d.getUTCHours();
   const minute = d.getUTCMinutes();
-  return (prefix0(hour) + ":" + prefix0(minute)) as HourString;
+  return (prefix0(hour) + ':' + prefix0(minute)) as HourString;
 }
 
 export function dateToStandardString(date: Date): DateString {
@@ -140,25 +125,18 @@ export function isToday(d: Date) {
 
 export function getCalendarDayDifference(date1: Date, date2: Date): number {
   // Normalize both dates to midnight UTC
-  const startOfDay1 = new Date(
-    Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate())
-  );
-  const startOfDay2 = new Date(
-    Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
-  );
+  const startOfDay1 = new Date(Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate()));
+  const startOfDay2 = new Date(Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate()));
 
   // Calculate the difference in days
   const msPerDay = 24 * 60 * 60 * 1000;
   return Math.abs((startOfDay1.getTime() - startOfDay2.getTime()) / msPerDay);
 }
 
-export function getHumanReadableDayDifference(
-  date: Date,
-  $t: (key: string) => string
-) {
+export function getHumanReadableDayDifference(date: Date, $t: (key: string) => string) {
   const today = new Date();
   const diff = getCalendarDayDifference(today, date);
-  if (diff === 0) return $t("today");
-  else if (diff === 1) return $t("tomorrow");
-  return diff + $t("daysLater");
+  if (diff === 0) return $t('today');
+  else if (diff === 1) return $t('tomorrow');
+  return diff + $t('daysLater');
 }

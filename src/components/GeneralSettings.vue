@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { useSettings } from "@/composables/settings";
-import { useUIState } from "@/composables/userInterfaceState";
-import LanguageSelector from "@/components/LanguageSelector.vue";
-import ThemeSelector from "@/components/ThemeSelector.vue";
-import { getCurrentInstance } from "vue";
-import ZoomSlider from "@/components/ZoomSlider.vue";
-import { useTheme } from "vuetify";
+import { useSettings } from '@/composables/settings';
+import { useUIState } from '@/composables/userInterfaceState';
+import LanguageSelector from '@/components/LanguageSelector.vue';
+import ThemeSelector from '@/components/ThemeSelector.vue';
+import { getCurrentInstance } from 'vue';
+import ZoomSlider from '@/components/ZoomSlider.vue';
+import { useTheme } from 'vuetify';
+import { getTranslateFn } from '@/util/i18n';
 
 const theme = useTheme();
 
-const instance = getCurrentInstance();
-const $t = instance.appContext.config.globalProperties.$t;
+const $t = getTranslateFn(getCurrentInstance());
 
 const { currentLanguage, currentUITheme } = useSettings();
 const { currentZoom } = useUIState();
@@ -27,7 +27,7 @@ function setTheme(v: string) {
   </div>
 
   <div class="ma-2">
-    <div class="text-caption ma-1">{{ $t("changeZoom") }}</div>
+    <div class="text-caption ma-1">{{ $t('changeZoom') }}</div>
     <ZoomSlider :current-zoom="currentZoom" @zoom="currentZoom = $event" />
   </div>
 </template>

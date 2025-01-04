@@ -1,24 +1,25 @@
-import { readonly, ref, shallowRef, watch } from "vue";
-import { useBrowserLocation } from "@vueuse/core";
-import TimesPage from "@/pages/TimesPage.vue";
-import TimesWidgetPage from "@/pages/TimesWidgetPage.vue";
-import ReligiousDaysPageVue from "@/pages/ReligiousDaysPage.vue";
-import SettingsPageVue from "@/pages/SettingsPage.vue";
-import AboutPageVue from "@/pages/AboutPage.vue";
-import NotFoundPageVue from "@/pages/NotFoundPage.vue";
-import { PathMenuItem, RouteManager } from "@/types";
-import { useUrlParams } from "@/composables/urlParams";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { readonly, ref, shallowRef, watch } from 'vue';
+import { useBrowserLocation } from '@vueuse/core';
+import TimesPage from '@/pages/TimesPage.vue';
+import TimesWidgetPage from '@/pages/TimesWidgetPage.vue';
+import ReligiousDaysPageVue from '@/pages/ReligiousDaysPage.vue';
+import SettingsPageVue from '@/pages/SettingsPage.vue';
+import AboutPageVue from '@/pages/AboutPage.vue';
+import NotFoundPageVue from '@/pages/NotFoundPage.vue';
+import type { PathMenuItem, RouteManager } from '@/types';
+import { useUrlParams } from '@/composables/urlParams';
 
-const currentView = shallowRef(null);
+const currentView = shallowRef<any>(null);
 const currentPathMenuItem = shallowRef<string | null>(null);
 
 export function useRoute(): RouteManager {
   const location = useBrowserLocation();
   const { applyUrlParamsToSettings } = useUrlParams();
 
-  const routePathToVueComponent = {
-    "/": TimesPage,
-    "": TimesPage,
+  const routePathToVueComponent: Record<string, any> = {
+    '/': TimesPage,
+    '': TimesPage,
     widget: TimesWidgetPage,
     times: TimesPage,
     share: TimesPage,
@@ -28,20 +29,20 @@ export function useRoute(): RouteManager {
   };
   const pathMenuItems: readonly PathMenuItem[] = [
     {
-      icon: "mdi-clock-time-four-outline",
-      title: "times",
+      icon: 'mdi-clock-time-four-outline',
+      title: 'times',
     },
     {
-      icon: "mdi-calendar-month-outline",
-      title: "sabbaticals",
+      icon: 'mdi-calendar-month-outline',
+      title: 'sabbaticals',
     },
     {
-      icon: "mdi-cog-outline",
-      title: "settings",
+      icon: 'mdi-cog-outline',
+      title: 'settings',
     },
     {
-      icon: "mdi-information-outline",
-      title: "about",
+      icon: 'mdi-information-outline',
+      title: 'about',
     },
   ] as const;
   const isWidget = ref(false);
@@ -49,16 +50,16 @@ export function useRoute(): RouteManager {
   watch(
     () => location.value.pathname,
     async () => {
-      const path = location.value.pathname?.replace("/", "") ?? "";
+      const path = location.value.pathname?.replace('/', '') ?? '';
       await setViewFromRoutePath(path);
     },
-    { immediate: true, deep: true }
+    { immediate: true, deep: true },
   );
 
   async function setViewFromRoutePath(path: string) {
-    if (path === "share") {
+    if (path === 'share') {
       await applyUrlParamsToSettings();
-      location.value.href = "times";
+      location.value.href = 'times';
       return;
     }
     const pageToGo = routePathToVueComponent[path];
@@ -68,12 +69,12 @@ export function useRoute(): RouteManager {
     } else {
       currentView.value = pageToGo;
       if (pageToGo === TimesPage) {
-        currentPathMenuItem.value = "times";
+        currentPathMenuItem.value = 'times';
       } else {
         currentPathMenuItem.value = path;
       }
     }
-    isWidget.value = currentPathMenuItem.value === "widget";
+    isWidget.value = currentPathMenuItem.value === 'widget';
   }
 
   async function setViewFromPathMenuItem(item: PathMenuItem) {

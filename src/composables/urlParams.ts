@@ -1,6 +1,6 @@
-import { ApiClient } from "@/ApiClient";
-import { useUrlSearchParams, isDefined } from "@vueuse/core";
-import {
+import { ApiClient } from '@/ApiClient';
+import { useUrlSearchParams, isDefined } from '@vueuse/core';
+import type {
   AppTheme,
   CalculatorMadhab,
   DateStringFormat,
@@ -8,25 +8,26 @@ import {
   PlaceWithCountry,
   RemainingTimeFormat,
   UserInterfaceLanguage,
-} from "@/types";
-import { CalculationMethod } from "adhan";
-import { Ref, computed, ref, watch } from "vue";
-import { useSettings } from "./settings";
-import { dateToStandardString, isToday } from "@/util/dateAndTime";
-import { useUIState } from "./userInterfaceState";
+} from '@/types';
+import { CalculationMethod } from 'adhan';
+import { computed, ref, watch } from 'vue';
+import type { Ref } from 'vue';
+import { useSettings } from './settings';
+import { dateToStandardString, isToday } from '@/util/dateAndTime';
+import { useUIState } from './userInterfaceState';
 
 interface Params {
-  currPlaceParam: Ref<GenericPlace>;
+  currPlaceParam: Ref<GenericPlace | null>;
   theme: Ref<AppTheme>;
   zoom: Ref<number>;
   isShowHijri: Ref<boolean>;
-  year: Ref<DateStringFormat["year"]>;
-  month: Ref<DateStringFormat["month"]>;
-  weekDay: Ref<DateStringFormat["weekDay"]>;
+  year: Ref<DateStringFormat['year']>;
+  month: Ref<DateStringFormat['month']>;
+  weekDay: Ref<DateStringFormat['weekDay']>;
   time: Ref<RemainingTimeFormat>;
   method: Ref<keyof typeof CalculationMethod>;
   madhab: Ref<CalculatorMadhab>;
-  date?: Ref<string>;
+  date?: Ref<string | null>;
   language?: Ref<UserInterfaceLanguage>;
 }
 
@@ -47,29 +48,29 @@ interface SearchParams {
 
 export function encodeParamsForIframe(params: Params): string {
   const urlSearchParams = new URLSearchParams({
-    city: params.currPlaceParam.value.id + "",
+    city: params.currPlaceParam?.value?.id + '',
     theme: params.theme.value,
-    isShowHijri: params.isShowHijri.value ? "1" : "0",
+    isShowHijri: params.isShowHijri.value ? '1' : '0',
     year: params.year.value,
     month: params.month.value,
     weekDay: params.weekDay.value,
     time: params.time.value,
     method: params.method.value,
     madhab: params.madhab.value,
-    zoom: params.zoom.value + "",
+    zoom: params.zoom.value + '',
   });
   if (isDefined(params?.date?.value)) {
-    urlSearchParams.append("date", params.date.value);
+    urlSearchParams.append('date', params.date.value);
   }
   if (isDefined(params?.language?.value)) {
-    urlSearchParams.append("language", params.language.value.languageCode);
+    urlSearchParams.append('language', params.language.value.languageCode);
   }
 
   return urlSearchParams.toString();
 }
 
 export function useUrlParams() {
-  const params = useUrlSearchParams<SearchParams>("history");
+  const params = useUrlSearchParams<SearchParams>('history');
   const settings = useSettings();
   const UIState = useUIState();
 
@@ -82,22 +83,22 @@ export function useUrlParams() {
       if (isDefined(newCity) && !Number.isNaN(Number(newCity))) {
         currentPlaceRef.value = await new ApiClient().placeById(
           Number(newCity),
-          settings.currentLanguage.value.languageCode
+          settings.currentLanguage.value.languageCode,
         );
       } else {
         currentPlaceRef.value = null;
       }
     },
-    { immediate: true } // Ensure the watch runs immediately
+    { immediate: true }, // Ensure the watch runs immediately
   );
 
   const currentPlace = computed(() => currentPlaceRef.value);
 
   const theme = computed<AppTheme>(() => {
-    if (isDefined(params.theme) && typeof params.theme === "string") {
+    if (isDefined(params.theme) && typeof params.theme === 'string') {
       return params.theme as AppTheme;
     }
-    return "light";
+    return 'light';
   });
 
   const isShowHijriDate = computed<boolean>(() => {
@@ -108,7 +109,7 @@ export function useUrlParams() {
   });
 
   const currDate = computed<Date>(() => {
-    if (isDefined(params.date) && typeof params.date === "string") {
+    if (isDefined(params.date) && typeof params.date === 'string') {
       const d = new Date(params.date);
       if (!isNaN(d.getTime())) {
         return d;
@@ -125,51 +126,49 @@ export function useUrlParams() {
   });
 
   const currentTimeFormat = computed<RemainingTimeFormat>(() => {
-    if (isDefined(params.time) && typeof params.time === "string") {
+    if (isDefined(params.time) && typeof params.time === 'string') {
       return params.time as RemainingTimeFormat;
     }
-    return "XX:YY:ZZ";
+    return 'XX:YY:ZZ';
   });
 
-  const currYearFormat = computed<DateStringFormat["year"]>(() => {
-    if (isDefined(params.year) && typeof params.year === "string") {
-      return params.year as DateStringFormat["year"];
+  const currYearFormat = computed<DateStringFormat['year']>(() => {
+    if (isDefined(params.year) && typeof params.year === 'string') {
+      return params.year as DateStringFormat['year'];
     }
-    return "YYYY";
+    return 'YYYY';
   });
 
-  const currMonthFormat = computed<DateStringFormat["month"]>(() => {
-    if (isDefined(params.month) && typeof params.month === "string") {
-      return params.month as DateStringFormat["month"];
+  const currMonthFormat = computed<DateStringFormat['month']>(() => {
+    if (isDefined(params.month) && typeof params.month === 'string') {
+      return params.month as DateStringFormat['month'];
     }
-    return "MMMM";
+    return 'MMMM';
   });
 
-  const currWeekdayFormat = computed<DateStringFormat["weekDay"]>(() => {
-    if (isDefined(params.weekDay) && typeof params.weekDay === "string") {
-      return params.weekDay as DateStringFormat["weekDay"];
+  const currWeekdayFormat = computed<DateStringFormat['weekDay']>(() => {
+    if (isDefined(params.weekDay) && typeof params.weekDay === 'string') {
+      return params.weekDay as DateStringFormat['weekDay'];
     }
-    return "DDDD";
+    return 'DDDD';
   });
 
   const calculatorMethod = computed<keyof typeof CalculationMethod>(() => {
-    if (isDefined(params.method) && typeof params.method === "string") {
+    if (isDefined(params.method) && typeof params.method === 'string') {
       return params.method as keyof typeof CalculationMethod;
     }
-    return "Turkey";
+    return 'Turkey';
   });
 
   const calculatorMadhab = computed<CalculatorMadhab>(() => {
-    if (isDefined(params.madhab) && typeof params.madhab === "string") {
+    if (isDefined(params.madhab) && typeof params.madhab === 'string') {
       return params.madhab as CalculatorMadhab;
     }
-    return "shafi";
+    return 'shafi';
   });
 
   async function applyUrlParamsToSettings() {
-    settings.currentLanguage.value = settings.getLanguageFromCode(
-      params.language
-    );
+    settings.currentLanguage.value = settings.getLanguageFromCode(params.language);
     UIState.currentZoom.value = zoom.value;
     UIState.isShowHijriDate.value = isShowHijriDate.value;
     UIState.isSideBarOpen.value = false;
@@ -188,7 +187,7 @@ export function useUrlParams() {
     settings.currentTimeFormat.value = currentTimeFormat.value;
     settings.currentPlace.value = await new ApiClient().placeById(
       Number(params.city),
-      settings.currentLanguage.value.languageCode
+      settings.currentLanguage.value.languageCode,
     );
   }
 

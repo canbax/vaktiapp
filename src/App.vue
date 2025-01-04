@@ -1,18 +1,13 @@
 <script setup lang="ts">
-import { useRoute } from "@/composables/route";
-import { PathMenuItem } from "@/types";
-import LocationSelectDialog from "@/components/LocationSelectDialog.vue";
-import ShareTimes from "@/components/ShareTimes.vue";
-import { useUIState } from "@/composables/userInterfaceState";
-import { computed } from "vue";
+import { useRoute } from '@/composables/route';
+import type { PathMenuItem } from '@/types';
+import LocationSelectDialog from '@/components/LocationSelectDialog.vue';
+import ShareTimes from '@/components/ShareTimes.vue';
+import { useUIState } from '@/composables/userInterfaceState';
+import { computed } from 'vue';
 
-const {
-  currentView,
-  currentPathMenuItem,
-  pathMenuItems,
-  setViewFromPathMenuItem,
-  isWidget,
-} = useRoute();
+const { currentView, currentPathMenuItem, pathMenuItems, setViewFromPathMenuItem, isWidget } =
+  useRoute();
 
 const { isSideBarOpen, currentZoom } = useUIState();
 
@@ -20,21 +15,17 @@ function switchNavigationDrawer() {
   isSideBarOpen.value = !isSideBarOpen.value;
 }
 
-const isTimesShown = computed<boolean>(
-  () => currentPathMenuItem.value === "times"
-);
+const isTimesShown = computed<boolean>(() => currentPathMenuItem.value === 'times');
 
-const isAboutShown = computed<boolean>(
-  () => currentPathMenuItem.value === "about"
-);
+const isAboutShown = computed<boolean>(() => currentPathMenuItem.value === 'about');
 
 function openGitHubSponsors() {
-  window.open("https://github.com/sponsors/canbax", "_blank");
+  window.open('https://github.com/sponsors/canbax', '_blank');
 }
 
-function clickToHref(_, item: PathMenuItem) {
+function clickToHref(item: PathMenuItem) {
   isSideBarOpen.value = false;
-  history.pushState({}, "", "/" + item.title);
+  history.pushState({}, '', '/' + item.title);
   setViewFromPathMenuItem(item);
 }
 </script>
@@ -47,7 +38,7 @@ function clickToHref(_, item: PathMenuItem) {
           v-for="item in pathMenuItems"
           :key="item.title"
           link
-          @click="clickToHref($event, item)"
+          @click="clickToHref(item)"
         >
           <template #prepend>
             <v-icon :icon="item.icon" />
@@ -67,7 +58,7 @@ function clickToHref(_, item: PathMenuItem) {
 
         <template #title>
           <v-app-bar-title>
-            {{ $t(currentPathMenuItem) }}
+            {{ $t(currentPathMenuItem ?? '') }}
           </v-app-bar-title>
         </template>
 

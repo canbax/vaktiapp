@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { useBrowserLocation, useClipboard } from "@vueuse/core";
-import { computed, getCurrentInstance, nextTick, ref } from "vue";
-import DateFormatSelector from "@/components/DateFormatSelector.vue";
-import TimeFormatSelector from "@/components/TimeFormatSelector.vue";
-import CalculatorMethodSelector from "@/components/CalculatorMethodSelector.vue";
-import CalculatorMadhabSelector from "@/components/CalculatorMadhabSelector.vue";
-import ThemeSelector from "@/components/ThemeSelector.vue";
-import { VTextarea } from "vuetify/components/VTextarea";
-import { useSettings } from "@/composables/settings";
-import { useUIState } from "@/composables/userInterfaceState";
-import { encodeParamsForIframe } from "@/composables/urlParams";
+import { useBrowserLocation, useClipboard } from '@vueuse/core';
+import { computed, getCurrentInstance, nextTick, ref } from 'vue';
+import DateFormatSelector from '@/components/DateFormatSelector.vue';
+import TimeFormatSelector from '@/components/TimeFormatSelector.vue';
+import CalculatorMethodSelector from '@/components/CalculatorMethodSelector.vue';
+import CalculatorMadhabSelector from '@/components/CalculatorMadhabSelector.vue';
+import ThemeSelector from '@/components/ThemeSelector.vue';
+import { VTextarea } from 'vuetify/components/VTextarea';
+import { useSettings } from '@/composables/settings';
+import { useUIState } from '@/composables/userInterfaceState';
+import { encodeParamsForIframe } from '@/composables/urlParams';
+import { getTranslateFn } from '@/util/i18n';
+
 const browserLocation = useBrowserLocation();
 
 const {
@@ -37,12 +39,9 @@ const currPlaceParam = ref(currentPlace.value);
 const method = ref(calculatorMethod.value);
 const madhab = ref(calculatorMadhab.value);
 
-const instance = getCurrentInstance();
-const $t = instance?.appContext.config.globalProperties.$t;
+const $t = getTranslateFn(getCurrentInstance());
 
-const baseUrl = computed<string>(
-  () => browserLocation.value.origin + "/widget"
-);
+const baseUrl = computed<string>(() => browserLocation.value.origin + '/widget');
 
 const iframeSrc = computed<string>(() => {
   const params = encodeParamsForIframe({
@@ -77,9 +76,9 @@ function selectIframeCode() {
   if (textareaRef.value) {
     // Wait a tick to ensure the textarea is fully rendered
     nextTick(() => {
-      const textarea = textareaRef.value?.$el?.querySelector("textarea");
+      const textarea = textareaRef.value?.$el?.querySelector('textarea');
       if (textarea) {
-        textareaRef.value?.$el?.querySelector("textarea")?.select();
+        textareaRef.value?.$el?.querySelector('textarea')?.select();
       }
     });
   }
@@ -115,14 +114,9 @@ function copyIframeCode() {
             @click:control="selectIframeCode"
           >
             <template #append-inner>
-              <v-btn
-                data-testid="copy-iframe-code-btn"
-                icon
-                @click="copyIframeCode"
-                class="ml-2"
-              >
+              <v-btn data-testid="copy-iframe-code-btn" icon @click="copyIframeCode" class="ml-2">
                 <v-icon :color="copied ? 'green' : 'default'">
-                  {{ copied ? "mdi-check-circle" : "mdi-content-copy" }}
+                  {{ copied ? 'mdi-check-circle' : 'mdi-content-copy' }}
                 </v-icon>
               </v-btn>
             </template>
@@ -144,11 +138,7 @@ function copyIframeCode() {
             <v-card-text>
               <div class="d-flex flex-wrap">
                 <ThemeSelector v-model="theme" class="ma-1" />
-                <v-checkbox
-                  v-model="isShowHijri"
-                  class="ma-1"
-                  :label="$t('isShowHijriDate')"
-                />
+                <v-checkbox v-model="isShowHijri" class="ma-1" :label="$t('isShowHijriDate')" />
                 <DateFormatSelector
                   class="ma-1 w-100"
                   v-model:year="year"
@@ -169,6 +159,6 @@ function copyIframeCode() {
 
 <style scoped>
 .monospace-font {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 </style>

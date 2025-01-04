@@ -1,23 +1,24 @@
 <script setup lang="ts">
-import { ApiClient } from "@/ApiClient";
-import { useDebounceFn } from "@vueuse/core";
-import { GenericPlace, PlaceMatchWithCountry } from "@/types";
-import { computed, ref, watch } from "vue";
-import { useSafeCall } from "@/composables/safeCall";
-import { useCoordinates } from "@/composables/coordinates";
-import { isDefined } from "@vueuse/core";
-import { useSettings } from "@/composables/settings";
+import { ApiClient } from '@/ApiClient';
+import { useDebounceFn } from '@vueuse/core';
+import type { GenericPlace, PlaceMatchWithCountry } from '@/types';
+import type { VAutocomplete } from 'vuetify/components';
+import { computed, ref, watch } from 'vue';
+import { useSafeCall } from '@/composables/safeCall';
+import { useCoordinates } from '@/composables/coordinates';
+import { isDefined } from '@vueuse/core';
+import { useSettings } from '@/composables/settings';
 
 const { error: isGPSError, getGPS, lastGPS } = useCoordinates();
 const { currentLanguage, selectedPlaces, currentCountry } = useSettings();
 
-const model = defineModel<GenericPlace>();
+const model = defineModel<GenericPlace | null>();
 
 const api = new ApiClient();
 const placeSuggestions = ref<Map<number, GenericPlace>>(selectedPlaces.value);
 
-const autoCompleteRef = ref(null);
-const search = ref("");
+const autoCompleteRef = ref<VAutocomplete | null>(null);
+const search = ref('');
 
 function onPlaceSelected(v: GenericPlace) {
   model.value = v ?? null;
@@ -40,10 +41,12 @@ function preparePlaceSuggestions(places: GenericPlace[]) {
 async function nearByPlaces() {
   await getGPS();
 
+  if (!isDefined(lastGPS.value.latitude) || !isDefined(lastGPS.value.longitude)) return;
+
   const results = await api.nearByPlaces(
     lastGPS.value.latitude,
     lastGPS.value.longitude,
-    currentLanguage.value?.languageCode
+    currentLanguage.value?.languageCode,
   );
   preparePlaceSuggestions(results);
 }
@@ -56,7 +59,7 @@ const searchDebounced = useDebounceFn(async (v: string) => {
     lastGPS.value.latitude,
     lastGPS.value.longitude,
     currentLanguage?.value?.languageCode,
-    currentCountry.value
+    currentCountry.value,
   );
   preparePlaceSuggestions(results);
 }, 300);
@@ -74,24 +77,21 @@ const {
 } = useSafeCall(nearByPlaces);
 
 function isPlaceMatch(place: GenericPlace): place is PlaceMatchWithCountry {
-  return Boolean(place?.["matchingString"]);
+  return Boolean('matchingString' in place);
 }
 
 function country2flag(countryCode: string) {
   return countryCode.replace(/./g, (letter) =>
-    String.fromCodePoint((letter.charCodeAt(0) % 32) + 0x1f1e5)
+    String.fromCodePoint((letter.charCodeAt(0) % 32) + 0x1f1e5),
   );
 }
 
-const loading = computed<boolean>(
-  () => isLoadingNearByPlaceQuery.value || isLoadingQuery.value
-);
+const loading = computed<boolean>(() => isLoadingNearByPlaceQuery.value || isLoadingQuery.value);
 
 const error = computed<string | null>(() => {
   if (isDefined(isQueryError.value)) return isQueryError.value;
   if (isDefined(isGPSError.value)) return isGPSError.value.message;
-  if (isDefined(isNearByPlaceQueryError.value))
-    return isNearByPlaceQueryError.value;
+  if (isDefined(isNearByPlaceQueryError.value)) return isNearByPlaceQueryError.value;
   return null;
 });
 
@@ -101,14 +101,12 @@ watch(error, () => {
   snackbar.value = Boolean(error.value);
 });
 
-const items = computed<GenericPlace[]>(() =>
-  Array.from(placeSuggestions.value.values())
-);
+const items = computed<GenericPlace[]>(() => Array.from(placeSuggestions.value.values()));
 </script>
 
 <template>
   <v-snackbar v-model="snackbar" vertical timeout="3000">
-    <div class="text-subtitle-1 pb-2">{{ $t("InternetErr") }}</div>
+    <div class="text-subtitle-1 pb-2">{{ $t('InternetErr') }}</div>
     <p>{{ error }}</p>
   </v-snackbar>
 
@@ -140,18 +138,14 @@ const items = computed<GenericPlace[]>(() =>
         </template>
         <template #subtitle>
           <div>
-            {{ item.raw.country + " " + country2flag(item.raw.countryCode) }}
+            {{ item.raw.country + ' ' + country2flag(item.raw.countryCode) }}
           </div>
         </template>
       </v-list-item>
     </template>
 
     <template #append-inner>
-      <v-btn
-        @click="safeNearBySearch"
-        size="x-small"
-        icon="mdi-crosshairs-gps"
-      ></v-btn>
+      <v-btn @click="safeNearBySearch" size="x-small" icon="mdi-crosshairs-gps"></v-btn>
     </template>
   </v-autocomplete>
 </template>

@@ -1,16 +1,16 @@
-import { expect, Page, chromium } from "@playwright/test";
+import { expect, Page, chromium } from '@playwright/test';
 import {
   expectVisiblePrayingTimesBanner,
   readTextFromClipboard,
   selectLocation,
   test,
-} from "./test-utils";
+} from './test-utils';
 
 async function getVisibleDate(page: Page): Promise<Date> {
-  const text = await page.getByTestId("date-str").textContent();
-  const arr = text.split(" ");
+  const text = await page.getByTestId('date-str').textContent();
+  const arr = text.split(' ');
   arr.pop();
-  return new Date(arr.join(" "));
+  return new Date(arr.join(' '));
 }
 
 function isNextDay(page: Page, date1: Date, date2: Date): boolean {
@@ -19,61 +19,59 @@ function isNextDay(page: Page, date1: Date, date2: Date): boolean {
   return date2.getDate() === temp.getDate();
 }
 
-test("should show todays times with remaining times", async ({ page }) => {
+test('should show todays times with remaining times', async ({ page }) => {
   await selectLocation(page);
 
-  await page.getByRole("navigation").getByText("Praying Times").click(); // close navigation menu
+  await page.getByRole('navigation').getByText('Praying Times').click(); // close navigation menu
   await expectVisiblePrayingTimesBanner(page);
 
-  await expect(page.getByTestId("remaining-time")).toBeVisible();
-  await expect(page.getByTestId("prev-btn")).toBeVisible();
-  await expect(page.getByTestId("next-btn")).toBeVisible();
-  await expect(page.getByTestId("today-btn")).not.toBeVisible();
-  await expect(page.getByTestId("time-row")).toHaveCount(6);
+  await expect(page.getByTestId('remaining-time')).toBeVisible();
+  await expect(page.getByTestId('prev-btn')).toBeVisible();
+  await expect(page.getByTestId('next-btn')).toBeVisible();
+  await expect(page.getByTestId('today-btn')).toBeHidden();
+  await expect(page.getByTestId('time-row')).toHaveCount(6);
 });
 
-test("should go to other days and come back to today with preserved UI state after page refresh", async ({
+test('should go to other days and come back to today with preserved UI state after page refresh', async ({
   page,
 }) => {
   await selectLocation(page);
   const today = await getVisibleDate(page);
-  await page.getByTestId("next-btn").click();
+  await page.getByTestId('next-btn').click();
   const next1day = await getVisibleDate(page);
   expect(isNextDay(page, today, next1day)).toBe(true);
-  await expect(page.getByTestId("today-btn")).toBeVisible();
-  await page.getByTestId("next-btn").click();
+  await expect(page.getByTestId('today-btn')).toBeVisible();
+  await page.getByTestId('next-btn').click();
   const next2day = await getVisibleDate(page);
-  await expect(page.getByTestId("today-btn")).toBeVisible();
+  await expect(page.getByTestId('today-btn')).toBeVisible();
   expect(isNextDay(page, next1day, next2day)).toBe(true);
   await page.reload();
 
-  await expect(
-    page.getByRole("navigation").getByText("Praying Times")
-  ).toBeVisible(); // assert menu stays open
-  await expect(page.getByTestId("today-btn")).toBeVisible();
-  await page.getByTestId("prev-btn").click();
+  await expect(page.getByRole('navigation').getByText('Praying Times')).toBeVisible(); // assert menu stays open
+  await expect(page.getByTestId('today-btn')).toBeVisible();
+  await page.getByTestId('prev-btn').click();
   const next2prev1day = await getVisibleDate(page);
   expect(isNextDay(page, today, next2prev1day)).toBe(true);
-  await page.getByTestId("today-btn").click();
+  await page.getByTestId('today-btn').click();
   const today2 = await getVisibleDate(page);
   expect(isNextDay(page, today2, next1day)).toBe(true);
 });
 
-test("should be able to change location", async ({ page }) => {
+test('should be able to change location', async ({ page }) => {
   await selectLocation(page);
-  await expect(page.getByTestId("remaining-time")).toBeVisible();
-  await page.getByRole("button", { name: "Keçiören" }).click();
-  await selectLocation(page, false, "İstanbul", "İstanbul, İstanbul");
-  await page.getByLabel("Close").click();
-  await page.getByRole("button", { name: "İstanbul" }).click();
+  await expect(page.getByTestId('remaining-time')).toBeVisible();
+  await page.getByRole('button', { name: 'Keçiören' }).click();
+  await selectLocation(page, false, 'İstanbul', 'İstanbul, İstanbul');
+  await page.getByLabel('Close').click();
+  await page.getByRole('button', { name: 'İstanbul' }).click();
 });
 
-test("should share a valid URL to praying times", async ({ page }) => {
+test('should share a valid URL to praying times', async ({ page }) => {
   await selectLocation(page);
-  await expect(page.getByTestId("remaining-time")).toBeVisible();
+  await expect(page.getByTestId('remaining-time')).toBeVisible();
 
-  await page.getByTestId("share-btn").click();
-  await page.getByTestId("copy-link-btn").click();
+  await page.getByTestId('share-btn').click();
+  await page.getByTestId('copy-link-btn').click();
 
   const clipboardText = await readTextFromClipboard(page);
   const browser = await chromium.launch();
@@ -86,31 +84,29 @@ test("should share a valid URL to praying times", async ({ page }) => {
   await expectVisiblePrayingTimesBanner(page2);
 });
 
-test("should be able to pop up share in app", async ({ page }) => {
+test('should be able to pop up share in app', async ({ page }) => {
   await selectLocation(page);
-  await expect(page.getByTestId("remaining-time")).toBeVisible();
+  await expect(page.getByTestId('remaining-time')).toBeVisible();
 
-  await page.getByTestId("share-btn").click();
-  await page.getByTestId("share-in-app-btn").click();
+  await page.getByTestId('share-btn').click();
+  await page.getByTestId('share-in-app-btn').click();
 });
 
-test("should be able to embed times widget", async ({ page }) => {
+test('should be able to embed times widget', async ({ page }) => {
   await selectLocation(page);
-  await expect(page.getByTestId("remaining-time")).toBeVisible();
+  await expect(page.getByTestId('remaining-time')).toBeVisible();
 
-  await page.getByTestId("share-btn").click();
-  await page.getByTestId("embed-btn").click();
+  await page.getByTestId('share-btn').click();
+  await page.getByTestId('embed-btn').click();
 
-  await expect(
-    page.getByRole("alert").getByText("Embed to your website")
-  ).toBeVisible();
+  await expect(page.getByRole('alert').getByText('Embed to your website')).toBeVisible();
 
-  await expect(page.locator("iframe")).toBeVisible();
-  await page.getByRole("button", { name: "Parameters" }).click();
-  await page.getByText("Is show hijri date?").click();
-  await page.getByTestId("copy-iframe-code-btn").click();
+  await expect(page.locator('iframe')).toBeVisible();
+  await page.getByRole('button', { name: 'Parameters' }).click();
+  await page.getByText('Is show hijri date?').click();
+  await page.getByTestId('copy-iframe-code-btn').click();
 
   const clipboardText = await readTextFromClipboard(page);
-  expect(clipboardText).toContain("iframe");
-  expect(clipboardText).toContain("isShowHijri=0");
+  expect(clipboardText).toContain('iframe');
+  expect(clipboardText).toContain('isShowHijri=0');
 });

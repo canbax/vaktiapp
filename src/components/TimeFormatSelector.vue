@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, ref } from "vue";
-import { RemainingTimeFormat } from "@/types";
-import { secondsToHumanReadable } from "@/util/dateAndTime";
-import { triggerClick } from "@/util/event";
+import { computed, getCurrentInstance, ref } from 'vue';
+import type { RemainingTimeFormat } from '@/types';
+import { secondsToHumanReadable } from '@/util/dateAndTime';
+import { triggerClick } from '@/util/event';
+import { getTranslateFn } from '@/util/i18n';
 
-const instance = getCurrentInstance();
-const $t = instance?.appContext.config.globalProperties.$t;
+const $t = getTranslateFn(getCurrentInstance());
 
 const model = defineModel<RemainingTimeFormat>();
 const rippleText = ref(null);
@@ -13,14 +13,14 @@ const rippleText = ref(null);
 type TimeFormatOption = { title: string; value: RemainingTimeFormat };
 
 const TIME_FORMATS: TimeFormatOption[] = [
-  { title: "XX:YY:ZZ", value: "XX:YY:ZZ" },
-  { title: "XX:YY", value: "XX:YY" },
+  { title: 'XX:YY:ZZ', value: 'XX:YY:ZZ' },
+  { title: 'XX:YY', value: 'XX:YY' },
   {
-    title: `X ${$t("hour")} Y ${$t("minute")} Z ${$t("second")}`,
+    title: `X ${$t('hour')} Y ${$t('minute')} Z ${$t('second')}`,
     value: `X hour Y minute Z second`,
   },
   {
-    title: `X ${$t("hour")} Y ${$t("minute")}`,
+    title: `X ${$t('hour')} Y ${$t('minute')}`,
     value: `X hour Y minute`,
   },
 ];
@@ -28,10 +28,10 @@ const TIME_FORMATS: TimeFormatOption[] = [
 const sampleRemainingTime = computed<string>(() => {
   return secondsToHumanReadable(
     3919,
-    $t("hour"),
-    $t("minute"),
-    $t("second"),
-    model.value
+    $t('hour'),
+    $t('minute'),
+    $t('second'),
+    model.value ?? 'XX:YY:ZZ',
   );
 });
 
@@ -49,11 +49,7 @@ function glowSampleRemainingTime() {
       :placeholder="$t('remainingTimeFormat')"
       @update:modelValue="glowSampleRemainingTime"
     />
-    <h3
-      ref="rippleText"
-      class="text-center"
-      v-ripple.center="{ class: 'text-primary' }"
-    >
+    <h3 ref="rippleText" class="text-center" v-ripple.center="{ class: 'text-primary' }">
       {{ sampleRemainingTime }}
     </h3>
   </v-form>
