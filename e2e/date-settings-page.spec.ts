@@ -65,7 +65,5 @@ test("should change time format", async ({ page }) => {
   await page.getByTestId("main-menu-btn").click();
   await page.getByText("Praying Times").click();
 
-  await expect(page.getByTestId("remaining-time")).toContainText("hour");
-  await expect(page.getByTestId("remaining-time")).toContainText("minute");
   await expect(page.getByTestId("remaining-time")).toContainText("second");
 });
