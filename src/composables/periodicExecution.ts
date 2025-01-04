@@ -1,7 +1,7 @@
 import { onMounted, onUnmounted } from "vue";
 
 export function usePeriodicExecution(fn: () => void, interval: number) {
-  let intervalId: number | NodeJS.Timer;
+  let intervalId: NodeJS.Timeout;
   onMounted(() => {
     intervalId = setInterval(fn, interval);
   });

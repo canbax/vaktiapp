@@ -157,9 +157,7 @@ export function getHumanReadableDayDifference(
   $t: (key: string) => string
 ) {
   const today = new Date();
-  console.log("today: ", today, " date: ", date);
   const diff = getCalendarDayDifference(today, date);
-  console.log("diff: ", diff);
   if (diff === 0) return $t("today");
   else if (diff === 1) return $t("tomorrow");
   return diff + $t("daysLater");

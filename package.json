@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vite",
     "format": "prettier --write .",
-    "build": "run-p type-check build-only",
+    "build": "npm run type-check && npm run build-only",
     "preview": "vite preview",
     "test": "npm run test:unit",
     "test:unit:watch": "vitest --environment jsdom --root src/ --watch",
@@ -20,6 +20,7 @@
     "test-cov": "vitest run --coverage",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "tc2": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore --max-warnings=0",
     "lint-fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore --max-warnings=0",
     "prepare": "husky install",
@@ -29,7 +30,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
-    "@vueuse/core": "^12.0.0",
+    "@vueuse/core": "^12.3.0",
     "adhan": "^4.4.3",
     "pinia": "^2.3.0",
     "vue": "^3.5.13",
@@ -43,7 +44,7 @@
     "@types/node": "^20.4.8",
     "@types/webfontloader": "^1.6.35",
     "@vitejs/plugin-vue": "^4.2.3",
-    "@vitest/coverage-v8": "^0.34.3",
+    "@vitest/coverage-v8": "^2.1.8",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/test-utils": "^2.4.1",
@@ -53,14 +54,13 @@
     "husky": "^8.0.3",
     "istanbul-badges-readme": "^1.8.5",
     "jsdom": "^22.1.0",
-    "lint-staged": "^13.2.3",
-    "npm-run-all": "^4.1.5",
+    "lint-staged": "^15.3.0",
     "prettier": "^2.8.8",
     "typescript": "~5.1.6",
     "vite": "^4.4.8",
     "vite-plugin-vuetify": "^1.0.2",
-    "vitest": "^0.34.1",
-    "vue-tsc": "^1.8.8"
+    "vitest": "^2.1.8",
+    "vue-tsc": "^2.2.0"
   },
   "lint-staged": {
     "*.{ts,js,vue}": [
