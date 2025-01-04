@@ -32,6 +32,7 @@ const buildVersion = computed(() => process.env.BUILD_VERSION || "");
       <div>
         <span> Yusuf Sait Canbaz </span>
         <v-btn
+          data-testid="copy-name-btn"
           class="mx-2"
           size="x-small"
           icon="mdi-content-copy"
@@ -41,6 +42,7 @@ const buildVersion = computed(() => process.env.BUILD_VERSION || "");
       <div>
         <span> TR49 0020 6001 3401 9074 7100 01 </span>
         <v-btn
+          data-testid="copy-iban-btn"
           class="mx-2"
           size="x-small"
           icon="mdi-content-copy"
