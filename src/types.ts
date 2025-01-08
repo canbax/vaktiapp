@@ -85,11 +85,6 @@ export type DateString = `${number}-${MM}-${DD}`;
 
 export type TimesData = Record<DateString, HourString[]>;
 
-export interface TimesForPlace {
-  place: Place;
-  times: TimesData;
-}
-
 export interface PathMenuItem {
   readonly icon: string;
   readonly title: string;
