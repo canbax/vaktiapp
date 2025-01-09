@@ -5,10 +5,5 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ],
-  "functions": {
-    "api/*": {
-      "maxDuration": 55
-    }
-  }
+  ]
 }
