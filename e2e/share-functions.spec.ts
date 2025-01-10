@@ -24,7 +24,11 @@ test('should share a valid URL to praying times', async ({ page }) => {
   await expectVisiblePrayingTimesBanner(page2);
 });
 
+const skipTest = process.env.CI === 'true';
+
 test('should be able to pop up share in app', async ({ page }) => {
+  // eslint-disable-next-line playwright/no-skipped-test
+  test.skip(skipTest, 'Cannot show share in apps because run in CI mode');
   await selectLocation(page);
   await expect(page.getByTestId('remaining-time')).toBeVisible();
 
