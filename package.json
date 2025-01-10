@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "engines": {
-    "node": "20.x",
+    "node": "22.x",
     "npm": "10.x"
   },
   "scripts": {
@@ -12,12 +12,10 @@
     "format": "prettier --write src/",
     "build": "npm run type-check && npm run build-only",
     "preview": "vite preview",
-    "test": "npm run test:unit",
-    "test:unit:watch": "vitest --environment jsdom --root src/ --watch",
-    "test:unit": "vitest --environment jsdom --root src/",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "test:e2e:debug": "playwright test --debug",
+    "test": "vitest run",
+    "test-watch": "vitest",
+    "test-e2e": "playwright test",
+    "test-e2e-debug": "playwright test --debug",
     "test-cov": "vitest run --coverage",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
