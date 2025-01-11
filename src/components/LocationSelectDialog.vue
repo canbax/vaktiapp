@@ -53,11 +53,16 @@ const title = computed<string>(() =>
     <template #default>
       <v-card>
         <div>
-          <v-alert
-            :title="title"
-            :closable="hasCurrentPlace"
-            @click:close="userIntentForDialog = false"
-          />
+          <v-alert :title="title">
+            <template v-if="hasCurrentPlace" #close>
+              <v-icon
+                data-testid="close-btn"
+                @click="userIntentForDialog = false"
+                icon="mdi-close"
+                size="large"
+              ></v-icon>
+            </template>
+          </v-alert>
         </div>
         <div>
           <LocationSelector v-model="currentPlace" />

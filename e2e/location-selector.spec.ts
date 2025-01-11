@@ -5,7 +5,7 @@ import { expectVisiblePrayingTimesBanner, test } from './test-utils';
 test('should open location selector initially', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByText('Add New Location')).toBeInViewport();
-  await expect(page.getByLabel('Close')).toBeHidden();
+  await expect(page.getByTestId('close-btn')).toBeHidden();
 });
 
 test('should search and find results with Turkish and Chinese characters', async ({ page }) => {
@@ -22,7 +22,7 @@ test('should search and find results with Turkish and Chinese characters', async
   await page.getByText('黄河西路街道, Inner Mongolia').click();
   await expectVisiblePrayingTimesBanner(page);
   await page.getByRole('button', { name: '黄河西路街道' }).click();
-  await page.getByLabel('Close').click();
+  await page.getByTestId('close-btn').click();
   await expectVisiblePrayingTimesBanner(page);
   await assertSelectedPlacesCached(page, '黄河西路街道, Inner Mongolia');
 });
@@ -39,8 +39,8 @@ test('should find places and select from GPS location', async ({ page }) => {
   await page.getByText('Keçiören, Ankara').click();
   await expectVisiblePrayingTimesBanner(page);
   await page.getByRole('button', { name: 'Keçiören' }).click();
-  await expect(page.getByLabel('Close')).toBeVisible();
-  await page.getByLabel('Close').click();
+  await expect(page.getByTestId('close-btn')).toBeVisible();
+  await page.getByTestId('close-btn').click();
   await expectVisiblePrayingTimesBanner(page);
   await assertSelectedPlacesCached(page, 'Keçiören, Ankara');
 });

@@ -57,6 +57,6 @@ test('should be able to change location', async ({ page }) => {
   await expect(page.getByTestId('remaining-time')).toBeVisible();
   await page.getByRole('button', { name: 'Keçiören' }).click();
   await selectLocation(page, false, 'İstanbul', 'İstanbul, İstanbul');
-  await page.getByLabel('Close').click();
+  await page.getByTestId('close-btn').click();
   await page.getByRole('button', { name: 'İstanbul' }).click();
 });
