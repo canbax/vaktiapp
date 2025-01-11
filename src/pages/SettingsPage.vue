@@ -5,7 +5,9 @@ import GeneralSettings from '@/components/GeneralSettings.vue';
 import CalculatorSettings from '@/components/CalculatorSettings.vue';
 import { useUIState } from '@/composables/userInterfaceState';
 import { getTranslateFn } from '@/util/i18n';
+import { useScrollTop } from '@/composables/scrollTop';
 
+useScrollTop();
 const { settingsTab } = useUIState();
 
 const $t = getTranslateFn(getCurrentInstance());

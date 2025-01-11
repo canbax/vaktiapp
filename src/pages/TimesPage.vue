@@ -4,7 +4,9 @@ import { useSettings } from '@/composables/settings';
 import { ref } from 'vue';
 import { dateToStandardString } from '@/util/dateAndTime';
 import { useUIState } from '@/composables/userInterfaceState';
+import { useScrollTop } from '@/composables/scrollTop';
 
+useScrollTop();
 const {
   currentPlace,
   currentTimeFormat,

@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useScrollTop } from '@/composables/scrollTop';
+
+useScrollTop();
+</script>
 
 <template>
   <v-empty-state

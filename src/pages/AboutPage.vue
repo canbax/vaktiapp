@@ -2,7 +2,11 @@
 import { useClipboard } from '@vueuse/core';
 import { getCurrentInstance, ref, computed } from 'vue';
 import { getTranslateFn } from '@/util/i18n';
+import { useScrollTop } from '@/composables/scrollTop';
+
 const { copy } = useClipboard({ legacy: true });
+useScrollTop();
+
 const snackbar = ref(false);
 const copiedText = ref('');
 
