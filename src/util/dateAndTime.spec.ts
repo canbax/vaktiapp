@@ -7,6 +7,7 @@ import {
   dateToString,
   dateToStandardString,
   getCalendarDayDifference,
+  getHumanReadableDayDifference,
 } from './dateAndTime';
 import { DateStringFormat, RemainingTimeFormat } from '@/types';
 import { translate } from './i18n';
@@ -399,6 +400,13 @@ describe('Date and time utils', () => {
       const date1 = new Date(2022, 3, 10);
       const date2 = new Date(2022, 10, 11);
       expect(getCalendarDayDifference(date1, date2)).toBe(215);
+    });
+  });
+
+  describe('getHumanReadableDayDifference', () => {
+    it('should return a human readable day difference ', () => {
+      const date1 = new Date(2022, 3, 10);
+      expect(getHumanReadableDayDifference(date1, () => 'gün sonra')).toContain(' gün sonra');
     });
   });
 });

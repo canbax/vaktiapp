@@ -8,7 +8,7 @@
     "npm": "10.x"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "format": "prettier --write src/",
     "build": "npm run type-check && npm run build-only",
     "preview": "vite preview",
@@ -25,7 +25,8 @@
     "prepare": "husky install",
     "update-readme-test-cov": "npm run test-cov && npm run make-badges",
     "make-badges": "istanbul-badges-readme",
-    "make-badges:ci": "npm run make-badges -- --ci"
+    "make-badges:ci": "npm run make-badges -- --ci",
+    "checks": "npm run format && npm run lint && npm run test && npm run test-e2e && npm run build"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",

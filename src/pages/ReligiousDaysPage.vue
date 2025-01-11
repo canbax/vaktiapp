@@ -60,19 +60,21 @@ function gre2str(d: Date): string {
         <tr
           v-for="(item, idx) in sabbaticalRows"
           :key="idx"
-          v-bind:class="{
+          :class="{
             'bg-primary closest-sabbatical': idx === NUM_SABBATICALS,
           }"
         >
-          <td>{{ item.sabbatical }}</td>
-          <td class="d-flex align-center justify-center">
-            <div v-if="idx === NUM_SABBATICALS" class="pa-4">
+          <td>
+            {{ item.sabbatical }}
+            <br />
+            <span v-if="idx === NUM_SABBATICALS">
               ({{ getHumanReadableDayDifference(item.greDate, $t) }})
-            </div>
+            </span>
+          </td>
+          <td>
             <div>
               {{ item.hij }}
               <br />
-
               {{ item.gre }}
             </div>
           </td>

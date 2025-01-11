@@ -138,5 +138,5 @@ export function getHumanReadableDayDifference(date: Date, $t: (key: string) => s
   const diff = getCalendarDayDifference(today, date);
   if (diff === 0) return $t('today');
   else if (diff === 1) return $t('tomorrow');
-  return diff + $t('daysLater');
+  return diff + ' ' + $t('daysLater');
 }
