@@ -39,7 +39,7 @@ function glowSampleDate() {
     <div class="ma-1">
       <div class="pa-1">{{ $t('dateFormat') }}</div>
       <v-row align="center">
-        <v-col class="d-flex" cols="4">
+        <v-col cols="12" sm="4">
           <v-select
             v-model="year"
             :items="yearFormats"
@@ -48,7 +48,7 @@ function glowSampleDate() {
             @update:modelValue="glowSampleDate"
           />
         </v-col>
-        <v-col class="d-flex" cols="4">
+        <v-col cols="12" sm="4">
           <v-select
             v-model="month"
             :items="monthFormats"
@@ -57,7 +57,7 @@ function glowSampleDate() {
             @update:modelValue="glowSampleDate"
           />
         </v-col>
-        <v-col class="d-flex" cols="4">
+        <v-col cols="12" sm="4">
           <v-select
             v-model="weekDay"
             :items="weekdayFormats"

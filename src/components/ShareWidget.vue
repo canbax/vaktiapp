@@ -19,11 +19,16 @@ const isOpen = ref(false);
     <template #default>
       <v-card class="mx-auto" max-width="644">
         <div>
-          <v-alert
-            :title="$t('embedToYourWebsite')"
-            closable
-            @click:close="isOpen = false"
-          ></v-alert>
+          <v-alert :title="$t('embedToYourWebsite')">
+            <template #close>
+              <v-icon
+                data-testid="close-btn"
+                @click="isOpen = false"
+                icon="mdi-close"
+                size="large"
+              />
+            </template>
+          </v-alert>
         </div>
         <div>
           <IframeEditor />

@@ -14,23 +14,25 @@ const $t = getTranslateFn(getCurrentInstance());
 </script>
 
 <template>
-  <div class="d-flex flex-row ma-1">
-    <v-tabs v-model="settingsTab" color="primary" direction="vertical">
+  <div class="ma-1">
+    <v-tabs v-model="settingsTab" color="primary" stacked>
       <v-tab :text="$t('system')" prepend-icon="mdi-cog" value="1"></v-tab>
       <v-tab :text="$t('dateAndTime')" prepend-icon="mdi-calendar-clock" value="2"></v-tab>
       <v-tab :text="$t('calculator')" prepend-icon="mdi-calculator-variant" value="3"></v-tab>
     </v-tabs>
 
-    <v-tabs-window v-model="settingsTab" class="ma-1 flex-grow-1">
-      <v-tabs-window-item value="1">
-        <GeneralSettings />
-      </v-tabs-window-item>
-      <v-tabs-window-item value="2">
-        <DateAndTimeSettings />
-      </v-tabs-window-item>
-      <v-tabs-window-item value="3">
-        <CalculatorSettings />
-      </v-tabs-window-item>
+    <v-tabs-window v-model="settingsTab">
+      <v-container fluid>
+        <v-tabs-window-item value="1">
+          <GeneralSettings />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="2">
+          <DateAndTimeSettings />
+        </v-tabs-window-item>
+        <v-tabs-window-item value="3">
+          <CalculatorSettings />
+        </v-tabs-window-item>
+      </v-container>
     </v-tabs-window>
   </div>
 </template>
