@@ -31,23 +31,9 @@ function clickToHref(item: PathMenuItem) {
 </script>
 
 <template>
-  <v-card v-if="!isWidget" data-testid="container-card" class="dynamic-zoom">
+  <div v-if="!isWidget" data-testid="container-card" class="dynamic-zoom">
     <v-layout>
-      <v-navigation-drawer v-model="isSideBarOpen">
-        <v-list-item
-          v-for="item in pathMenuItems"
-          :key="item.title"
-          link
-          @click="clickToHref(item)"
-        >
-          <template #prepend>
-            <v-icon :icon="item.icon" />
-          </template>
-          <v-list-item-title>{{ $t(item.title) }}</v-list-item-title>
-        </v-list-item>
-      </v-navigation-drawer>
-
-      <v-app-bar>
+      <v-app-bar prominent>
         <template #prepend>
           <v-app-bar-nav-icon
             data-testid="main-menu-btn"
@@ -80,11 +66,26 @@ function clickToHref(item: PathMenuItem) {
         </template>
       </v-app-bar>
 
+      <v-navigation-drawer v-model="isSideBarOpen">
+        <v-list-item
+          v-for="item in pathMenuItems"
+          :key="item.title"
+          @click="clickToHref(item)"
+          :slim="true"
+          density="compact"
+          lines="two"
+        >
+          <template #prepend>
+            <v-icon :icon="item.icon" />
+          </template>
+          <v-list-item-title>{{ $t(item.title) }}</v-list-item-title>
+        </v-list-item>
+      </v-navigation-drawer>
       <v-main>
         <component :is="currentView" />
       </v-main>
     </v-layout>
-  </v-card>
+  </div>
 
   <component v-else :is="currentView" />
 </template>

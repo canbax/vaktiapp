@@ -29,11 +29,8 @@ const prayableIndex = computed<number>(() => {
   return currPrayIdx.value - 1;
 });
 
-function prayableRowCSS(i: number, padding = false) {
-  if (padding) {
-    return [{ 'font-weight-bold text-orange': i === prayableIndex.value }, 'text-h5', 'ps-2'];
-  }
-  return [{ 'font-weight-bold text-orange': i === prayableIndex.value }, 'text-h5'];
+function prayableRowCSS(i: number) {
+  return [{ 'font-weight-bold text-orange': i === prayableIndex.value }, 'text-h5 ma-1'];
 }
 </script>
 
@@ -42,6 +39,7 @@ function prayableRowCSS(i: number, padding = false) {
     <div class="d-flex justify-center">
       <v-btn
         @click="emit('prevDay')"
+        size="large"
         v-tooltip:start="$t('prevDay')"
         data-testid="prev-btn"
         icon="mdi-calendar-arrow-left"
@@ -54,7 +52,7 @@ function prayableRowCSS(i: number, padding = false) {
             <span :class="prayableRowCSS(i)">
               {{ $t(timeItems[i]) }}
             </span>
-            <span :class="prayableRowCSS(i, true)">
+            <span :class="prayableRowCSS(i)">
               {{ item }}
             </span>
           </div>
@@ -63,6 +61,7 @@ function prayableRowCSS(i: number, padding = false) {
 
       <v-btn
         @click="emit('nextDay')"
+        size="large"
         data-testid="next-btn"
         v-tooltip:end="$t('nextDay')"
         icon="mdi-calendar-arrow-right"
@@ -70,15 +69,16 @@ function prayableRowCSS(i: number, padding = false) {
       />
     </div>
 
-    <v-divider></v-divider>
+    <v-divider class="ma-4"></v-divider>
     <div v-if="isShowingToday">
-      <span> {{ $t(timeItems[currPrayIdx]) }} {{ $t('remainingTime') }} </span>
-      <h2 data-testid="remaining-time">{{ remainingTime }}</h2>
+      <div class="text-h6 ma-2">{{ $t(timeItems[currPrayIdx]) }} {{ $t('remainingTime') }}</div>
+      <div class="text-h5" data-testid="remaining-time">{{ remainingTime }}</div>
     </div>
     <div v-else>
       <v-btn
         @click="emit('showToday')"
         data-testid="today-btn"
+        size="large"
         v-tooltip:bottom="$t('today')"
         icon="mdi-calendar-today"
         color="primary"

@@ -23,10 +23,12 @@ const hijriDateString = computed(() => {
 </script>
 
 <template>
-  <div class="text-h6 text-center">
-    <span data-testid="date-str"> {{ dateString }} </span>
+  <div class="text-h5 text-center ma-4">
+    <div data-testid="date-str" class="mb-2">{{ dateString }}</div>
 
-    <span v-if="isShowHijriDate" data-testid="hijri-date-str"> - {{ hijriDateString }} </span>
+    <div v-if="isShowHijriDate" class="font-weight-light text-h6" data-testid="hijri-date-str">
+      {{ hijriDateString }}
+    </div>
   </div>
 </template>
 

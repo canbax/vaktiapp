@@ -67,7 +67,7 @@ const isShowingToday = computed<boolean>(() => isToday(props.currDate));
       :date-string-format="dateStringFormat"
       :is-show-hijri-date="isShowHijriDate"
     />
-    <v-divider />
+    <v-divider class="ma-4" />
     <DailyPrayTimes
       :is-showing-today="isShowingToday"
       :curr-times="currTimes"
