@@ -26,9 +26,15 @@
     "update-readme-test-cov": "npm run test-cov && npm run make-badges",
     "make-badges": "istanbul-badges-readme",
     "make-badges:ci": "npm run make-badges -- --ci",
-    "checks": "npm run format && npm run lint && npm run test && npm run test-e2e && npm run build"
+    "checks": "npm run format && npm run lint && npm run test && npm run test-e2e && npm run build",
+    "build-android": "npx cap add android",
+    "build-ios": "npx cap add ios"
   },
   "dependencies": {
+    "@capacitor/android": "^7.0.1",
+    "@capacitor/core": "^7.0.1",
+    "@capacitor/ios": "^7.0.1",
+    "@capacitor/status-bar": "^7.0.0",
     "@mdi/font": "^7.4.47",
     "@vitest/eslint-plugin": "^1.1.24",
     "@vueuse/core": "^12.3.0",
@@ -40,6 +46,7 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
+    "@capacitor/cli": "^7.0.1",
     "@playwright/test": "^1.49.1",
     "@rushstack/eslint-patch": "^1.3.2",
     "@tsconfig/node22": "^22.0.0",
