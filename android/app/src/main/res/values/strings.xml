@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Vakit App</string>
+    <string name="title_activity_main">Vakit App</string>
+    <string name="package_name">com.vakit.app</string>
+    <string name="custom_url_scheme">com.vakit.app</string>
+</resources>
