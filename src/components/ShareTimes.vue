@@ -1,21 +1,20 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, ref } from 'vue';
 import ShareWidget from '@/components/ShareWidget.vue';
-import { useShare, useClipboard, useBrowserLocation } from '@vueuse/core';
-import { useUrlParams } from '@/composables/urlParams';
+import { useShare, useClipboard } from '@vueuse/core';
+import { useUrlParams, WEB_BASE_URL } from '@/composables/urlParams';
 import { getTranslateFn } from '@/util/i18n';
 
 const { encodeSettingsToUrlParams } = useUrlParams();
 const source = ref('');
 const { copy, copied, isSupported: isClipboardSupported } = useClipboard({ source, legacy: true });
 
-const browserLocation = useBrowserLocation();
 const { share, isSupported: isShareSupported } = useShare();
 
 const $t = getTranslateFn(getCurrentInstance());
 
 const shareUrl = computed<string>(() => {
-  return browserLocation.value.origin + '/share?' + encodeSettingsToUrlParams();
+  return WEB_BASE_URL + '/share?' + encodeSettingsToUrlParams();
 });
 
 async function startShare() {
@@ -46,7 +45,7 @@ async function copyLinkClicked() {
       />
     </template>
 
-    <v-sheet>
+    <v-sheet class="pb-10">
       <v-list>
         <v-list-subheader>{{ $t('shareTimes') }}</v-list-subheader>
 

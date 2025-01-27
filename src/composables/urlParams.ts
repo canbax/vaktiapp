@@ -223,3 +223,5 @@ export function useUrlParams() {
     encodeSettingsToUrlParams,
   };
 }
+
+export const WEB_BASE_URL = 'https://www.vakitapp.com' as const;

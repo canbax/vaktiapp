@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useBrowserLocation, useClipboard } from '@vueuse/core';
+import { useClipboard } from '@vueuse/core';
 import { computed, getCurrentInstance, nextTick, ref } from 'vue';
 import DateFormatSelector from '@/components/DateFormatSelector.vue';
 import TimeFormatSelector from '@/components/TimeFormatSelector.vue';
@@ -9,10 +9,8 @@ import ThemeSelector from '@/components/ThemeSelector.vue';
 import { VTextarea } from 'vuetify/components/VTextarea';
 import { useSettings } from '@/composables/settings';
 import { useUIState } from '@/composables/userInterfaceState';
-import { encodeParamsForIframe } from '@/composables/urlParams';
+import { encodeParamsForIframe, WEB_BASE_URL } from '@/composables/urlParams';
 import { getTranslateFn } from '@/util/i18n';
-
-const browserLocation = useBrowserLocation();
 
 const {
   currentPlace,
@@ -41,7 +39,7 @@ const madhab = ref(calculatorMadhab.value);
 
 const $t = getTranslateFn(getCurrentInstance());
 
-const baseUrl = computed<string>(() => browserLocation.value.origin + '/widget');
+const baseUrl = computed<string>(() => WEB_BASE_URL + '/widget');
 
 const iframeSrc = computed<string>(() => {
   const params = encodeParamsForIframe({

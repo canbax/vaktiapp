@@ -27,6 +27,7 @@
     "make-badges": "istanbul-badges-readme",
     "make-badges:ci": "npm run make-badges -- --ci",
     "checks": "npm run format && npm run lint && npm run test && npm run test-e2e && npm run build",
+    "sync-apps": "npx cap sync",
     "build-android": "npx cap add android",
     "build-ios": "npx cap add ios"
   },
