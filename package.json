@@ -17,6 +17,7 @@
     "test-e2e": "playwright test",
     "test-e2e-debug": "playwright test --debug",
     "test-cov": "vitest run --coverage",
+    "coverage-report": "vitest run --coverage --coverage.reporter=html",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "type-check-watch": "vue-tsc --build --watch",
