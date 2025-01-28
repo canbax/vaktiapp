@@ -2,57 +2,97 @@
 
 ![Build](https://github.com/canbax/vakitapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-94.63%25-brightgreen.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vakitapp/blob/main/LICENSE)
 
-Ücretsiz, reklamsız, açık kaynaklı ve şık bir Müslüman Namaz Vakitleri uygulaması. [web](https://vakitapp.com) üzerinden kullanılabilir. Yer tespiti için https://vakit.vercel.app/ servisini kullanır. Bunun dışında internet kullanmaz.
+Ücretsiz, reklamsız, açık kaynaklı ve şık bir Müslüman Namaz Vakitleri uygulaması. [vakitapp.com](https://vakitapp.com) üzerinden kullanılabilir. Yer tespiti için https://vakit.vercel.app/ servisini kullanır. Bunun dışında internet kullanmaz.
 
 <p align="center">
   <img src="doc/şov-genel.gif" title="genel özellikler"/>
 </p>
 
-## Proje Kurulumu
+## Özellikler
+
+### İnternet gerektirmez
+
+Bir yer seçildikten sonra, vakit bilgilerini getirmek için internete ihtiyaç duymaz.
+
+### Vakitleri paylaşın
+
+Vakitlerin linkini paylaşın. Böylece insanlar vakitleri tek tıklamayla görebilir. Ayrıca vakitleri kendi web sitenize de yerleştirebilirsiniz.
+
+[Ankara](https://www.vakitapp.com/share?city=311034&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İstanbul](https://www.vakitapp.com/share?city=311922&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İzmir](https://www.vakitapp.com/share?city=311955&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr) için namaz vakitleri
+
+<p align="center"> <img src="doc/paylaş.gif" title="paylaşım linki"/>
+</p>
+
+### Hicri Takvim
+
+Dini günleri "Dini Günler" menü öğesinden görebilirsiniz.
+
+Hicri takvim hesaplamaları herhangi bir üçüncü taraf uygulama kullanılmadan yapılır. Mantık [HijriDate.ts dosyası](https://github.com/canbax/vakitapp/blob/master/src/util/HijriDate.ts) içindedir.
+
+## Çeşitli Özelleştirmeler
+
+- Birden fazla tema (Koyu veya Açık)
+- Dil değiştirme (Türkçe, English, Deutsch, Italian, Pусский, Española, فارسی, Français, Chinese, عربى, Indonesia, Kazakh, Korean, Kyrgyz, Malay)
+- Hicri tarihi göster veya gizle
+- Yakınlaştırma seviyesini değiştir
+- Birden fazla tarih formatı
+- Birden fazla saat formatı
+- Birden fazla vakit hesaplama yöntemi (Türkiye varsayılan)
+
+# Geliştiriciler için Proje Kurulumu
 
 ```sh
 npm install
 ```
 
-### Geliştirme için Derleme ve Anında Yeniden Yükleme
+Geliştirme için Derleme ve Sıcak Yeniden Yükleme
 
 ```sh
 npm run dev
 ```
 
-### Veri tiplerinin Kontrolü, Derleme ve Üretim için Sıkıştırma
+Tür Kontrolü, Derleme ve Üretim için Minimize etme
 
 ```sh
 npm run build
 ```
 
-### [Vitest](https://vitest.dev/) ile Birim Testlerini Çalıştırma
+Vitest ile Birim Testlerini Çalıştırma
 
 ```sh
-npm run test:unit
+npm run test
 ```
 
-### [Playwright](https://playwright.dev) ile Uçtan Uca Testleri Çalıştırma
+## Playwright ile Uçtan Uca Testleri Çalıştırma
 
-```sh
-# İlk çalıştırma için tarayıcıları yükleyin
-npx playwright install
+### İlk çalıştırmada tarayıcıları yükle
 
-# CI üzerinde test yaparken, önce projeyi derlemek gerekir
-npm run build
+`npx playwright install`
 
-# Uçtan uca testleri çalıştırır
-npm run test:e2e
-# Sadece Chromium üzerinde testleri çalıştırır
-npm run test:e2e -- --project=chromium
-# Belirli bir dosyanın testlerini çalıştırır
-npm run test:e2e -- tests/example.spec.ts
-# Testleri hata ayıklama modunda çalıştırır
-npm run test:e2e -- --debug
-```
+### CI üzerinde test yaparken, önce projeyi derlemelisiniz
 
-### [ESLint](https://eslint.org/) ile Kod Denetimi
+`npm run build`
 
-```sh
-npm run lint
-```
+### Uçtan uca testleri çalıştırır
+
+`npm run test:e2e`
+
+### Sadece Chromium üzerinde testleri çalıştırır
+
+`npm run test:e2e -- --project=chromium`
+
+### Belirli bir dosyanın testlerini çalıştırır
+
+`npm run test:e2e -- tests/example.spec.ts`
+
+### Testleri hata ayıklama modunda çalıştırır
+
+`npm run test:e2e -- --debug`
+
+### ESLint ile Lint Çalıştırma
+
+`npm run lint`
+
+### Mobil uygulamaları senkronize et
+
+`npm run sync-apps`

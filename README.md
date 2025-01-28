@@ -1,8 +1,8 @@
 # Vakitapp [(Türkçe)](BENİOKU.md)
 
-![Build](https://github.com/canbax/vakitapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-94.63%25-brightgreen.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vakitapp/blob/main/LICENSE)
+![Build](https://github.com/canbax/vakitapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-79.41%25-red.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vakitapp/blob/main/LICENSE)
 
-Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [web](https://vakitapp.com). Uses https://vakit.vercel.app/ for finding places. In other cases, it doesn't uses the Internet.
+Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [vakitapp.com](https://vakitapp.com). Uses https://vakit.vercel.app/ for finding places. In other cases, it doesn't uses the Internet.
 
 <p align="center">
   <img src="doc/show-case.gif" title="general features"/>
@@ -12,7 +12,17 @@ Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [we
 
 ### No-internet needed
 
-Once a place is selected, it doesn't need internet. So it's blazing fast.
+Once a place is selected, it doesn't need internet to bring times data.
+
+### Share times
+
+Share the link for times. So people could **see the times with one click**. You can also embed times widget to your own website.
+
+Prayer times for [Ankara](https://www.vakitapp.com/share?city=311034&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İstanbul](https://www.vakitapp.com/share?city=311922&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İzmir](https://www.vakitapp.com/share?city=311955&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr)
+
+<p align="center">
+  <img src="doc/share.gif" title="share link"/>
+</p>
 
 ### Hijri Calender
 
@@ -23,17 +33,14 @@ Hijri calendar calculations are without using any third-party application. The l
 ### Various Customizations
 
 - Multiple themes (_Dark_ or _Light_)
-- Change language (currently English and Turkish)
+- Change language (Türkçe, English, Deutsch, Italian, Pусский, Española, فارسی, Français, Chinese, عربى, Indonesia, Kazakh, Korean, Kyrgyz, Malay)
 - Show or hide hijri date
 - Change zoom level
 - Multiple date formats
 - Multiple time formats
+- Multiple times calculation methods (Turkiye default)
 
-### Share times
-
-You can share times using a share link or embed it your own website.
-
-## Project Setup
+## Project Setup for Developers
 
 ```sh
 npm install
@@ -54,7 +61,7 @@ npm run build
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-npm run test:unit
+npm run test
 ```
 
 ### Run End-to-End Tests with [Playwright](https://playwright.dev)
@@ -80,4 +87,10 @@ npm run test:e2e -- --debug
 
 ```sh
 npm run lint
+```
+
+### Sync mobile apps
+
+```sh
+npm run sync-apps
 ```

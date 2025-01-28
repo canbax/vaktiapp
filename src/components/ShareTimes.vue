@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, ref } from 'vue';
+import { computed, getCurrentInstance, ref, onMounted } from 'vue';
 import ShareWidget from '@/components/ShareWidget.vue';
-import { useShare, useClipboard } from '@vueuse/core';
+import { useClipboard } from '@vueuse/core';
+import { Share } from '@capacitor/share';
 import { useUrlParams, WEB_BASE_URL } from '@/composables/urlParams';
 import { getTranslateFn } from '@/util/i18n';
 
 const { encodeSettingsToUrlParams } = useUrlParams();
 const source = ref('');
 const { copy, copied, isSupported: isClipboardSupported } = useClipboard({ source, legacy: true });
-
-const { share, isSupported: isShareSupported } = useShare();
 
 const $t = getTranslateFn(getCurrentInstance());
 
@@ -19,7 +18,7 @@ const shareUrl = computed<string>(() => {
 
 async function startShare() {
   try {
-    await share({
+    await Share.share({
       title: $t('times'),
       url: shareUrl.value,
     });
@@ -31,6 +30,11 @@ async function startShare() {
 async function copyLinkClicked() {
   await copy(shareUrl.value);
 }
+const canShare = ref(true);
+
+onMounted(async () => {
+  canShare.value = (await Share.canShare()).value;
+});
 </script>
 
 <template>
@@ -58,7 +62,7 @@ async function copyLinkClicked() {
         />
 
         <v-list-item
-          v-if="isShareSupported"
+          v-if="canShare"
           data-testid="share-in-app-btn"
           :title="$t('share')"
           prepend-icon="mdi-share"
