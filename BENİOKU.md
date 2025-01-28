@@ -16,7 +16,7 @@ Bir yer seçildikten sonra, vakit bilgilerini getirmek için internete ihtiyaç 
 
 ### Vakitleri paylaşın
 
-Vakitlerin linkini paylaşın. Böylece insanlar vakitleri tek tıklamayla görebilir. Ayrıca vakitleri kendi web sitenize de yerleştirebilirsiniz.
+Vakitlerin linkini paylaşın. Böylece insanlar vakitleri tek tıklamayla görebilir. Ayrıca vakitleri kendi web sitenize de "widget" olarak gömebilirsiniz.
 
 [Ankara](https://www.vakitapp.com/share?city=311034&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İstanbul](https://www.vakitapp.com/share?city=311922&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İzmir](https://www.vakitapp.com/share?city=311955&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr) için namaz vakitleri
 
