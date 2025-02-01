@@ -16,7 +16,7 @@ Once a place is selected, it doesn't need internet to bring times data.
 
 ### Share times
 
-Share the link for times. So people could **see the times with one click**. You can also embed times widget to your own website.
+Share the link for times. So your friends could **see the times with one click**. You can also embed times widget to your own website.
 
 Prayer times for [Ankara](https://www.vakitapp.com/share?city=311034&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İstanbul](https://www.vakitapp.com/share?city=311922&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İzmir](https://www.vakitapp.com/share?city=311955&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr)
 
