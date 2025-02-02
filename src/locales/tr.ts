@@ -110,7 +110,7 @@ export const tr = {
   lastUpdateTime: 'Son yazılım güncellenme tarihi',
   InternetErr: 'İnternet bağlantı hatası!',
   donatePageText:
-    'Ücretsiz, reklamsız ancak yüksek kalitede bir hizmet sunmaya çalışıyoruz. Sunucu masrafları, zaman, emek harcıyoruz. Yapacağınız 1 liralık bir bağış bile aşk, şevk ve motivasyon doğurarak bu hizmetlerimizin devamlılığına ve daha iyi olmasına katkı sağlayacaktır.',
+    'Ücretsiz, reklamsız ancak yüksek kalitede bir hizmet sunmaya çalışıyoruz. Sunucu masrafları, zaman, emek harcıyoruz. Yapacağınız 1 liralık bir destek bile aşk, şevk ve motivasyon doğurarak bu hizmetlerimizin devamlılığına ve daha iyi olmasına katkı sağlayacaktır.',
   transferToBankAccount: 'Banka hesabına transfer',
   githubSponsorExplanation: 'GitHub üzerinden çalışmalarımız için sponsor olabilirsiniz.',
 };

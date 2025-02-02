@@ -1,8 +1,8 @@
-# Vakitapp [(English)](README.md)
+# Vakit App [(English)](README.md)
 
 ![Build](https://github.com/canbax/vakitapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-94.63%25-brightgreen.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vakitapp/blob/main/LICENSE)
 
-Ücretsiz, reklamsız, açık kaynaklı ve şık Namaz Vakitleri uygulaması. [vakitapp.com](https://vakitapp.com) üzerinden kullanılabilir. Yer tespiti için https://vakit.vercel.app/ servisini kullanır. Bunun dışında internet kullanmaz.
+Ücretsiz, reklamsız, açık kaynaklı ve şık Namaz Vakitleri uygulaması. [Vakit App.com](https://vakitapp.com) üzerinden kullanılabilir. Yer tespiti için https://vakit.vercel.app/ servisini kullanır. Bunun dışında internet kullanmaz.
 
 <p align="center">
   <img src="doc/şov-genel.gif" title="genel özellikler"/>

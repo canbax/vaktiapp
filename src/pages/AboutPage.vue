@@ -18,6 +18,10 @@ function copyText(text: string) {
   snackbar.value = true;
 }
 
+function openPatreon() {
+  window.open('https://www.patreon.com/c/canbaz', '_blank');
+}
+
 const buildVersion = computed(() => process.env.BUILD_VERSION || '');
 </script>
 
@@ -25,6 +29,17 @@ const buildVersion = computed(() => process.env.BUILD_VERSION || '');
   <v-container fluid class="text-center">
     <div class="text-h6 text-center">{{ $t('aboutTxt') }}</div>
     <v-alert class="ma-4" :text="$t('donatePageText')" border border-color="primary" />
+    <div class="text-center pa-2">
+      <v-btn
+        variant="outlined"
+        class="text-capitalize ma-2"
+        @click="openPatreon"
+        prepend-icon="mdi-patreon"
+      >
+        Patreon
+      </v-btn>
+    </div>
+
     <div class="text-center pa-2">
       <div class="font-weight-bold">{{ $t('transferToBankAccount') }}</div>
       <div>

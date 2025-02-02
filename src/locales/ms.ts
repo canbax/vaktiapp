@@ -109,7 +109,7 @@ export const ms = {
   lastUpdateTime: 'Masa kemas kini perisian terakhir',
   InternetErr: 'Ralat sambungan internet!',
   donatePageText:
-    'We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a donation of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.',
+    'We are trying to provide a free, ad-free but high quality service. We spend server costs, time and effort. Even a support of 1 lira will contribute to the continuity and betterment of these services by creating love, enthusiasm and motivation.',
   transferToBankAccount: 'Transfer to bank account',
   githubSponsorExplanation: 'You can sponsor our work via GitHub.',
 };
