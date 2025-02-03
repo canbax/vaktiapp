@@ -1,0 +1,36 @@
+Vakit App uygulaması için Gizlilik Politikası
+
+Son Güncelleme: 3 Şubat 2025
+
+Giriş
+
+Vakit App uygulamasını seçtiğiniz için teşekkür ederiz ("biz", "bizim" veya "bize"). Gizliliğinizi korumaya ve kişisel bilgilerinizin güvenliğini sağlamaya kararlıyız. Bu Gizlilik Politikası, uygulamamızı kullandığınızda verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu ana hatlarıyla açıklamaktadır.
+
+Topladığımız Bilgiler
+• İsteğe Bağlı Konum Verileri: Vakit App, coğrafi konumunuza göre doğru namaz vakitlerini sağlamak için cihazınızın konumuna erişim talep edebilir. Konumunuza erişim izni vermek isteğe bağlıdır. Bu verileri sağlamamayı seçerseniz, uygulama namaz vakitlerini belirlemek için manuel giriş yapılmasına izin verir.
+
+Bilgilerin Kullanımı
+• Namaz Vakti Hesaplamaları: İzin verirseniz, konum verileriniz mevcut konumunuza ilişkin kesin namaz vakitlerini belirlemek için kullanılır. Bu bilgiler gerçek zamanlı olarak işlenir ve hesaplamadan sonra saklanmaz.
+
+Üçüncü Taraf Hizmetleri
+• Namaz Vakti API: Doğru namaz vakitlerini almak için Vakit App konum verilerinizi Namaz Vakti API'sine gönderebilir. Bu veri iletimi geçicidir ve tarafımızca saklanmaz. API'nin veri işleme uygulamaları hakkında daha fazla bilgi için lütfen https://vakit.vercel.app/ adresindeki belgelerine bakın.
+
+Veri Güvenliği
+
+Verilerinizin güvenliğini önceliklendiriyoruz. Hiçbir kişisel bilgiyi saklamasak da, Namaz Vakti API'sine iletim sırasında verileri korumak için endüstri standardı güvenlik önlemleri uyguluyoruz.
+
+Çocukların Gizliliği
+
+Vakit App her yaştan kullanıcı için tasarlanmıştır. 13 yaşın altındaki çocuklardan bilerek kişisel bilgi toplamıyoruz. Bir çocuğun bize kişisel veri sağladığına inanıyorsanız lütfen bizimle iletişime geçin, sorunu derhal çözeceğiz.
+
+Bu Gizlilik Politikasında Yapılan Değişiklikler
+
+Uygulamalarımızdaki değişiklikleri yansıtmak veya diğer operasyonel, yasal veya düzenleyici nedenlerle bu Gizlilik Politikasını periyodik olarak güncelleyebiliriz. Bilgilerinizi nasıl koruduğumuz konusunda bilgi sahibi olmak için bu politikayı düzenli olarak incelemenizi öneririz.
+
+Bizimle İletişime Geçin
+
+Bu Gizlilik Politikası veya veri uygulamalarımız hakkında herhangi bir sorunuz veya endişeniz varsa lütfen bizimle şu adresten iletişime geçin:
+
+yusufsaidcanbaz@gmail.com
+
+Vakit Uygulamasını kullanarak, bu Gizlilik Politikasını okuduğunuzu ve anladığınızı ve şartlarını kabul ettiğinizi onaylıyorsunuz.
