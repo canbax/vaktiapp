@@ -19,7 +19,7 @@ function copyText(text: string) {
 }
 
 function openPatreon() {
-  window.open('https://www.patreon.com/c/canbaz', '_blank');
+  window.open('https://www.patreon.com/canbaz', '_blank');
 }
 
 const buildVersion = computed(() => process.env.BUILD_VERSION || '');
@@ -63,6 +63,9 @@ const buildVersion = computed(() => process.env.BUILD_VERSION || '');
         >
         </v-btn>
       </div>
+    </div>
+    <div>
+      <a class="text-caption" target="_blank" href="/privacy"> {{ $t('privacyPolicy') }} </a>
     </div>
     <v-footer class="justify-center">
       <div class="text-caption text-capitalize">

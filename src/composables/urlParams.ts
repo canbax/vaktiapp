@@ -224,4 +224,4 @@ export function useUrlParams() {
   };
 }
 
-export const WEB_BASE_URL = 'https://www.vakitapp.com' as const;
+export const WEB_BASE_URL = 'https://www.vaktiapp.com' as const;

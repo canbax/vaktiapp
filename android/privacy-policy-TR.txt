@@ -1,36 +1,36 @@
-Vakit App uygulaması için Gizlilik Politikası
 
-Son Güncelleme: 3 Şubat 2025
+    <h2>Vakti App Uygulaması için Gizlilik Politikası</h2>
+    <p><strong>Son Güncelleme:</strong> 3 Şubat 2025</p>
 
-Giriş
+    <h5>Giriş</h5>
+    <p>Vakti App uygulamasını seçtiğiniz için teşekkür ederiz ("biz", "bizim" veya "bize"). Gizliliğinizi korumaya ve kişisel bilgilerinizin güvenliğini sağlamaya kararlıyız. Bu Gizlilik Politikası, uygulamamızı kullandığınızda verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu ana hatlarıyla açıklamaktadır.</p>
 
-Vakit App uygulamasını seçtiğiniz için teşekkür ederiz ("biz", "bizim" veya "bize"). Gizliliğinizi korumaya ve kişisel bilgilerinizin güvenliğini sağlamaya kararlıyız. Bu Gizlilik Politikası, uygulamamızı kullandığınızda verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu ana hatlarıyla açıklamaktadır.
+    <h5>Topladığımız Bilgiler</h5>
+    <ul>
+        <li><strong>İsteğe Bağlı Konum Verileri:</strong> Vakti App, coğrafi konumunuza göre doğru namaz vakitlerini sağlamak için cihazınızın konumuna erişim talep edebilir. Konumunuza erişim izni vermek isteğe bağlıdır. Bu verileri sağlamamayı seçerseniz, uygulama namaz vakitlerini belirlemek için manuel giriş yapılmasına izin verir.</li>
+    </ul>
 
-Topladığımız Bilgiler
-• İsteğe Bağlı Konum Verileri: Vakit App, coğrafi konumunuza göre doğru namaz vakitlerini sağlamak için cihazınızın konumuna erişim talep edebilir. Konumunuza erişim izni vermek isteğe bağlıdır. Bu verileri sağlamamayı seçerseniz, uygulama namaz vakitlerini belirlemek için manuel giriş yapılmasına izin verir.
+    <h5>Bilgilerin Kullanımı</h5>
+    <ul>
+        <li><strong>Namaz Vakti Hesaplamaları:</strong> İzin verirseniz, konum verileriniz mevcut konumunuza ilişkin kesin namaz vakitlerini belirlemek için kullanılır. Bu bilgiler gerçek zamanlı olarak işlenir ve hesaplamadan sonra saklanmaz.</li>
+    </ul>
 
-Bilgilerin Kullanımı
-• Namaz Vakti Hesaplamaları: İzin verirseniz, konum verileriniz mevcut konumunuza ilişkin kesin namaz vakitlerini belirlemek için kullanılır. Bu bilgiler gerçek zamanlı olarak işlenir ve hesaplamadan sonra saklanmaz.
+    <h5>Üçüncü Taraf Hizmetleri</h5>
+    <ul>
+        <li><strong>Namaz Vakti API:</strong> Doğru namaz vakitlerini almak için Vakti App konum verilerinizi Namaz Vakti API'sine gönderebilir. Bu veri iletimi geçicidir ve tarafımızca saklanmaz. API'nin veri işleme uygulamaları hakkında daha fazla bilgi için lütfen <a href="https://vakit.vercel.app/" target="_blank">https://vakit.vercel.app/</a> adresindeki belgelerine bakın.</li>
+    </ul>
 
-Üçüncü Taraf Hizmetleri
-• Namaz Vakti API: Doğru namaz vakitlerini almak için Vakit App konum verilerinizi Namaz Vakti API'sine gönderebilir. Bu veri iletimi geçicidir ve tarafımızca saklanmaz. API'nin veri işleme uygulamaları hakkında daha fazla bilgi için lütfen https://vakit.vercel.app/ adresindeki belgelerine bakın.
+    <h5>Veri Güvenliği</h5>
+    <p>Verilerinizin güvenliğini önceliklendiriyoruz. Hiçbir kişisel bilgiyi saklamasak da, Namaz Vakti API'sine iletim sırasında verileri korumak için endüstri standardı güvenlik önlemleri uyguluyoruz.</p>
 
-Veri Güvenliği
+    <h5>Çocukların Gizliliği</h5>
+    <p>Vakti App her yaştan kullanıcı için tasarlanmıştır. 13 yaşın altındaki çocuklardan bilerek kişisel bilgi toplamıyoruz. Bir çocuğun bize kişisel veri sağladığına inanıyorsanız lütfen bizimle iletişime geçin, sorunu derhal çözeceğiz.</p>
 
-Verilerinizin güvenliğini önceliklendiriyoruz. Hiçbir kişisel bilgiyi saklamasak da, Namaz Vakti API'sine iletim sırasında verileri korumak için endüstri standardı güvenlik önlemleri uyguluyoruz.
+    <h5>Bu Gizlilik Politikasında Yapılan Değişiklikler</h5>
+    <p>Uygulamalarımızdaki değişiklikleri yansıtmak veya diğer operasyonel, yasal veya düzenleyici nedenlerle bu Gizlilik Politikasını periyodik olarak güncelleyebiliriz. Bilgilerinizi nasıl koruduğumuz konusunda bilgi sahibi olmak için bu politikayı düzenli olarak incelemenizi öneririz.</p>
 
-Çocukların Gizliliği
+    <h5>Bizimle İletişime Geçin</h5>
+    <p>Bu Gizlilik Politikası veya veri uygulamalarımız hakkında herhangi bir sorunuz veya endişeniz varsa lütfen bizimle şu adresten iletişime geçin:</p>
+    <p><strong>Email:</strong> <a href="mailto:yusufsaidcanbaz@gmail.com">yusufsaidcanbaz@gmail.com</a></p>
 
-Vakit App her yaştan kullanıcı için tasarlanmıştır. 13 yaşın altındaki çocuklardan bilerek kişisel bilgi toplamıyoruz. Bir çocuğun bize kişisel veri sağladığına inanıyorsanız lütfen bizimle iletişime geçin, sorunu derhal çözeceğiz.
-
-Bu Gizlilik Politikasında Yapılan Değişiklikler
-
-Uygulamalarımızdaki değişiklikleri yansıtmak veya diğer operasyonel, yasal veya düzenleyici nedenlerle bu Gizlilik Politikasını periyodik olarak güncelleyebiliriz. Bilgilerinizi nasıl koruduğumuz konusunda bilgi sahibi olmak için bu politikayı düzenli olarak incelemenizi öneririz.
-
-Bizimle İletişime Geçin
-
-Bu Gizlilik Politikası veya veri uygulamalarımız hakkında herhangi bir sorunuz veya endişeniz varsa lütfen bizimle şu adresten iletişime geçin:
-
-yusufsaidcanbaz@gmail.com
-
-Vakit Uygulamasını kullanarak, bu Gizlilik Politikasını okuduğunuzu ve anladığınızı ve şartlarını kabul ettiğinizi onaylıyorsunuz.
+    <p>Vakti App Uygulamasını kullanarak, bu Gizlilik Politikasını okuduğunuzu ve anladığınızı ve şartlarını kabul ettiğinizi onaylıyorsunuz.</p>

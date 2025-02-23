@@ -1,4 +1,4 @@
-package com.vakit.app;
+package com.vakti.app;
 
 import com.getcapacitor.BridgeActivity;
 

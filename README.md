@@ -1,8 +1,8 @@
-# Vakit App [(Türkçe)](BENİOKU.md)
+# Vakti App [(Türkçe)](BENİOKU.md)
 
-![Build](https://github.com/canbax/vakitapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-89.41%25-yellow.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vakitapp/blob/main/LICENSE)
+![Build](https://github.com/canbax/vaktiapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-89.41%25-yellow.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vaktiapp/blob/main/LICENSE)
 
-Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [Vakit App.com](https://vakitapp.com). Uses https://vakit.vercel.app/ for finding places. In other cases, it doesn't uses the Internet.
+Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [Vakti App.com](https://vaktiapp.com). Uses https://vakit.vercel.app/ for finding places. In other cases, it doesn't uses the Internet.
 
 <p align="center">
   <img src="doc/show-case.gif" title="general features"/>
@@ -18,7 +18,7 @@ Once a place is selected, it doesn't need internet to bring times data.
 
 Share the link for times. So your friends could **see the times with one click**. You can also embed times widget to your own website.
 
-Prayer times for [Ankara](https://www.vakitapp.com/share?city=311034&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İstanbul](https://www.vakitapp.com/share?city=311922&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İzmir](https://www.vakitapp.com/share?city=311955&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr)
+Prayer times for [Ankara](https://www.vaktiapp.com/share?city=311034&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İstanbul](https://www.vaktiapp.com/share?city=311922&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İzmir](https://www.vaktiapp.com/share?city=311955&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr)
 
 <p align="center">
   <img src="doc/share.gif" title="share link"/>
@@ -28,7 +28,7 @@ Prayer times for [Ankara](https://www.vakitapp.com/share?city=311034&theme=light
 
 You can see religious days from the menu item _"Religious Days"_.
 
-Hijri calendar calculations are without using any third-party application. The logic is inside [HijriDate.ts file](https://github.com/canbax/vakitapp/blob/master/src/util/HijriDate.ts)
+Hijri calendar calculations are without using any third-party application. The logic is inside [HijriDate.ts file](https://github.com/canbax/vaktiapp/blob/master/src/util/HijriDate.ts)
 
 ### Various Customizations
 

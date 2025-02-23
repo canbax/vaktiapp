@@ -1,8 +1,8 @@
-# Vakit App [(English)](README.md)
+# Vakti App [(English)](README.md)
 
-![Build](https://github.com/canbax/vakitapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-94.63%25-brightgreen.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vakitapp/blob/main/LICENSE)
+![Build](https://github.com/canbax/vaktiapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-94.63%25-brightgreen.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vaktiapp/blob/main/LICENSE)
 
-Ücretsiz, reklamsız, açık kaynaklı ve şık Namaz Vakitleri uygulaması. [Vakit App.com](https://vakitapp.com) üzerinden kullanılabilir. Yer tespiti için https://vakit.vercel.app/ servisini kullanır. Bunun dışında internet kullanmaz.
+Ücretsiz, reklamsız, açık kaynaklı ve şık Namaz Vakitleri uygulaması. [Vakti App.com](https://vaktiapp.com) üzerinden kullanılabilir. Yer tespiti için https://vakit.vercel.app/ servisini kullanır. Bunun dışında internet kullanmaz.
 
 <p align="center">
   <img src="doc/şov-genel.gif" title="genel özellikler"/>
@@ -14,11 +14,11 @@
 
 Bir yer seçildikten sonra, vakit bilgilerini getirmek için internete ihtiyaç duymaz.
 
-### Vakitleri paylaşın
+### Vakti paylaşın
 
-Vakitlerin linkini paylaşın. Böylece arkadaşlarınız vakitleri tek tıklamayla görebilir. Ayrıca vakitleri kendi web sitenize de "widget" olarak gömebilirsiniz.
+Vakit verilerinin linkini paylaşın. Böylece arkadaşlarınız vakitleri tek tıklamayla görebilir. Ayrıca vakitleri kendi web sitenize de "widget" olarak gömebilirsiniz.
 
-[Ankara](https://www.vakitapp.com/share?city=311034&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İstanbul](https://www.vakitapp.com/share?city=311922&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İzmir](https://www.vakitapp.com/share?city=311955&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr) için namaz vakitleri
+[Ankara](https://www.vaktiapp.com/share?city=311034&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İstanbul](https://www.vaktiapp.com/share?city=311922&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr), [İzmir](https://www.vaktiapp.com/share?city=311955&theme=light&isShowHijri=1&year=YYYY&month=MMMM&weekDay=DDDD&time=XX%3AYY%3AZZ&method=Turkey&madhab=shafi&zoom=1&language=tr) için namaz vakitleri
 
 <p align="center"> <img src="doc/paylaş.gif" title="paylaşım linki"/>
 </p>
@@ -27,7 +27,7 @@ Vakitlerin linkini paylaşın. Böylece arkadaşlarınız vakitleri tek tıklama
 
 Dini günleri "Dini Günler" menü öğesinden görebilirsiniz.
 
-Hicri takvim hesaplamaları herhangi bir üçüncü taraf uygulama kullanılmadan yapılır. Mantık [HijriDate.ts dosyası](https://github.com/canbax/vakitapp/blob/master/src/util/HijriDate.ts) içindedir.
+Hicri takvim hesaplamaları herhangi bir üçüncü taraf uygulama kullanılmadan yapılır. Mantık [HijriDate.ts dosyası](https://github.com/canbax/vaktiapp/blob/master/src/util/HijriDate.ts) içindedir.
 
 ## Çeşitli Özelleştirmeler
 
