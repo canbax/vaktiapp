@@ -4,6 +4,13 @@
 
 Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [Vakti App.com](https://vaktiapp.com). Uses https://vakit.vercel.app/ for finding places. In other cases, it doesn't uses the Internet.
 
+<a href="https://apps.apple.com/tr/app/vakti-app/id6743095525" target="_blank">
+    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" height="50">
+</a>
+<a href="https://play.google.com/store/apps/details?id=com.vakti.app" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" height="50">
+</a>
+
 <p align="center">
   <img src="doc/show-case.gif" title="general features"/>
 </p>
