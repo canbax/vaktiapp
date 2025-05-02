@@ -1,7 +1,6 @@
 import { expect, Page } from '@playwright/test';
 import { expectVisiblePrayingTimesBanner, test } from './test-utils';
 
-// https://playwright.dev/docs/intro
 test('should open location selector initially', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByText('Add New Location')).toBeInViewport();
