@@ -1,10 +1,10 @@
 PODS:
-  - Capacitor (7.0.1):
+  - Capacitor (7.4.0):
     - CapacitorCordova
-  - CapacitorCordova (7.0.1)
-  - CapacitorShare (7.0.0):
+  - CapacitorCordova (7.4.0)
+  - CapacitorShare (7.0.1):
     - Capacitor
-  - CapacitorStatusBar (7.0.0):
+  - CapacitorStatusBar (7.0.1):
     - Capacitor
 
 DEPENDENCIES:
@@ -24,10 +24,10 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/status-bar"
 
 SPEC CHECKSUMS:
-  Capacitor: de199cba6c8b20995428ad0b7cb0bc6ca625ffd4
-  CapacitorCordova: 63d476958d5022d76f197031e8b7ea3519988c64
-  CapacitorShare: d94c53d7656f1ce8f6712ae8d19ab0c18a69259f
-  CapacitorStatusBar: a8c4c83ed2e973bdafb979e80e4b00d027832cb7
+  Capacitor: 10feab36396883c55373328124a677f118cd4b5f
+  CapacitorCordova: 723e017d8a80ab2ede9959fbe37556c35ac860d5
+  CapacitorShare: e573823f511f260f598d0423c33b1e3d7bbe5fd1
+  CapacitorStatusBar: 6e7af040d8fc4dd655999819625cae9c2d74c36f
 
 PODFILE CHECKSUM: d8607d12b0efcf8ec39428b133a5f51e218da14e
 
