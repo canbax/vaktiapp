@@ -4,7 +4,9 @@ import type { PathMenuItem } from '@/types';
 import LocationSelectDialog from '@/components/LocationSelectDialog.vue';
 import ShareTimes from '@/components/ShareTimes.vue';
 import { useUIState } from '@/composables/userInterfaceState';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
+import { Capacitor } from '@capacitor/core';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 const { currentView, currentPathMenuItem, pathMenuItems, setViewFromPathMenuItem, isWidget } =
   useRoute();
@@ -28,6 +30,16 @@ function clickToHref(item: PathMenuItem) {
   history.pushState({}, '', '/' + item.title);
   setViewFromPathMenuItem(item);
 }
+onMounted(async () => {
+  if (Capacitor.isNativePlatform()) {
+    // Prevent the status bar from overlaying the WebView
+    await StatusBar.setOverlaysWebView({ overlay: false });
+
+    // You might also want to set the style and background color for better aesthetics
+    await StatusBar.setStyle({ style: Style.Default }); // Or Style.Dark, or Style.Default
+    // await StatusBar.setBackgroundColor({ color: '#FFFFFF' }); // Set your desired background color
+  }
+});
 </script>
 
 <template>
@@ -93,5 +105,10 @@ function clickToHref(item: PathMenuItem) {
 <style scoped>
 .dynamic-zoom {
   zoom: v-bind(currentZoom);
+  /* Define fallback values for non-native environments or when not supported */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
 }
 </style>
