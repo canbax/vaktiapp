@@ -80,6 +80,7 @@ export const ru = {
   eid_qurban_4: 'Четвертый день Курбана',
   remainingTime: 'оставшееся время',
   isShowHijriDate: 'Показывать дату хиджры?',
+  persistCurrentDate: 'Запомнить выбранный день',
   timeItem0: 'Фаджр',
   timeItem1: 'Восход',
   timeItem2: 'Зухр',

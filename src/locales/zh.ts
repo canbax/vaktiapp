@@ -80,6 +80,7 @@ export const zh = {
   eid_qurban_4: '开斋节第四天',
   remainingTime: '剩余时间',
   isShowHijriDate: '显示回历日期吗？',
+  persistCurrentDate: '记住选择的日期',
   timeItem0: ' Fajr',
   timeItem1: '日出',
   timeItem2: ' Dhuhr',

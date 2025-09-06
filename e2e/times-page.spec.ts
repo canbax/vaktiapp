@@ -32,6 +32,12 @@ test('should go to other days and come back to today with preserved UI state aft
   page,
 }) => {
   await selectLocation(page);
+  await page.getByText('Settings').click();
+  await page.getByText('Remember selected day').click();
+
+  await page.getByTestId('main-menu-btn').click();
+  await page.getByText('Praying Times').click();
+
   const today = await getVisibleDate(page);
   await page.getByTestId('next-btn').click();
   const next1day = await getVisibleDate(page);
@@ -60,4 +66,20 @@ test('should be able to change location', async ({ page }) => {
   await selectLocation(page, false, 'İstanbul', 'İstanbul, İstanbul');
   await page.getByTestId('close-btn').click();
   await page.getByRole('button', { name: 'İstanbul' }).click();
+});
+
+test('should always open today by default', async ({ page }) => {
+  await selectLocation(page);
+
+  const today = await getVisibleDate(page);
+  await page.getByTestId('next-btn').click();
+  const next1day = await getVisibleDate(page);
+  expect(isNextDay(page, today, next1day)).toBe(true);
+  await expect(page.getByTestId('today-btn')).toBeVisible();
+  await page.getByTestId('next-btn').click();
+  const next2day = await getVisibleDate(page);
+  await expect(page.getByTestId('today-btn')).toBeVisible();
+  expect(isNextDay(page, next1day, next2day)).toBe(true);
+  await page.reload();
+  await expect(page.getByTestId('today-btn')).toBeHidden();
 });

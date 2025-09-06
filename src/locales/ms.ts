@@ -79,6 +79,7 @@ export const ms = {
   eid_qurban_4: 'Hari Keempat Idul Fitri',
   remainingTime: 'baki masa',
   isShowHijriDate: 'Adakah tarikh tayangan hijri?',
+  persistCurrentDate: 'Ingat hari yang dipilih',
   timeItem0: 'Fajr',
   timeItem1: 'Matahari terbit',
   timeItem2: 'Dhuhr',

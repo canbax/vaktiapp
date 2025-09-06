@@ -80,6 +80,7 @@ export const de = {
   eid_qurban_4: 'Vierter Tag des Eid Qurban',
   remainingTime: 'verbleibende Zeit',
   isShowHijriDate: 'Ist das Hijri-Datum anzeigen?',
+  persistCurrentDate: 'Ausgewählten Tag merken',
   timeItem0: 'Fajr',
   timeItem1: 'Sonnenaufgang',
   timeItem2: 'Dhuhr',

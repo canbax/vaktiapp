@@ -80,6 +80,7 @@ export const fa = {
   eid_qurban_4: 'چهارمین روز عید قربان',
   remainingTime: 'زمان باقی مانده',
   isShowHijriDate: 'آیا تاریخ نمایش هجری است؟',
+  persistCurrentDate: 'روز انتخاب شده را به خاطر بسپار',
   timeItem0: 'فجر',
   timeItem1: 'طلوع آفتاب',
   timeItem2: 'ظهر',

@@ -12,7 +12,7 @@ const theme = useTheme();
 
 const $t = getTranslateFn(getCurrentInstance());
 
-const { currentLanguage, currentUITheme } = useSettings();
+const { currentLanguage, currentUITheme, persistCurrentDate } = useSettings();
 const { currentZoom } = useUIState();
 
 function setTheme(v: string) {
@@ -30,4 +30,6 @@ function setTheme(v: string) {
     <div class="text-caption ma-1">{{ $t('changeZoom') }}</div>
     <ZoomSlider :current-zoom="currentZoom" @zoom="currentZoom = $event" />
   </div>
+
+  <v-checkbox v-model="persistCurrentDate" :label="$t('persistCurrentDate')" />
 </template>

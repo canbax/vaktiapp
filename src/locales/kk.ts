@@ -80,6 +80,7 @@ export const kk = {
   eid_qurban_4: 'Құрбан айттың төртінші күні',
   remainingTime: 'қалған уақыт',
   isShowHijriDate: 'Шоу хиджри күні ме?',
+  persistCurrentDate: 'Таңдалған күнді есте сақта',
   timeItem0: 'Фажр',
   timeItem1: 'Күннің шығуы',
   timeItem2: 'Dhuhr',

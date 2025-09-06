@@ -80,6 +80,7 @@ export const fr = {
   eid_qurban_4: "Quatrième jour de l'Aïd Coran",
   remainingTime: 'le temps restant',
   isShowHijriDate: 'Le spectacle hijri est-il à la date prévue ?',
+  persistCurrentDate: 'Se souvenir du jour sélectionné',
   timeItem0: 'Fajr',
   timeItem1: 'Lever du soleil',
   timeItem2: 'Dhuhr',

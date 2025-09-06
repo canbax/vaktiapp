@@ -80,6 +80,7 @@ export const ar: Record<string, string> = {
   eid_qurban_4: 'alyawm alrrabie min eid qurban',
   remainingTime: 'alwaqt almutbaqi',
   isShowHijriDate: "hl 'iizhar alttarikh alhijry?",
+  persistCurrentDate: 'tadhakkar alyawm almukhtarar',
   timeItem0: 'alfujra',
   timeItem1: 'alsharuq',
   timeItem2: 'alzuhra',

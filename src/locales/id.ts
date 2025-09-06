@@ -80,6 +80,7 @@ export const id = {
   eid_qurban_4: 'Hari Keempat Idul Qurban',
   remainingTime: 'sisa waktu',
   isShowHijriDate: 'Apakah acara tanggal hijriah?',
+  persistCurrentDate: 'Ingat hari yang dipilih',
   timeItem0: 'Fajr',
   timeItem1: 'Matahari terbit',
   timeItem2: 'Dzuhur',

@@ -69,6 +69,8 @@ export function useSettings() {
 
   const currentDate = useStorage<string | null>('currentDate', null);
 
+  const persistCurrentDate = useStorage<boolean>('persistCurrentDate', false);
+
   const currentCountry = useStorage<string>('currentCountry', 'tr');
 
   const currentTimeFormat = useStorage<RemainingTimeFormat>('currentTimeFormat', 'XX:YY:ZZ');
@@ -127,6 +129,7 @@ export function useSettings() {
     currMonthFormat,
     currWeekdayFormat,
     currentDate,
+    persistCurrentDate,
     calculatorMethod,
     calculatorMadhab,
     ALL_LANGUAGES,

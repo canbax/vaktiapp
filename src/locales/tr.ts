@@ -80,6 +80,7 @@ export const tr = {
   eid_qurban_4: 'Kurban Bayramı 4. Gün',
   remainingTime: 'için kalan süre',
   isShowHijriDate: 'Hicri tarih gösterilsin mi?',
+  persistCurrentDate: 'Seçilen günü hatırla',
   timeItem0: 'İmsak',
   timeItem1: 'Güneş',
   timeItem2: 'Öğle',

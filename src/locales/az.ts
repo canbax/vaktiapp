@@ -79,6 +79,7 @@ export const az = {
   eid_qurban_4: 'Dördüncü Qurban Bayramı Günü',
   qalanTime: 'qalan vaxt',
   isShowHijriDate: 'Şou hicri tarixidir?',
+  persistCurrentDate: 'Seçilmiş günü xatırla',
   timeItem0: 'Fəcr',
   timeItem1: 'Günəş doğuşu',
   timeItem2: 'Dhuhr',

@@ -80,6 +80,7 @@ export const ko = {
   eid_qurban_4: '이드 커 반의 넷째 날',
   remainingTime: '남은 시간',
   isShowHijriDate: '히지리 데이트 보여?',
+  persistCurrentDate: '선택한 날짜 기억하기',
   timeItem0: '파즈 르',
   timeItem1: '일출',
   timeItem2: '두르',

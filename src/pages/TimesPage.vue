@@ -14,13 +14,16 @@ const {
   currMonthFormat,
   currWeekdayFormat,
   currentDate,
+  persistCurrentDate,
   calculatorMethod,
   calculatorMadhab,
   currentUITheme,
 } = useSettings();
 const { isShowHijriDate } = useUIState();
 
-const currDate = ref<Date>(currentDate.value ? new Date(currentDate.value) : new Date());
+const currDate = ref<Date>(
+  persistCurrentDate.value && currentDate.value ? new Date(currentDate.value) : new Date(),
+);
 
 function syncCurrentDate() {
   currentDate.value = dateToStandardString(currDate.value);
