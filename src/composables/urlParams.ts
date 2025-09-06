@@ -16,7 +16,7 @@ import { useSettings } from './settings';
 import { dateToStandardString, isToday } from '@/util/dateAndTime';
 import { useUIState } from './userInterfaceState';
 
-interface Params {
+export interface Params {
   currPlaceParam: Ref<GenericPlace | null>;
   theme: Ref<AppTheme>;
   zoom: Ref<number>;
