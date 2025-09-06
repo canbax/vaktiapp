@@ -1,6 +1,6 @@
 # Vakti App [(Türkçe)](BENİOKU.md)
 
-![Build](https://github.com/canbax/vaktiapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-88.89%25-yellow.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vaktiapp/blob/main/LICENSE)
+![Build](https://github.com/canbax/vaktiapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-89.77%25-yellow.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vaktiapp/blob/main/LICENSE)
 
 Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [Vakti App.com](https://vaktiapp.com). Uses https://vakit.vercel.app/ for finding places. In other cases, it doesn't uses the Internet.
 

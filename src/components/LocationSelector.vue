@@ -22,10 +22,12 @@ const search = ref('');
 
 function onPlaceSelected(v: GenericPlace) {
   model.value = v ?? null;
-  autoCompleteRef.value?.blur?.();
+  if (v) {
+    autoCompleteRef.value?.blur?.();
 
-  if (v && selectedPlaces.value.size < 5) {
-    selectedPlaces.value.set(v.id, v);
+    if (selectedPlaces.value.size < 5) {
+      selectedPlaces.value.set(v.id, v);
+    }
   }
 }
 
