@@ -1,4 +1,5 @@
-import { expect, Page } from '@playwright/test';
+import { expect } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import { expectVisiblePrayingTimesBanner, selectLocation, test } from './test-utils';
 
 async function getVisibleDate(page: Page): Promise<Date> {

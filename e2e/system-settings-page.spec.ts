@@ -1,5 +1,5 @@
 /* eslint-disable playwright/expect-expect */
-import { Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import { selectLocation, test } from './test-utils';
 
 async function openSettings(page: Page) {

@@ -1,4 +1,5 @@
-import { Page, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import { expectVisiblePrayingTimesBanner, selectLocation, test } from './test-utils';
 
 async function openSettings(page: Page) {

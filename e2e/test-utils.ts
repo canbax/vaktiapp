@@ -1,4 +1,5 @@
-import { expect, Page, test as baseTest } from '@playwright/test';
+import { expect, test as baseTest } from '@playwright/test';
+import type { Page } from '@playwright/test';
 
 export async function expectVisiblePrayingTimesBanner(page: Page) {
   const banner = page.getByRole('banner').getByText('Praying Times');
