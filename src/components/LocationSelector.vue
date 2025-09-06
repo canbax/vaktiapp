@@ -115,6 +115,7 @@ const items = computed<GenericPlace[]>(() => Array.from(placeSuggestions.value.v
   <v-autocomplete
     class="ma-5"
     ref="autoCompleteRef"
+    :menu-props="{ maxHeight: 200 }"
     :model-value="model"
     :loading="loading"
     data-testid="search-place"
