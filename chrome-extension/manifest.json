@@ -1,7 +1,7 @@
 {
     "name": "Vakti App",
-    "description": "Base Level Extension",
-    "version": "2.0.2",
+    "description": "Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [Vakti App.com](https://vaktiapp.com).",
+    "version": "2.0.3",
     "manifest_version": 3,
     "action": {
         "default_popup": "page.html",

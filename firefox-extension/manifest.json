@@ -1,0 +1,19 @@
+{
+    "name": "Vakti App",
+    "description": "Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on https://vaktiapp.com",
+    "icons": {
+        "48": "icons/logo-48.png",
+        "96": "icons/logo-96.png"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{56726da0-1e25-4c63-a4b2-6e08ef30717a}"
+        }
+    },
+    "version": "2.0.3",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "page.html",
+        "default_icon": "logo.png"
+    }
+}
