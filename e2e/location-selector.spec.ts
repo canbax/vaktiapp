@@ -47,6 +47,6 @@ test('should find places and select from GPS location', async ({ page }) => {
 
 async function assertSelectedPlacesCached(page: Page, clickedResult: string) {
   await page.getByRole('button', { name: clickedResult.split(',')[0] }).click();
-  await page.getByRole('combobox').click();
+  await page.getByTestId('search-place').click();
   await expect(page.getByText(clickedResult)).toBeVisible();
 }
