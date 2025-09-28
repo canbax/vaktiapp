@@ -1,16 +1,17 @@
-import { fileURLToPath, URL } from "node:url";
-import { execSync } from "node:child_process";
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import vuetify from "vite-plugin-vuetify";
+import { fileURLToPath, URL } from 'node:url';
+import { execSync } from 'node:child_process';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vuetify from 'vite-plugin-vuetify';
+import Sitemap from 'vite-plugin-sitemap';
 
 // Helper to get Git commit hash
 function getGitCommitHash() {
   try {
-    return execSync("git rev-parse --short HEAD").toString().trim();
+    return execSync('git rev-parse --short HEAD').toString().trim();
   } catch (error) {
-    console.warn("Unable to get Git commit hash:", error);
-    return "unknown";
+    console.warn('Unable to get Git commit hash:', error);
+    return 'unknown';
   }
 }
 
@@ -27,13 +28,14 @@ export default defineConfig({
     vuetify({
       autoImport: true,
     }),
+    Sitemap({ dynamicRoutes: ['/times', '/sabbaticals', '/settings', '/about'] }),
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   define: {
-    "process.env.BUILD_VERSION": JSON.stringify(buildVersion),
+    'process.env.BUILD_VERSION': JSON.stringify(buildVersion),
   },
 });
