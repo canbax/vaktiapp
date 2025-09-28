@@ -69,7 +69,7 @@
     "jsdom": "^25.0.1",
     "lint-staged": "^15.3.0",
     "prettier": "^3.3.3",
-    "typescript": "~5.6.3",
+    "typescript": "^5.9.2",
     "vite": "^6.3.4",
     "vite-plugin-sitemap": "^0.8.2",
     "vite-plugin-vuetify": "^2.0.4",
