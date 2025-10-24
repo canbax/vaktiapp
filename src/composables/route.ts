@@ -8,15 +8,48 @@ import SettingsPageVue from '@/pages/SettingsPage.vue';
 import AboutPageVue from '@/pages/AboutPage.vue';
 import PrivacyPageVue from '@/pages/PrivacyPage.vue';
 import NotFoundPageVue from '@/pages/NotFoundPage.vue';
-import type { PathMenuItem, RouteManager } from '@/types';
+import type { PathMenuItem, RouteManager, SupportedLanguage } from '@/types';
 import { useUrlParams } from '@/composables/urlParams';
+import { useSettings } from '@/composables/settings';
 
 const currentView = shallowRef<any>(null);
 const currentPathMenuItem = shallowRef<string | null>(null);
 
+const { ALL_LANGUAGES } = useSettings();
+
+/**
+ * Parses the path to extract language code and route path
+ * @param path - The full path from URL (e.g., 'en/sabbaticals' or 'sabbaticals')
+ * @returns Object containing languageCode and routePath
+ */
+export function parsePathWithLanguage(path: string): {
+  languageCode: string | null;
+  routePath: string;
+} {
+  const pathSegments = path.split('/').filter((segment) => segment.length > 0);
+
+  if (pathSegments.length === 0) {
+    return { languageCode: null, routePath: '' };
+  }
+
+  const lastSegment = pathSegments[pathSegments.length - 1];
+
+  // Check if the first segment is a supported language code (2-letter code)
+  if (lastSegment.length === 2) {
+    if (ALL_LANGUAGES.find((lang) => lang.languageCode === lastSegment)) {
+      const routePath = pathSegments.slice(0, -1).join('/') || '';
+      return { languageCode: lastSegment, routePath };
+    }
+  }
+
+  // No language code in path
+  return { languageCode: null, routePath: path };
+}
+
 export function useRoute(): RouteManager {
   const location = useBrowserLocation();
   const { applyUrlParamsToSettings } = useUrlParams();
+  const { getLanguageFromCode, currentLanguage } = useSettings();
 
   const routePathToVueComponent: Record<string, any> = {
     '/': TimesPage,
@@ -59,12 +92,21 @@ export function useRoute(): RouteManager {
   );
 
   async function setViewFromRoutePath(path: string) {
-    if (path === 'share') {
+    const { languageCode, routePath } = parsePathWithLanguage(path);
+
+    // Set language if a language code was found in the URL
+    if (languageCode) {
+      const language = getLanguageFromCode(languageCode as SupportedLanguage);
+      currentLanguage.value = language;
+    }
+
+    if (routePath === 'share') {
       await applyUrlParamsToSettings();
       location.value.href = 'times';
       return;
     }
-    const pageToGo = routePathToVueComponent[path];
+
+    const pageToGo = routePathToVueComponent[routePath];
     if (!pageToGo) {
       currentView.value = NotFoundPageVue;
       currentPathMenuItem.value = null;
@@ -73,7 +115,7 @@ export function useRoute(): RouteManager {
       if (pageToGo === TimesPage) {
         currentPathMenuItem.value = 'times';
       } else {
-        currentPathMenuItem.value = path;
+        currentPathMenuItem.value = routePath;
       }
     }
     isWidget.value = currentPathMenuItem.value === 'widget';

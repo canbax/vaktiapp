@@ -5,6 +5,7 @@ import { RouteManager } from '@/types';
 import TimesPage from '@/pages/TimesPage.vue';
 import NotFoundPage from '@/pages/NotFoundPage.vue';
 import ReligiousDaysPage from '@/pages/ReligiousDaysPage.vue';
+import { parsePathWithLanguage } from './route';
 
 describe('useRoute', () => {
   it("should open 'Times Page' by default", () => {
@@ -25,5 +26,100 @@ describe('useRoute', () => {
     result.setViewFromPathMenuItem({ icon: '', title: 'sabbaticals' });
     expect(result.currentView.value).toStrictEqual(ReligiousDaysPage);
     app.unmount();
+  });
+});
+
+describe('parsePathWithLanguage', () => {
+  it('should extract language code and route from path with language prefix', () => {
+    const result = parsePathWithLanguage('sabbaticals/en');
+    expect(result).toEqual({
+      languageCode: 'en',
+      routePath: 'sabbaticals',
+    });
+  });
+
+  it('should handle multiple path segments after language', () => {
+    const result = parsePathWithLanguage('/settings/general/tr');
+    expect(result).toEqual({
+      languageCode: 'tr',
+      routePath: 'settings/general',
+    });
+  });
+
+  it('should return null language code for paths without language prefix', () => {
+    const result = parsePathWithLanguage('sabbaticals');
+    expect(result).toEqual({
+      languageCode: null,
+      routePath: 'sabbaticals',
+    });
+  });
+
+  it('should handle empty path', () => {
+    const result = parsePathWithLanguage('');
+    expect(result).toEqual({
+      languageCode: null,
+      routePath: '',
+    });
+  });
+
+  it('should handle root path', () => {
+    const result = parsePathWithLanguage('/');
+    expect(result).toEqual({
+      languageCode: null,
+      routePath: '',
+    });
+  });
+
+  it('should handle language code only', () => {
+    const result = parsePathWithLanguage('es');
+    expect(result).toEqual({
+      languageCode: 'es',
+      routePath: '',
+    });
+  });
+
+  it('should not treat unsupported language codes as languages', () => {
+    const result = parsePathWithLanguage('sabbaticals/xx');
+    expect(result).toEqual({
+      languageCode: null,
+      routePath: `sabbaticals/xx`,
+    });
+  });
+
+  it('should not treat 3-letter codes as languages', () => {
+    const result = parsePathWithLanguage('sabbaticals/eng/');
+    expect(result).toEqual({
+      languageCode: null,
+      routePath: 'sabbaticals/eng/',
+    });
+  });
+
+  it('should handle all supported languages', () => {
+    const supportedLanguages = [
+      'ar',
+      'az',
+      'de',
+      'en',
+      'es',
+      'fa',
+      'fr',
+      'id',
+      'it',
+      'kk',
+      'ko',
+      'ky',
+      'ms',
+      'ru',
+      'tr',
+      'zh',
+    ];
+
+    supportedLanguages.forEach((lang) => {
+      const result = parsePathWithLanguage(`/sabbaticals/${lang}`);
+      expect(result).toEqual({
+        languageCode: lang,
+        routePath: 'sabbaticals',
+      });
+    });
   });
 });

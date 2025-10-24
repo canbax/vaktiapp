@@ -14,6 +14,7 @@ export function useSettings() {
   const ALL_LANGUAGES: UserInterfaceLanguage[] = [
     { text: 'Türkçe', languageCode: 'tr' },
     { text: 'English', languageCode: 'en' },
+    { text: 'Azərbaycanca', languageCode: 'az' },
     { text: 'Pусский', languageCode: 'ru' },
     { text: 'Española', languageCode: 'es' },
     { text: 'فارسی', languageCode: 'fa' },
@@ -27,7 +28,7 @@ export function useSettings() {
     { text: 'Korean', languageCode: 'ko' },
     { text: 'Kyrgyz', languageCode: 'ky' },
     { text: 'Malay', languageCode: 'ms' },
-  ];
+  ] as const;
 
   /**
    * returns 2 letter language code ('en', 'de', 'tr', ...) of the browser. By default returns 'en'

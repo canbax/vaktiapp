@@ -28,7 +28,32 @@ export default defineConfig({
     vuetify({
       autoImport: true,
     }),
-    Sitemap({ dynamicRoutes: ['/times', '/sabbaticals', '/settings', '/about'] }),
+    Sitemap({
+      hostname: 'https://vaktiapp.com',
+      i18n: {
+        defaultLanguage: 'tr',
+        languages: [
+          'tr',
+          'en',
+          'ru',
+          'es',
+          'fa',
+          'fr',
+          'de',
+          'zh',
+          'ar',
+          'az',
+          'id',
+          'it',
+          'kk',
+          'ko',
+          'ky',
+          'ms',
+        ],
+      },
+      priority: { '/': 1.0, '/times': 1.0, '/sabbaticals': 0.9, '/settings': 0.7, '/about': 0.6 },
+      dynamicRoutes: ['/times', '/sabbaticals', '/settings', '/about'],
+    }),
   ],
   resolve: {
     alias: {
