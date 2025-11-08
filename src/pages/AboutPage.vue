@@ -30,6 +30,20 @@ const buildVersion = computed(() => process.env.BUILD_VERSION || '');
     <div class="text-h6 text-center">{{ $t('aboutTxt') }}</div>
     <v-alert class="ma-4" :text="$t('donatePageText')" border border-color="primary" />
     <div class="text-center pa-2">
+      <a href="https://apps.apple.com/tr/app/vakti-app/id6743095525" target="_blank">
+        <img
+          src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+          height="50"
+        />
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.vakti.app" target="_blank">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+          height="50"
+        />
+      </a>
+    </div>
+    <div class="text-center pa-2">
       <v-btn
         variant="outlined"
         class="text-capitalize ma-2"

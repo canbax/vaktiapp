@@ -103,7 +103,7 @@ export const tr = {
   weekdayShort6: 'Cmts',
   yearFormat: 'Yıl Gösterimi',
   monthFormat: 'Ay Gösterimi',
-  isCopied: ' koyalandı.',
+  isCopied: ' kopyalandı.',
   weekdayFormat: 'Hafta günü Gösterimi',
   dateFormat: 'Tarih gösterimi',
   remainingTimeFormat: 'Kalan süre gösterimi',
