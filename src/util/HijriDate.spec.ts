@@ -227,4 +227,60 @@ describe('Hijri Date', () => {
       expect(d1.compare(new HijriDate(hijri[0], hijri[1], hijri[2]))).toBe(0);
     },
   );
+
+  describe('getAllSabbaticalsNear', () => {
+    it('returns 2*cnt items and sorted by Gregorian date', () => {
+      const h = new HijriDate();
+      const date = new Date(2021, 4, 13); // 1442-9-1 (eid_ramadan_1)
+      const cnt = 3;
+      const list = h.getAllSabbaticalsNear(date, cnt);
+
+      expect(list.length).toBe(cnt * 2);
+      const isSorted = list.every((x, i, arr) => i === 0 || arr[i - 1].gregorian <= x.gregorian);
+      expect(isSorted).toBe(true);
+    });
+
+    it('includes duplicates when the given date is a sabbatical', () => {
+      const h = new HijriDate();
+      const date = new Date(2021, 4, 13); // eid_ramadan_1
+      const list = h.getAllSabbaticalsNear(date, 3);
+      const sameDay = list.filter((x) => x.gregorian.getTime() === date.getTime());
+      expect(sameDay.length).toBe(2);
+      expect(sameDay.every((x) => x.sabbatical.name === 'eid_ramadan_1')).toBe(true);
+    });
+
+    it('middle entry equals getNearestSabbatical for the same input date', () => {
+      const h = new HijriDate();
+      const date = new Date(2021, 4, 13);
+      const cnt = 5;
+      const list = h.getAllSabbaticalsNear(date, cnt);
+      const nearest = h.getNearestSabbatical(date);
+      expect(list[cnt].gregorian.getTime()).toBe(nearest.gregorian.getTime());
+      expect(list[cnt].sabbatical.name).toBe(nearest.sabbatical?.name);
+    });
+
+    it('detects laylat_al_raghaib (first Thursday in Rejeb)', () => {
+      const h = new HijriDate();
+      const date = new Date(2020, 0, 29); // 2020-01-29 (Wednesday), near Rejeb start
+      const list = h.getAllSabbaticalsNear(date, 2);
+      const raghaib = list.find((x) => x.sabbatical.name === 'laylat_al_raghaib');
+      expect(raghaib).toBeDefined();
+      // Should be a Thursday and within first 7 days of Rejeb
+      expect(raghaib!.gregorian.getDay()).toBe(4);
+      expect(raghaib!.hijri.getMonth()).toBe(6);
+      expect(raghaib!.hijri.getDay()).toBeLessThan(8);
+      // Special object day is defined as 3 in implementation
+      expect(raghaib!.sabbatical.day).toBe(3);
+    });
+
+    it('includes eve_of_eid_ramadan near Ramadan end (29 or 30)', () => {
+      const h = new HijriDate();
+      const date = new Date(2020, 3, 22); // around Ramadan end in 2020
+      const list = h.getAllSabbaticalsNear(date, 3);
+      const eveRamadan = list.find((x) => x.sabbatical.name === 'eve_of_eid_ramadan');
+      expect(eveRamadan).toBeDefined();
+      expect(eveRamadan!.hijri.getMonth()).toBe(8);
+      expect([29, 30]).toContain(eveRamadan!.hijri.getDay());
+    });
+  });
 });
