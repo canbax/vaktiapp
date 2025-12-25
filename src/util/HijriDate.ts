@@ -406,55 +406,67 @@ export class HijriDate {
    * @param  {Date} d
    */
   getAllSabbaticalsNear(date: Date, cnt = 19): SabbaticalCalendar[] {
-    let hijri = this.toHijri(date);
-    const sabbaticals: SabbaticalCalendar[] = [];
-    let tmpDate = new Date(date.getTime());
-    let cntSabbatical = 0;
-    while (cntSabbatical < cnt) {
-      let sabbaticalCandidate = this.getSabbaticalObj4Date(hijri, tmpDate);
-      while (!sabbaticalCandidate) {
-        hijri = hijri.addDays(hijri.year, hijri.month, hijri.day, -1);
-        tmpDate = new Date(tmpDate.getTime() - this.MS_IN_DAY);
-        sabbaticalCandidate = this.getSabbaticalObj4Date(hijri, tmpDate);
-      }
-      cntSabbatical++;
-      sabbaticals.push({
-        hijri: hijri,
-        gregorian: tmpDate,
-        sabbatical: sabbaticalCandidate,
-      });
-      hijri = hijri.addDays(hijri.year, hijri.month, hijri.day, -1);
-      tmpDate = new Date(tmpDate.getTime() - this.MS_IN_DAY);
-    }
-    // now increase the date
-    hijri = this.toHijri(date);
-    tmpDate = new Date(date.getTime());
-    cntSabbatical = 0;
-    while (cntSabbatical < cnt) {
-      let sabbaticalCandidate = this.getSabbaticalObj4Date(hijri, tmpDate);
-      while (!sabbaticalCandidate) {
-        hijri = hijri.addDays(hijri.year, hijri.month, hijri.day, 1);
-        tmpDate = new Date(tmpDate.getTime() + this.MS_IN_DAY);
-        sabbaticalCandidate = this.getSabbaticalObj4Date(hijri, tmpDate);
-      }
-      cntSabbatical++;
-      sabbaticals.push({
-        hijri: hijri,
-        gregorian: tmpDate,
-        sabbatical: sabbaticalCandidate,
-      });
-      hijri = hijri.addDays(hijri.year, hijri.month, hijri.day, 1);
-      tmpDate = new Date(tmpDate.getTime() + this.MS_IN_DAY);
-    }
-    sabbaticals.sort((x, y) => {
-      if (x.gregorian > y.gregorian) {
-        return 1;
-      } else if (y.gregorian > x.gregorian) {
-        return -1;
-      }
-      return 0;
-    });
+    const hijriStart = this.toHijri(date);
+    const gregorianStart = new Date(date.getTime());
+
+    const before = this.collectSabbaticals(hijriStart, gregorianStart, cnt, -1);
+    const after = this.collectSabbaticals(hijriStart, gregorianStart, cnt, 1);
+
+    const sabbaticals = [...before, ...after];
+    sabbaticals.sort((a, b) => a.gregorian.getTime() - b.gregorian.getTime());
     return sabbaticals;
+  }
+
+  /**
+   * Find the next sabbatical in the given direction starting from provided dates.
+   * Direction: -1 for previous, +1 for next.
+   */
+  private findNextSabbatical(
+    hijriStart: HijriDate,
+    gregorianStart: Date,
+    direction: -1 | 1,
+  ): SabbaticalCalendar {
+    let h = hijriStart;
+    let g = new Date(gregorianStart.getTime());
+    let sab = this.getSabbaticalObj4Date(h, g);
+
+    while (!sab) {
+      h = h.addDays(h.getYear(), h.getMonth(), h.getDay(), direction);
+      g = new Date(g.getTime() + direction * this.MS_IN_DAY);
+      sab = this.getSabbaticalObj4Date(h, g);
+    }
+
+    return { hijri: h, gregorian: g, sabbatical: sab };
+  }
+
+  /**
+   * Collect a sequence of sabbaticals moving in a specific direction from the start.
+   */
+  private collectSabbaticals(
+    hijriStart: HijriDate,
+    gregorianStart: Date,
+    count: number,
+    direction: -1 | 1,
+  ): SabbaticalCalendar[] {
+    const results: SabbaticalCalendar[] = [];
+    let h = hijriStart;
+    let g = new Date(gregorianStart.getTime());
+
+    for (let i = 0; i < count; i++) {
+      const next = this.findNextSabbatical(h, g, direction);
+      results.push(next);
+
+      // Step one day away from the found sabbatical to continue searching
+      h = next.hijri.addDays(
+        next.hijri.getYear(),
+        next.hijri.getMonth(),
+        next.hijri.getDay(),
+        direction,
+      );
+      g = new Date(next.gregorian.getTime() + direction * this.MS_IN_DAY);
+    }
+
+    return results;
   }
 
   getYear(): number {
