@@ -240,13 +240,13 @@ describe('Hijri Date', () => {
       expect(isSorted).toBe(true);
     });
 
-    it('includes duplicates when the given date is a sabbatical', () => {
+    it('does not include duplicates when the given date is a sabbatical', () => {
       const h = new HijriDate();
       const date = new Date(2021, 4, 13); // eid_ramadan_1
       const list = h.getAllSabbaticalsNear(date, 3);
       const sameDay = list.filter((x) => x.gregorian.getTime() === date.getTime());
-      expect(sameDay.length).toBe(2);
-      expect(sameDay.every((x) => x.sabbatical.name === 'eid_ramadan_1')).toBe(true);
+      expect(sameDay.length).toBe(1);
+      expect(sameDay[0].sabbatical.name).toBe('eid_ramadan_1');
     });
 
     it('middle entry equals getNearestSabbatical for the same input date', () => {

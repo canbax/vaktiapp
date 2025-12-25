@@ -409,7 +409,17 @@ export class HijriDate {
     const hijriStart = this.toHijri(date);
     const gregorianStart = new Date(date.getTime());
 
-    const before = this.collectSabbaticals(hijriStart, gregorianStart, cnt, -1);
+    // To avoid duplicates when the given date itself is a sabbatical,
+    // start the "before" search from the previous day.
+    const hijriPrevDay = hijriStart.addDays(
+      hijriStart.getYear(),
+      hijriStart.getMonth(),
+      hijriStart.getDay(),
+      -1,
+    );
+    const gregorianPrevDay = new Date(gregorianStart.getTime() - this.MS_IN_DAY);
+
+    const before = this.collectSabbaticals(hijriPrevDay, gregorianPrevDay, cnt, -1);
     const after = this.collectSabbaticals(hijriStart, gregorianStart, cnt, 1);
 
     const sabbaticals = [...before, ...after];
