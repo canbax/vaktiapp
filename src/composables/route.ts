@@ -6,6 +6,7 @@ import TimesWidgetPage from '@/pages/TimesWidgetPage.vue';
 import ReligiousDaysPageVue from '@/pages/ReligiousDaysPage.vue';
 import SettingsPageVue from '@/pages/SettingsPage.vue';
 import AboutPageVue from '@/pages/AboutPage.vue';
+import ApiDocsPageVue from '@/pages/ApiDocsPage.vue';
 import PrivacyPageVue from '@/pages/PrivacyPage.vue';
 import NotFoundPageVue from '@/pages/NotFoundPage.vue';
 import type { PathMenuItem, RouteManager, SupportedLanguage } from '@/types';
@@ -60,6 +61,7 @@ export function useRoute(): RouteManager {
     sabbaticals: ReligiousDaysPageVue,
     settings: SettingsPageVue,
     about: AboutPageVue,
+    'api-docs': ApiDocsPageVue,
     privacy: PrivacyPageVue,
   };
   const pathMenuItems: readonly PathMenuItem[] = [
