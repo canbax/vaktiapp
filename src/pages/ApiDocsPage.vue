@@ -1,9 +1,32 @@
 <script setup lang="ts">
 import { useScrollTop } from '@/composables/scrollTop';
+import { ref } from 'vue';
 
 useScrollTop();
+interface ApiDocParameter {
+  name: string;
+  type: string;
+  description: string;
+  required: boolean;
+  default?: string | number;
+}
 
-const apiDocs = {
+interface ApiDocEndpoint {
+  path: string;
+  methods: string[];
+  description: string;
+  values: Record<string, string | number>;
+  parameters: ApiDocParameter[];
+}
+
+interface ApiDocs {
+  name: string;
+  version: string;
+  description: string;
+  endpoints: ApiDocEndpoint[];
+}
+
+const apiDocs = ref<ApiDocs>({
   name: 'Vakti App API',
   version: '1.0.0',
   description: 'API documentation for Vakti App prayer times and location services.',
@@ -12,8 +35,15 @@ const apiDocs = {
       path: '/api/searchPlaces',
       methods: ['GET'],
       description: 'Search for places by query string.',
+      values: { q: 'istanbul' },
       parameters: [
-        { name: 'q', type: 'string', description: 'Search query', required: false },
+        {
+          name: 'q',
+          type: 'string',
+          description: 'Search query',
+          required: false,
+          default: 'istanbul',
+        },
         {
           name: 'lat',
           type: 'number',
@@ -44,9 +74,10 @@ const apiDocs = {
       path: '/api/nearByPlaces',
       methods: ['GET'],
       description: 'Find places near specific coordinates.',
+      values: { lat: 41.0082, lng: 28.9784 },
       parameters: [
-        { name: 'lat', type: 'number', description: 'Latitude', required: true },
-        { name: 'lng', type: 'number', description: 'Longitude', required: true },
+        { name: 'lat', type: 'number', description: 'Latitude', required: true, default: 41.0082 },
+        { name: 'lng', type: 'number', description: 'Longitude', required: true, default: 28.9784 },
         { name: 'lang', type: 'string', description: 'Language code', required: false },
       ],
     },
@@ -54,11 +85,24 @@ const apiDocs = {
       path: '/api/timesForGPS',
       methods: ['GET'],
       description: 'Get prayer times for a specific GPS location.',
+      values: { lat: 41.0082, lng: 28.9784, date: new Date().toISOString().split('T')[0], days: 1 },
       parameters: [
-        { name: 'lat', type: 'number', description: 'Latitude', required: true },
-        { name: 'lng', type: 'number', description: 'Longitude', required: true },
-        { name: 'date', type: 'string', description: 'Date (YYYY-MM-DD)', required: false },
-        { name: 'days', type: 'number', description: 'Number of days to fetch', required: false },
+        { name: 'lat', type: 'number', description: 'Latitude', required: true, default: 41.0082 },
+        { name: 'lng', type: 'number', description: 'Longitude', required: true, default: 28.9784 },
+        {
+          name: 'date',
+          type: 'string',
+          description: 'Date (YYYY-MM-DD)',
+          required: false,
+          default: new Date().toISOString().split('T')[0],
+        },
+        {
+          name: 'days',
+          type: 'number',
+          description: 'Number of days to fetch',
+          required: false,
+          default: 1,
+        },
         {
           name: 'tzOffset',
           type: 'number',
@@ -77,10 +121,33 @@ const apiDocs = {
       path: '/api/timesForPlace',
       methods: ['GET'],
       description: 'Get prayer times for a specific place ID.',
+      values: {
+        id: 'ChIJavhwfreaehMRs8XWp0C3_8c',
+        date: new Date().toISOString().split('T')[0],
+        days: 1,
+      },
       parameters: [
-        { name: 'id', type: 'string', description: 'Place ID', required: true },
-        { name: 'date', type: 'string', description: 'Date (YYYY-MM-DD)', required: false },
-        { name: 'days', type: 'number', description: 'Number of days to fetch', required: false },
+        {
+          name: 'id',
+          type: 'string',
+          description: 'Place ID',
+          required: true,
+          default: 'ChIJavhwfreaehMRs8XWp0C3_8c',
+        },
+        {
+          name: 'date',
+          type: 'string',
+          description: 'Date (YYYY-MM-DD)',
+          required: false,
+          default: new Date().toISOString().split('T')[0],
+        },
+        {
+          name: 'days',
+          type: 'number',
+          description: 'Number of days to fetch',
+          required: false,
+          default: 1,
+        },
         { name: 'tzOffset', type: 'number', description: 'Timezone offset', required: false },
         {
           name: 'calculateMethod',
@@ -94,71 +161,127 @@ const apiDocs = {
       path: '/api/timesFromCoordinates',
       methods: ['GET', 'POST'],
       description: 'Get prayer times from coordinates (alternative to timesForGPS).',
+      values: { lat: 41.0082, lng: 28.9784, date: new Date().toISOString().split('T')[0], days: 1 },
       parameters: [
-        { name: 'lat', type: 'number', description: 'Latitude', required: true },
-        { name: 'lng', type: 'number', description: 'Longitude', required: true },
-        { name: 'date', type: 'string', description: 'Date', required: false },
-        { name: 'days', type: 'number', description: 'Days to fetch', required: false },
+        { name: 'lat', type: 'number', description: 'Latitude', required: true, default: 41.0082 },
+        { name: 'lng', type: 'number', description: 'Longitude', required: true, default: 28.9784 },
+        {
+          name: 'date',
+          type: 'string',
+          description: 'Date',
+          required: false,
+          default: new Date().toISOString().split('T')[0],
+        },
+        { name: 'days', type: 'number', description: 'Days to fetch', required: false, default: 1 },
       ],
     },
     {
       path: '/api/timesFromPlace',
       methods: ['GET', 'POST'],
       description: 'Get prayer times from place query (alternative to timesForPlace).',
+      values: { country: 'Turkey', city: 'Istanbul' },
       parameters: [
-        { name: 'country', type: 'string', description: 'Country name', required: true },
+        {
+          name: 'country',
+          type: 'string',
+          description: 'Country name',
+          required: true,
+          default: 'Turkey',
+        },
         { name: 'region', type: 'string', description: 'Region name', required: false },
-        { name: 'city', type: 'string', description: 'City name', required: true },
+        {
+          name: 'city',
+          type: 'string',
+          description: 'City name',
+          required: true,
+          default: 'Istanbul',
+        },
       ],
     },
     {
       path: '/api/countries',
       methods: ['GET', 'POST'],
       description: 'List all available countries.',
+      values: {},
       parameters: [],
     },
     {
       path: '/api/regions',
       methods: ['GET', 'POST'],
       description: 'Get regions for a country.',
+      values: { country: 'Turkey' },
       parameters: [
-        { name: 'country', type: 'string', description: 'Country name', required: true },
+        {
+          name: 'country',
+          type: 'string',
+          description: 'Country name',
+          required: true,
+          default: 'Turkey',
+        },
       ],
     },
     {
       path: '/api/cities',
       methods: ['GET', 'POST'],
       description: 'Get cities for a region.',
+      values: { country: 'Turkey', region: 'Istanbul' },
       parameters: [
-        { name: 'country', type: 'string', description: 'Country name', required: true },
-        { name: 'region', type: 'string', description: 'Region name', required: true },
+        {
+          name: 'country',
+          type: 'string',
+          description: 'Country name',
+          required: true,
+          default: 'Turkey',
+        },
+        {
+          name: 'region',
+          type: 'string',
+          description: 'Region name',
+          required: true,
+          default: 'Istanbul',
+        },
       ],
     },
     {
       path: '/api/coordinates',
       methods: ['GET', 'POST'],
       description: 'Get coordinates for a specific location query.',
+      values: { country: 'Turkey', city: 'Istanbul' },
       parameters: [
-        { name: 'country', type: 'string', description: 'Country name', required: true },
+        {
+          name: 'country',
+          type: 'string',
+          description: 'Country name',
+          required: true,
+          default: 'Turkey',
+        },
         { name: 'region', type: 'string', description: 'Region name', required: false },
-        { name: 'city', type: 'string', description: 'City name', required: true },
+        {
+          name: 'city',
+          type: 'string',
+          description: 'City name',
+          required: true,
+          default: 'Istanbul',
+        },
       ],
     },
     {
       path: '/api/place',
       methods: ['GET', 'POST'],
       description: 'Get place details by coordinates (lat, lng).',
+      values: { lat: 41.0082, lng: 28.9784 },
       parameters: [
-        { name: 'lat', type: 'number', description: 'Latitude', required: true },
-        { name: 'lng', type: 'number', description: 'Longitude', required: true },
+        { name: 'lat', type: 'number', description: 'Latitude', required: true, default: 41.0082 },
+        { name: 'lng', type: 'number', description: 'Longitude', required: true, default: 28.9784 },
       ],
     },
     {
       path: '/api/placeById',
       methods: ['GET', 'POST'],
       description: 'Get place details by numeric ID.',
+      values: { id: 180 },
       parameters: [
-        { name: 'id', type: 'number', description: 'Place ID', required: true },
+        { name: 'id', type: 'number', description: 'Place ID', required: true, default: 180 },
         { name: 'lang', type: 'string', description: 'Language code', required: false },
       ],
     },
@@ -166,9 +289,31 @@ const apiDocs = {
       path: '/api/ip',
       methods: ['GET', 'POST'],
       description: 'Get client IP address information.',
+      values: {},
       parameters: [],
     },
   ],
+});
+
+const getEndpointUrl = (endpoint: ApiDocEndpoint) => {
+  let baseUrl = 'https://vaktiapp.com/api/';
+  if (!baseUrl.endsWith('/')) baseUrl += '/';
+
+  let path = endpoint.path;
+  if (path.startsWith('/api/')) path = path.substring(5);
+  if (path.startsWith('/')) path = path.substring(1);
+
+  const url = new URL(path, baseUrl);
+
+  if (endpoint.parameters) {
+    endpoint.parameters.forEach((p: ApiDocParameter) => {
+      const val = endpoint.values[p.name];
+      if (val !== undefined && val !== '' && val !== null) {
+        url.searchParams.append(p.name, val.toString());
+      }
+    });
+  }
+  return url.toString();
 };
 </script>
 
@@ -226,6 +371,37 @@ const apiDocs = {
             </v-table>
           </div>
           <div v-else class="text-caption text-grey mt-2">No parameters required.</div>
+
+          <v-divider class="my-4"></v-divider>
+
+          <div class="text-subtitle-1 mb-2">Try it out</div>
+          <v-row v-if="endpoint.parameters && endpoint.parameters.length > 0">
+            <v-col v-for="param in endpoint.parameters" :key="param.name" cols="12" md="6" lg="4">
+              <v-text-field
+                v-model="endpoint.values[param.name]"
+                :label="param.name + (param.required ? ' *' : '')"
+                :hint="param.description"
+                persistent-hint
+                density="compact"
+                variant="outlined"
+                hide-details="auto"
+                class="mb-2"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <div class="mt-4">
+            <div class="text-subtitle-2 mb-1">Request URL:</div>
+            <a
+              :href="getEndpointUrl(endpoint)"
+              target="_blank"
+              class="d-flex align-center text-primary text-decoration-none py-2 px-3 bg-grey-lighten-4 rounded border"
+              style="word-break: break-all"
+            >
+              <span class="mr-2">{{ getEndpointUrl(endpoint) }}</span>
+              <v-icon size="small">mdi-open-in-new</v-icon>
+            </a>
+          </div>
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
