@@ -4,7 +4,7 @@ export class ApiClient {
   private _baseUrl: string;
 
   constructor() {
-    this._baseUrl = 'https://vakti-api.vercel.app/api/';
+    this._baseUrl = import.meta.env.VITE_API_URL ?? '/api/';
     // this._baseUrl = 'http://localhost:3000/api/';
   }
 
