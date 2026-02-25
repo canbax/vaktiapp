@@ -72,6 +72,7 @@ npm run test
 ```
 
 ### Run End-to-End Tests with [Playwright](https://playwright.dev)
+E2E test will run only in local. First you need to serve the API from https://github.com/canbax/namaz-vakti-api using command `ENABLE_CORS=1 npm run dev`. And then run tests locally `VITE_API_URL=http://localhost:3000/api/ npm run test-e2e`. E2E tests uses local to not hit API rate limits.
 
 ```sh
 # Install browsers for the first run
@@ -80,14 +81,15 @@ npx playwright install
 # When testing on CI, must build the project first
 npm run build
 
+
 # Runs the end-to-end tests
-npm run test:e2e
+npm run test-e2e
 # Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
+npm run test-e2e -- --project=chromium
 # Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
+npm run test-e2e share
 # Runs the tests in debug mode
-npm run test:e2e -- --debug
+npm run test-e2e -- --debug
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
