@@ -17,7 +17,7 @@
 
     <h5>Üçüncü Taraf Hizmetleri</h5>
     <ul>
-        <li><strong>Namaz Vakti API:</strong> Doğru namaz vakitlerini almak için Vakti App konum verilerinizi Namaz Vakti API'sine gönderebilir. Bu veri iletimi geçicidir ve tarafımızca saklanmaz. API'nin veri işleme uygulamaları hakkında daha fazla bilgi için lütfen <a href="https://vakit.vercel.app/" target="_blank">https://vakit.vercel.app/</a> adresindeki belgelerine bakın.</li>
+        <li><strong>Namaz Vakti API:</strong> Doğru namaz vakitlerini almak için Vakti App konum verilerinizi Namaz Vakti API'sine gönderebilir. Bu veri iletimi geçicidir ve tarafımızca saklanmaz. API'nin veri işleme uygulamaları hakkında daha fazla bilgi için lütfen <a href="https://vakti-api.vercel.app/" target="_blank">https://vakti-api.vercel.app/</a> adresindeki belgelerine bakın.</li>
     </ul>
 
     <h5>Veri Güvenliği</h5>

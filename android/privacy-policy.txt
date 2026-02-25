@@ -13,7 +13,7 @@ Use of Information
 	•	Prayer Time Calculations: If you grant permission, your location data is utilized to determine precise prayer times pertinent to your current location. This information is processed in real-time and is not retained after the calculation.
 
 Third-Party Services
-	•	Namaz Vakti API: To fetch accurate prayer times, Vakti App may send your location data to the Namaz Vakti API. This data transmission is transient and is not stored by us. For more details on the API’s data handling practices, please refer to their documentation at https://vakit.vercel.app/.
+	•	Namaz Vakti API: To fetch accurate prayer times, Vakti App may send your location data to the Namaz Vakti API. This data transmission is transient and is not stored by us. For more details on the API’s data handling practices, please refer to their documentation at https://vakti-api.vercel.app/.
 
 Data Security
 

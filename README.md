@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/canbax/vaktiapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-89.77%25-yellow.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vaktiapp/blob/main/LICENSE)
 
-Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [Vakti App.com](https://vaktiapp.com). Uses https://vakit.vercel.app/ for finding places. In other cases, it doesn't uses the Internet.
+Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [Vakti App.com](https://vaktiapp.com). Uses https://vakti-api.vercel.app/ for finding places. In other cases, it doesn't uses the Internet.
 
 <a href="https://apps.apple.com/tr/app/vakti-app/id6743095525" target="_blank">
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" height="50">

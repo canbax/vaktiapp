@@ -90,7 +90,7 @@ describe('API Client', () => {
   describe('constructor', () => {
     it('should create an API client with correct base URL', () => {
       expect(api).toBeDefined();
-      expect(api['_baseUrl']).toBe('https://vakit.vercel.app/api/');
+      expect(api['_baseUrl']).toBe('https://vakti-api.vercel.app/api/');
     });
   });
 
@@ -105,7 +105,7 @@ describe('API Client', () => {
       const result = await api.searchPlaces('Istanbul', 41.0082, 28.9784, 'en', 'TR');
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/searchPlaces?q=Istanbul&lat=41.0082&lng=28.9784&lang=en&countryCode=TR',
+        'https://vakti-api.vercel.app/api/searchPlaces?q=Istanbul&lat=41.0082&lng=28.9784&lang=en&countryCode=TR',
         { method: 'GET' },
       );
       expect(result).toEqual(mockSearchPlacesResponse);
@@ -121,7 +121,7 @@ describe('API Client', () => {
       const result = await api.searchPlaces('Istanbul');
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/searchPlaces?q=Istanbul&lat=undefined&lng=undefined&lang=undefined&countryCode=',
+        'https://vakti-api.vercel.app/api/searchPlaces?q=Istanbul&lat=undefined&lng=undefined&lang=undefined&countryCode=',
         { method: 'GET' },
       );
       expect(result).toEqual(mockSearchPlacesResponse);
@@ -137,7 +137,7 @@ describe('API Client', () => {
       const result = await api.searchPlaces('');
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/searchPlaces?q=&lat=undefined&lng=undefined&lang=undefined&countryCode=',
+        'https://vakti-api.vercel.app/api/searchPlaces?q=&lat=undefined&lng=undefined&lang=undefined&countryCode=',
         { method: 'GET' },
       );
       expect(result).toEqual([]);
@@ -153,7 +153,7 @@ describe('API Client', () => {
       const result = await api.searchPlaces('Istanbul', null, null, 'tr');
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/searchPlaces?q=Istanbul&lat=null&lng=null&lang=tr&countryCode=',
+        'https://vakti-api.vercel.app/api/searchPlaces?q=Istanbul&lat=null&lng=null&lang=tr&countryCode=',
         { method: 'GET' },
       );
       expect(result).toEqual(mockSearchPlacesResponse);
@@ -187,7 +187,7 @@ describe('API Client', () => {
       const result = await api.nearByPlaces(41.0082, 28.9784, 'en');
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/nearByPlaces?lat=41.0082&lng=28.9784&lang=en',
+        'https://vakti-api.vercel.app/api/nearByPlaces?lat=41.0082&lng=28.9784&lang=en',
         { method: 'GET' },
       );
       expect(result).toEqual(mockNearByPlacesResponse);
@@ -203,7 +203,7 @@ describe('API Client', () => {
       const result = await api.nearByPlaces(41.0082, 28.9784);
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/nearByPlaces?lat=41.0082&lng=28.9784&lang=undefined',
+        'https://vakti-api.vercel.app/api/nearByPlaces?lat=41.0082&lng=28.9784&lang=undefined',
         { method: 'GET' },
       );
       expect(result).toEqual(mockNearByPlacesResponse);
@@ -219,7 +219,7 @@ describe('API Client', () => {
       const result = await api.nearByPlaces(-41.0082, -28.9784, 'es');
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/nearByPlaces?lat=-41.0082&lng=-28.9784&lang=es',
+        'https://vakti-api.vercel.app/api/nearByPlaces?lat=-41.0082&lng=-28.9784&lang=es',
         { method: 'GET' },
       );
       expect(result).toEqual([]);
@@ -253,7 +253,7 @@ describe('API Client', () => {
       const result = await api.placeById('123', 'tr');
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/placeById?id=123&lang=tr',
+        'https://vakti-api.vercel.app/api/placeById?id=123&lang=tr',
         { method: 'GET' },
       );
       expect(result).toEqual(mockPlaceByIdResponse);
@@ -269,7 +269,7 @@ describe('API Client', () => {
       const result = await api.placeById(456);
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/placeById?id=456&lang=undefined',
+        'https://vakti-api.vercel.app/api/placeById?id=456&lang=undefined',
         { method: 'GET' },
       );
       expect(result).toEqual(mockPlaceByIdResponse);
@@ -284,9 +284,12 @@ describe('API Client', () => {
 
       const result = await api.placeById(0, 'en');
 
-      expect(fetchSpy).toHaveBeenCalledWith('https://vakit.vercel.app/api/placeById?id=0&lang=en', {
-        method: 'GET',
-      });
+      expect(fetchSpy).toHaveBeenCalledWith(
+        'https://vakti-api.vercel.app/api/placeById?id=0&lang=en',
+        {
+          method: 'GET',
+        },
+      );
       expect(result).toBeNull();
     });
 
@@ -300,7 +303,7 @@ describe('API Client', () => {
       const result = await api.placeById('');
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/placeById?id=&lang=undefined',
+        'https://vakti-api.vercel.app/api/placeById?id=&lang=undefined',
         { method: 'GET' },
       );
       expect(result).toBeNull();
@@ -334,7 +337,7 @@ describe('API Client', () => {
       await api.searchPlaces('İstanbul Beşiktaş', 41.0082, 28.9784, 'tr', 'TR');
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/searchPlaces?q=İstanbul Beşiktaş&lat=41.0082&lng=28.9784&lang=tr&countryCode=TR',
+        'https://vakti-api.vercel.app/api/searchPlaces?q=İstanbul Beşiktaş&lat=41.0082&lng=28.9784&lang=tr&countryCode=TR',
         { method: 'GET' },
       );
     });
@@ -350,7 +353,7 @@ describe('API Client', () => {
       await api.searchPlaces(undefined as any);
 
       expect(fetchSpy).toHaveBeenCalledWith(
-        'https://vakit.vercel.app/api/searchPlaces?q=&lat=undefined&lng=undefined&lang=undefined&countryCode=',
+        'https://vakti-api.vercel.app/api/searchPlaces?q=&lat=undefined&lng=undefined&lang=undefined&countryCode=',
         { method: 'GET' },
       );
     });
