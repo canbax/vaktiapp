@@ -42,6 +42,12 @@ export function useSettings() {
       } else {
         console.warn(`${langCode} is not a supported language`);
       }
+    } else if (userLang && typeof userLang === 'string' && userLang.length === 2) {
+      if (ALL_LANGUAGES.find((x) => x.languageCode === userLang)) {
+        return userLang as SupportedLanguage;
+      } else {
+        console.warn(`${userLang} is not a supported language`);
+      }
     } else {
       console.warn(`${userLang} is not a valid language indicator`);
     }
