@@ -2,6 +2,11 @@ import { describe, it, expect } from 'vitest';
 import { HijriDate } from './HijriDate';
 
 describe('Hijri Date', () => {
+  it('Should convert 2026 Ramadan first day correctly', () => {
+    const d1 = new HijriDate().toHijri(new Date(2026, 1, 19));
+    expect(d1.getYear() === 1447 && d1.getMonth() === 8 && d1.getDay() === 1).toBe(true);
+  });
+
   it('Can convert the same gregorian date to the same hijri date', () => {
     const d1 = new HijriDate(1442, 3, 20);
     const d2 = new HijriDate(1442, 3, 20);
