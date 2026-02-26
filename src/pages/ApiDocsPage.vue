@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { useScrollTop } from '@/composables/scrollTop';
-import { ref } from 'vue';
+import { ref, getCurrentInstance } from 'vue';
+import { getTranslateFn } from '@/util/i18n';
 
 useScrollTop();
+const $t = getTranslateFn(getCurrentInstance());
+
 interface ApiDocParameter {
   name: string;
   type: string;
-  description: string;
+  descriptionKey: string;
   required: boolean;
   default?: string | number;
 }
@@ -14,58 +17,58 @@ interface ApiDocParameter {
 interface ApiDocEndpoint {
   path: string;
   methods: string[];
-  description: string;
+  descriptionKey: string;
   values: Record<string, string | number>;
   parameters: ApiDocParameter[];
 }
 
 interface ApiDocs {
-  name: string;
+  nameKey: string;
   version: string;
-  description: string;
+  descriptionKey: string;
   endpoints: ApiDocEndpoint[];
 }
 
 const apiDocs = ref<ApiDocs>({
-  name: 'Vakti App API',
+  nameKey: 'apiDocsName',
   version: '1.0.0',
-  description: 'API documentation for Vakti App prayer times and location services.',
+  descriptionKey: 'apiDocsDesc',
   endpoints: [
     {
       path: '/api/searchPlaces',
       methods: ['GET'],
-      description: 'Search for places by query string.',
+      descriptionKey: 'apiDesc_searchPlaces',
       values: { q: 'istanbul' },
       parameters: [
         {
           name: 'q',
           type: 'string',
-          description: 'Search query',
+          descriptionKey: 'apiParamDesc_q',
           required: false,
           default: 'istanbul',
         },
         {
           name: 'lat',
           type: 'number',
-          description: 'Latitude for proximity ranking',
+          descriptionKey: 'apiParamDesc_latProx',
           required: false,
         },
         {
           name: 'lng',
           type: 'number',
-          description: 'Longitude for proximity ranking',
+          descriptionKey: 'apiParamDesc_lngProx',
           required: false,
         },
         {
           name: 'lang',
           type: 'string',
-          description: "Language code (e.g. 'en', 'tr')",
+          descriptionKey: 'apiParamDesc_langEx',
           required: false,
         },
         {
           name: 'countryCode',
           type: 'string',
-          description: 'Country code filter',
+          descriptionKey: 'apiParamDesc_countryCode',
           required: false,
         },
       ],
@@ -73,46 +76,70 @@ const apiDocs = ref<ApiDocs>({
     {
       path: '/api/nearByPlaces',
       methods: ['GET'],
-      description: 'Find places near specific coordinates.',
+      descriptionKey: 'apiDesc_nearByPlaces',
       values: { lat: 41.0082, lng: 28.9784 },
       parameters: [
-        { name: 'lat', type: 'number', description: 'Latitude', required: true, default: 41.0082 },
-        { name: 'lng', type: 'number', description: 'Longitude', required: true, default: 28.9784 },
-        { name: 'lang', type: 'string', description: 'Language code', required: false },
+        {
+          name: 'lat',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_lat',
+          required: true,
+          default: 41.0082,
+        },
+        {
+          name: 'lng',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_lng',
+          required: true,
+          default: 28.9784,
+        },
+        { name: 'lang', type: 'string', descriptionKey: 'apiParamDesc_lang', required: false },
       ],
     },
     {
       path: '/api/timesForGPS',
       methods: ['GET'],
-      description: 'Get prayer times for a specific GPS location.',
+      descriptionKey: 'apiDesc_timesForGPS',
       values: { lat: 41.0082, lng: 28.9784, date: new Date().toISOString().split('T')[0], days: 1 },
       parameters: [
-        { name: 'lat', type: 'number', description: 'Latitude', required: true, default: 41.0082 },
-        { name: 'lng', type: 'number', description: 'Longitude', required: true, default: 28.9784 },
+        {
+          name: 'lat',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_lat',
+          required: true,
+          default: 41.0082,
+        },
+        {
+          name: 'lng',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_lng',
+          required: true,
+          default: 28.9784,
+        },
         {
           name: 'date',
           type: 'string',
-          description: 'Date (YYYY-MM-DD)',
+          descriptionKey: 'apiParamDesc_dateEx',
           required: false,
           default: new Date().toISOString().split('T')[0],
         },
         {
           name: 'days',
           type: 'number',
-          description: 'Number of days to fetch',
+          descriptionKey: 'apiParamDesc_days',
           required: false,
           default: 1,
         },
         {
           name: 'tzOffset',
           type: 'number',
-          description: 'Timezone offset in minutes',
+          descriptionKey: 'apiParamDesc_tzOffsetMin',
           required: false,
         },
         {
           name: 'calculateMethod',
           type: 'string',
-          description: 'Calculation method',
+          descriptionKey: 'apiParamDesc_calculateMethod',
           required: false,
         },
       ],
@@ -120,7 +147,7 @@ const apiDocs = ref<ApiDocs>({
     {
       path: '/api/timesForPlace',
       methods: ['GET'],
-      description: 'Get prayer times for a specific place ID.',
+      descriptionKey: 'apiDesc_timesForPlace',
       values: {
         id: 'ChIJavhwfreaehMRs8XWp0C3_8c',
         date: new Date().toISOString().split('T')[0],
@@ -130,29 +157,34 @@ const apiDocs = ref<ApiDocs>({
         {
           name: 'id',
           type: 'string',
-          description: 'Place ID',
+          descriptionKey: 'apiParamDesc_id',
           required: true,
           default: 'ChIJavhwfreaehMRs8XWp0C3_8c',
         },
         {
           name: 'date',
           type: 'string',
-          description: 'Date (YYYY-MM-DD)',
+          descriptionKey: 'apiParamDesc_dateEx',
           required: false,
           default: new Date().toISOString().split('T')[0],
         },
         {
           name: 'days',
           type: 'number',
-          description: 'Number of days to fetch',
+          descriptionKey: 'apiParamDesc_days',
           required: false,
           default: 1,
         },
-        { name: 'tzOffset', type: 'number', description: 'Timezone offset', required: false },
+        {
+          name: 'tzOffset',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_tzOffset',
+          required: false,
+        },
         {
           name: 'calculateMethod',
           type: 'string',
-          description: 'Calculation method',
+          descriptionKey: 'apiParamDesc_calculateMethod',
           required: false,
         },
       ],
@@ -160,39 +192,57 @@ const apiDocs = ref<ApiDocs>({
     {
       path: '/api/timesFromCoordinates',
       methods: ['GET', 'POST'],
-      description: 'Get prayer times from coordinates (alternative to timesForGPS).',
+      descriptionKey: 'apiDesc_timesFromCoordinates',
       values: { lat: 41.0082, lng: 28.9784, date: new Date().toISOString().split('T')[0], days: 1 },
       parameters: [
-        { name: 'lat', type: 'number', description: 'Latitude', required: true, default: 41.0082 },
-        { name: 'lng', type: 'number', description: 'Longitude', required: true, default: 28.9784 },
+        {
+          name: 'lat',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_lat',
+          required: true,
+          default: 41.0082,
+        },
+        {
+          name: 'lng',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_lng',
+          required: true,
+          default: 28.9784,
+        },
         {
           name: 'date',
           type: 'string',
-          description: 'Date',
+          descriptionKey: 'apiParamDesc_date',
           required: false,
           default: new Date().toISOString().split('T')[0],
         },
-        { name: 'days', type: 'number', description: 'Days to fetch', required: false, default: 1 },
+        {
+          name: 'days',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_days',
+          required: false,
+          default: 1,
+        },
       ],
     },
     {
       path: '/api/timesFromPlace',
       methods: ['GET', 'POST'],
-      description: 'Get prayer times from place query (alternative to timesForPlace).',
+      descriptionKey: 'apiDesc_timesFromPlace',
       values: { country: 'Turkey', city: 'Istanbul' },
       parameters: [
         {
           name: 'country',
           type: 'string',
-          description: 'Country name',
+          descriptionKey: 'apiParamDesc_country',
           required: true,
           default: 'Turkey',
         },
-        { name: 'region', type: 'string', description: 'Region name', required: false },
+        { name: 'region', type: 'string', descriptionKey: 'apiParamDesc_region', required: false },
         {
           name: 'city',
           type: 'string',
-          description: 'City name',
+          descriptionKey: 'apiParamDesc_city',
           required: true,
           default: 'Istanbul',
         },
@@ -201,20 +251,20 @@ const apiDocs = ref<ApiDocs>({
     {
       path: '/api/countries',
       methods: ['GET', 'POST'],
-      description: 'List all available countries.',
+      descriptionKey: 'apiDesc_countries',
       values: {},
       parameters: [],
     },
     {
       path: '/api/regions',
       methods: ['GET', 'POST'],
-      description: 'Get regions for a country.',
+      descriptionKey: 'apiDesc_regions',
       values: { country: 'Turkey' },
       parameters: [
         {
           name: 'country',
           type: 'string',
-          description: 'Country name',
+          descriptionKey: 'apiParamDesc_country',
           required: true,
           default: 'Turkey',
         },
@@ -223,20 +273,20 @@ const apiDocs = ref<ApiDocs>({
     {
       path: '/api/cities',
       methods: ['GET', 'POST'],
-      description: 'Get cities for a region.',
+      descriptionKey: 'apiDesc_cities',
       values: { country: 'Turkey', region: 'Istanbul' },
       parameters: [
         {
           name: 'country',
           type: 'string',
-          description: 'Country name',
+          descriptionKey: 'apiParamDesc_country',
           required: true,
           default: 'Turkey',
         },
         {
           name: 'region',
           type: 'string',
-          description: 'Region name',
+          descriptionKey: 'apiParamDesc_region',
           required: true,
           default: 'Istanbul',
         },
@@ -245,21 +295,21 @@ const apiDocs = ref<ApiDocs>({
     {
       path: '/api/coordinates',
       methods: ['GET', 'POST'],
-      description: 'Get coordinates for a specific location query.',
+      descriptionKey: 'apiDesc_coordinates',
       values: { country: 'Turkey', city: 'Istanbul' },
       parameters: [
         {
           name: 'country',
           type: 'string',
-          description: 'Country name',
+          descriptionKey: 'apiParamDesc_country',
           required: true,
           default: 'Turkey',
         },
-        { name: 'region', type: 'string', description: 'Region name', required: false },
+        { name: 'region', type: 'string', descriptionKey: 'apiParamDesc_region', required: false },
         {
           name: 'city',
           type: 'string',
-          description: 'City name',
+          descriptionKey: 'apiParamDesc_city',
           required: true,
           default: 'Istanbul',
         },
@@ -268,27 +318,45 @@ const apiDocs = ref<ApiDocs>({
     {
       path: '/api/place',
       methods: ['GET', 'POST'],
-      description: 'Get place details by coordinates (lat, lng).',
+      descriptionKey: 'apiDesc_place',
       values: { lat: 41.0082, lng: 28.9784 },
       parameters: [
-        { name: 'lat', type: 'number', description: 'Latitude', required: true, default: 41.0082 },
-        { name: 'lng', type: 'number', description: 'Longitude', required: true, default: 28.9784 },
+        {
+          name: 'lat',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_lat',
+          required: true,
+          default: 41.0082,
+        },
+        {
+          name: 'lng',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_lng',
+          required: true,
+          default: 28.9784,
+        },
       ],
     },
     {
       path: '/api/placeById',
       methods: ['GET', 'POST'],
-      description: 'Get place details by numeric ID.',
+      descriptionKey: 'apiDesc_placeById',
       values: { id: 180 },
       parameters: [
-        { name: 'id', type: 'number', description: 'Place ID', required: true, default: 180 },
-        { name: 'lang', type: 'string', description: 'Language code', required: false },
+        {
+          name: 'id',
+          type: 'number',
+          descriptionKey: 'apiParamDesc_id',
+          required: true,
+          default: 180,
+        },
+        { name: 'lang', type: 'string', descriptionKey: 'apiParamDesc_lang', required: false },
       ],
     },
     {
       path: '/api/ip',
       methods: ['GET', 'POST'],
-      description: 'Get client IP address information.',
+      descriptionKey: 'apiDesc_ip',
       values: {},
       parameters: [],
     },
@@ -319,9 +387,9 @@ const getEndpointUrl = (endpoint: ApiDocEndpoint) => {
 
 <template>
   <v-container fluid>
-    <div class="text-h6 text-center my-4">{{ apiDocs.name }}</div>
+    <div class="text-h6 text-center my-4">{{ $t(apiDocs.nameKey) }}</div>
     <div class="text-subtitle-1 text-center mb-6">
-      {{ apiDocs.description }} (v{{ apiDocs.version }})
+      {{ $t(apiDocs.descriptionKey) }} (v{{ apiDocs.version }})
     </div>
 
     <v-expansion-panels variant="accordion">
@@ -342,17 +410,17 @@ const getEndpointUrl = (endpoint: ApiDocEndpoint) => {
           </div>
         </v-expansion-panel-title>
         <v-expansion-panel-text>
-          <div class="mb-2 text-body-1">{{ endpoint.description }}</div>
+          <div class="mb-2 text-body-1">{{ $t(endpoint.descriptionKey) }}</div>
 
           <div v-if="endpoint.parameters && endpoint.parameters.length > 0">
-            <div class="text-subtitle-2 mt-2 mb-1">Parameters:</div>
+            <div class="text-subtitle-2 mt-2 mb-1">{{ $t('apiParams') }}</div>
             <v-table density="compact">
               <thead>
                 <tr>
-                  <th class="text-left">Name</th>
-                  <th class="text-left">Type</th>
-                  <th class="text-left">Required</th>
-                  <th class="text-left">Description</th>
+                  <th class="text-left">{{ $t('apiNameCol') }}</th>
+                  <th class="text-left">{{ $t('apiTypeCol') }}</th>
+                  <th class="text-left">{{ $t('apiRequiredCol') }}</th>
+                  <th class="text-left">{{ $t('apiDescCol') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -363,24 +431,24 @@ const getEndpointUrl = (endpoint: ApiDocEndpoint) => {
                   </td>
                   <td>
                     <v-icon v-if="param.required" color="error" size="small">mdi-check</v-icon>
-                    <span v-else class="text-caption text-grey">Optional</span>
+                    <span v-else class="text-caption text-grey">{{ $t('apiOptional') }}</span>
                   </td>
-                  <td>{{ param.description }}</td>
+                  <td>{{ $t(param.descriptionKey) }}</td>
                 </tr>
               </tbody>
             </v-table>
           </div>
-          <div v-else class="text-caption text-grey mt-2">No parameters required.</div>
+          <div v-else class="text-caption text-grey mt-2">{{ $t('apiNoParamsReq') }}</div>
 
           <v-divider class="my-4"></v-divider>
 
-          <div class="text-subtitle-1 mb-2">Try it out</div>
+          <div class="text-subtitle-1 mb-2">{{ $t('apiTryItOut') }}</div>
           <v-row v-if="endpoint.parameters && endpoint.parameters.length > 0">
             <v-col v-for="param in endpoint.parameters" :key="param.name" cols="12" md="6" lg="4">
               <v-text-field
                 v-model="endpoint.values[param.name]"
                 :label="param.name + (param.required ? ' *' : '')"
-                :hint="param.description"
+                :hint="$t(param.descriptionKey)"
                 persistent-hint
                 density="compact"
                 variant="outlined"
@@ -391,7 +459,7 @@ const getEndpointUrl = (endpoint: ApiDocEndpoint) => {
           </v-row>
 
           <div class="mt-4">
-            <div class="text-subtitle-2 mb-1">Request URL:</div>
+            <div class="text-subtitle-2 mb-1">{{ $t('apiRequestUrl') }}</div>
             <a
               :href="getEndpointUrl(endpoint)"
               target="_blank"
