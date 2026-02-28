@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/canbax/vaktiapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-89.77%25-yellow.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vaktiapp/blob/main/LICENSE)
 
-Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [Vakti App.com](https://vaktiapp.com). Uses https://vakti-api.vercel.app/ for finding places. In other cases, it doesn't uses the Internet.
+Free, ad-free, open-source, and sleek Muslim Praying Times app. Available on [Vakti App.com](https://vaktiapp.com). Uses https://github.com/canbax/namaz-vakti-api for finding places. In other cases, it doesn't uses the Internet.
 
 <a href="https://apps.apple.com/tr/app/vakti-app/id6743095525" target="_blank">
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" height="50">
@@ -72,6 +72,7 @@ npm run test
 ```
 
 ### Run End-to-End Tests with [Playwright](https://playwright.dev)
+
 E2E test will run only in local. First you need to serve the API from https://github.com/canbax/namaz-vakti-api using command `ENABLE_CORS=1 npm run dev`. And then run tests locally `VITE_API_URL=http://localhost:3000/api/ npm run test-e2e`. E2E tests uses local to not hit API rate limits.
 
 ```sh

@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/canbax/vaktiapp/actions/workflows/build-and-test.yml/badge.svg) ![Statements](https://img.shields.io/badge/statements-94.63%25-brightgreen.svg?style=flat) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canbax/vaktiapp/blob/main/LICENSE)
 
-Ücretsiz, reklamsız, açık kaynaklı ve şık Namaz Vakitleri uygulaması. [Vakti App.com](https://vaktiapp.com) üzerinden kullanılabilir. Yer tespiti için https://vakti-api.vercel.app/ servisini kullanır. Bunun dışında internet kullanmaz.
+Ücretsiz, reklamsız, açık kaynaklı ve şık Namaz Vakitleri uygulaması. [Vakti App.com](https://vaktiapp.com) üzerinden kullanılabilir. Yer tespiti için https://github.com/canbax/namaz-vakti-api kullanır. Bunun dışında internet kullanmaz.
 
 <p align="center">
   <img src="doc/şov-genel.gif" title="genel özellikler"/>
