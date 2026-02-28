@@ -31,7 +31,7 @@ interface ApiDocs {
 
 const apiDocs = ref<ApiDocs>({
   nameKey: 'apiDocsName',
-  version: '1.0.0',
+  version: '1.1.0',
   descriptionKey: 'apiDocsDesc',
   endpoints: [
     {
@@ -392,6 +392,16 @@ const getEndpointUrl = (endpoint: ApiDocEndpoint) => {
       {{ $t(apiDocs.descriptionKey) }} (v{{ apiDocs.version }})
     </div>
 
+    <div class="mb-6 px-2 d-flex align-center justify-center">
+      <span class="font-weight-bold mr-2">{{ $t('apiRateLimitTitle') }}</span>
+      <v-tooltip location="bottom" max-width="400">
+        <template v-slot:activator="{ props }">
+          <v-icon v-bind="props" size="small" color="info">mdi-information</v-icon>
+        </template>
+        <div class="api-html pa-2" v-html="$t('apiRateLimitTooltip')"></div>
+      </v-tooltip>
+    </div>
+
     <v-expansion-panels variant="accordion">
       <v-expansion-panel v-for="(endpoint, index) in apiDocs.endpoints" :key="index">
         <v-expansion-panel-title>
@@ -476,4 +486,21 @@ const getEndpointUrl = (endpoint: ApiDocEndpoint) => {
   </v-container>
 </template>
 
-<style scoped></style>
+<style scoped>
+.api-html :deep(h2) {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+.api-html :deep(p) {
+  margin-bottom: 1rem;
+}
+.api-html :deep(ul) {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.api-html :deep(li) {
+  margin-bottom: 0.5rem;
+}
+</style>
