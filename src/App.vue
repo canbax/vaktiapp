@@ -7,6 +7,7 @@ import { useUIState } from '@/composables/userInterfaceState';
 import { computed, onMounted } from 'vue';
 import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { Analytics } from '@vercel/analytics/vue';
 
 const { currentView, currentPathMenuItem, pathMenuItems, setViewFromPathMenuItem, isWidget } =
   useRoute();
@@ -43,6 +44,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <Analytics />
   <div v-if="!isWidget" data-testid="container-card" class="dynamic-zoom">
     <v-layout>
       <v-app-bar prominent>
