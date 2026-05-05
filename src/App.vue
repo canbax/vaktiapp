@@ -8,6 +8,7 @@ import { computed, onMounted } from 'vue';
 import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { Analytics } from '@vercel/analytics/vue';
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 
 const { currentView, currentPathMenuItem, pathMenuItems, setViewFromPathMenuItem, isWidget } =
   useRoute();
@@ -45,6 +46,7 @@ onMounted(async () => {
 
 <template>
   <Analytics />
+  <SpeedInsights />
   <div v-if="!isWidget" data-testid="container-card" class="dynamic-zoom">
     <v-layout>
       <v-app-bar prominent>
