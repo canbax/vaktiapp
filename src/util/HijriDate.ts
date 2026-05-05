@@ -350,7 +350,7 @@ export class HijriDate {
   toHijri(date: Date): HijriDate {
     const d = new Date(date);
     d.setHours(0, 0, 0, 0);
-    const dayDiff = (d.getTime() - this.BASE_GREGORIAN.getTime()) / this.MS_IN_DAY;
+    const dayDiff = Math.round((d.getTime() - this.BASE_GREGORIAN.getTime()) / this.MS_IN_DAY);
     return this.addDays(this.BASE_HIJRI.year, this.BASE_HIJRI.month, this.BASE_HIJRI.day, dayDiff);
   }
 
