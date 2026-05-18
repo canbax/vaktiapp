@@ -159,7 +159,7 @@ export const en = {
   apiParamDesc_country: 'Country name',
   apiParamDesc_region: 'Region name',
   apiParamDesc_city: 'City name',
-  apiRateLimitTitle: 'Rate Limiting: 100 Requests Per 15 Minutes',
+  apiRateLimitTitle: 'Rate Limiting: 33 Requests Per 15 Minutes',
   apiRateLimitTooltip:
     "<p>To ensure stability and fair usage, this API implements a rate limit. If your application needs to make a high volume of requests and you are consistently hitting these limits, please consider the following options:</p><ul><li><strong>Host it yourself</strong>: You are welcome to use the source code to host the API on your own server.</li><li><strong>Request an increase</strong>: If you'd like to discuss a rate limit increase for your specific use case, please open an issue in this repository.</li></ul>",
 };

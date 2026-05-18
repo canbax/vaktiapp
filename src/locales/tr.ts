@@ -160,7 +160,7 @@ export const tr = {
   apiParamDesc_country: 'Ülke adı',
   apiParamDesc_region: 'Bölge adı',
   apiParamDesc_city: 'Şehir adı',
-  apiRateLimitTitle: 'Hız Sınırlaması: 15 Dakikada 100 İstek',
+  apiRateLimitTitle: 'Hız Sınırlaması: 15 Dakikada 33 İstek',
   apiRateLimitTooltip:
     "<p>Kararlılığı ve adil kullanımı sağlamak için bu API hız sınırı uygular. Uygulamanızın yüksek hacimde istek yapması gerekiyorsa ve sürekli olarak bu sınırları aşıyorsanız, lütfen aşağıdaki seçenekleri göz önünde bulundurun:</p><ul><li><strong>Kendiniz barındırın</strong>: API'yi kendi sunucunuzda barındırmak için kaynak kodunu kullanabilirsiniz.</li><li><strong>Artış talep edin</strong>: Özel kullanım durumunuz için hız sınırı artışını görüşmek isterseniz, lütfen bu depoda bir sorun (issue) açın.</li></ul>",
 };
