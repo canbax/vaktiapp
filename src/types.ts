@@ -25,10 +25,7 @@ export interface UserInterfaceLanguage {
 }
 
 export type RemainingTimeFormat =
-  | 'XX:YY:ZZ'
-  | 'XX:YY'
-  | `X hour Y minute Z second`
-  | `X hour Y minute`;
+  'XX:YY:ZZ' | 'XX:YY' | `X hour Y minute Z second` | `X hour Y minute`;
 
 type _1To9 = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 type _0To9 = 0 | _1To9;

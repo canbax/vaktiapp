@@ -1,7 +1,9 @@
 import { Coordinates, CalculationMethod, PrayerTimes, Madhab } from 'adhan';
 import type { HourString, TimesData } from './types';
 import { extractTimeFromDate, dateToStandardString } from '@/util/dateAndTime';
-import type { ValueOf } from 'adhan/lib/types/TypeUtils';
+
+// adhan doesn't export this utility type from its public API, so it's redefined here.
+type ValueOf<T> = T[keyof T];
 
 /**
  * Mutates date

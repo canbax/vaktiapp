@@ -6,6 +6,7 @@ async function openSettings(page: Page) {
   await selectLocation(page);
   await page.getByText('Settings').click();
 }
+
 test('should change UI language', async ({ page }) => {
   await openSettings(page);
   await page.getByLabel('Select a language').click();
