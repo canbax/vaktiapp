@@ -26,6 +26,19 @@ describe('useSafeCall', () => {
     app.unmount();
   });
 
+  it('Should not set error when the call is cancelled (AbortError)', async () => {
+    const fn = vi.fn(() => {
+      throw new DOMException('The operation was aborted', 'AbortError');
+    });
+    const { result, app } = withSetup<ReturnType<typeof useSafeCall>>(() => useSafeCall(fn));
+
+    await result.execute();
+
+    expect(result.error.value).toBeUndefined();
+    expect(result.loading.value).toBe(false);
+    app.unmount();
+  });
+
   it('Should set loading value dynamically ', async () => {
     const mockAsyncFunction = vi.fn().mockImplementation(() => {
       return new Promise((res) =>

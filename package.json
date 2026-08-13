@@ -9,6 +9,7 @@
   "scripts": {
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -r 0 -s",
     "dev": "vite --host",
+    "dev-local": "VITE_API_URL=http://localhost:3000/api/ npm run dev",
     "format": "prettier --write src/",
     "build": "npm run type-check && npm run build-only",
     "preview": "vite preview",

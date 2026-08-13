@@ -12,7 +12,9 @@ export function useSafeCall<F extends Function>(fn: F) {
       loading.value = true;
       await fn(...args);
     } catch (e) {
-      error.value = '' + e;
+      if ((e as { name?: string })?.name !== 'AbortError') {
+        error.value = '' + e;
+      }
     } finally {
       loading.value = false;
     }

@@ -109,7 +109,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(
         `${BASE_URL}searchPlaces?q=Istanbul&lat=41.0082&lng=28.9784&lang=en&countryCode=TR`,
-        { method: 'GET' },
+        { method: 'GET', signal: expect.any(AbortSignal) },
       );
       expect(result).toEqual(mockSearchPlacesResponse);
     });
@@ -125,7 +125,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(
         `${BASE_URL}searchPlaces?q=Istanbul&lat=undefined&lng=undefined&lang=undefined&countryCode=`,
-        { method: 'GET' },
+        { method: 'GET', signal: expect.any(AbortSignal) },
       );
       expect(result).toEqual(mockSearchPlacesResponse);
     });
@@ -141,7 +141,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(
         `${BASE_URL}searchPlaces?q=&lat=undefined&lng=undefined&lang=undefined&countryCode=`,
-        { method: 'GET' },
+        { method: 'GET', signal: expect.any(AbortSignal) },
       );
       expect(result).toEqual([]);
     });
@@ -157,7 +157,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(
         `${BASE_URL}searchPlaces?q=Istanbul&lat=null&lng=null&lang=tr&countryCode=`,
-        { method: 'GET' },
+        { method: 'GET', signal: expect.any(AbortSignal) },
       );
       expect(result).toEqual(mockSearchPlacesResponse);
     });
@@ -191,7 +191,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(
         `${BASE_URL}nearByPlaces?lat=41.0082&lng=28.9784&lang=en`,
-        { method: 'GET' },
+        { method: 'GET', signal: expect.any(AbortSignal) },
       );
       expect(result).toEqual(mockNearByPlacesResponse);
     });
@@ -207,7 +207,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(
         `${BASE_URL}nearByPlaces?lat=41.0082&lng=28.9784&lang=undefined`,
-        { method: 'GET' },
+        { method: 'GET', signal: expect.any(AbortSignal) },
       );
       expect(result).toEqual(mockNearByPlacesResponse);
     });
@@ -223,7 +223,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(
         `${BASE_URL}nearByPlaces?lat=-41.0082&lng=-28.9784&lang=es`,
-        { method: 'GET' },
+        { method: 'GET', signal: expect.any(AbortSignal) },
       );
       expect(result).toEqual([]);
     });
@@ -257,6 +257,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(`${BASE_URL}placeById?id=123&lang=tr`, {
         method: 'GET',
+        signal: expect.any(AbortSignal),
       });
       expect(result).toEqual(mockPlaceByIdResponse);
     });
@@ -272,6 +273,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(`${BASE_URL}placeById?id=456&lang=undefined`, {
         method: 'GET',
+        signal: expect.any(AbortSignal),
       });
       expect(result).toEqual(mockPlaceByIdResponse);
     });
@@ -287,6 +289,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(`${BASE_URL}placeById?id=0&lang=en`, {
         method: 'GET',
+        signal: expect.any(AbortSignal),
       });
       expect(result).toBeNull();
     });
@@ -302,6 +305,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(`${BASE_URL}placeById?id=&lang=undefined`, {
         method: 'GET',
+        signal: expect.any(AbortSignal),
       });
       expect(result).toBeNull();
     });
@@ -323,6 +327,59 @@ describe('API Client', () => {
     });
   });
 
+  describe('request cancellation', () => {
+    it('should abort the previous in-flight request when the same method is called again', async () => {
+      const signals: AbortSignal[] = [];
+      fetchSpy.mockImplementation((_url: string, init?: RequestInit) => {
+        signals.push(init?.signal as AbortSignal);
+        if (signals.length === 1) {
+          // simulate a slow first request that never resolves on its own
+          return new Promise(() => {});
+        }
+        const mockResponse: MockFetchResponse = {
+          ok: true,
+          json: vi.fn().mockResolvedValue(mockSearchPlacesResponse),
+        };
+        return Promise.resolve(mockResponse);
+      });
+
+      const firstCall = api.searchPlaces('Ist').catch(() => {
+        // the mocked fetch above never rejects, but guard against real AbortError propagation
+      });
+      const secondResult = await api.searchPlaces('Istanbul');
+
+      expect(signals[0].aborted).toBe(true);
+      expect(signals[1].aborted).toBe(false);
+      expect(secondResult).toEqual(mockSearchPlacesResponse);
+
+      // firstCall's mocked fetch never settles on its own (it doesn't observe
+      // the abort signal) - it's intentionally left pending, not awaited.
+      void firstCall;
+    });
+
+    it('should reject with an AbortError when the underlying fetch respects the abort signal', async () => {
+      fetchSpy.mockImplementation((_url: string, init?: RequestInit) => {
+        const signal = init?.signal as AbortSignal;
+        return new Promise((_resolve, reject) => {
+          signal.addEventListener('abort', () =>
+            reject(new DOMException('The operation was aborted', 'AbortError')),
+          );
+        });
+      });
+
+      const firstCall = api.searchPlaces('Ist');
+      const mockResponse: MockFetchResponse = {
+        ok: true,
+        json: vi.fn().mockResolvedValue(mockSearchPlacesResponse),
+      };
+      fetchSpy.mockResolvedValueOnce(mockResponse);
+      const secondResult = await api.searchPlaces('Istanbul');
+
+      await expect(firstCall).rejects.toMatchObject({ name: 'AbortError' });
+      expect(secondResult).toEqual(mockSearchPlacesResponse);
+    });
+  });
+
   describe('URL construction', () => {
     it('should construct searchPlaces URL correctly with special characters', async () => {
       const mockResponse: MockFetchResponse = {
@@ -335,7 +392,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(
         `${BASE_URL}searchPlaces?q=İstanbul Beşiktaş&lat=41.0082&lng=28.9784&lang=tr&countryCode=TR`,
-        { method: 'GET' },
+        { method: 'GET', signal: expect.any(AbortSignal) },
       );
     });
 
@@ -351,7 +408,7 @@ describe('API Client', () => {
 
       expect(fetchSpy).toHaveBeenCalledWith(
         `${BASE_URL}searchPlaces?q=&lat=undefined&lng=undefined&lang=undefined&countryCode=`,
-        { method: 'GET' },
+        { method: 'GET', signal: expect.any(AbortSignal) },
       );
     });
   });
