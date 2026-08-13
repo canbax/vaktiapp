@@ -8,6 +8,7 @@ import { useSafeCall } from '@/composables/safeCall';
 import { useCoordinates } from '@/composables/coordinates';
 import { isDefined } from '@vueuse/core';
 import { useSettings } from '@/composables/settings';
+import { distanceToSearch } from '@/util/place';
 
 const { error: isGPSError, getGPS, lastGPS } = useCoordinates();
 const { currentLanguage, selectedPlaces, currentCountry } = useSettings();
@@ -56,6 +57,7 @@ async function nearByPlaces() {
 const searchDebounced = useDebounceFn(async (v: string) => {
   search.value = v;
   if (v?.length < 2) return;
+  if (model.value?.name.toLocaleLowerCase() === v.toLocaleLowerCase()) return;
   const results = await api.searchPlaces(
     v,
     lastGPS.value.latitude,
@@ -103,7 +105,13 @@ watch(error, () => {
   snackbar.value = Boolean(error.value);
 });
 
-const items = computed<GenericPlace[]>(() => Array.from(placeSuggestions.value.values()));
+const items = computed<GenericPlace[]>(() => {
+  const places = Array.from(placeSuggestions.value.values());
+  const query = search.value.trim();
+  if (!query) return places;
+
+  return [...places].sort((a, b) => distanceToSearch(a, query) - distanceToSearch(b, query));
+});
 </script>
 
 <template>
