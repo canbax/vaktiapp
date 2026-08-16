@@ -11,7 +11,7 @@ test('should change UI language', async ({ page }) => {
   await openSettings(page);
   await page.getByLabel('Select a language').click();
   await page.getByText('Türkçe').click();
-  await page.getByLabel('Dil seçin').click();
+  await page.getByRole('combobox', { name: 'Dil seçin' }).click();
   await page.getByRole('banner').getByText('Ayarlar').click();
 });
 

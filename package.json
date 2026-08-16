@@ -15,6 +15,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test-watch": "vitest",
+    "e2e": "VITE_API_URL=http://localhost:3000/api/ npm run test-e2e",
     "test-e2e": "playwright test",
     "test-e2e-debug": "playwright test --debug",
     "test-cov": "vitest run --coverage",
